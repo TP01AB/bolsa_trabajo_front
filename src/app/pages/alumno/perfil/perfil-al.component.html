@@ -1,0 +1,71 @@
+<form novalidate class="mt-3" (ngSubmit)="onSave()" [formGroup]="contactForm">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="name" [class]="isValidField('name')">
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('name').errors?.required">
+                    Por favor introduzca su nombre
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="Apellido" formControlName="lastName" [class]="isValidField('lastName')">
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('lastName').errors?.required">
+                    Por favor introduzca su apellido
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <input type="text" class="form-control" placeholder="DNI" formControlName="dni" [class]="isValidField('dni')">
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('dni').errors?.required">
+                    Por favor introduzca su dni
+                </span>
+            </div>
+        </div>
+        <div class="input-group col-md-6">
+            <input class="form-control" placeholder="yyyy-mm-dd"
+                formControlName="birthdate" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')">
+            <div class="input-group-append">
+                <!--Poner icono manual-->
+              <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+            </div>
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('birthdate').errors?.required">
+                    Debe introducir una fecha
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group col-md-6">
+        <label>Rama</label>
+        <select formControlName="studies" class="ml-3" [class]="isValidField('studies')">
+            <option value="informatica">Informatica</option>
+            <option value="comercio">Comercio</option>
+        </select>
+        <div class="invalid-feedback">
+            <span *ngIf="contactForm.get('studies').errors?.required">
+                Debe elegir una opción
+            </span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Aptitudes</label>
+        <textarea rows="3" class="form-control" formControlName="message" [class]="isValidField('message')"></textarea>
+        <div class="invalid-feedback">
+            <span *ngIf="contactForm.get('message').errors?.required">
+                Por favor introduce un mensaje
+            </span>
+            <span *ngIf="contactForm.get('message').errors?.minlength">
+                El mensaje debe ser mas grande de {{contactForm.get('message').errors?.minlength?.requiredLesngth}}
+            </span>    
+            <span *ngIf="contactForm.get('message').errors?.maxlength">
+                El mensaje debe ser mas pequeño o igual a {{contactForm.get('message').errors?.maxlength?.requiredLength}}
+            </span>             
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Confirmar</button>
+</form>
