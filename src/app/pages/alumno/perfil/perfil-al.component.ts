@@ -1,18 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+//import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'perfil-al',
   templateUrl: './perfil-al.component.html',
   styleUrls: ['./perfil-al.component.scss']
 })
-export class PerfilAlComponent implements OnInit {
+export class PerfilAlComponent implements OnInit {  
 
-  private isEmail = /\S+@\S+\.\S+/;
   model: NgbDateStruct;
   contactForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+
+  //Patrones de validación
+  private isName = "^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$"  
+  private isDni = "^[0-9]{8,8}[A-Za-z]$"
+
+  constructor(private fb: FormBuilder, /*private http: HttpClient*/) { }
 
   ngOnInit(): void {
     this,this.initForm();
@@ -21,11 +26,27 @@ export class PerfilAlComponent implements OnInit {
   onSave():void {
     if (this.contactForm.valid) {
       console.log(this.contactForm.value)
+      let jsonForm = this.contactForm.getRawValue();
+      let json = JSON.stringify(jsonForm);
+
+      console.log(json);
+
+      /*
+      this.http.post("www.domain.com/api", json).subscribe(
+          data => console.log("success!", data),
+          error => console.error("couldn't post because", error)
+      );*/
+
     } else {
       console.log('Not valid')
+      Object.keys(this.contactForm.controls).forEach(field => {
+        const control = this.contactForm.get(field);
+        control.markAsTouched({ onlySelf: true });
+      });
     }
   }
 
+  //Validacion
   isValidField (field:string):string {
     const validatedField = this.contactForm.get(field);
     return ( !validatedField.valid && validatedField.touched)
@@ -38,12 +59,12 @@ export class PerfilAlComponent implements OnInit {
 
   private initForm():void {
     this.contactForm = this.fb.group({
-      name: ['',[Validators.required]],
-      lastName: ['',Validators.required], 
+      name: ['',[Validators.required, Validators.pattern(this.isName)]],
+      lastName: ['',[Validators.required, Validators.pattern(this.isName)]],      
       birthdate: ['',Validators.required],
       studies: ['',Validators.required],
-      dni: ['',[Validators.required, Validators.minLength(9), Validators.maxLength(9)]],
-      message: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
+      dni: ['',[Validators.required, Validators.minLength(9), Validators.maxLength(9),Validators.pattern(this.isDni)]],
+      aptitudes: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
     })
   }
 
