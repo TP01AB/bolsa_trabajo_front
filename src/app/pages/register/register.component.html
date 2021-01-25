@@ -1,7 +1,7 @@
-<form novalidate (ngSubmit)="onSave()" [formGroup]="registerForm">
+<form [formGroup]="registerForm" novalidate (ngSubmit)="onSave()">
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="email">E-mail:</label>
+            <label for="email">E-mil:</label>
             <input type="email" class="form-control" name="email" id="email" placeholder="Introduzca su e-mail" formcontrolname="email">
         </div>
         <div class="form-group col-md-6">

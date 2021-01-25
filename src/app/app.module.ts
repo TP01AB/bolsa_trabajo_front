@@ -9,7 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { CrearPerfilComponent } from './pages/company/crear-perfil/crear-perfil.component';
-import { RegisterComponent } from './pages/register/register.component';
+
 
 @NgModule({
   declarations: [
@@ -18,8 +18,7 @@ import { RegisterComponent } from './pages/register/register.component';
     SidebarComponent,
     HomeComponent,
     FooterComponent,
-    AdminDashboardComponent,
-    RegisterComponent
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,
