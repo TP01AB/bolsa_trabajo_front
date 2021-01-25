@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Contenedor del contenido de la parte intentar de la web */
+#page-content-wrapper {
+    width: 100%;
+}
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

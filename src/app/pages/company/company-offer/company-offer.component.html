@@ -1,0 +1,86 @@
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <!-- Button close Sidebar -->
+    <a class="btn" id="menu-toggle">
+      <svg class="bi text-info" width="32" height="32" fill="currentColor">
+        <use xlink:href="bootstrap-icons.svg#grid-3x3-gap" />
+      </svg>
+    </a>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <!-- Card with offer -->
+          <div class="card w-100 mb-4 shadow">
+            <div class="card-header bg-info">
+              <h2 class="card-title text-white font-weight-bold my-2">Ofertas publicadas</h2>
+              <a class="rounded-circle position-absolute border border-white bg-info" (click)=open(content)>
+                <svg class="bi text-white" width="32" height="32" fill="currentColor">
+                  <use xlink:href="bootstrap-icons.svg#plus" />
+                </svg>
+              </a>
+            </div>
+            <div class="card-body mt-2">
+              <!-- Card with offer -->
+              <div class="row">
+                <div class="col-sm-6" *ngFor="let number of [0,1,2,3,4,5,6,7]">
+                  <div class="card mb-4 border-info shadow">
+                    <div class="card-header bg-info text-white">
+                      <h5 class="card-title mb-0">Nombre de la oferta</h5>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text">Descripcion oferta, fecha, vacantes, etc</p>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit molestias, natus obcaecati
+                        omnis quidem eveniet ex odio totam placeat fugit.</p>
+                    </div>
+                    <div class="card-footer d-flex flex-row p-1">
+                      <button type="button" class="btn btn-info mr-2">
+                        <svg class="bi text-white" width="26" height="26" fill="currentColor">
+                          <use xlink:href="bootstrap-icons.svg#pencil" />
+                        </svg>
+                      </button>
+                      <button type="button" class="btn btn-danger">
+                        <svg class="bi text-white" width="26" height="26" fill="currentColor">
+                          <use xlink:href="bootstrap-icons.svg#x" />
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Nueva oferta</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="firstname">Nombre</label>
+          <div class="input-group">
+            <input id="firstname" class="form-control" >
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Guardar</button>
+    </div>
+  </ng-template>
