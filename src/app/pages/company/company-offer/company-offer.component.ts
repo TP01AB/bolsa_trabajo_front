@@ -14,7 +14,8 @@ export class CompanyOfferComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  open(content) {
+  // Abre el modal para crear una nueva oferta
+  offerNew(content) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -22,6 +23,35 @@ export class CompanyOfferComponent implements OnInit {
     });
   }
   
+  // Abre el modal para modificar los datos de la oferta, hay que pasarme la oferta para que la pinte en el formulario
+  offerUpdate(targetModal) {
+    this.modalService.open(targetModal, {
+     centered: true,
+     backdrop: 'static'
+   });
+    //document.getElementById('fname').setAttribute('value', friend.firstname);
+ }
+
+  // Abre el modal para duplicar los datos de la oferta, hay que pasarme la oferta para que la pinte en el formulario
+  offerDuplicate(targetModal) {
+    this.modalService.open(targetModal, {
+     centered: true,
+     backdrop: 'static'
+   });
+    //document.getElementById('fname').setAttribute('value', friend.firstname);
+ }
+
+  // Abre el modal para borrar los datos de la oferta, hay que pasarme la oferta para que la pinte en el formulario
+  offerDelete(targetModal) {
+    this.modalService.open(targetModal, {
+     centered: true,
+     backdrop: 'static'
+   });
+    //document.getElementById('fname').setAttribute('value', friend.firstname);
+ }
+
+
+  // Cierra los modales
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';

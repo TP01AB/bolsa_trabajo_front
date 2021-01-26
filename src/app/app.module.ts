@@ -11,6 +11,7 @@ import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-das
 import { CompanyDashboardComponent } from './pages/company/company-dashboard/company-dashboard.component';
 import { CompanyOfferComponent } from './pages/company/company-offer/company-offer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { OfferRegisterComponent } from './pages/company/company-offer/component/offer-register/offer-register.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AdminDashboardComponent,
     CompanyDashboardComponent,
     CompanyOfferComponent,
+    OfferRegisterComponent,
   ],
   imports: [
     BrowserModule,
