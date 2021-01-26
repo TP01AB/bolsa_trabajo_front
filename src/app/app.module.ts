@@ -10,6 +10,7 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,13 +19,14 @@ import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-das
     SidebarComponent,
     HomeComponent,
     FooterComponent,
-    AdminDashboardComponent,
+    AdminDashboardComponent    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AlumnoModule,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

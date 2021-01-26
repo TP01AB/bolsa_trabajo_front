@@ -13,7 +13,7 @@ const routes: Routes = [
   {path: 'admin/dashboard', component: AdminDashboardComponent},
 
   //Rutas alumno
-  {path: 'alumno/profile', component: AlumnoComponent}
+  {path: 'alumno/perfil', component: AlumnoComponent}
 ];
 
 @NgModule({
