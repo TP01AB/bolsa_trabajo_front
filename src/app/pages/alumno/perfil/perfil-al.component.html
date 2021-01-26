@@ -41,13 +41,20 @@
                 </span>
             </div>
         </div>
-        <div class="input-group col-md-6">
-            <input class="form-control" placeholder="Fecha de nacimiento"
+        <div class="form-group col-md-6">
+            <div class="input-group">
+                <input class="form-control" placeholder="Fecha de nacimiento"
                 formControlName="birthdate" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')">
-            <div class="input-group-append">
-                <!--Poner icono manual-->
-              <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"><i class="bi bi-calendar-date"></i></button>              
+                <div class="input-group-append ">
+                    <!--Poner icono manual-->
+                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                        <svg class="bi text-info" width="23" height="23" fill="currentColor">
+                            <use xlink:href="bootstrap-icons.svg#calendar-date" />
+                        </svg>   
+                    </button>                                   
+                </div>
             </div>
+            
             <div class="invalid-feedback">
                 <span *ngIf="contactForm.get('birthdate').errors?.required">
                     Debe introducir una fecha
