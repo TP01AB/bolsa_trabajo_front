@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap'; // Import necesarios para los
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; // Import necesarios para los
+import { OfferNewComponent } from './pop-up/offer-new/offer-new.component';
+import { OfferUpdateComponent } from './pop-up/offer-update/offer-update.component';
 
 @Component({
   selector: 'app-company-offer',
@@ -15,51 +17,20 @@ export class CompanyOfferComponent implements OnInit {
   }
 
   // Abre el modal para crear una nueva oferta
-  offerNew(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+  offerNew() {
+    const modalRef = this.modalService.open(OfferNewComponent);
   }
-  
-  // Abre el modal para modificar los datos de la oferta, hay que pasarme la oferta para que la pinte en el formulario
-  offerUpdate(targetModal) {
-    this.modalService.open(targetModal, {
-     centered: true,
-     backdrop: 'static'
-   });
-    //document.getElementById('fname').setAttribute('value', friend.firstname);
- }
 
-  // Abre el modal para duplicar los datos de la oferta, hay que pasarme la oferta para que la pinte en el formulario
-  offerDuplicate(targetModal) {
-    this.modalService.open(targetModal, {
-     centered: true,
-     backdrop: 'static'
-   });
-    //document.getElementById('fname').setAttribute('value', friend.firstname);
- }
-
-  // Abre el modal para borrar los datos de la oferta, hay que pasarme la oferta para que la pinte en el formulario
-  offerDelete(targetModal) {
-    this.modalService.open(targetModal, {
-     centered: true,
-     backdrop: 'static'
-   });
-    //document.getElementById('fname').setAttribute('value', friend.firstname);
- }
-
-
-  // Cierra los modales
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
+  offerUpdate(offer){
+    console.log('oferta en el ts del company offer: ' + offer);
+    
+    const modalRef = this.modalService.open(OfferUpdateComponent);
+    modalRef.componentInstance.offer = offer;
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+      }
+    });
   }
 
 }

@@ -11,7 +11,10 @@ import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-das
 import { CompanyDashboardComponent } from './pages/company/company-dashboard/company-dashboard.component';
 import { CompanyOfferComponent } from './pages/company/company-offer/company-offer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { OfferRegisterComponent } from './pages/company/company-offer/component/offer-register/offer-register.component';
+import { OfferNewComponent } from './pages/company/company-offer/pop-up/offer-new/offer-new.component';
+import { OfferUpdateComponent } from './pages/company/company-offer/pop-up/offer-update/offer-update.component';
+import { OfferDeleteComponent } from './pages/company/company-offer/pop-up/offer-delete/offer-delete.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,14 +26,17 @@ import { OfferRegisterComponent } from './pages/company/company-offer/component/
     AdminDashboardComponent,
     CompanyDashboardComponent,
     CompanyOfferComponent,
-    OfferRegisterComponent,
+    OfferNewComponent,
+    OfferUpdateComponent,
+    OfferDeleteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

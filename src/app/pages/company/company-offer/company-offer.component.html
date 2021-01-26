@@ -19,7 +19,7 @@
           <div class="card w-100 mb-4 shadow">
             <div class="card-header bg-info">
               <h2 class="card-title text-white font-weight-bold my-2">Ofertas publicadas</h2>
-              <a class="rounded-circle position-absolute border border-white bg-info" (click)=offerNew(offerN)>
+              <a class="rounded-circle position-absolute border border-white bg-info" (click)=offerNew()>
                 <svg class="bi text-white" width="32" height="32" fill="currentColor">
                   <use xlink:href="bootstrap-icons.svg#plus" />
                 </svg>
@@ -28,7 +28,7 @@
             <div class="card-body mt-2">
               <!-- Card with offer -->
               <div class="row">
-                <div class="col-sm-6" *ngFor="let number of [0,1,2,3,4,5,6,7]">
+                <div class="col-sm-6" *ngFor="let offer of [0,1,2,3,4,5,6,7]">
                   <div class="card mb-4 border-info shadow">
                     <div class="card-header bg-info text-white">
                       <h5 class="card-title mb-0">Nombre de la oferta</h5>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="card-footer d-flex flex-row p-1">
                       <button type="button" class="btn btn-info mr-2">
-                        <svg class="bi text-white" width="26" height="26" fill="currentColor" (click)=offerUpdate(offerU)>
+                        <svg class="bi text-white" width="26" height="26" fill="currentColor" (click)=offerUpdate(offer)>
                           <use xlink:href="bootstrap-icons.svg#pencil" />
                         </svg>
                       </button>
@@ -67,119 +67,3 @@
     </div>
   </div>
 </div>
-
-<!-- Modal con el registro de una nueva oferta -->
-<ng-template #offerN let-modal>
-  <div class="modal-header bg-info text-white">
-    <h4 class="modal-title" id="modal-basic-title">Nueva oferta</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <svg class="bi text-white" width="32" height="32" fill="currentColor">
-        <use xlink:href="bootstrap-icons.svg#x" />
-      </svg>
-    </button>
-  </div>
-  <div class="modal-body">
-    <app-offer-register></app-offer-register>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-info" (click)="modal.close('Save click')">
-      Guardar
-      <svg class="bi text-white" width="14" height="14" fill="currentColor">
-        <use xlink:href="bootstrap-icons.svg#save" />
-      </svg>
-    </button>
-    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">
-      Cancelar
-      <svg class="bi text-white" width="20" height="20" fill="currentColor">
-        <use xlink:href="bootstrap-icons.svg#x" />
-      </svg>
-    </button>
-  </div>
-</ng-template>
-
-<!-- Modal para modificar oferta -->
-<ng-template #offerU let-modal>
-  <div class="modal-header bg-info text-white">
-    <h4 class="modal-title" id="modal-basic-title">Modificar oferta</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <svg class="bi text-white" width="32" height="32" fill="currentColor">
-        <use xlink:href="bootstrap-icons.svg#x" />
-      </svg>
-    </button>
-  </div>
-  <div class="modal-body">
-    <app-offer-register></app-offer-register>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-info" (click)="modal.close('Save click')">
-      Guardar
-      <svg class="bi text-white" width="14" height="14" fill="currentColor">
-        <use xlink:href="bootstrap-icons.svg#save" />
-      </svg>
-    </button>
-    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">
-      Cancelar
-      <svg class="bi text-white" width="20" height="20" fill="currentColor">
-        <use xlink:href="bootstrap-icons.svg#x" />
-      </svg>
-    </button>
-  </div>
-</ng-template>
-
-<!-- Modal para duplicar oferta -->
-<ng-template #offerD let-modal>
-  <div class="modal-header bg-info text-white">
-    <h4 class="modal-title" id="modal-basic-title">Duplicar oferta</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <svg class="bi text-white" width="32" height="32" fill="currentColor">
-        <use xlink:href="bootstrap-icons.svg#x" />
-      </svg>
-    </button>
-  </div>
-  <div class="modal-body">
-    <app-offer-register></app-offer-register>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-info" (click)="modal.close('Save click')">
-      Guardar
-      <svg class="bi text-white" width="14" height="14" fill="currentColor">
-        <use xlink:href="bootstrap-icons.svg#save" />
-      </svg>
-    </button>
-    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">
-      Cancelar
-      <svg class="bi text-white" width="20" height="20" fill="currentColor">
-        <use xlink:href="bootstrap-icons.svg#x" />
-      </svg>
-    </button>
-  </div>
-</ng-template>
-
-<!-- Modal para Borrar oferta -->
-<ng-template #offerDel let-modal>
-  <div class="modal-header bg-info text-white">
-    <h4 class="modal-title" id="modal-basic-title">Duplicar oferta</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <svg class="bi text-white" width="32" height="32" fill="currentColor">
-        <use xlink:href="bootstrap-icons.svg#x" />
-      </svg>
-    </button>
-  </div>
-  <div class="modal-body">
-    ¿Estas seguro que quieres borrar esta oferta?
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-info" (click)="modal.close('Save click')">
-      Guardar
-      <svg class="bi text-white" width="14" height="14" fill="currentColor">
-        <use xlink:href="bootstrap-icons.svg#save" />
-      </svg>
-    </button>
-    <button type="button" class="btn btn-danger" (click)="modal.close('Save click')">
-      Cancelar
-      <svg class="bi text-white" width="20" height="20" fill="currentColor">
-        <use xlink:href="bootstrap-icons.svg#x" />
-      </svg>
-    </button>
-  </div>
-</ng-template>

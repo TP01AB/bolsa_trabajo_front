@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OfferRegisterComponent } from './offer-register.component';
+import { OfferDeleteComponent } from './offer-delete.component';
 
-describe('OfferRegisterComponent', () => {
-  let component: OfferRegisterComponent;
-  let fixture: ComponentFixture<OfferRegisterComponent>;
+describe('OfferDeleteComponent', () => {
+  let component: OfferDeleteComponent;
+  let fixture: ComponentFixture<OfferDeleteComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OfferRegisterComponent ]
+      declarations: [ OfferDeleteComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OfferRegisterComponent);
+    fixture = TestBed.createComponent(OfferDeleteComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
