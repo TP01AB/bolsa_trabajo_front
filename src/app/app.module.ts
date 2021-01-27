@@ -1,3 +1,4 @@
+import { CrearPerfilModule } from './pages/company/crear-perfil/crear-perfil.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -9,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { CrearPerfilComponent } from './pages/company/crear-perfil/crear-perfil.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 @NgModule({
@@ -19,10 +21,13 @@ import { CrearPerfilComponent } from './pages/company/crear-perfil/crear-perfil.
     HomeComponent,
     FooterComponent,
     AdminDashboardComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    CrearPerfilModule
   ],
   providers: [],
   bootstrap: [AppComponent]

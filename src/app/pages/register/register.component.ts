@@ -8,15 +8,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  constructor(private fb: FormBuilder) {}
-
+  constructor(private fb: FormBuilder) { }
+  isEmail = '^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$';
   ngOnInit(): void {
     this.initForm();
   }
   private initForm() {
     this.registerForm = this.fb.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
+      password: ['', [Validators.required, Validators.min(8)]]
     });
   }
   onSave(): void {

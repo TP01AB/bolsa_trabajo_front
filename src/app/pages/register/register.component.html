@@ -1,13 +1,11 @@
 <form [formGroup]="registerForm" novalidate (ngSubmit)="onSave()">
     <div class="form-row">
         <div class="form-group col-md-6">
-            <label for="email">E-mil:</label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="Introduzca su e-mail" formcontrolname="email">
-        </div>
-        <div class="form-group col-md-6">
-            <label for="password">Contraseña:</label>
-            <input type="password" class="form-control" name="password" id="password" placeholder="Introduzca su contraseña" formcontrolname="password">
+            <label for="tipo">Seleccione el tipo de usuario:</label>
+            <select name="tipo">
+              <option value="alumno">Alumno</option>
+              <option value="empresa">Empresa</option>
+            </select>
         </div>
     </div>
-    <button type="submit" class="btn btn-primary">Enviar</button>
 </form>

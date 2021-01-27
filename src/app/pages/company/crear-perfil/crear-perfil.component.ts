@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-crear-perfil',
   templateUrl: './crear-perfil.component.html',
   styleUrls: ['./crear-perfil.component.scss']
 })
 export class CrearPerfilComponent implements OnInit {
-companyInfoForm: FormGroup;
+  model: NgbDateStruct;
+  companyInfoForm: FormGroup;
 
   //Expresiones regulares para validación.
-  private isEmail = ' /^(([^<>()\[\]\.,;:\s@\”]+(\.[^<>()\[\]\.,;:\s@\”]+)*)|(\”.+\”))@(([^<>()[\]\.,;:\s@\”]+\.)+[^<>()[\]\.,;:\s@\”]{2,})$/';
-  private isPassword = '^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$';
+  isCif = '^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$';
 
 
   constructor(private fb: FormBuilder) { }
@@ -26,11 +27,18 @@ companyInfoForm: FormGroup;
   ngOnInit(): void {
     this.initForm();
   }
+  isValidField(field: string): string {
+    const validatedField = this.companyInfoForm.get(field);
+    return (!validatedField.valid && validatedField.touched)
+      ? 'is-invalid' : validatedField.touched ? 'is-valid' : '';
+  }
   private initForm(): void {
     this.companyInfoForm = this.fb.group({
-      cif: ['', [Validators.required, Validators.pattern(this.isEmail)]],
-      name: ['', [Validators.required]]
-
+      cif: ['', [Validators.required, Validators.pattern(this.isCif)]],
+      name: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.min(30), Validators.max(500)]],
+      sector: ['', [Validators.required, Validators.min(5)]],
+      birthdate: ['', Validators.required]
     });
   }
 }
