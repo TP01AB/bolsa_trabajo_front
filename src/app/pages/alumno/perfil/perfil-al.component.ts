@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { InsertStudentService } from '../services/insert-student.service';
+
 
 @Component({
   selector: 'perfil-al',
@@ -17,31 +19,16 @@ export class PerfilAlComponent implements OnInit {
   private isName = "^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$"  
   private isDni = "^[0-9]{8,8}[A-Za-z]$"
 
-  constructor(private fb: FormBuilder, private http: HttpClient) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private insertService: InsertStudentService) { }
 
   ngOnInit(): void {
     this,this.initForm();
   }
 
-  onSave() {
+  onSubmit() {
     if (this.contactForm.valid) {
-      
-      //console.log(this.contactForm.value)
-      
-      let jsonForm = this.contactForm.getRawValue();
-      
-      let json = JSON.stringify(jsonForm);
 
-      //console.log(json);
-
-      let headers = new HttpHeaders({
-        'Content-Type': 'application/json',
-      });
-      
-      this.http.post("http://localhost:8000/api/student/insert", json , {headers:headers}).subscribe(
-          data => console.log("success!", data),
-          error => console.error("couldn't post because", error )
-      )
+      this.insertService.insertStudent(this.contactForm);            
 
     } else {
       console.log('Not valid')

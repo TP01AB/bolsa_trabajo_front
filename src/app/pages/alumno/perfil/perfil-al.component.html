@@ -1,4 +1,4 @@
-<form novalidate (ngSubmit)="onSave()" [formGroup]="contactForm">
+<form novalidate (ngSubmit)="onSubmit()" [formGroup]="contactForm">
     <div class="form-row">
         <div class="form-group col-md-6">
             <input type="text" class="form-control" placeholder="Nombre" formControlName="name" [class]="isValidField('name')">
