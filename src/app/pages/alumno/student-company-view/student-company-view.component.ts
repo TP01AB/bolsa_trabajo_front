@@ -15,8 +15,8 @@ export class StudentCompanyViewComponent implements OnInit {
   }
 
   open(company) {
-    const modalRef = this.modalService.open(CompanyDataMComponent);
-    modalRef.componentInstance.company= company;
+    const modalRef = this.modalService.open(CompanyDataMComponent, { size: 'lg' });
+    modalRef.componentInstance.company = company;
     modalRef.result.then((result)=> {
       if(result) {
         console.log(result);
