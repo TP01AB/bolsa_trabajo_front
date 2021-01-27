@@ -1,11 +1,47 @@
-<form [formGroup]="registerForm" novalidate (ngSubmit)="onSave()">
+<form [formGroup]="registerForm" novalidate (ngSubmit)="onSave()" class="mt-4 mb-4">
     <div class="form-row">
-        <div class="form-group col-md-6">
-            <label for="tipo">Seleccione el tipo de usuario:</label>
+        <div class="form-group col-md-4 mx-auto">
+            <label>E-mail:</label>
+            <input type="email" class="form-control" placeholder="email" formControlName="email" [class]="isValidField('email')">
+            <div class="invalid-feedback">
+                <span *ngIf="registerForm.get('email').errors?.required">
+                    Por favor introduzca su E-mail
+                </span>
+            </div>
+            <div class="invalid-feedback">
+                <span *ngIf="registerForm.get('email').errors?.pattern">
+                    Por favor introduzca su E-mail correctamente
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4 mx-auto">
+            <label>Contraseña:</label>
+            <input type="password" class="form-control" formControlName="password" [class]="isValidField('password')">
+            <div class="invalid-feedback">
+                <span *ngIf="registerForm.get('password').errors?.required">
+                    Por favor introduzca su contraseña.
+                </span>
+            </div>
+            <div class="invalid-feedback">
+                <span *ngIf="registerForm.get('password').errors?.pattern">
+                    Use minimo 8 caracteres.
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4 mx-auto">
+            <label>Seleccione el tipo de usuario: </label>
+            <br>
             <select name="tipo">
-              <option value="alumno">Alumno</option>
-              <option value="empresa">Empresa</option>
+              <option value="student">Alumno</option>
+              <option value="company">Empresa</option>
             </select>
         </div>
+    </div>
+    <div class="col-md-4 mx-auto">
+        <button type="submit " class="btn btn-primary btn-block ">Registrarse</button>
     </div>
 </form>

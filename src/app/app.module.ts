@@ -11,6 +11,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { CrearPerfilComponent } from './pages/company/crear-perfil/crear-perfil.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CompanyComponent } from './pages/company/company.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SidebarComponent,
     HomeComponent,
     FooterComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    CompanyComponent
 
   ],
   imports: [

@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
   constructor(private fb: FormBuilder) { }
-  isEmail = '^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$';
+  isEmail = /\S+@\S+\.\S+/;
   ngOnInit(): void {
     this.initForm();
   }
@@ -19,6 +19,12 @@ export class RegisterComponent implements OnInit {
       password: ['', [Validators.required, Validators.min(8)]]
     });
   }
+  isValidField(field: string): string {
+    const validatedField = this.registerForm.get(field);
+    return (!validatedField.valid && validatedField.touched)
+      ? 'is-invalid' : validatedField.touched ? 'is-valid' : '';
+  }
+
   onSave(): void {
     if (this.registerForm.valid) {
       console.log(this.registerForm.value);

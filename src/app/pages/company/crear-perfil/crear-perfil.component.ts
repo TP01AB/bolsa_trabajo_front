@@ -14,7 +14,6 @@ export class CrearPerfilComponent implements OnInit {
   //Expresiones regulares para validación.
   isCif = '^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$';
 
-
   constructor(private fb: FormBuilder) { }
 
   onSave(): void {
