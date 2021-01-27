@@ -1,6 +1,7 @@
 <form novalidate class="mt-4" (ngSubmit)="onSave()" [formGroup]="companyInfoForm">
     <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-4">
+            <label>CIF:</label>
             <input type="text" class="form-control" placeholder="CIF" formControlName="cif" [class]="isValidField('cif')">
             <div class="invalid-feedback">
                 <span *ngIf="companyInfoForm.get('cif').errors?.required">
@@ -13,7 +14,24 @@
                 </span>
             </div>
         </div>
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-8 ">
+            <label>Sector:</label>
+            <input type="text " class="form-control " placeholder="Sector de trabajo " formControlName="sector " [class]="isValidField( 'sector') ">
+            <div class="invalid-feedback ">
+                <span *ngIf="companyInfoForm.get( 'sector').errors?.required ">
+                    Por favor introduzca su sector de trabajo
+                </span>
+            </div>
+            <div class="invalid-feedback ">
+                <span *ngIf="companyInfoForm.get( 'sector').errors?.pattern ">
+                    Por favor introduzca su sector correctamente
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-row ">
+        <div class="form-group col-md-8">
+            <label>Nombre de la empresa:</label>
             <input type="text" class="form-control" placeholder="Nombre" formControlName="name" [class]="isValidField('name')">
             <div class=" invalid-feedback ">
                 <span *ngIf="companyInfoForm.get( 'name').errors?.required ">
@@ -26,48 +44,38 @@
                 </span>
             </div>
         </div>
-        <div class="form-row ">
-            <div class="form-group col-md-6 ">
-                <input type="text " class="form-control " placeholder="Sector de trabajo " formControlName="sector " [class]="isValidField( 'sector') ">
-                <div class="invalid-feedback ">
-                    <span *ngIf="companyInfoForm.get( 'sector').errors?.required ">
-                    Por favor introduzca su sector de trabajo
-                </span>
-                </div>
-                <div class="invalid-feedback ">
-                    <span *ngIf="companyInfoForm.get( 'sector').errors?.pattern ">
-                    Por favor introduzca su sector correctamente
-                </span>
-                </div>
-            </div>
-            <div class="form-group col-md-6 ">
-                <div class="input-group">
-                    <input class="form-control" placeholder="yyyy-mm-dd" formControlName="birthdate" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')">
-                    <div class="input-group-append">
-                        <!--Poner icono manual-->
-                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
+        <div class="form-group col-md-4 ">
+            <label>Fecha de fundacion:</label>
+            <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" formControlName="birthdate" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')">
+                <div class="input-group-append">
+                    <!--Poner icono manual-->
+                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
                        <svg class="bi text-info" width="23" height="23" fill="currentColor">
                             <use xlink:href="bootstrap-icons.svg#calendar-date" />
                         </svg>
                     </button>
-                    </div>
                 </div>
-                <div class="invalid-feedback">
-                    <span *ngIf="companyInfoForm.get('birthdate').errors?.required">
+            </div>
+            <div class="invalid-feedback">
+                <span *ngIf="companyInfoForm.get('birthdate').errors?.required">
                     Debe introducir una fecha
                 </span>
-                </div>
-            </div>
-            <div class="form-group col-md-6 ">
-                <label>Rama</label>
-                <input type="text " name="description " class="form-control " placeholder="Introduce una breve descripcion de la empresa" [class]="isValidField( 'description') ">
-                <div class="invalid-feedback ">
-                    <span *ngIf="companyInfoForm.get( 'description').errors?.required ">
-                    Debe describir su empresa
-                </span>
-                </div>
             </div>
         </div>
-        <button type="submit " class="btn btn-primary btn-block ">Confirmar</button>
     </div>
+    <div class="form-row">
+        <div class="form-group col-md-12 ">
+            <label>Descripcion:</label>
+            <textarea style="resize: none;" name="description" cols="15" rows="10" class="form-control " placeholder="Introduce una breve descripcion de la empresa" [class]="isValidField( 'description') "></textarea>
+
+            <div class="invalid-feedback ">
+                <span *ngIf="companyInfoForm.get( 'description').errors?.required ">
+                    Debe describir su empresa
+                </span>
+            </div>
+        </div>
+    </div>
+    <button type="submit " class="btn btn-primary btn-block ">Confirmar</button>
+
 </form>
