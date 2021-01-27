@@ -11,10 +11,11 @@ import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-das
 import { CompanyDashboardComponent } from './pages/company/company-dashboard/company-dashboard.component';
 import { CompanyOfferComponent } from './pages/company/company-offer/company-offer.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { OfferNewComponent } from './pages/company/company-offer/pop-up/offer-new/offer-new.component';
-import { OfferUpdateComponent } from './pages/company/company-offer/pop-up/offer-update/offer-update.component';
-import { OfferDeleteComponent } from './pages/company/company-offer/pop-up/offer-delete/offer-delete.component';
+import { OfferNewComponent } from './pages/company/company-offer/modal/offer-new/offer-new.component';
+import { OfferUpdateComponent } from './pages/company/company-offer/modal/offer-update/offer-update.component';
+import { OfferDeleteComponent } from './pages/company/company-offer/modal/offer-delete/offer-delete.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     OfferNewComponent,
     OfferUpdateComponent,
     OfferDeleteComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

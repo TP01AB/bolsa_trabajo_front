@@ -1,0 +1,50 @@
+<div class="container m-3">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title">Acceso</h2>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="nuevoLogin" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                      <label>Usuario</label>
+                      <input type="text" formControlName="usuario" class="form-control"/>
+                      <div *ngIf="submitted && formulario.usuario.errors">
+                        <div>El usuario: </div>
+                        <div *ngIf="formulario.usuario.errors.required">No puede estar vacío</div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Password</label>
+                      <input type="text" formControlName="password" class="form-control"/>
+                      <div *ngIf="submitted && formulario.password.errors">
+                        <div>La password: </div>
+                        <div *ngIf="formulario.password.errors.required">No puede estar vacío</div>
+                      </div>
+                    </div>
+            
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-info mr-2">
+                          Enviar
+                          <svg class="bi text-white" width="14" height="14" fill="currentColor">
+                            <use xlink:href="bootstrap-icons.svg#save" />
+                          </svg>
+                        </button>
+                        <button type="reset" (click)="onReset()" class="btn btn-danger">
+                            Cancelar
+                            <svg class="bi text-white" width="14" height="14" fill="currentColor">
+                              <use xlink:href="bootstrap-icons.svg#save" />
+                            </svg>
+                          </button>
+                        
+                      </div>
+            
+                    <div>{{message}}</div>
+                  </form>
+            </div>
+        </div>
+
+    </div>
+  </div>
+</div>
