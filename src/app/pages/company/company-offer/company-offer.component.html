@@ -28,15 +28,13 @@
             <div class="card-body mt-2">
               <!-- Card with offer -->
               <div class="row">
-                <div class="col-sm-6" *ngFor="let offer of [0,1,2,3,4,5,6,7]">
+                <div class="col-sm-6" *ngFor="let offer of offers; index as i">
                   <div class="card mb-4 border-info shadow">
                     <div class="card-header bg-info text-white">
-                      <h5 class="card-title mb-0">Nombre de la oferta</h5>
+                      <h5 class="card-title mb-0">{{ offer.name }}</h5>
                     </div>
                     <div class="card-body">
-                      <p class="card-text">Descripcion oferta, fecha, vacantes, etc</p>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit molestias, natus obcaecati
-                        omnis quidem eveniet ex odio totam placeat fugit.</p>
+                      <p class="card-text">{{ offer.description }}</p>
                     </div>
                     <div class="card-footer d-flex flex-row p-1">
                       <button type="button" class="btn btn-info mr-2">
