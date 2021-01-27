@@ -26,19 +26,19 @@ export class PerfilAlComponent implements OnInit {
   onSave() {
     if (this.contactForm.valid) {
       
-      console.log(this.contactForm.value)
+      //console.log(this.contactForm.value)
       
       let jsonForm = this.contactForm.getRawValue();
       
       let json = JSON.stringify(jsonForm);
 
-      console.log(json);
+      //console.log(json);
 
       let headers = new HttpHeaders({
         'Content-Type': 'application/json',
       });
       
-      return this.http.post("http://localhost:8000/api/student/insert", json).subscribe(
+      this.http.post("http://localhost:8000/api/student/insert", json , {headers:headers}).subscribe(
           data => console.log("success!", data),
           error => console.error("couldn't post because", error )
       )
@@ -67,9 +67,9 @@ export class PerfilAlComponent implements OnInit {
     this.contactForm = this.fb.group({
       name: ['',[Validators.required, Validators.pattern(this.isName)]],
       lastName: ['',[Validators.required, Validators.pattern(this.isName)]],      
-      birthdate: ['',Validators.required],
-      studies: ['',Validators.required],
+      birthdate: ['',Validators.required],      
       dni: ['',[Validators.required, Validators.minLength(9), Validators.maxLength(9),Validators.pattern(this.isDni)]],
+      area:['',Validators.required],
       aptitudes: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
     })
   }

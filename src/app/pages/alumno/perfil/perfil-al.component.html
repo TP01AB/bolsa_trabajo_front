@@ -63,12 +63,12 @@
         </div>
         <div class="form-group col-md-6">
             <label>Rama</label>
-            <select formControlName="studies" class="form-control" [class]="isValidField('studies')">
+            <select formControlName="area" class="form-control" [class]="isValidField('area')">
                 <option value="informatica">Informatica</option>
                 <option value="comercio">Comercio</option>
             </select>
             <div class="invalid-feedback">
-                <span *ngIf="contactForm.get('studies').errors?.required">
+                <span *ngIf="contactForm.get('area').errors?.required">
                     Debe elegir una opción
                 </span>
             </div>
