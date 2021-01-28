@@ -18,7 +18,7 @@ export class CompanyOfferComponent implements OnInit {
   closeResult: String;
   constructor(private modalService: NgbModal, private companyOfferService: CompanyOfferService, private loginService: LoginService, private router: Router) {
     if (!loginService.isUserSignedIn())
-      this.router.navigate(['']);
+      this.router.navigate(['/login']);
     this.offers = [];
   }
 
@@ -29,8 +29,8 @@ export class CompanyOfferComponent implements OnInit {
   getOffers() {
     this.companyOfferService.getOffers().subscribe(
       (response: any) => {
-        const articles = response;
-        articles.forEach((element: { id: any; name: any; vacant: any; startDate: any; endDate: any; description: any}) => {
+        const offers = response;
+        offers.forEach((element: { id: any; name: any; vacant: any; startDate: any; endDate: any; description: any }) => {
           let offer = {
             'id': element.id,
             'name': element.name,
@@ -49,12 +49,12 @@ export class CompanyOfferComponent implements OnInit {
   }
 
   // Abre el modal para crear una nueva oferta
-  offerNew() {
+  offerNew(offers: any) {
     const modalRef = this.modalService.open(OfferNewComponent);
   }
 
   // Abre un modal para modificar una oferta
-  offerUpdate(offer) {
+  offerUpdate(offer: any) {
     const modalRef = this.modalService.open(OfferUpdateComponent);
     modalRef.componentInstance.offer = offer;
     modalRef.result.then((result) => {

@@ -1,26 +1,46 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/auth/services/login.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CompanyOfferService {
+    contactForm: FormGroup;
 
-  constructor(private http: HttpClient, private loginService: LoginService, private router: Router) {
-    // Comprobamos que el usuario este logeado sino lo redireccionamos al login
-    if (!loginService.isUserSignedIn())
-      router.navigate(['/login'])
-   }
+    constructor(private http: HttpClient, private loginService: LoginService, private router: Router) {
+        // Comprobamos que el usuario este logeado sino lo redireccionamos al login
+        if (!loginService.isUserSignedIn())
+            router.navigate(['/login'])
+    }
 
-   public getOffers = () => {
-    const url = "http://localhost:8000/api/offers";
+    public getOffers = () => {
+        const url = "http://localhost:8000/api/offers";
+        let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+        return this.http.get(url, { headers: headers });
+    };
 
-    console.log(this.loginService.user.access_token);
-    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+    public storeOffer = (contactForm: FormGroup) => {
 
-    return this.http.get(url, { headers: headers });
-  };
+        let jsonForm = contactForm.getRawValue();
+
+        let json = JSON.stringify(jsonForm);
+        console.log(json);
+        
+
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${this.loginService.user.access_token}`
+        });
+
+        this.http.post("http://localhost:8000/api/offers", json, { headers: headers }).subscribe(
+            data => console.log("success!", data),
+            error => console.error("couldn't post because", error)
+        );
+        
+    }
+
 
 }
