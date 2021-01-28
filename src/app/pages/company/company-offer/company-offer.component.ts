@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; // Import necesarios para los
 import { LoginService } from 'src/app/auth/services/login.service';
+import { OfferDeleteComponent } from './modal/offer-delete/offer-delete.component';
 import { OfferNewComponent } from './modal/offer-new/offer-new.component';
 import { OfferUpdateComponent } from './modal/offer-update/offer-update.component';
 import { CompanyOfferService } from './services/company-offer.service';
@@ -57,6 +58,17 @@ export class CompanyOfferComponent implements OnInit {
   offerUpdate(offer: any) {
     const modalRef = this.modalService.open(OfferUpdateComponent);
     modalRef.componentInstance.offer = offer;
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+      }
+    });
+  }
+
+  // Abre el modal para borrar una oferta
+  offerDelete(id: number) {
+    const modalRef = this.modalService.open(OfferDeleteComponent);
+    modalRef.componentInstance.id = id;
     modalRef.result.then((result) => {
       if (result) {
         console.log(result);

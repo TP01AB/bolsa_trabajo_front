@@ -34,7 +34,6 @@ export class OfferUpdateComponent implements OnInit {
       });
     }
     this.activeModal.close();
-    this.router.navigate([`empresa/ofertas`]);
   }
 
   private initForm(): void {

@@ -57,7 +57,18 @@ export class CompanyOfferService {
             data => console.log("success!", data),
             error => console.error("couldn't post because", error)
         );
+    }
 
+    public deleteOffer = (id: number) => {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${this.loginService.user.access_token}`
+        });
+
+        this.http.delete("http://localhost:8000/api/offers/" + id, { headers: headers }).subscribe(
+            data => console.log("success!", data),
+            error => console.error("couldn't post because", error)
+        );
     }
 
 
