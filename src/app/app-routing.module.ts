@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { AlumnoComponent } from './pages/alumno/alumno.component';
+import { StudentOfferViewComponent } from './pages/alumno/student-offer-view/student-offer-view.component';
 import { HomeComponent } from './pages/home/home.component';
 
 //const routes: Routes = [{ path: 'alumno', loadChildren: () => import('./pages/alumno/alumno.module').then(m => m.AlumnoModule) }];
@@ -14,6 +15,7 @@ const routes: Routes = [
 
   //Rutas alumno
   {path: 'alumno/perfil', component: AlumnoComponent}
+  {path: 'alumno/oferta-view', component: StudentOfferViewComponent}
 ];
 
 @NgModule({
