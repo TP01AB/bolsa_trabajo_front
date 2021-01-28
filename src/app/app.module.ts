@@ -11,7 +11,9 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { CrearPerfilComponent } from './pages/company/crear-perfil/crear-perfil.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CompanyComponent } from './pages/company/company.component';
+import { StudensViewComponent } from './pages/company/studens-view/studens-view.component';
+import { ModalStudentComponent } from './pages/company/studens-view/modal-student/modal-student.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -22,13 +24,15 @@ import { CompanyComponent } from './pages/company/company.component';
     HomeComponent,
     FooterComponent,
     AdminDashboardComponent,
-    CompanyComponent
+    StudensViewComponent,
+    ModalStudentComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    HttpClientModule,
     CrearPerfilModule
   ],
   providers: [],

@@ -1,0 +1,51 @@
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <!-- Button close Sidebar -->
+        <a class="btn" id="menu-toggle">
+            <svg class="bi text-info" width="32" height="32" fill="currentColor">
+        <use xlink:href="bootstrap-icons.svg#grid-3x3-gap" />
+      </svg>
+        </a>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <!-- Card with offer -->
+                    <div class="card w-100 mb-4 shadow">
+                        <div class="card-header bg-info">
+                            <h2 class="card-title text-white font-weight-bold my-2">Alumnos</h2>
+                        </div>
+                        <div class="card-body mt-2">
+                            <!-- Card with offer -->
+                            <div class="row">
+                                <div class="col-sm-6" *ngFor="let Alumno of [0,1,2,3,4,5,6,7]">
+                                    <div class="card mb-4 border-info shadow">
+                                        <div class="card-header bg-info text-white">
+                                            <h5 class="card-title mb-0">Nombre del Alumno</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <img src="http://www.hablamosdeeuropa.es/PublishingImages/No%20me%20paro/Formaci%C3%B3n/estudiante.png" class="float-left" width="110" height="110">
+                                            <p class="card-text ">Rama</p>
+                                            <p class="card-text ">Experiencia</p>
+                                            <p class="card-text ">Estado actual</p>
+                                            <p>Breve resumen de conocimientos y experiencia laboral para una rapida visualizacion y captacion de atencion de la empresa.</p>
+                                        </div>
+                                        <button type="button" class="btn btn-primary">
+                        <svg class="bi text-white" width="26" height="26" fill="currentColor" >
+                          <use xlink:href="bootstrap-icons.svg#eye" />
+                        </svg>
+                      </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

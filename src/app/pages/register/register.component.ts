@@ -1,6 +1,7 @@
+import { RegisterService } from './services/register.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -8,7 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private http: HttpClient, private registerUser: RegisterService) { }
   isEmail = /\S+@\S+\.\S+/;
   ngOnInit(): void {
     this.initForm();
@@ -27,9 +28,13 @@ export class RegisterComponent implements OnInit {
 
   onSave(): void {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
+      this.registerUser.registerUser(this.registerForm);
+
     } else {
-      console.log('not valid');
+      Object.keys(this.registerForm.controls).forEach(field => {
+        const control = this.registerForm.get(field);
+        control.markAsTouched({ onlySelf: true });
+      });
     }
   }
 }
