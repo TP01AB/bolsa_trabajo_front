@@ -28,7 +28,6 @@ export class CompanyOfferService {
 
         let json = JSON.stringify(jsonForm);
         console.log(json);
-        
 
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -39,7 +38,26 @@ export class CompanyOfferService {
             data => console.log("success!", data),
             error => console.error("couldn't post because", error)
         );
-        
+    }
+
+    public updateOffer = (contactForm: FormGroup) => {
+        let jsonForm = contactForm.getRawValue();
+
+        let json = JSON.stringify(jsonForm);
+        console.log(json);
+
+        let id = jsonForm.id;
+
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${this.loginService.user.access_token}`
+        });
+
+        this.http.put("http://localhost:8000/api/offers/" + id, json, { headers: headers }).subscribe(
+            data => console.log("success!", data),
+            error => console.error("couldn't post because", error)
+        );
+
     }
 
 

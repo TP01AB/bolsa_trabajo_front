@@ -7,8 +7,10 @@
   </button>
 </div>
 <div class="modal-body">
-  <form novalidate (ngSubmit)="onSave()" [formGroup]="contactForm">
+  <form novalidate (ngSubmit)="onSubmit()" [formGroup]="contactForm">
     <div class="form-group">
+      <!-- Este campo solo lo uso para coger el id y pasarlo como referencia de la oferta a modificar desde el servicio -->
+      <input id="id" formControlName="id" [(ngModel)]="offer.id" style="display: none;">
       <label for="firstname">Nombre de la oferta</label>
       <div class="input-group">
         <input id="name" class="form-control" formControlName="name" [(ngModel)]="offer.name">
