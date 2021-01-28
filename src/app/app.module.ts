@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app-component/app.component';
-import { AlumnoModule } from './pages/alumno/alumno.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -11,6 +10,8 @@ import { HomeComponent } from './pages/home/home.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PerfilAlComponent } from './pages/alumno/perfil/perfil-al.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,14 +20,16 @@ import { HttpClientModule } from '@angular/common/http';
     SidebarComponent,
     HomeComponent,
     FooterComponent,
-    AdminDashboardComponent    
+    AdminDashboardComponent,
+    PerfilAlComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AlumnoModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
