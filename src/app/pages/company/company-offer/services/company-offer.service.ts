@@ -34,10 +34,7 @@ export class CompanyOfferService {
             Authorization: `Bearer ${this.loginService.user.access_token}`
         });
 
-        this.http.post("http://localhost:8000/api/offers", json, { headers: headers }).subscribe(
-            data => console.log("success!", data),
-            error => console.error("couldn't post because", error)
-        );
+        return this.http.post("http://localhost:8000/api/offers", json, { headers: headers });
     }
 
     public updateOffer = (contactForm: FormGroup) => {
@@ -53,10 +50,7 @@ export class CompanyOfferService {
             Authorization: `Bearer ${this.loginService.user.access_token}`
         });
 
-        this.http.put("http://localhost:8000/api/offers/" + id, json, { headers: headers }).subscribe(
-            data => console.log("success!", data),
-            error => console.error("couldn't post because", error)
-        );
+        return this.http.put("http://localhost:8000/api/offers/" + id, json, { headers: headers });
     }
 
     public deleteOffer = (id: number) => {
@@ -65,10 +59,7 @@ export class CompanyOfferService {
             Authorization: `Bearer ${this.loginService.user.access_token}`
         });
 
-        this.http.delete("http://localhost:8000/api/offers/" + id, { headers: headers }).subscribe(
-            data => console.log("success!", data),
-            error => console.error("couldn't post because", error)
-        );
+        return this.http.delete("http://localhost:8000/api/offers/" + id, { headers: headers });
     }
 
 

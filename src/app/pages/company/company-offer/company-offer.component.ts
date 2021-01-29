@@ -28,6 +28,8 @@ export class CompanyOfferComponent implements OnInit {
   }
 
   getOffers() {
+
+    this.offers = [];
     this.companyOfferService.getOffers().subscribe(
       (response: any) => {
         const offers = response;
@@ -50,8 +52,11 @@ export class CompanyOfferComponent implements OnInit {
   }
 
   // Abre el modal para crear una nueva oferta
-  offerNew(offers: any) {
+  offerNew() {
     const modalRef = this.modalService.open(OfferNewComponent);
+    modalRef.componentInstance["storeOk"].subscribe(event => {
+      this.getOffers();
+    });
   }
 
   // Abre un modal para modificar una oferta
@@ -73,6 +78,9 @@ export class CompanyOfferComponent implements OnInit {
       if (result) {
         console.log(result);
       }
+    });
+    modalRef.componentInstance["deleteOk"].subscribe(event => {
+      this.getOffers();
     });
   }
 

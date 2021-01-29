@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -10,6 +10,8 @@ import { CompanyOfferService } from '../../services/company-offer.service';
   styleUrls: ['./offer-new.component.scss']
 })
 export class OfferNewComponent implements OnInit {
+
+  @Output() storeOk: EventEmitter<any> = new EventEmitter();
 
   contactForm: FormGroup;
   value = null;
@@ -24,18 +26,21 @@ export class OfferNewComponent implements OnInit {
   }
 
   onSubmit() {
-    if (this.contactForm.valid) {
-      this.companyOfferService.storeOffer(this.contactForm);      
-    } else {
-      console.log('Not valid')
-      Object.keys(this.contactForm.controls).forEach(field => {
-        const control = this.contactForm.get(field);
-        control.markAsTouched({ onlySelf: true });
-      });
+    if (!this.contactForm.valid) {
+      return;
     }
+    this.companyOfferService.storeOffer(this.contactForm).subscribe(
+      (response: any) => {
+        this.storeOk.emit(true);
+        this.activeModal.close();
+      },
+      (error) => {
+        console.log(error);
+        this.storeOk.emit(false);
+        this.activeModal.close();
+      }
+    );    
 
-    this.activeModal.close();
-    this.router.navigate([`empresa/ofertas`]);
   }
 
   private initForm(): void {

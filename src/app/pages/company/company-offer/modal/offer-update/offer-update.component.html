@@ -13,31 +13,31 @@
       <input id="id" formControlName="id" [(ngModel)]="offer.id" style="display: none;">
       <label for="firstname">Nombre de la oferta</label>
       <div class="input-group">
-        <input id="name" class="form-control" formControlName="name" [(ngModel)]="offer.name">
+        <input id="name" class="form-control" formControlName="name" [(ngModel)]="offerU.name">
       </div>
     </div>
     <div class="form-group">
       <label for="lastname">Vacantes</label>
       <div class="input-group">
-        <input id="vacant" class="form-control" formControlName="vacant" [(ngModel)]="offer.vacant">
+        <input id="vacant" class="form-control" formControlName="vacant" [(ngModel)]="offerU.vacant">
       </div>
     </div>
     <div class="form-group">
       <label for="department">Fecha inicio</label>
       <div class="input-group">
-        <input type="date" id="starDate" class="form-control" formControlName="startDate" [(ngModel)]="offer.startDate">
+        <input type="date" id="starDate" class="form-control" formControlName="startDate" [(ngModel)]="offerU.startDate">
       </div>
     </div>
     <div class="form-group">
       <label>Fecha de fin</label>
       <div class="input-group">
-        <input type="date" id="email2" class="form-control" formControlName="endDate" [(ngModel)]="offer.endDate">
+        <input type="date" id="email2" class="form-control" formControlName="endDate" [(ngModel)]="offerU.endDate">
       </div>
     </div>
     <div class="form-group">
       <label>Descripción</label>
       <div class="text-group">
-        <textarea id="description" class="form-control" formControlName="description" [(ngModel)]="offer.description"></textarea>
+        <textarea id="description" class="form-control" formControlName="description" [(ngModel)]="offerU.description"></textarea>
       </div>
     </div>
     <div class="text-right">

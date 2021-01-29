@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -10,9 +10,11 @@ import { CompanyOfferService } from '../../services/company-offer.service';
   styleUrls: ['./offer-update.component.scss']
 })
 export class OfferUpdateComponent implements OnInit {
+
   @Input() public offer;
   contactForm: FormGroup;
   value = null;
+  offerU: any;
 
   constructor(public activeModal: NgbActiveModal, private router: Router, private fb: FormBuilder, private companyOfferService: CompanyOfferService) { 
     const navigation = this.router.getCurrentNavigation();
@@ -20,20 +22,32 @@ export class OfferUpdateComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.initForm();    
+    this.initForm();
+    this.offerU = {...this.offer};
+    console.log(this.offerU);
+    console.log(this.offer);
+    
+    
   }
 
   onSubmit(){
-    if (this.contactForm.valid) {
-      this.companyOfferService.updateOffer(this.contactForm);      
-    } else {
-      console.log('Not valid')
-      Object.keys(this.contactForm.controls).forEach(field => {
-        const control = this.contactForm.get(field);
-        control.markAsTouched({ onlySelf: true });
-      });
+    if (!this.contactForm.valid) {
+      return;
     }
-    this.activeModal.close();
+    this.companyOfferService.updateOffer(this.contactForm).subscribe(
+      (response: any) => {
+        this.offer.name = this.contactForm.value.name;
+        this.offer.vacant = this.contactForm.value.vacant;
+        this.offer.startDate = this.contactForm.value.startDate;
+        this.offer.endDate = this.contactForm.value.endDate;
+        this.offer.description = this.contactForm.value.description;
+        this.activeModal.close();
+      },
+      (error) => {
+        console.log(error);
+        this.activeModal.close();
+      }
+    ); 
   }
 
   private initForm(): void {

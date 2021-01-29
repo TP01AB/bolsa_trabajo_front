@@ -1,27 +1,39 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CompanyOfferService } from '../../services/company-offer.service';
 
 @Component({
-  selector: 'app-offer-delete',
-  templateUrl: './offer-delete.component.html',
-  styleUrls: ['./offer-delete.component.scss']
+    selector: 'app-offer-delete',
+    templateUrl: './offer-delete.component.html',
+    styleUrls: ['./offer-delete.component.scss']
 })
 export class OfferDeleteComponent implements OnInit {
 
-  @Input() public id;
-  constructor(public activeModal: NgbActiveModal, private companyOfferService: CompanyOfferService) { }
+    @Input() public id;
+    @Output() deleteOk: EventEmitter<any> = new EventEmitter();
 
-  ngOnInit(): void {
-  }
+    constructor(public activeModal: NgbActiveModal, private companyOfferService: CompanyOfferService) { }
 
-  confirmDelete(){
-    this.companyOfferService.deleteOffer(this.id);
-    this.activeModal.close();
-  }
+    ngOnInit(): void {
+    }
 
-  close(){
-    this.activeModal.close();
-  }
+    confirmDelete() {
+        this.companyOfferService.deleteOffer(this.id).subscribe(
+            (response: any) => {
+                this.deleteOk.emit(true);
+                this.activeModal.close();
+            },
+            (error) => {
+                console.log(error);
+                this.deleteOk.emit(false);
+                this.activeModal.close();
+            }
+        );
+        this.activeModal.close();
+    }
+
+    close() {
+        this.activeModal.close();
+    }
 
 }
