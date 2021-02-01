@@ -9,9 +9,9 @@ export class InsertCompanyService {
 
   constructor(private http: HttpClient) { }
 
-  public insertStudent(companyInfoForm: FormGroup) {
+  public InsertCompany(companyInfoForm: FormGroup) {
 
-    console.log(this.companyInfoForm.value)
+    console.log(companyInfoForm.value);
 
     let jsonForm = companyInfoForm.getRawValue();
 

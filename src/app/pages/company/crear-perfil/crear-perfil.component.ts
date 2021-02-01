@@ -1,8 +1,7 @@
-import { InsertCompanyService } from './insert-company.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { InsertCompanyService } from './services/insert-company.service';
 @Component({
   selector: 'app-crear-perfil',
   templateUrl: './crear-perfil.component.html',
@@ -15,11 +14,11 @@ export class CrearPerfilComponent implements OnInit {
   //Expresiones regulares para validación.
   isCif = '^[a-zA-Z]{1}\d{7}[a-zA-Z0-9]{1}$';
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private insertCompanyService: InsertCompanyService) { }
 
   onSave(): void {
     if (this.companyInfoForm.valid) {
-      this.InsertCompanyService.(this.companyInfoForm);
+      this.insertCompanyService.InsertCompany(this.companyInfoForm);
     } else {
       console.log('Not valid');
     }
