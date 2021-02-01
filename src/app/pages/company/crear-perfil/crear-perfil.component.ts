@@ -1,3 +1,4 @@
+import { InsertCompanyService } from './insert-company.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
@@ -18,7 +19,7 @@ export class CrearPerfilComponent implements OnInit {
 
   onSave(): void {
     if (this.companyInfoForm.valid) {
-      console.log(this.companyInfoForm.value);
+      this.InsertCompanyService.(this.companyInfoForm);
     } else {
       console.log('Not valid');
     }
