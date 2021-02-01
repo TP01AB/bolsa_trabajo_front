@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app-component/app.component';
-import { AlumnoModule } from './pages/alumno/alumno.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -15,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalStudentComponent } from './pages/company/studens-view/modal-student/modal-student.component';
 import { StudensViewComponent } from './pages/company/studens-view/studens-view.component';
 import { CrearPerfilComponent } from './pages/company/crear-perfil/crear-perfil.component';
+import { PerfilAlComponent } from './pages/alumno/perfil/perfil-al.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -27,14 +28,16 @@ import { CrearPerfilComponent } from './pages/company/crear-perfil/crear-perfil.
     AdminDashboardComponent,
     StudensViewComponent,
     ModalStudentComponent
-
+    PerfilAlComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule,
     CrearPerfilModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

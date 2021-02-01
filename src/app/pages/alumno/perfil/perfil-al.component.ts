@@ -18,6 +18,8 @@ export class PerfilAlComponent implements OnInit {
   //Patrones de validación
   private isName = "^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$"  
   private isDni = "^[0-9]{8,8}[A-Za-z]$"
+  //private isPhone = "^(?:(?:\\+|00)?34)?[67]\\d{8}$$"
+  private isPhone = "^[67]\\d{8}$$"
 
   constructor(private fb: FormBuilder, private http: HttpClient, private insertService: InsertStudentService) { }
 
@@ -56,6 +58,7 @@ export class PerfilAlComponent implements OnInit {
       lastName: ['',[Validators.required, Validators.pattern(this.isName)]],      
       birthdate: ['',Validators.required],      
       dni: ['',[Validators.required, Validators.minLength(9), Validators.maxLength(9),Validators.pattern(this.isDni)]],
+      phone: ['',[Validators.required, Validators.pattern(this.isPhone)]],
       area:['',Validators.required],
       aptitudes: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
     })
