@@ -1,7 +1,8 @@
 <form novalidate (ngSubmit)="onSubmit()" [formGroup]="contactForm">
     <div class="form-row">
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Nombre" formControlName="name" [class]="isValidField('name')">
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="name"
+                [class]="isValidField('name')">
             <div class="invalid-feedback">
                 <span *ngIf="contactForm.get('name').errors?.required">
                     Por favor introduzca su nombre
@@ -14,7 +15,8 @@
             </div>
         </div>
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="Apellido" formControlName="lastName" [class]="isValidField('lastName')">
+            <input type="text" class="form-control" placeholder="Apellido" formControlName="lastName"
+                [class]="isValidField('lastName')">
             <div class="invalid-feedback">
                 <span *ngIf="contactForm.get('lastName').errors?.required">
                     Por favor introduzca su apellido
@@ -29,7 +31,8 @@
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-            <input type="text" class="form-control" placeholder="DNI" formControlName="dni" [class]="isValidField('dni')">
+            <input type="text" class="form-control" placeholder="DNI" formControlName="dni"
+                [class]="isValidField('dni')">
             <div class="invalid-feedback">
                 <span *ngIf="contactForm.get('dni').errors?.required">
                     Por favor introduzca su dni
@@ -43,23 +46,23 @@
         </div>
         <div class="form-group col-md-6">
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Fecha de nacimiento"
-                formControlName="birthdate" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')">
+                <input type="text" class="form-control" placeholder="Fecha de nacimiento" formControlName="birthdate"
+                    [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')">
                 <div class="input-group-append ">
                     <!--Poner icono manual-->
                     <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
                         <svg class="bi text-info" width="23" height="23" fill="currentColor">
                             <use xlink:href="bootstrap-icons.svg#calendar-date" />
-                        </svg>   
-                    </button>                                   
+                        </svg>
+                    </button>
                 </div>
             </div>
-            
+
             <div class="invalid-feedback">
                 <span *ngIf="contactForm.get('birthdate').errors?.required">
                     Debe introducir una fecha
-                </span>                
-            </div>            
+                </span>
+            </div>
         </div>
         <div class="form-group col-md-6">
             <label>Rama</label>
@@ -72,22 +75,25 @@
                     Debe elegir una opción
                 </span>
             </div>
-        </div>        
+        </div>
     </div>
     <div class="form-group">
         <label>Aptitudes</label>
-        <textarea rows="3" class="form-control" formControlName="aptitudes" [class]="isValidField('aptitudes')"></textarea>
+        <textarea rows="3" class="form-control" formControlName="aptitudes"
+            [class]="isValidField('aptitudes')"></textarea>
         <div class="invalid-feedback">
             <span *ngIf="contactForm.get('aptitudes').errors?.required">
                 Por favor introduzca sus aptitudes
             </span>
             <span *ngIf="contactForm.get('aptitudes').errors?.minlength">
-                Sus aptitudes deben contener mas de {{contactForm.get('aptitudes').errors?.minlength?.requiredLength}} carácteres
-            </span>    
+                Sus aptitudes deben contener mas de {{contactForm.get('aptitudes').errors?.minlength?.requiredLength}}
+                carácteres
+            </span>
             <span *ngIf="contactForm.get('aptitudes').errors?.maxlength">
-                Sus aptitudes deben contener máximo {{contactForm.get('aptitudes').errors?.maxlength?.requiredLength}} carácteres
-            </span>             
+                Sus aptitudes deben contener máximo {{contactForm.get('aptitudes').errors?.maxlength?.requiredLength}}
+                carácteres
+            </span>
         </div>
-    </div>    
+    </div>
     <button type="submit" class="btn btn-primary btn-block">Confirmar</button>
 </form>

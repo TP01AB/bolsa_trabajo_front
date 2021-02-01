@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <div class="card w-100 mb-4 shadow">
+                <div class="card-header bg-info">
+                    <h2 class="card-title text-white font-weight-bold my-2">Empresas</h2>
+                </div>
+                <div class="card-body mt-2">
+                    <div class="row">
+                        <div class="col-sm-6" *ngFor="let company of [0,1,2,3,4,5,6,7]">
+                            <div class="card mb-4 border-info shadow">
+                                <div class="card-header bg-info text-white">
+                                    <h5 class="card-title mb-0">Nombre Empresa</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="card-text">Descripcion</p>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit molestias, natus
+                                        obcaecati
+                                        omnis quidem eveniet ex odio totam placeat fugit.</p>
+                                </div>
+                                <div class="card-footer d-flex flex-row p-1">
+                                    <button type="button" class="btn btn-info mr-2" (click)="open(company)">
+                                        <svg class="bi text-white" width="26" height="26" fill="currentColor">
+                                            <use xlink:href="bootstrap-icons.svg#eye" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
