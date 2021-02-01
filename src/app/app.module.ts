@@ -33,8 +33,8 @@ import { CompanyDashboardComponent } from './pages/company/company-dashboard/com
     FooterComponent,
     AdminDashboardComponent,
     StudensViewComponent,
-    ModalStudentComponent
-    PerfilAlComponent
+    ModalStudentComponent,
+    PerfilAlComponent,
     CompanyDashboardComponent,
     CompanyOfferComponent,
     OfferNewComponent,
@@ -46,7 +46,7 @@ import { CompanyDashboardComponent } from './pages/company/company-dashboard/com
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    CrearPerfilModule
+    CrearPerfilModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule

@@ -1,7 +1,6 @@
 import { StudensViewComponent } from './pages/company/studens-view/studens-view.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
 import { StudentOfferViewComponent } from './pages/alumno/student-offer-view/student-offer-view.component';
 import { StudentCompanyViewComponent } from './pages/alumno/student-company-view/student-company-view.component';
@@ -24,14 +23,14 @@ const routes: Routes = [
   {path: 'admin/dashboard', component: AdminDashboardComponent},
 
   //Rutas alumno
-  {path: 'alumno/perfil', component: PerfilAlComponent}
-  {path: 'alumno/oferta-view', component: StudentOfferViewComponent}
+  {path: 'alumno/perfil', component: PerfilAlComponent},
+  {path: 'alumno/oferta-view', component: StudentOfferViewComponent},
   { path: 'empresa/Crearperfil', loadChildren: () => import('./pages/company/crear-perfil/crear-perfil.module').then(m => m.CrearPerfilModule) },
-  { path: 'registro', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) }
+  { path: 'registro', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
   { path: 'empresa/verAlumnos', component: StudensViewComponent },
-  {path: 'alumno/empresa-view', component: StudentCompanyViewComponent}
+  {path: 'alumno/empresa-view', component: StudentCompanyViewComponent},
   {path: 'empresa', component: CompanyDashboardComponent},
-  {path: 'empresa/ofertas', component: CompanyOfferComponent}
+  {path: 'empresa/ofertas', component: CompanyOfferComponent},
 ];
 
 @NgModule({
