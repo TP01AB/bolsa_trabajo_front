@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; // Import necesarios para los
 import { LoginService } from 'src/app/auth/services/login.service';
 import { OfferDeleteComponent } from './modal/offer-delete/offer-delete.component';
+import { OfferDuplicateComponent } from './modal/offer-duplicate/offer-duplicate.component';
 import { OfferNewComponent } from './modal/offer-new/offer-new.component';
 import { OfferUpdateComponent } from './modal/offer-update/offer-update.component';
 import { CompanyOfferService } from './services/company-offer.service';
@@ -69,6 +70,17 @@ export class CompanyOfferComponent implements OnInit {
       }
     });
   }
+
+    // Abre el modal para duplicar una oferta
+    offerDuplicate(offer: any) {
+      console.log('duplicar');
+      
+      const modalRef = this.modalService.open(OfferDuplicateComponent);
+      modalRef.componentInstance.offer = offer;
+      modalRef.componentInstance["duplicateOk"].subscribe(event => {
+        this.getOffers();
+      });
+    }
 
   // Abre el modal para borrar una oferta
   offerDelete(id: number) {

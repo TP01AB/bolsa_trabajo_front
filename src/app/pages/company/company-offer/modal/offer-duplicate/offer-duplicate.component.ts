@@ -5,46 +5,43 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { CompanyOfferService } from '../../services/company-offer.service';
 
 @Component({
-  selector: 'app-offer-update',
-  templateUrl: './offer-update.component.html',
-  styleUrls: ['./offer-update.component.scss']
+  selector: 'app-offer-duplicate',
+  templateUrl: './offer-duplicate.component.html',
+  styleUrls: ['./offer-duplicate.component.scss']
 })
-export class OfferUpdateComponent implements OnInit {
+export class OfferDuplicateComponent implements OnInit {
 
   @Input() public offer;
+  @Output() duplicateOk: EventEmitter<any> = new EventEmitter();
   contactForm: FormGroup;
   value = null;
   offerU: any;
 
-  constructor(public activeModal: NgbActiveModal, private router: Router, private fb: FormBuilder, private companyOfferService: CompanyOfferService) { 
+  constructor(public activeModal: NgbActiveModal, private router: Router, private fb: FormBuilder, private companyOfferService: CompanyOfferService) {     
     const navigation = this.router.getCurrentNavigation();
-    this.value = navigation?.extras?.state;
-  }
+    this.value = navigation?.extras?.state; }
 
   ngOnInit(): void {
     this.initForm();
     this.offerU = {...this.offer};
-    
   }
 
-  onSubmit(){
+  onSubmit() {
     if (!this.contactForm.valid) {
       return;
     }
-    this.companyOfferService.updateOffer(this.contactForm).subscribe(
+    this.companyOfferService.storeOffer(this.contactForm).subscribe(
       (response: any) => {
-        this.offer.name = this.contactForm.value.name;
-        this.offer.vacant = this.contactForm.value.vacant;
-        this.offer.startDate = this.contactForm.value.startDate;
-        this.offer.endDate = this.contactForm.value.endDate;
-        this.offer.description = this.contactForm.value.description;
+        this.duplicateOk.emit(true);
         this.activeModal.close();
       },
       (error) => {
         console.log(error);
+        this.duplicateOk.emit(false);
         this.activeModal.close();
       }
-    ); 
+    );    
+
   }
 
   private initForm(): void {
@@ -58,5 +55,5 @@ export class OfferUpdateComponent implements OnInit {
     })
   }
 
-}
 
+}
