@@ -16,6 +16,8 @@ export class LoginService {
   constructor(private http: HttpClient, private router: Router) {
     this.user = {
       access_token: "",
+      user_id: "",
+      rol_id: "",
       email: ""
     }
     this.message = "";
@@ -45,8 +47,10 @@ export class LoginService {
       (response: any) => {
         this.message = "Login correcto";
         console.log(response);
-        this.user.access_token = response['message']['access_token'];
+        this.user.access_token = response.message.access_token;
         this.user.email = response.message.user.email;
+        this.user.user_id = response.message.user.id;
+        this.user.rol_id = response.message.rol;
         sessionStorage.setItem(LoginService.SESSION_STORAGE_KEY, JSON.stringify(this.user));
         this.router.navigate(['/empresa/ofertas']);
       },
