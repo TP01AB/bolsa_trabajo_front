@@ -11,7 +11,7 @@
                       <label>Email</label>
                       <input type="email" formControlName="email" class="form-control"[class]="isValidField('email')" />
                       <div *ngIf="submitted && form.email.errors">
-                        <div>El usuario: </div>
+                        <div>El correo: </div>
                         <div *ngIf="form.email.errors.required">No puede estar vacío</div>
                         <div *ngIf="form.email.errors.pattern">Dirección de correo no valida</div>
                       </div>
@@ -20,7 +20,7 @@
                       <label>Password</label>
                       <input type="password" formControlName="password" class="form-control" [class]="isValidField('password')"/>
                       <div *ngIf="submitted && form.password.errors">
-                        <div>La password: </div>
+                        <div>La contraseña: </div>
                         <div *ngIf="form.password.errors.required">No puede estar vacío</div>
                         <div *ngIf="form.password.errors?.min">Longuitud mínima 8 caracteres</div>
                       </div>
@@ -33,7 +33,7 @@
                             <use xlink:href="bootstrap-icons.svg#save" />
                           </svg>
                         </button>
-                        <button type="reset" (click)="onReset()" class="btn btn-danger">
+                        <button type="reset" (click)="cancel()" class="btn btn-danger">
                             Cancelar
                             <svg class="bi text-white" width="14" height="14" fill="currentColor">
                               <use xlink:href="bootstrap-icons.svg#save" />

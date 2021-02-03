@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     //Si ya hemos hecho login vamos a /articles
     if (this.loginService.isUserSignedIn()) {
-      this.router.navigate(['/empresa/ofertas']);
+      this.loginService.rolRedirect();
     }
   }
 
@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
   }
 
   cancel() {
-    this.onReset();
+    this.router.navigate(['']);
   }
 
 }

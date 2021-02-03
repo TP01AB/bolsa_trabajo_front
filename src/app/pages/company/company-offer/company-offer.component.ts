@@ -16,6 +16,7 @@ import { CompanyOfferService } from './services/company-offer.service';
 export class CompanyOfferComponent implements OnInit {
 
   offers: any[];
+  company_id: number;
 
   closeResult: String;
   constructor(private modalService: NgbModal, private companyOfferService: CompanyOfferService, private loginService: LoginService, private router: Router) {
