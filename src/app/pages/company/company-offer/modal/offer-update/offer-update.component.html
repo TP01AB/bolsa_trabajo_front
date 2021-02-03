@@ -9,10 +9,10 @@
 <div class="modal-body">
   <form novalidate (ngSubmit)="onSubmit()" [formGroup]="contactForm">
     <div class="form-group">
-      <!-- Este campo solo lo uso para coger el id y pasarlo como referencia de la oferta a modificar desde el servicio -->
-      <input id="id" formControlName="id" [(ngModel)]="offer.id" style="display: none;">
       <label for="firstname">Nombre de la oferta</label>
       <div class="input-group">
+        <!-- Este campo solo lo uso para coger el id y pasarlo como referencia de la oferta a modificar desde el servicio -->
+        <input id="id" formControlName="id" [(ngModel)]="offer.id" style="display: none;">
         <input id="name" class="form-control" formControlName="name" [(ngModel)]="offerU.name">
       </div>
     </div>
@@ -25,7 +25,8 @@
     <div class="form-group">
       <label for="department">Fecha inicio</label>
       <div class="input-group">
-        <input type="date" id="starDate" class="form-control" formControlName="startDate" [(ngModel)]="offerU.startDate">
+        <input type="date" id="starDate" class="form-control" formControlName="startDate"
+          [(ngModel)]="offerU.startDate">
       </div>
     </div>
     <div class="form-group">
@@ -37,7 +38,8 @@
     <div class="form-group">
       <label>Descripción</label>
       <div class="text-group">
-        <textarea id="description" class="form-control" formControlName="description" [(ngModel)]="offerU.description"></textarea>
+        <textarea id="description" class="form-control" formControlName="description"
+          [(ngModel)]="offerU.description"></textarea>
       </div>
     </div>
     <div class="text-right">

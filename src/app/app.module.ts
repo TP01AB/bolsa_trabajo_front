@@ -22,6 +22,7 @@ import { OfferUpdateComponent } from './pages/company/company-offer/modal/offer-
 import { OfferNewComponent } from './pages/company/company-offer/modal/offer-new/offer-new.component';
 import { CompanyOfferComponent } from './pages/company/company-offer/company-offer.component';
 import { CompanyDashboardComponent } from './pages/company/company-dashboard/company-dashboard.component';
+import { OfferDuplicateComponent } from './pages/company/company-offer/modal/offer-duplicate/offer-duplicate.component';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { CompanyDashboardComponent } from './pages/company/company-dashboard/com
     OfferUpdateComponent,
     OfferDeleteComponent,
     LoginComponent,
+    OfferDuplicateComponent,
   ],
   imports: [
     BrowserModule,
