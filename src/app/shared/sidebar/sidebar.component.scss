@@ -30,6 +30,9 @@
         &:hover {
             color: #fff;
             background-color: #48909b;
+            > svg {
+                color: #fff !important;
+            }
         }
       }
       

@@ -13,11 +13,12 @@ export class LoginComponent implements OnInit {
   newLogin: FormGroup;
   submitted = false;
   message: string;
+  isEmail = /\S+@\S+\.\S+/;
 
   constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {
     this.newLogin = this.formBuilder.group({
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required]]
+      email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
+      password: ['', [Validators.required, Validators.min(8)]]
     });
     this.message = "";
   }
@@ -27,6 +28,12 @@ export class LoginComponent implements OnInit {
     if (this.loginService.isUserSignedIn()) {
       this.router.navigate(['/empresa/ofertas']);
     }
+  }
+
+  isValidField(field: string): string {
+    const validatedField = this.newLogin.get(field);
+    return (!validatedField.valid && validatedField.touched)
+      ? 'is-invalid' : validatedField.touched ? 'is-valid' : '';
   }
 
   get form() { return this.newLogin.controls; }
@@ -45,6 +52,8 @@ export class LoginComponent implements OnInit {
     //Nos subscribimos a la petición de login que se implementa en el servicio
     this.loginService.loginSuscription(email, password);
     this.message = this.loginService.message;
+    console.log(this.message);
+    
   }
 
   onReset() {
