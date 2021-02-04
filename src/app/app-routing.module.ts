@@ -22,6 +22,9 @@ const routes: Routes = [
   // Rutas admin
   { path: 'admin/dashboard', component: AdminDashboardComponent },
 
+  // Rutas empresa
+  {path: 'empresa/dashboard', component: CompanyDashboardComponent},
+
   //Rutas alumno
   { path: 'alumno/perfil', component: PerfilAlComponent },
   { path: 'alumno/oferta-view', component: StudentOfferViewComponent },
