@@ -8,6 +8,7 @@ import { LoginService } from 'src/app/auth/services/login.service';
     providedIn: 'root'
 })
 export class CompanyOfferService {
+    
     contactForm: FormGroup;
 
     constructor(private http: HttpClient, private loginService: LoginService, private router: Router) {
@@ -27,7 +28,6 @@ export class CompanyOfferService {
         let jsonForm = contactForm.getRawValue();
 
         let json = JSON.stringify(jsonForm);
-        console.log(json);
 
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
@@ -62,5 +62,10 @@ export class CompanyOfferService {
         return this.http.delete("http://localhost:8000/api/offers/" + id, { headers: headers });
     }
 
+    public getCompanyId = () => {
+        const url = "http://localhost:8000/api/companyId/" + this.loginService.user.user_id;
+        let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+        return this.http.get(url, { headers: headers });
+    };
 
 }
