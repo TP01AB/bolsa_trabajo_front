@@ -1,4 +1,4 @@
-import { RegisterService } from './services/register.service';
+import { RegisterService } from '../services/register.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
