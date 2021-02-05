@@ -25,6 +25,9 @@ const routes: Routes = [
   // Rutas empresa
   {path: 'empresa/dashboard', component: CompanyDashboardComponent},
 
+  // Rutas empresa
+  {path: 'empresa/dashboard', component: CompanyDashboardComponent},
+
   //Rutas alumno
   { path: 'alumno/perfil', component: PerfilAlComponent },
   { path: 'alumno/oferta-view', component: StudentOfferViewComponent },

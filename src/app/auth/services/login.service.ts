@@ -14,14 +14,16 @@ export class LoginService {
   user: any;
 
   constructor(private http: HttpClient, private router: Router) {
+    // Creo un usuario con los datos necesarios para la sesion
     this.user = {
       access_token: "",
+      user_id: "",
+      rol_id: "",
       email: ""
     }
     this.message = "";
     //Si estamos logeados nos vamos a /articles
-    if (this.isUserSignedIn())
-      router.navigate(['/empresa/ofertas']);
+    this.rolRedirect();
   }
 
   /**
@@ -44,11 +46,12 @@ export class LoginService {
     this.login(email, password).subscribe(
       (response: any) => {
         this.message = "Login correcto";
-        console.log(response);
-        this.user.access_token = response['message']['access_token'];
+        this.user.access_token = response.message.access_token;
         this.user.email = response.message.user.email;
+        this.user.user_id = response.message.user.id;
+        this.user.rol_id = response.message.rol;
         sessionStorage.setItem(LoginService.SESSION_STORAGE_KEY, JSON.stringify(this.user));
-        this.router.navigate(['/empresa/ofertas']);
+        this.rolRedirect();
       },
       (error) => {
         this.message = error.error.message;
@@ -75,5 +78,28 @@ export class LoginService {
     }
     return isSignedIn;
   }
+
+  /**
+   * Método para redirigir al usuario dependiendo de su rol
+   */
+   public rolRedirect(){
+    if (this.isUserSignedIn())
+    switch (this.user.rol_id) {
+      case 1:
+        this.router.navigate(['/admin/dashboard']);
+        break;
+      case 2:
+        this.router.navigate(['/admin/dashboard']);
+        break;
+      case 3:
+        this.router.navigate(['/admin/dashboard']);
+        break;
+      case 4:
+        this.router.navigate(['/empresa/dashboard']);
+        break;
+      default:
+        break;
+    }
+   }
 
 }

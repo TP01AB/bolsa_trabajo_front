@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; // Import necesarios para los
 import { LoginService } from 'src/app/auth/services/login.service';
 import { OfferDeleteComponent } from './modal/offer-delete/offer-delete.component';
+import { OfferDuplicateComponent } from './modal/offer-duplicate/offer-duplicate.component';
 import { OfferNewComponent } from './modal/offer-new/offer-new.component';
 import { OfferUpdateComponent } from './modal/offer-update/offer-update.component';
 import { CompanyOfferService } from './services/company-offer.service';
@@ -14,14 +15,10 @@ import { CompanyOfferService } from './services/company-offer.service';
 })
 export class CompanyOfferComponent implements OnInit {
 
-<<<<<<< HEAD
-  offers: any[];
-=======
     offers: any[];
     company: any;
     company_id: number;
     user: any;
->>>>>>> f534155... Recupero company_id y lo añado al session storage
 
     closeResult: String;
     constructor(private modalService: NgbModal, private companyOfferService: CompanyOfferService, private loginService: LoginService, private router: Router) {
@@ -31,25 +28,27 @@ export class CompanyOfferComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.getCompanyId();
-        this.getOffers();
-        //this.getOffersId();
+        this.getCompanyId();  // Obtengo el id de los datos de la empresa
+        this.getOffers(); // Obtengo las ofertas
     }
 
-    // Obtiene toas las ofertas, sin uso
+    // Obtiene toas las ofertas y su ciclo
     getOffers() {
         this.offers = [];
-        this.companyOfferService.getOffers().subscribe(
+        this.companyOfferService.getOffers(this.loginService.user.company_id).subscribe(
             (response: any) => {
                 const offers = response;
-                offers.forEach((element: { id: any; name: any; vacant: any; startDate: any; endDate: any; description: any }) => {
+                offers.forEach((element: { id: any; name: any; vacant: any; startDate: any; endDate: any; 
+                    description: any; area_id: any, area_description: any}) => {
                     let offer = {
                         'id': element.id,
                         'name': element.name,
                         'vacant': element.vacant,
                         'startDate': element.startDate,
                         'endDate': element.endDate,
-                        'description': element.description
+                        'description': element.description,
+                        'areaId': element.area_id,
+                        'areaDescription': element.area_description
                     };
                     this.offers.push(offer);
                 });
@@ -79,21 +78,6 @@ export class CompanyOfferComponent implements OnInit {
         });
     }
 
-<<<<<<< HEAD
-  // Abre el modal para borrar una oferta
-  offerDelete(id: number) {
-    const modalRef = this.modalService.open(OfferDeleteComponent);
-    modalRef.componentInstance.id = id;
-    modalRef.result.then((result) => {
-      if (result) {
-        console.log(result);
-      }
-    });
-    modalRef.componentInstance["deleteOk"].subscribe(event => {
-      this.getOffers();
-    });
-  }
-=======
     // Abre el modal para duplicar una oferta
     offerDuplicate(offer: any) {
         const modalRef = this.modalService.open(OfferDuplicateComponent);
@@ -136,6 +120,5 @@ export class CompanyOfferComponent implements OnInit {
             }
         );
     }
->>>>>>> f534155... Recupero company_id y lo añado al session storage
 
 }

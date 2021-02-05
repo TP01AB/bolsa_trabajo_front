@@ -6,27 +6,27 @@ import { LoginService } from 'src/app/auth/services/login.service';
 import { CompanyOfferService } from '../../services/company-offer.service';
 
 @Component({
-  selector: 'app-offer-update',
-  templateUrl: './offer-update.component.html',
-  styleUrls: ['./offer-update.component.scss']
+  selector: 'app-offer-duplicate',
+  templateUrl: './offer-duplicate.component.html',
+  styleUrls: ['./offer-duplicate.component.scss']
 })
-export class OfferUpdateComponent implements OnInit {
+export class OfferDuplicateComponent implements OnInit {
 
   @Input() public offer;
-  areas: any[];
+  @Output() duplicateOk: EventEmitter<any> = new EventEmitter();
   contactForm: FormGroup;
   submitted = false;
   value = null;
   offerU: any;
+  areas: any[];
 
-  constructor(public activeModal: NgbActiveModal, private router: Router, private fb: FormBuilder, private companyOfferService: CompanyOfferService, private loginService: LoginService) {
+  constructor(public activeModal: NgbActiveModal, private router: Router, private fb: FormBuilder, private companyOfferService: CompanyOfferService, private loginService: LoginService) {     
     const navigation = this.router.getCurrentNavigation();
-    this.value = navigation?.extras?.state;
-  }
+    this.value = navigation?.extras?.state; }
 
   ngOnInit(): void {
     this.initForm();
-    this.offerU = { ...this.offer };
+    this.offerU = {...this.offer};
     this.getAreas();
   }
 
@@ -35,27 +35,22 @@ export class OfferUpdateComponent implements OnInit {
     if (this.contactForm.invalid) {
         return;
     }
-
     // Creo la oferta con los datos necesarios para ser guardados en la base de datos
     let offer = this.contactForm.value;
-    offer.id = this.offer.id;
-
-
-    this.companyOfferService.updateOffer(offer).subscribe(
+    offer.company_id = parseInt(this.loginService.user.company_id);
+    
+    this.companyOfferService.storeOffer(offer).subscribe(
       (response: any) => {
-        this.offer.name = this.contactForm.value.name;
-        this.offer.vacant = this.contactForm.value.vacant;
-        this.offer.areaDescription = this.contactForm.value.areaDescription;
-        this.offer.startDate = this.contactForm.value.startDate;
-        this.offer.endDate = this.contactForm.value.endDate;
-        this.offer.description = this.contactForm.value.description;
+        this.duplicateOk.emit(true);
         this.activeModal.close();
       },
       (error) => {
         console.log(error);
+        this.duplicateOk.emit(false);
         this.activeModal.close();
       }
-    );
+    );    
+
   }
 
   // Inicia el formulario
@@ -70,14 +65,15 @@ export class OfferUpdateComponent implements OnInit {
     })
   }
 
-  // Método para saber si un campo es valido
-  isValidField(field: string): string {
-    const validatedField = this.contactForm.get(field);
-    return (!validatedField.valid && validatedField.touched)
-      ? 'is-invalid' : validatedField.touched ? 'is-valid' : '';
-  }
+    // Método para saber si un campo es valido
+    isValidField(field: string): string {
+      const validatedField = this.contactForm.get(field);
+      return (!validatedField.valid && validatedField.touched)
+        ? 'is-invalid' : validatedField.touched ? 'is-valid' : '';
+    }
+  
+    get form() { return this.contactForm.controls; }
 
-  get form() { return this.contactForm.controls; }
 
  // Método para obtener las areas
   getAreas() {
@@ -101,4 +97,3 @@ export class OfferUpdateComponent implements OnInit {
 
 
 }
-
