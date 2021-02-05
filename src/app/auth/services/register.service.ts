@@ -13,13 +13,13 @@ export class RegisterService {
 
   //enviar peticion
   public registerUser = (email: string, password: string) => {
-    const url = "http://nginxLaravel/api/register";
+    const url = "http://php-fpm/api/register";
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
 
-    return this.http.post(url, { 'email': email, 'password': password }, { : Headers });
+    return this.http.post(url, { 'email': email, 'password': password }, { headers: headers });
   };
 
   public registerSuscription(email: string, password: string) {

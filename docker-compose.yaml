@@ -17,7 +17,6 @@ services:
     build: .
     container_name: nginxAngular
     volumes:
-      - "/app/node_modules"
       - ".:/app"
     environment:
       - VIRTUAL_HOST=bolsaTrabajo.com

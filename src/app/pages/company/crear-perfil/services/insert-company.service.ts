@@ -23,7 +23,7 @@ export class InsertCompanyService {
       'Content-Type': 'application/json',
     });
 
-    this.http.post("http://localhost:8000/api/student/insert", json, { headers: headers }).subscribe(
+    this.http.post("http://php-fpm/api/student/insert", json, { headers: headers }).subscribe(
       data => console.log("success!", data),
       error => console.error("couldn't post because", error)
     )

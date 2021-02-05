@@ -5,65 +5,65 @@ import { Router } from '@angular/router';
 import { LoginService } from 'src/app/auth/services/login.service';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class CompanyOfferService {
-    
-    contactForm: FormGroup;
 
-    constructor(private http: HttpClient, private loginService: LoginService, private router: Router) {
-        // Comprobamos que el usuario este logeado sino lo redireccionamos al login
-        if (!loginService.isUserSignedIn())
-            router.navigate(['/login'])
-    }
+  contactForm: FormGroup;
 
-    public getOffers = (company_id: number) => {
-        const url = "http://localhost:8000/api/offers/";
-        let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
-        return this.http.get(url + company_id, { headers: headers });
-    };
+  constructor(private http: HttpClient, private loginService: LoginService, private router: Router) {
+    // Comprobamos que el usuario este logeado sino lo redireccionamos al login
+    if (!loginService.isUserSignedIn())
+      router.navigate(['/login'])
+  }
 
-    // Guardamos una offer
-    public storeOffer = (offer: any) => {
+  public getOffers = (company_id: number) => {
+    const url = "http://php-fpm/api/offers/";
+    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+    return this.http.get(url + company_id, { headers: headers });
+  };
 
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${this.loginService.user.access_token}`
-        });
+  // Guardamos una offer
+  public storeOffer = (offer: any) => {
 
-        return this.http.post("http://localhost:8000/api/offers", offer, { headers: headers });
-    }
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
 
-    // Modificamos una oferta
-    public updateOffer = (offer:any) => {
+    return this.http.post("http://localhost:8000/api/offers", offer, { headers: headers });
+  }
 
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${this.loginService.user.access_token}`
-        });
+  // Modificamos una oferta
+  public updateOffer = (offer: any) => {
 
-        return this.http.put("http://localhost:8000/api/offers/" + offer.id, offer, { headers: headers });
-    }
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
 
-    public deleteOffer = (id: number) => {
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${this.loginService.user.access_token}`
-        });
+    return this.http.put("http://localhost:8000/api/offers/" + offer.id, offer, { headers: headers });
+  }
 
-        return this.http.delete("http://localhost:8000/api/offers/" + id, { headers: headers });
-    }
+  public deleteOffer = (id: number) => {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
 
-    public getCompanyId = () => {
-        const url = "http://localhost:8000/api/companyId/" + this.loginService.user.user_id;
-        let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
-        return this.http.get(url, { headers: headers });
-    };
+    return this.http.delete("http://localhost:8000/api/offers/" + id, { headers: headers });
+  }
 
-    public getAreas = () => {
-        const url = "http://localhost:8000/api/areas";
-        let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
-        return this.http.get(url, { headers: headers });
-    };
+  public getCompanyId = () => {
+    const url = "http://localhost:8000/api/companyId/" + this.loginService.user.user_id;
+    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+    return this.http.get(url, { headers: headers });
+  };
+
+  public getAreas = () => {
+    const url = "http://localhost:8000/api/areas";
+    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+    return this.http.get(url, { headers: headers });
+  };
 
 }

@@ -9,7 +9,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-
+  email = "";
   constructor(private fb: FormBuilder, private http: HttpClient, private registerUser: RegisterService) { }
   isEmail = /\S+@\S+\.\S+/;
 
@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   }
 
   private initForm() {
+
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
       password: ['', [Validators.required, Validators.min(8)]]
@@ -32,7 +33,7 @@ export class RegisterComponent implements OnInit {
 
   onSave(): void {
     if (this.registerForm.valid) {
-      this.registerUser.registerUser(this.registerForm);
+      this.registerUser.registerUser(this.registerForm.get('email').value, this.registerForm.get('password').value);
     } else {
       Object.keys(this.registerForm.controls).forEach(field => {
         const control = this.registerForm.get(field);
