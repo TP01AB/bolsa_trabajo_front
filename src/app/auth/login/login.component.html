@@ -9,7 +9,7 @@
                 <form [formGroup]="newLogin" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                       <label>Email</label>
-                      <input type="email" formControlName="email" class="form-control"[class]="isValidField('email')" />
+                      <input type="email" formControlName="email" class="form-control" [class]="isValidField('email')" />
                       <div *ngIf="submitted && form.email.errors">
                         <div>El correo: </div>
                         <div *ngIf="form.email.errors.required">No puede estar vacío</div>
@@ -39,9 +39,7 @@
                               <use xlink:href="bootstrap-icons.svg#save" />
                             </svg>
                           </button>
-                        
                       </div>
-            
                     <div>{{message}}</div>
                   </form>
             </div>

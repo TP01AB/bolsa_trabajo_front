@@ -28,25 +28,27 @@ export class CompanyOfferComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.getCompanyId();
-        this.getOffers();
-        //this.getOffersId();
+        this.getCompanyId();  // Obtengo el id de los datos de la empresa
+        this.getOffers(); // Obtengo las ofertas
     }
 
-    // Obtiene toas las ofertas, sin uso
+    // Obtiene toas las ofertas y su ciclo
     getOffers() {
         this.offers = [];
-        this.companyOfferService.getOffers().subscribe(
+        this.companyOfferService.getOffers(this.loginService.user.company_id).subscribe(
             (response: any) => {
                 const offers = response;
-                offers.forEach((element: { id: any; name: any; vacant: any; startDate: any; endDate: any; description: any }) => {
+                offers.forEach((element: { id: any; name: any; vacant: any; startDate: any; endDate: any; 
+                    description: any; area_id: any, area_description: any}) => {
                     let offer = {
                         'id': element.id,
                         'name': element.name,
                         'vacant': element.vacant,
                         'startDate': element.startDate,
                         'endDate': element.endDate,
-                        'description': element.description
+                        'description': element.description,
+                        'areaId': element.area_id,
+                        'areaDescription': element.area_description
                     };
                     this.offers.push(offer);
                 });
