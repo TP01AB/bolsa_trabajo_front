@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class RegisterService {
 
   //enviar peticion
   public registerUser = (email: string, password: string) => {
-    const url = "http://php-fpm/api/register";
+    const url = environment.url_laravel + "/register";
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',

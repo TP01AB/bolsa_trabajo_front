@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/auth/services/login.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class CompanyOfferService {
   }
 
   public getOffers = (company_id: number) => {
-    const url = "http://php-fpm/api/offers/";
+    const url = environment.url_laravel + "/offers/";
     let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
     return this.http.get(url + company_id, { headers: headers });
   };

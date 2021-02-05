@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -30,7 +31,7 @@ export class LoginService {
    * Petición de login
    * */
   public login = (email: string, password: string) => {
-    const url = "http://php-fpm/api/login";
+    const url = environment.url_laravel + '/login';
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
