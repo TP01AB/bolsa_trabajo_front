@@ -5,13 +5,11 @@ FROM node:alpine
 WORKDIR /app
 
 
-COPY package.json /app
+COPY package.json  /app
 
 RUN apk add nodejs npm
-RUN npm install -g @angular/cli
 
-#RUN apk add --update nodejs npm
-#RUN npm install -g @angular/cli @angular-devkit/build-angular && npm install
+RUN npm install && npm update && npm install -g @angular/cli && npm install --save-dev @angular-devkit/build-angular
 
 # Serve the app
 CMD npm start
