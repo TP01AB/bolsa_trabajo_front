@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
@@ -30,7 +31,7 @@ export class LoginService {
    * Petición de login
    * */
   public login = (email: string, password: string) => {
-    const url = "http://localhost:8000/api/login";
+    const url = environment.url_laravel + '/login';
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -82,24 +83,24 @@ export class LoginService {
   /**
    * Método para redirigir al usuario dependiendo de su rol
    */
-   public rolRedirect(){
+  public rolRedirect() {
     if (this.isUserSignedIn())
-    switch (this.user.rol_id) {
-      case 1:
-        this.router.navigate(['/admin/dashboard']);
-        break;
-      case 2:
-        this.router.navigate(['/admin/dashboard']);
-        break;
-      case 3:
-        this.router.navigate(['/admin/dashboard']);
-        break;
-      case 4:
-        this.router.navigate(['/empresa/dashboard']);
-        break;
-      default:
-        break;
-    }
-   }
+      switch (this.user.rol_id) {
+        case 1:
+          this.router.navigate(['/admin/dashboard']);
+          break;
+        case 2:
+          this.router.navigate(['/admin/dashboard']);
+          break;
+        case 3:
+          this.router.navigate(['/admin/dashboard']);
+          break;
+        case 4:
+          this.router.navigate(['/empresa/dashboard']);
+          break;
+        default:
+          break;
+      }
+  }
 
 }

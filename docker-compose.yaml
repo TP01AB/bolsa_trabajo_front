@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  reverseproxy:
+    image: jwilder/nginx-proxy
+    container_name: reverseproxy
+    ports:
+      - "80:80"
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    # Red para el conjunto de contenedores
+    networks:
+      - net_prueba
+    restart: always
+    privileged: true
+
+  angular:
+    build: .
+    container_name: nginxAngular
+    volumes:
+      - ".:/app"
+    environment:
+      - VIRTUAL_HOST=bolsaTrabajo.com
+    networks:
+      - net_prueba
+    depends_on:
+      - reverseproxy
+
+networks:
+  net_prueba:
+    name: net_prueba
+    driver: bridge
