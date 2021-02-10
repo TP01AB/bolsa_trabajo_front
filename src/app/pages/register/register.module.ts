@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerfilAlModule } from '../alumno/perfil/perfil-al.module';
 
 
@@ -12,6 +12,7 @@ import { PerfilAlModule } from '../alumno/perfil/perfil-al.module';
   imports: [
     CommonModule,
     RegisterRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     PerfilAlModule
   ],

@@ -1,7 +1,8 @@
 import { RegisterService } from './services/register.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { PerfilAlComponent } from '../alumno/perfil/perfil-al.component';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -10,14 +11,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;  
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private registerUser: RegisterService) { }
+  @ViewChild(PerfilAlComponent) private perfilAl: PerfilAlComponent;
+
+  constructor(private fb: FormBuilder, private registerUser: RegisterService) { }
   isEmail = /\S+@\S+\.\S+/;
 
   ngOnInit(): void {
     this.initForm();
   }
 
-  private initForm() {
+  initForm() {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
       password: ['', [Validators.required, Validators.min(8)]],
@@ -31,14 +34,18 @@ export class RegisterComponent implements OnInit {
       ? 'is-invalid' : validatedField.touched ? 'is-valid' : '';
   }
 
-  onSave(): void {
-    if (this.registerForm.valid) {
-      this.registerUser.registerUser(this.registerForm);
-    } else {
-      Object.keys(this.registerForm.controls).forEach(field => {
-        const control = this.registerForm.get(field);
-        control.markAsTouched({ onlySelf: true });
-      });
+  onSave(): void {    
+    var tipo = this.registerForm.get('condicion').value
+    if(tipo == 'student') {        
+      if (this.registerForm.valid && this.perfilAl.validate()==1) {
+        this.registerUser.registerUser(this.registerForm, this.perfilAl.toJason(), tipo);
+      } else {
+        this.perfilAl.validate();             
+        Object.keys(this.registerForm.controls).forEach(field => {
+          const control = this.registerForm.get(field);
+          control.markAsTouched({ onlySelf: true });
+        });
+      }
     }
   }
 }

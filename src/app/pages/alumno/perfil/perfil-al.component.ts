@@ -29,16 +29,31 @@ export class PerfilAlComponent implements OnInit {
 
   onSubmit() {
     if (this.contactForm.valid) {
-
       this.insertService.insertStudent(this.contactForm);            
+    }
+  }
 
+  validate(): any {
+    if (this.contactForm.valid) {
+      return 1;
     } else {
       console.log('Not valid')
-      Object.keys(this.contactForm.controls).forEach(field => {
-        const control = this.contactForm.get(field);
-        control.markAsTouched({ onlySelf: true });
-      });
+        Object.keys(this.contactForm.controls).forEach(field => {
+          const control = this.contactForm.get(field);
+          control.markAsTouched({ onlySelf: true });
+        });
+      return 0;      
     }
+  }
+
+  toJason(): any {
+    let jsonForm = this.contactForm.getRawValue();
+    
+    let json = JSON.stringify(jsonForm);
+
+    console.log(json);
+
+    return json;
   }
 
   //Validacion

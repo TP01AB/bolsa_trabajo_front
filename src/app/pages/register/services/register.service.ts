@@ -9,7 +9,7 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-  public registerUser(registerForm: FormGroup) {
+  public registerUser(registerForm: FormGroup, jsonChild: String, tipo: String) {
 
     console.log(registerForm.value)
 
@@ -19,13 +19,17 @@ export class RegisterService {
 
     console.log(json);
 
+    if(tipo == 'student') {
+      console.log(jsonChild);
+    }
+
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
 
-    this.http.post("http://127.0.0.1:8000/api/register", json, { headers: headers }).subscribe(
+    /*this.http.post("http://127.0.0.1:8000/api/register", json, { headers: headers }).subscribe(
       data => console.log("success!", data),
       error => console.error("couldn't post because", error)
-    )
+    )*/
   }
 }

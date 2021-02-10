@@ -11,6 +11,8 @@ import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     NgbModule,  
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     PerfilAlComponent

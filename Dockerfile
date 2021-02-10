@@ -2,18 +2,14 @@
 FROM node:alpine
 
 # Change directory so that our commands run inside this new directory
-RUN mkdir -p /app
+
 WORKDIR /app
-
-COPY package.json  /app
-
-RUN apk add nodejs npm
-
-RUN npm install && npm update && npm install -g @angular/cli && npm install --save-dev @angular-devkit/build-angular
-
+RUN apk add --update nodejs npm
+RUN echo $PATH
 # Serve the app
-COPY ./init.sh /tmp/
-ENTRYPOINT ["sh","/tmp/init.sh"]
+COPY ./init.sh /usr/bin/
+#ENTRYPOINT ["sh","/usr/local/bin/init.sh"]
+ENTRYPOINT ["sh","/usr/bin/init.sh"]
 
 # Expose the port the app runs in
 EXPOSE 4200
