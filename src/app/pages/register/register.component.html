@@ -10,44 +10,48 @@
                     <div class="form-row">
                         <div class="form-group col-md-8 mx-auto">
                             <label>E-mail:</label>
-                            <input type="email" class="form-control" formControlName="email" [class]="isValidField('email')">
+                            <input type="email" class="form-control" formControlName="email"
+                                [class]="isValidField('email')">
                             <div class="invalid-feedback">
                                 <span *ngIf="registerForm.get('email').errors?.required">
-                    Por favor introduzca su E-mail
-                </span>
+                                    Por favor introduzca su E-mail
+                                </span>
                             </div>
                             <div class="invalid-feedback">
                                 <span *ngIf="registerForm.get('email').errors?.pattern">
-                    Por favor introduzca su E-mail correctamente
-                </span>
+                                    Por favor introduzca su E-mail correctamente
+                                </span>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-8 mx-auto">
                             <label>Contraseña:</label>
-                            <input type="password" class="form-control" formControlName="password" [class]="isValidField('password')">
+                            <input type="password" class="form-control" formControlName="password"
+                                [class]="isValidField('password')">
                             <div class="invalid-feedback">
                                 <span *ngIf="registerForm.get('password').errors?.required">
-                    Por favor introduzca su contraseña.
-                </span>
+                                    Por favor introduzca su contraseña.
+                                </span>
                             </div>
                             <div class="invalid-feedback">
                                 <span *ngIf="registerForm.get('password').errors?.pattern">
-                    Use minimo 8 caracteres.
-                </span>
+                                    Use minimo 8 caracteres.
+                                </span>
                             </div>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-8 mx-auto">
-                            <label>Seleccione el tipo:  </label>
-
-                            <select name="tipo">
-                              <option value="student">Alumno</option>
-                              <option value="company">Empresa</option>
+                            <label>Seleccione el tipo: </label>
+                            <select name="tipo" formControlName="condicion">
+                                <option value="student">Alumno</option>
+                                <option value="company">Empresa</option>
                             </select>
                         </div>
+                    </div>
+                    <div *ngIf="registerForm.get('condicion').value === 'student'">
+                        <perfil-al></perfil-al>
                     </div>
                     <div class="col-md-4 mx-auto">
                         <button type="submit " class="btn btn-primary btn-block ">Registrarse</button>

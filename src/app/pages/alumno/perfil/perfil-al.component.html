@@ -65,12 +65,12 @@
                         Debe introducir una fecha
                     </span>
                 </div>
-            </div>            
+            </div>
         </div>
         <div class="form-row">
-            <div class="form-group col-md-6"> 
-                <label>Telefono móvil</label>               
-                <input type="text" formControlName="phone" class="form-control" [class]="isValidField('phone')">                    
+            <div class="form-group col-md-6">
+                <label>Telefono móvil</label>
+                <input type="text" formControlName="phone" class="form-control" [class]="isValidField('phone')">
                 <div class="invalid-feedback">
                     <span *ngIf="contactForm.get('phone').errors?.required">
                         Debe introducir un número de móvil
@@ -113,6 +113,5 @@
                 </span>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Confirmar</button>
     </form>
 </div>

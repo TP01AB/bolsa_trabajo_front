@@ -1,6 +1,6 @@
 import { RegisterService } from './services/register.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Component({
   selector: 'app-register',
@@ -8,7 +8,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  registerForm: FormGroup;
+  registerForm: FormGroup;  
 
   constructor(private fb: FormBuilder, private http: HttpClient, private registerUser: RegisterService) { }
   isEmail = /\S+@\S+\.\S+/;
@@ -20,7 +20,8 @@ export class RegisterComponent implements OnInit {
   private initForm() {
     this.registerForm = this.fb.group({
       email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
-      password: ['', [Validators.required, Validators.min(8)]]
+      password: ['', [Validators.required, Validators.min(8)]],
+      condicion: ['', Validators.required]
     });
   }
 
