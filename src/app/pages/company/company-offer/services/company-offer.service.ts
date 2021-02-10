@@ -3,45 +3,47 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/auth/services/login.service';
-import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CompanyOfferService {
+    
+    contactForm: FormGroup;
 
-  contactForm: FormGroup;
+    constructor(private http: HttpClient, private loginService: LoginService, private router: Router) {
+        // Comprobamos que el usuario este logeado sino lo redireccionamos al login
+        if (!loginService.isUserSignedIn())
+            router.navigate(['/login'])
+    }
 
-  constructor(private http: HttpClient, private loginService: LoginService, private router: Router) {
-    // Comprobamos que el usuario este logeado sino lo redireccionamos al login
-    if (!loginService.isUserSignedIn())
-      router.navigate(['/login'])
-  }
+    public getOffers = (company_id: number) => {
+        const url = "http://localhost:8000/api/offers/";
+        let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+        return this.http.get(url + company_id, { headers: headers });
+    };
 
-  public getOffers = (company_id: number) => {
-    const url = environment.url_laravel + "/offers/";
-    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
-    return this.http.get(url + company_id, { headers: headers });
-  };
+    // Guardamos una offer
+    public storeOffer = (offer: any) => {
 
-  // Guardamos una offer
-  public storeOffer = (offer: any) => {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${this.loginService.user.access_token}`
+        });
 
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.loginService.user.access_token}`
-    });
+        return this.http.post("http://localhost:8000/api/offers", offer, { headers: headers });
+    }
 
-    return this.http.post("http://localhost:8000/api/offers", offer, { headers: headers });
-  }
+    // Modificamos una oferta
+    public updateOffer = (offer:any) => {
 
-  // Modificamos una oferta
-  public updateOffer = (offer: any) => {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${this.loginService.user.access_token}`
+        });
 
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.loginService.user.access_token}`
-    });
+        return this.http.put("http://localhost:8000/api/offers/" + offer.id, offer, { headers: headers });
+    }
 
     // Método para borrar una oferta
     public deleteOffer = (id: number) => {
@@ -50,11 +52,8 @@ export class CompanyOfferService {
             Authorization: `Bearer ${this.loginService.user.access_token}`
         });
 
-  public deleteOffer = (id: number) => {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.loginService.user.access_token}`
-    });
+        return this.http.delete("http://localhost:8000/api/offers/" + id, { headers: headers });
+    }
 
     // Método para coger el id de la compañia
     public getCompanyId = () => {

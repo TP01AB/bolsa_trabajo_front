@@ -3,7 +3,6 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  url_laravel: "http://localhost:3021/api",
   production: false
 };
 
