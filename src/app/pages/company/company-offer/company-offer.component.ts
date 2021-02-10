@@ -139,8 +139,8 @@ export class CompanyOfferComponent implements OnInit {
 
     // Funcion para cambiar entre ofertas activas o desactivadas.
     activeOffer() {
-        var checkbox = document.getElementById('activeOffer');
-        var label = document.getElementById('labelActiveOffer');
+        let checkbox:any = document.getElementById('activeOffer');
+        let label = document.getElementById('labelActiveOffer');
         if (checkbox.checked) {
             label.innerHTML = ('Activas');
             this.active = true;
