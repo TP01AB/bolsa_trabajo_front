@@ -6,7 +6,7 @@ import { InsertCompanyService } from './services/insert-company.service';
 @Component({
   selector: 'app-crear-perfil',
   templateUrl: './crear-perfil.component.html',
-  styleUrls: ['./crear-perfil.component.scss']
+  styleUrls: ['./crear-perfil.component.scss'],
 })
 export class CrearPerfilComponent implements OnInit {
   model: NgbDateStruct;

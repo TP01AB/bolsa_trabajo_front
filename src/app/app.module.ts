@@ -21,6 +21,7 @@ import { OfferNewComponent } from './pages/company/company-offer/modal/offer-new
 import { CompanyOfferComponent } from './pages/company/company-offer/company-offer.component';
 import { CompanyDashboardComponent } from './pages/company/company-dashboard/company-dashboard.component';
 import { OfferDuplicateComponent } from './pages/company/company-offer/modal/offer-duplicate/offer-duplicate.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { OfferDuplicateComponent } from './pages/company/company-offer/modal/off
     NgbModule,    
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

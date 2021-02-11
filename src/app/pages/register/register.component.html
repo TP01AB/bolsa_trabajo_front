@@ -50,13 +50,16 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-10 col-sm-8 p-0 mx-auto" *ngIf="registerForm.get('condicion').value === 'student'">
+                    <div class="col-10 col-sm-8 p-0 mx-auto" *ngIf="registerForm.get('condicion').value === 'student'"
+                        [@inOutAnimation]>
                         <perfil-al></perfil-al>
                     </div>
-                    <div class="col-10 col-sm-8 p-0 mx-auto" *ngIf="registerForm.get('condicion').value === 'company'">
+                    <div class="col-10 col-sm-8 p-0 mx-auto" *ngIf="registerForm.get('condicion').value === 'company'"
+                        [@inOutAnimation]>
                         <app-crear-perfil></app-crear-perfil>
                     </div>
-                    <div class="col-12 col-sm-8 col-md-4 mx-auto">
+                    <div class="col-12 col-sm-8 col-md-4 mx-auto" *ngIf="registerForm.get('condicion').value !=''"
+                        [@inOutAnimation]>
                         <button type="submit " class="btn btn-primary btn-block ">Registrarse</button>
                     </div>
                 </form>

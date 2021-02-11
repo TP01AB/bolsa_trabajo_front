@@ -4,8 +4,32 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { PerfilAlComponent } from '../alumno/perfil/perfil-al.component';
 import { FormsFunctionsService } from 'src/app/shared/services/forms-functions.service';
 import { CrearPerfilComponent } from '../company/crear-perfil/crear-perfil.component';
+import { trigger, transition, style, animate } from '@angular/animations';
 @Component({
   selector: 'app-register',
+  animations: [
+    trigger(
+      'inOutAnimation', 
+      [
+        transition(
+          ':enter', 
+          [
+            style({ height: 0, opacity: 0 }),
+            animate('1.5s ease', 
+                    style({ height: '*', opacity: 1 }))
+          ]
+        ),   ,
+        transition(
+          ':leave', 
+          [
+            style({ height: '*', opacity: 1 }),
+            animate('1.5s ease', 
+                    style({ height: 0, opacity: 0 }))
+          ]
+        )
+      ]
+    )
+  ],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
