@@ -9,17 +9,16 @@ export class RegisterService {
 
   constructor(private http: HttpClient) { }
 
-  public registerUser(registerForm: FormGroup, jsonChild: String, tipo: String) {
+  public registerUser(jsonFather: String, jsonChild: String, tipo: String) {    
 
-    console.log(registerForm.value)
-
-    let jsonForm = registerForm.getRawValue();
-
-    let json = JSON.stringify(jsonForm);
+    let json = jsonFather;
 
     console.log(json);
 
     if(tipo == 'student') {
+      console.log(jsonChild);
+    }
+    if(tipo == 'company') {
       console.log(jsonChild);
     }
 

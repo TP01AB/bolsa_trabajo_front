@@ -1,8 +1,9 @@
 import { RegisterService } from './services/register.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { PerfilAlComponent } from '../alumno/perfil/perfil-al.component';
+import { FormsFunctionsService } from 'src/app/shared/services/forms-functions.service';
+import { CrearPerfilComponent } from '../company/crear-perfil/crear-perfil.component';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,8 +13,9 @@ export class RegisterComponent implements OnInit {
   registerForm: FormGroup;  
 
   @ViewChild(PerfilAlComponent) private perfilAl: PerfilAlComponent;
+  @ViewChild(CrearPerfilComponent) private perfilEmp: CrearPerfilComponent;
 
-  constructor(private fb: FormBuilder, private registerUser: RegisterService) { }
+  constructor(private fb: FormBuilder, private registerUser: RegisterService, private gestorForm: FormsFunctionsService) { }
   isEmail = /\S+@\S+\.\S+/;
 
   ngOnInit(): void {
@@ -38,13 +40,18 @@ export class RegisterComponent implements OnInit {
     var tipo = this.registerForm.get('condicion').value
     if(tipo == 'student') {        
       if (this.registerForm.valid && this.perfilAl.validate()==1) {
-        this.registerUser.registerUser(this.registerForm, this.perfilAl.toJason(), tipo);
+        this.registerUser.registerUser(this.gestorForm.toJason(this.registerForm), this.perfilAl.toJason(), tipo);
       } else {
-        this.perfilAl.validate();             
-        Object.keys(this.registerForm.controls).forEach(field => {
-          const control = this.registerForm.get(field);
-          control.markAsTouched({ onlySelf: true });
-        });
+        this.perfilAl.validate();                       
+        this.gestorForm.validate(this.registerForm);
+      }
+    }
+    if(tipo == 'company') {        
+      if (this.registerForm.valid && this.perfilEmp.validate()==1) {
+        this.registerUser.registerUser(this.gestorForm.toJason(this.registerForm), this.perfilEmp.toJason(), tipo);
+      } else {
+        this.perfilEmp.validate();                       
+        this.gestorForm.validate(this.registerForm);
       }
     }
   }

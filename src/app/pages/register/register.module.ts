@@ -5,6 +5,7 @@ import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerfilAlModule } from '../alumno/perfil/perfil-al.module';
+import { CrearPerfilModule } from '../company/crear-perfil/crear-perfil.module';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { PerfilAlModule } from '../alumno/perfil/perfil-al.module';
     RegisterRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    PerfilAlModule
+    PerfilAlModule,
+    CrearPerfilModule
   ],
   exports:[RegisterComponent]
 })

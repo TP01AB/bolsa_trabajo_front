@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { InsertStudentService } from '../services/insert-student.service';
+import { FormsFunctionsService } from 'src/app/shared/services/forms-functions.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class PerfilAlComponent implements OnInit {
   //private isPhone = "^(?:(?:\\+|00)?34)?[67]\\d{8}$$"
   private isPhone = "^[67]\\d{8}$$"
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private insertService: InsertStudentService) { }
+  constructor(private fb: FormBuilder, private insertService: InsertStudentService, private gestorForm: FormsFunctionsService) { }
 
   ngOnInit(): void {
     this,this.initForm();
@@ -34,26 +35,11 @@ export class PerfilAlComponent implements OnInit {
   }
 
   validate(): any {
-    if (this.contactForm.valid) {
-      return 1;
-    } else {
-      console.log('Not valid')
-        Object.keys(this.contactForm.controls).forEach(field => {
-          const control = this.contactForm.get(field);
-          control.markAsTouched({ onlySelf: true });
-        });
-      return 0;      
-    }
+    return this.gestorForm.validate(this.contactForm);
   }
 
   toJason(): any {
-    let jsonForm = this.contactForm.getRawValue();
-    
-    let json = JSON.stringify(jsonForm);
-
-    console.log(json);
-
-    return json;
+    return this.gestorForm.toJason(this.contactForm);
   }
 
   //Validacion
