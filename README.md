@@ -1,27 +1,74 @@
-# BolsaTrabajoFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
+[![Generic badge](https://img.shields.io/badge/Front-Angular-blue.svg)](https://shields.io/) 
+[![Generic badge](https://img.shields.io/badge/Api-Laravel-red.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Development%20enviroment-Docker-1f425f.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Deploy%20front-Netlify-04bac7.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Ubuntu-Ready-7a04cf.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/Windows-Ready-f57905.svg)](https://shields.io/)
 
-## Development server
+<h1 align="center"> Bolsa de trabajo </h1>
+<p align="center"> CIFP Virgen de Gracia</p>
+<a href="https://cifpvirgendegracia.com/"><p align="center"><img src="https://cifpvirgendegracia.com/wp-content/uploads/2019/11/LogoIcon.png"/></p> </a>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+# Descripcion
 
-## Code scaffolding
+Se trata de una web para dar visibiliad laboral a los actuales y antiguos estudiantes , para facilitar la insercion laboral en empresas de confianza del centro CIFP Virgen de Gracia.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tabla de contenido
 
-## Build
+- [Comienzo](#Comenzando).
+- [Pre-requisitos](#Pre-requisitos).
+- [Instalacion](#Instalacion).
+- [Despliegue](#Despliegue).
+- [Manuales](#Manuales).
+- [Autores](#Autores).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Comenzando 🚀
 
-## Running unit tests
+El proyecto consta de dos repositorios :
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* [Repositorio Back](https://github.com/kherop/bolsa_trabajo_back.git) <br>
+* [Repositorio Front](https://github.com/kherop/bolsa_trabajo_front.git)
 
-## Running end-to-end tests
+Mira **Despliegue** para conocer como desplegar el proyecto.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+### Pre-requisitos 📋
 
-## Further help
+_Los requisitos en este proyecto son tener instalados las siguientes herramientas:_
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+#### Ubuntu :penguin: ####
+* :whale:[Docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-es)
+* :whale2: [Docker-compose](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04-es)
+* 📥[Git](https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-20-04-es)
+* 🍀 [Script de pre-requisitos](https://drive.google.com/file/d/1zok1aGt1BMXPIWRKoAxVPNc23r-xm8L3/view?usp=sharing)
+<<ejecutar anteriormente un sudo su>>
+#### Windows 10 ####
+#### Requiere la version 20h2  ####
+* :whale: [Docker-desktop](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
+* :whale2: [Tutorial instalacion Docker](https://enmilocalfunciona.io/instalando-y-probando-docker-en-windows-10/)
+* 📥[Git](http://git-scm.com/download/win)
+
+### Instalación 🔧
+
+_Para obtener un entorno de desarrollo dependiendo de nuestro sistema operativo de trabajo tenemos los siguientes Scripts :_
+
+#### Ubuntu :penguin: ####
+*[Script ubuntu](https://drive.google.com/file/d/1hqxRU9xdjcdVNWD8YPVzTyIQtQZkBbkl/view?usp=sharing)
+#### Windows 10 ####
+*[Script Windows](https://drive.google.com/file/d/1l-LMBZNxvrN3WRVxz6gx7LM1RArV7qNm/view?usp=sharing)
+
+Estos scripts crearan una carpeta Proyectos que contiene los dos repositorios, para conocer como desplegar el entorno de desarrollo o produccion dirijase al siguiente apartado.
+## Despliegue 📦
+
+_Agrega notas adicionales sobre como hacer deploy_
+
+## Manuales 📖
+
+Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Manual]() ** EN CONSTRUCCION 🛠 **
+
+## Autores ✒️
+
+* **Luis Quesada** - *Front & Back hasta v1.0* - [Luis Quesada Romero](https://github.com/kherop) 
+* **Dario Leon** - *Full Stack desde v1.0 * - [Dario Leon Gonzalez](https://github.com/darioL506) 
+* **Israel Molina** - *Full Stack desde v1.0 * - [Israel Molina Pulpon](https://github.com/TP01AB) 
+---
