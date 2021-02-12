@@ -10,19 +10,6 @@
 <p align="center"> CIFP Virgen de Gracia</p>
 <a href="https://cifpvirgendegracia.com/"><p align="center"><img src="https://cifpvirgendegracia.com/wp-content/uploads/2019/11/LogoIcon.png"/></p> </a>
 
-# Descripcion
-
-Se trata de una web para dar visibiliad laboral a los actuales y antiguos estudiantes , para facilitar la insercion laboral en empresas de confianza del centro CIFP Virgen de Gracia.
-
-## Tabla de contenido
-
-- [Comienzo](#Comenzando).
-- [Pre-requisitos](#Pre-requisitos).
-- [Instalacion](#Instalacion).
-- [Despliegue](#Despliegue).
-- [Manuales](#Manuales).
-- [Autores](#Autores).
-
 ## Comenzando 🚀
 
 El proyecto consta de dos repositorios :
@@ -40,7 +27,7 @@ _Los requisitos en este proyecto son tener instalados las siguientes herramienta
 * :whale:[Docker](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-es)
 * :whale2: [Docker-compose](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-compose-on-ubuntu-20-04-es)
 * 📥[Git](https://www.digitalocean.com/community/tutorials/how-to-install-git-on-ubuntu-20-04-es)
-* 🍀 [Script de pre-requisitos](https://drive.google.com/file/d/1zok1aGt1BMXPIWRKoAxVPNc23r-xm8L3/view?usp=sharing)
+* 🍀 [Script de pre-requisitos](https://drive.google.com/file/d/1rXfPjPWy2Db8DF9R8IaC9xe5nE3QZk06/view?usp=sharing)
 <<ejecutar anteriormente un sudo su>>
 #### Windows 10 ####
 #### Requiere la version 20h2  ####
@@ -53,15 +40,29 @@ _Los requisitos en este proyecto son tener instalados las siguientes herramienta
 _Para obtener un entorno de desarrollo dependiendo de nuestro sistema operativo de trabajo tenemos los siguientes Scripts :_
 
 #### Ubuntu :penguin: ####
-*[Script ubuntu](https://drive.google.com/file/d/1hqxRU9xdjcdVNWD8YPVzTyIQtQZkBbkl/view?usp=sharing)
+*[Script ubuntu](https://drive.google.com/file/d/1bFFBECh7blk9XCnkZxN-jiOHropmqsvF/view?usp=sharing)
 #### Windows 10 ####
-*[Script Windows](https://drive.google.com/file/d/1l-LMBZNxvrN3WRVxz6gx7LM1RArV7qNm/view?usp=sharing)
+*[Script Windows](https://drive.google.com/file/d/1eofeBkweaswPRB_jPlpxL2gqaAUuDdCa/view?usp=sharing)
 
 Estos scripts crearan una carpeta Proyectos que contiene los dos repositorios, para conocer como desplegar el entorno de desarrollo o produccion dirijase al siguiente apartado.
 ## Despliegue 📦
 
-_Agrega notas adicionales sobre como hacer deploy_
-
+El despliegue variara dependiendo de nuestro sistema operativo .
+  -Desarrollo 
+      *Ubuntu:
+          1º Descargar el [Script](https://drive.google.com/file/d/1pPxc-gNklaX5URKry5OQj4j3fnElPPTZ/view?usp=sharing) y colocarlo en la carpeta Proyectos.
+          2º Ejecutar el Script.
+      **SCRIPT para montar todo el entorno en un 1 paso--> [AQUI](https://drive.google.com/file/d/1UBv8UT2xEeVqN2JBM1uTuqQ2CSahsj4I/view?usp=sharing), colocar en la carpeta donde quieres desplegar el proyecto.
+      *Windows:
+          1º Abrir la ruta C:/Windows/System32/drivers/etc y modificar el archivo hosts para añadir las siguientes lineas:
+              "127.0.0.1 bolsatrabajo.com"  añadir sin comillas
+              "127.0.0.1 phpmyadmin.com" añadir sin comillas
+          2º Descargar el [Script](https://drive.google.com/file/d/1E2pKfvBHnpwTJ1Iy_Cm_5NEF7hNolgMb/view?usp=sharing) y colocarlo en la carpeta Proyectos.
+          3º Abrir Docker-desktop.
+          4º Ejecutar el Script.
+          
+  Con estos pasos tendremos desplegado un entorno de desarrollo donde podremos observar la web bolsatrabajo.com  y  ver la BBDD a traves del phpmyadmin.com.     
+   
 ## Manuales 📖
 
 Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Manual]() ** EN CONSTRUCCION 🛠 **
