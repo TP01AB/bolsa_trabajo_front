@@ -83,7 +83,7 @@
         <div class="form-group col-md-6">
             <label>Rama</label>
             <select formControlName="area" class="form-control" [class]="isValidField('area')">
-                <option *ngFor="let area of areas">{{year}}</option>
+                <option *ngFor="let area of parent" value="{{area.id}}">{{area.description}}</option>
                 <!--<option value="informatica">Informatica</option>
                 <option value="comercio">Comercio</option>-->
             </select>

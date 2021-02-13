@@ -78,17 +78,17 @@ export class RegisterComponent implements OnInit {
           (data: any) =>{ 
             //Si correcto inserto alumno
             userId = data.message.user.id;
-            console.log("User id: "+userId);
-            console.log("success!", data);
+            //console.log("User id: "+userId);
+            //console.log("success!", data);
             var aux = JSON.parse(this.perfilAl.toJason());
-            console.log(aux);
-            aux['id'] = 0;
+            //console.log(aux);
+            aux['id'] = data.message.user.id;
             var json = JSON.stringify(aux);
             this.registerUser.registerChild(json,tipo).subscribe(
-              (response: any) => {
+              (response: any)=> {
                 console.log("success!", response);
               },
-              error => console.error("couldn't post because", error)
+              error => console.error("couldn't post because", error);
             )
           },
           error => console.error("couldn't post because", error)        

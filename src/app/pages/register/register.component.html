@@ -52,7 +52,7 @@
                     </div>
                     <div class="col-10 col-sm-8 p-0 mx-auto" *ngIf="registerForm.get('condicion').value === 'student'"
                         [@inOutAnimation]>
-                        <perfil-al [areas]="areas"></perfil-al>
+                        <perfil-al [parent]="areas"></perfil-al>
                     </div>
                     <div class="col-10 col-sm-8 p-0 mx-auto" *ngIf="registerForm.get('condicion').value === 'company'"
                         [@inOutAnimation]>

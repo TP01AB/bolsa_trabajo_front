@@ -13,7 +13,7 @@ import { FormsFunctionsService } from 'src/app/shared/services/forms-functions.s
 })
 export class PerfilAlComponent implements OnInit {  
 
-  @Input() areas;
+  @Input() parent;
   model: NgbDateStruct;
   contactForm: FormGroup;
 
@@ -26,8 +26,8 @@ export class PerfilAlComponent implements OnInit {
   constructor(private fb: FormBuilder, private insertService: InsertStudentService, private gestorForm: FormsFunctionsService) { }
 
   ngOnInit(): void {
-    this.initForm();
-    console.log("areas: "+this.areas);
+    this.initForm();    
+    console.log("areas: "+this.parent);
   }
 
   onSubmit() {
