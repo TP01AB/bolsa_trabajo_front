@@ -88,7 +88,7 @@ export class RegisterComponent implements OnInit {
               (response: any)=> {
                 console.log("success!", response);
               },
-              error => console.error("couldn't post because", error);
+              error => console.error("couldn't post because", error)
             )
           },
           error => console.error("couldn't post because", error)        
