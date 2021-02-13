@@ -1,5 +1,5 @@
 import { RegisterService } from './services/register.service';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { PerfilAlComponent } from '../alumno/perfil/perfil-al.component';
 import { FormsFunctionsService } from 'src/app/shared/services/forms-functions.service';
@@ -34,6 +34,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+
+  areas;
   registerForm: FormGroup;  
 
   @ViewChild(PerfilAlComponent) private perfilAl: PerfilAlComponent;
@@ -43,6 +45,13 @@ export class RegisterComponent implements OnInit {
   isEmail = /\S+@\S+\.\S+/;
 
   ngOnInit(): void {
+    this.registerUser.getAreas().subscribe(
+      (response: any) => {
+        this.areas = response;        
+        console.log(this.areas);
+      },
+      error => console.log(error)
+    )
     this.initForm();
   }
 
@@ -62,21 +71,43 @@ export class RegisterComponent implements OnInit {
 
   onSave(): void {    
     var tipo = this.registerForm.get('condicion').value
+    let userId = null;
     if(tipo == 'student') {        
       if (this.registerForm.valid && this.perfilAl.validate()==1) {
-        this.registerUser.registerUser(this.gestorForm.toJason(this.registerForm), this.perfilAl.toJason(), tipo);
+        this.registerUser.registerUser(this.gestorForm.toJason(this.registerForm)).subscribe(
+          (data: any) =>{ 
+            //Si correcto inserto alumno
+            userId = data.message.user.id;
+            console.log("User id: "+userId);
+            console.log("success!", data);
+            var aux = JSON.parse(this.perfilAl.toJason());
+            console.log(aux);
+            aux['id'] = 0;
+            var json = JSON.stringify(aux);
+            this.registerUser.registerChild(json,tipo).subscribe(
+              (response: any) => {
+                console.log("success!", response);
+              },
+              error => console.error("couldn't post because", error)
+            )
+          },
+          error => console.error("couldn't post because", error)        
+        );
       } else {
         this.perfilAl.validate();                       
         this.gestorForm.validate(this.registerForm);
       }
     }
+    /*
     if(tipo == 'company') {        
       if (this.registerForm.valid && this.perfilEmp.validate()==1) {
-        this.registerUser.registerUser(this.gestorForm.toJason(this.registerForm), this.perfilEmp.toJason(), tipo);
+        var userId = null;
+        this.registerUser.registerUser(this.gestorForm.toJason(this.registerForm));
+          
       } else {
         this.perfilEmp.validate();                       
         this.gestorForm.validate(this.registerForm);
       }
-    }
+    }*/
   }
 }

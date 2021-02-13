@@ -7,28 +7,37 @@ import { FormGroup } from '@angular/forms';
 })
 export class RegisterService {
 
+  message: string;
+  userId = null;
+
   constructor(private http: HttpClient) { }
-
-  public registerUser(jsonFather: String, jsonChild: String, tipo: String) {    
-
-    let json = jsonFather;
-
-    console.log(json);
-
-    if(tipo == 'student') {
-      console.log(jsonChild);
-    }
-    if(tipo == 'company') {
-      console.log(jsonChild);
-    }
+  
+  public registerUser(jsonFather: string) {
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
-    });
+    });    
 
-    /*this.http.post("http://127.0.0.1:8000/api/register", json, { headers: headers }).subscribe(
-      data => console.log("success!", data),
-      error => console.error("couldn't post because", error)
-    )*/
+    console.log(jsonFather);
+
+    return this.http.post("http://localhost:3021/api/register", jsonFather, { headers: headers });          
+  }
+
+  public registerChild(jsonChild: string, tipo: String) {
+    console.log(jsonChild);
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });    
+
+    return this.http.post("http://localhost:3021/api"+"/"+tipo+"/insert", jsonChild, { headers: headers });
+  }
+
+  public getAreas() {
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    }); 
+
+    return this.http.get("http://localhost:3021/api/areas",{ headers: headers });
   }
 }

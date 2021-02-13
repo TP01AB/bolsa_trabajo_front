@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -13,6 +13,7 @@ import { FormsFunctionsService } from 'src/app/shared/services/forms-functions.s
 })
 export class PerfilAlComponent implements OnInit {  
 
+  @Input() areas;
   model: NgbDateStruct;
   contactForm: FormGroup;
 
@@ -25,7 +26,8 @@ export class PerfilAlComponent implements OnInit {
   constructor(private fb: FormBuilder, private insertService: InsertStudentService, private gestorForm: FormsFunctionsService) { }
 
   ngOnInit(): void {
-    this,this.initForm();
+    this.initForm();
+    console.log("areas: "+this.areas);
   }
 
   onSubmit() {
