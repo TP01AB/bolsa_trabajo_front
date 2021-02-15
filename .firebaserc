@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "bolsa-trabajo-vg": {
+      "hosting": {
+        "bolsaTrabajoFront": [
+          "bolsa-trabajo-vg"
+        ]
+      }
+    }
+  }
+}
