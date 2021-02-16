@@ -27,7 +27,6 @@ export class PerfilAlComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();    
-    console.log("areas: "+this.parent);
   }
 
   onSubmit() {

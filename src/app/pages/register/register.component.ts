@@ -35,7 +35,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class RegisterComponent implements OnInit {
 
-  areas;
+  areas = [];
   registerForm: FormGroup;  
 
   @ViewChild(PerfilAlComponent) private perfilAl: PerfilAlComponent;
@@ -45,14 +45,15 @@ export class RegisterComponent implements OnInit {
   isEmail = /\S+@\S+\.\S+/;
 
   ngOnInit(): void {
+    this.areas=null;
     this.registerUser.getAreas().subscribe(
       (response: any) => {
         this.areas = response;        
-        console.log(this.areas);
+        //console.log(this.areas);
+        this.initForm();
       },
       error => console.log(error)
     )
-    this.initForm();
   }
 
   initForm() {

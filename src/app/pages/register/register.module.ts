@@ -6,6 +6,7 @@ import { RegisterComponent } from './register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PerfilAlModule } from '../alumno/perfil/perfil-al.module';
 import { CrearPerfilModule } from '../company/crear-perfil/crear-perfil.module';
+import { LoadSpinnerModule } from 'src/app/shared/load-spinner/load-spinner.module';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { CrearPerfilModule } from '../company/crear-perfil/crear-perfil.module';
     FormsModule,
     ReactiveFormsModule,
     PerfilAlModule,
-    CrearPerfilModule
+    CrearPerfilModule,
+    LoadSpinnerModule
   ],
   exports:[RegisterComponent]
 })
