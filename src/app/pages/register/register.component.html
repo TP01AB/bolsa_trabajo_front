@@ -6,7 +6,7 @@
         <div class="col-10">
             <div class="card">
                 <div class="card-header  bg-info ">
-                    <h2 class="card-title text-white mb-0">Registro</h2>
+                    <h1 class="card-title text-white mb-0">Registro</h1>
                 </div>
                 <div class="card-body"></div>
                 <form [formGroup]="registerForm" novalidate (ngSubmit)="onSave()" class="mt-4 mb-4" method="POST">
@@ -14,7 +14,7 @@
                         <div class="form-group col-10 col-sm-8 mx-auto">
                             <label>E-mail:</label>
                             <input type="email" class="form-control" formControlName="email"
-                                [class]="isValidField('email')">
+                                [class]="isValidField('email')" aria-label="Email para registro">
                             <div class="invalid-feedback">
                                 <span *ngIf="registerForm.get('email').errors?.required">
                                     Por favor introduzca su E-mail
@@ -31,8 +31,8 @@
                         <div class="form-group col-10 col-sm-8 mx-auto">
                             <label>Contraseña:</label>
                             <input type="password" class="form-control" formControlName="password"
-                                [class]="isValidField('password')">
-                            <div class="invalid-feedback">
+                                [class]="isValidField('password')" aria-label="Contraseña deseada">
+                            <div class="invalid-feedback" >
                                 <span *ngIf="registerForm.get('password').errors?.required">
                                     Por favor introduzca su contraseña.
                                 </span>
@@ -47,7 +47,8 @@
                     <div class="form-row">
                         <div class="form-group col-10 col-sm-8 mx-auto">
                             <label>Seleccione el tipo: </label>
-                            <select name="tipo" formControlName="condicion">
+                            <select name="tipo" formControlName="condicion" 
+                                aria-label="Selecciona si eres alumno o empresa">
                                 <option value="student">Alumno</option>
                                 <option value="company">Empresa</option>
                             </select>
