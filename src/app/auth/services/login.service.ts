@@ -30,7 +30,7 @@ export class LoginService {
    * Petición de login
    * */
   public login = (email: string, password: string) => {
-    const url = "http://localhost:8000/api/login";
+    const url = "http://localhost:3021/api/login";
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ export class LoginService {
         this.router.navigate(['/admin/dashboard']);
         break;
       case 3:
-        this.router.navigate(['/admin/dashboard']);
+        this.router.navigate(['/alumno/dashboard']);
         break;
       case 4:
         this.router.navigate(['/empresa/dashboard']);
