@@ -5,7 +5,7 @@ import { FormGroup } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
-export class InsertStudentService {
+export class StudentProfileService {
 
   constructor(private http: HttpClient) { }
 
