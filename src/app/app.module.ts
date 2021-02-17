@@ -14,7 +14,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalStudentComponent } from './pages/company/studens-view/modal-student/modal-student.component';
 import { StudensViewComponent } from './pages/company/studens-view/studens-view.component';
 import { CrearPerfilComponent } from './pages/company/crear-perfil/crear-perfil.component';
-import { PerfilAlComponent } from './pages/alumno/perfil/perfil-al.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
 import { OfferDeleteComponent } from './pages/company/company-offer/modal/offer-delete/offer-delete.component';
@@ -24,6 +23,8 @@ import { CompanyOfferComponent } from './pages/company/company-offer/company-off
 import { CompanyDashboardComponent } from './pages/company/company-dashboard/company-dashboard.component';
 import { OfferDuplicateComponent } from './pages/company/company-offer/modal/offer-duplicate/offer-duplicate.component';
 import { StudentDashboardComponent } from './pages/alumno/student-dashboard/student-dashboard.component';
+import { PerfilAlModule } from './pages/alumno/perfil/perfil-al.module';
+import { ViewProfileComponent } from './pages/alumno/view-profile/view-profile.component';
 
 
 @NgModule({
@@ -36,7 +37,6 @@ import { StudentDashboardComponent } from './pages/alumno/student-dashboard/stud
     AdminDashboardComponent,
     StudensViewComponent,
     ModalStudentComponent,
-    PerfilAlComponent,
     CompanyDashboardComponent,
     CompanyOfferComponent,
     OfferNewComponent,
@@ -45,6 +45,7 @@ import { StudentDashboardComponent } from './pages/alumno/student-dashboard/stud
     LoginComponent,
     OfferDuplicateComponent,
     StudentDashboardComponent,
+    ViewProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +54,8 @@ import { StudentDashboardComponent } from './pages/alumno/student-dashboard/stud
     CrearPerfilModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PerfilAlModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

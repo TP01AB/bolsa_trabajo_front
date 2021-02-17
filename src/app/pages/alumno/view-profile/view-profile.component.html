@@ -1,0 +1,7 @@
+<div class="container" *ngIf="can == false" class=" container my-3">
+    <!--<app-load-spinner></app-load-spinner>-->
+    Cargando
+</div>
+<div class="container" *ngIf="can == true">
+    <perfil-al [parent]="data"></perfil-al>
+</div>

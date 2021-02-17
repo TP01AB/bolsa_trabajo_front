@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { StudentProfileService } from '../services/student-profile.service';
@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class PerfilAlComponent implements OnInit {  
 
+  @Input() parent;
   model: NgbDateStruct;
   contactForm: FormGroup;
 
@@ -22,13 +23,11 @@ export class PerfilAlComponent implements OnInit {
   //private isPhone = "^(?:(?:\\+|00)?34)?[67]\\d{8}$$"
   private isPhone = "^[67]\\d{8}$$"
 
-  constructor(private fb: FormBuilder, private ProfileService: StudentProfileService, private loginService: LoginService, private router: Router) { }
+  constructor(private fb: FormBuilder, private ProfileService: StudentProfileService, private loginService: LoginService, public router: Router) { }
 
   ngOnInit(): void {
-    if(this.router.url.indexOf('alumno/perfil') > -1) {
-
-    }
-    this,this.initForm();
+    console.log(parent);
+    this.initForm();
   }
 
   onSubmit() {

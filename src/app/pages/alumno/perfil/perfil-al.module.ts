@@ -10,7 +10,9 @@ import { NgbDate, NgbModule } from '@ng-bootstrap/ng-bootstrap';
   declarations: [PerfilAlComponent],
   imports: [
     CommonModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     PerfilAlComponent

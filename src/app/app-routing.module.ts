@@ -11,6 +11,7 @@ import { CompanyDashboardComponent } from './pages/company/company-dashboard/com
 import { CompanyOfferComponent } from './pages/company/company-offer/company-offer.component';
 import { LoginComponent } from './auth/login/login.component';
 import { StudentDashboardComponent } from './pages/alumno/student-dashboard/student-dashboard.component';
+import { ViewProfileComponent } from './pages/alumno/view-profile/view-profile.component';
 
 
 const routes: Routes = [
@@ -27,7 +28,7 @@ const routes: Routes = [
   {path: 'empresa/dashboard', component: CompanyDashboardComponent},
 
   //Rutas alumno
-  {path: 'alumno/perfil', component: PerfilAlComponent},
+  {path: 'alumno/perfil', component: ViewProfileComponent},
   {path: 'alumno/dashboard', component: StudentDashboardComponent},
   {path: 'alumno/oferta-view', component: StudentOfferViewComponent},
   { path: 'empresa/Crearperfil', loadChildren: () => import('./pages/company/crear-perfil/crear-perfil.module').then(m => m.CrearPerfilModule) },
