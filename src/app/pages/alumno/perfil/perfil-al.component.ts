@@ -50,8 +50,15 @@ export class PerfilAlComponent implements OnInit {
   onSubmit() {
     if (this.contactForm.valid) {
 
-      this.ProfileService.insertStudent(this.contactForm);            
-
+      this.ProfileService.updateStudent(this.contactForm).subscribe(
+        (response: any) => {
+          console.log(response);  
+          this.router.navigate(['/alumno/dashboard']);        
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );            
     } else {
       console.log('Not valid')
       Object.keys(this.contactForm.controls).forEach(field => {

@@ -39,4 +39,17 @@ export class StudentProfileService {
     return this.http.get(url + studentId, { headers: headers });
   }
 
+  public updateStudent(contactForm: FormGroup) {
+
+    let jsonForm = contactForm.getRawValue();
+    
+    let json = JSON.stringify(jsonForm);
+
+    const url = "http://localhost:3021/api/student/";
+    let headers = new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
+    return this.http.put(url + this.loginService.user.user_id, json, { headers: headers });
+  }
 }
