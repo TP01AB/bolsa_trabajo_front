@@ -10,6 +10,7 @@ import { CrearPerfilComponent } from './pages/company/crear-perfil/crear-perfil.
 import { CompanyDashboardComponent } from './pages/company/company-dashboard/company-dashboard.component';
 import { CompanyOfferComponent } from './pages/company/company-offer/company-offer.component';
 import { LoginComponent } from './auth/login/login.component';
+import { StudentDashboardComponent } from './pages/alumno/student-dashboard/student-dashboard.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
 
   //Rutas alumno
   {path: 'alumno/perfil', component: PerfilAlComponent},
+  {path: 'alumno/dashboard', component: StudentDashboardComponent},
   {path: 'alumno/oferta-view', component: StudentOfferViewComponent},
   { path: 'empresa/Crearperfil', loadChildren: () => import('./pages/company/crear-perfil/crear-perfil.module').then(m => m.CrearPerfilModule) },
   { path: 'registro', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
