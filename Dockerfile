@@ -4,8 +4,7 @@ FROM node:alpine
 # Change directory so that our commands run inside this new directory
 
 WORKDIR /app
-RUN apk add --update nodejs npm
-RUN echo $PATH
+COPY  . /app
 # Serve the app
 COPY ./init.sh /usr/bin/
 #ENTRYPOINT ["sh","/usr/local/bin/init.sh"]

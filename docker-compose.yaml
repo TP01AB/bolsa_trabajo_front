@@ -14,7 +14,7 @@ services:
     privileged: true
 
   angular:
-    build: .
+    image: isra9shadow/bolsatrabajofront:v0.1
     container_name: nginxAngular
     volumes:
       - ".:/app"
