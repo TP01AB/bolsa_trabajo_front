@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
 })
 export class PerfilAlComponent implements OnInit {  
 
-  @Input() parent: any;
+  @Input() parent;
+  @Input() parent2: any;
   data;
   model: NgbDateStruct;
   contactForm: FormGroup;
@@ -27,12 +28,12 @@ export class PerfilAlComponent implements OnInit {
   constructor(private fb: FormBuilder, private ProfileService: StudentProfileService, private loginService: LoginService, public router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.parent.constructor.name);
-    this.data = JSON.parse(this.parent)
-    console.log(this.data);
-    console.log(this.data.birthdate);
-    this.initForm();
-    if(this.router.url === '/alumno/perfil') {
+    if(this.router.url === '/alumno/perfil') {      
+      console.log(this.parent2);
+      this.data = JSON.parse(this.parent2)
+      console.log(this.data);
+      console.log(this.data.birthdate);
+      this.initForm();      
       this.contactForm.patchValue({
         name: this.data.name,
         lastName: this.data.lastnames,                  
@@ -41,6 +42,8 @@ export class PerfilAlComponent implements OnInit {
         birthdate: this.data.birthdate,     
         aptitudes: this.data.aptitudes
       })      
+    } else {
+      this.initForm();      
     }
   }
 

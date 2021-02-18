@@ -28,4 +28,13 @@ export class RegisterService {
       error => console.error("couldn't post because", error)
     )
   }
+
+  public getAreas() {
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    }); 
+
+    return this.http.get("http://localhost:3021/api/areas",{ headers: headers });
+  }
 }
