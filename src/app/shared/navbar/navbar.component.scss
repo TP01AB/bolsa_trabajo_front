@@ -1,7 +1,14 @@
 ul {
     li {
         a {
-            color: #fff;
+            color: gainsboro;
+            font-weight: bold;
+            font-size: 20px;
         }
     }
+}
+
+.navbar {
+    box-shadow: 5px 5px 25px gray;
+    opacity: 95%; //90%
 }
