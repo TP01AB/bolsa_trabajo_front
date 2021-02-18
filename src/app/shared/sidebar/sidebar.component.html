@@ -11,13 +11,16 @@
       <li>
         <a href="#profile-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle collapsed">
           <svg class="bi text-info" width="20" height="20" fill="currentColor">
-            <use xlink:href="bootstrap-icons.svg#person"/>
+            <use xlink:href="bootstrap-icons.svg#person" />
           </svg>
           Perfil
         </a>
         <ul class="list-unstyled collapse" id="profile-submenu">
           <li>
-            <a href="#">Page 1</a>
+            <a *ngIf="rol_id==1" href="#">Ver perfil</a>
+            <a *ngIf="rol_id==2" href="#">Ver perfil</a>
+            <a *ngIf="rol_id==3" routerLink="../perfil">Ver perfil</a>
+            <a *ngIf="rol_id==4" href="">Ver perfil</a>
           </li>
           <li>
             <a href="#">Page 2</a>
@@ -30,7 +33,7 @@
       <li>
         <a href="#offer-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
           <svg class="bi text-info" width="20" height="20" fill="currentColor">
-            <use xlink:href="bootstrap-icons.svg#clipboard-data"/>
+            <use xlink:href="bootstrap-icons.svg#clipboard-data" />
           </svg>
           Ofertas
         </a>
@@ -49,7 +52,7 @@
       <li>
         <a href="#company-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
           <svg class="bi text-info" width="20" height="20" fill="currentColor">
-            <use xlink:href="bootstrap-icons.svg#briefcase"/>
+            <use xlink:href="bootstrap-icons.svg#briefcase" />
           </svg>
           Empresas
         </a>
