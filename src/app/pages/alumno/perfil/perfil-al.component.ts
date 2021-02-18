@@ -13,7 +13,8 @@ import { Router } from '@angular/router';
 })
 export class PerfilAlComponent implements OnInit {  
 
-  @Input() parent;
+  @Input() parent: any;
+  data;
   model: NgbDateStruct;
   contactForm: FormGroup;
 
@@ -26,8 +27,21 @@ export class PerfilAlComponent implements OnInit {
   constructor(private fb: FormBuilder, private ProfileService: StudentProfileService, private loginService: LoginService, public router: Router) { }
 
   ngOnInit(): void {
-    console.log(parent);
+    console.log(this.parent.constructor.name);
+    this.data = JSON.parse(this.parent)
+    console.log(this.data);
+    console.log(this.data.birthdate);
     this.initForm();
+    if(this.router.url === '/alumno/perfil') {
+      this.contactForm.patchValue({
+        name: this.data.name,
+        lastName: this.data.lastnames,                  
+        dni: this.data.dni,
+        phone: this.data.phone,   
+        birthdate: this.data.birthdate,     
+        aptitudes: this.data.aptitudes
+      })      
+    }
   }
 
   onSubmit() {
@@ -56,6 +70,7 @@ export class PerfilAlComponent implements OnInit {
   }
 
   private initForm():void {
+    
     this.contactForm = this.fb.group({
       name: ['',[Validators.required, Validators.pattern(this.isName)]],
       lastName: ['',[Validators.required, Validators.pattern(this.isName)]],      
@@ -65,6 +80,7 @@ export class PerfilAlComponent implements OnInit {
       area:['',Validators.required],
       aptitudes: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
     })
+
   }
 
 }

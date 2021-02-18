@@ -3,9 +3,7 @@
         <div class="form-group col-md-6">
             <label>Nombre:</label>
             <input type="text" class="form-control" placeholder="Nombre" formControlName="name"
-                [class]="isValidField('name')" aria-label="Introduzca su nombre" *ngIf="!router.isActive('/alumno/perfil')">
-            <input type="text" class="form-control" placeholder="Nombre" formControlName="name" value="parent.name"
-                [class]="isValidField('name')" aria-label="Introduzca su nombre" *ngIf="router.isActive('/alumno/perfil')">
+                [class]="isValidField('name')" aria-label="Introduzca su nombre" value="this.parent.name">
             <div class="invalid-feedback">
                 <span *ngIf="contactForm.get('name').errors?.required">
                     Por favor introduzca su nombre
@@ -50,11 +48,12 @@
             </div>
         </div>
         <div class="form-group col-md-6">
-            <label>Fecha de nacimiento:</label>
-            <div class="input-group">                
+            <label>Fecha de nacimiento:{{data.birthdate}}</label>
+            <div class="input-group">
                 <input type="text" class="form-control" placeholder="Fecha de nacimiento" formControlName="birthdate"
-                    [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')"
-                    aria-label="Introduzca su fecha de nacimiento con el formato año-mes-día">
+                    ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')"
+                    aria-label="Introduzca su fecha de nacimiento con el formato año-mes-día"
+                    value="{{data.birthdate}}">
                 <div class="input-group-append ">
                     <!--Poner icono manual-->
                     <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
@@ -101,8 +100,8 @@
     </div>
     <div class="form-group">
         <label>Aptitudes:</label>
-        <textarea rows="3" class="form-control" formControlName="aptitudes"
-            [class]="isValidField('aptitudes')" aria-label="Introduzca sus aptitudes"></textarea>
+        <textarea rows="3" class="form-control" formControlName="aptitudes" [class]="isValidField('aptitudes')"
+            aria-label="Introduzca sus aptitudes"></textarea>
         <div class="invalid-feedback">
             <span *ngIf="contactForm.get('aptitudes').errors?.required">
                 Por favor introduzca sus aptitudes
@@ -117,5 +116,5 @@
             </span>
         </div>
     </div>
-    <button *ngIf="router.isActive('/alumno/perfil')" type="submit" class="btn btn-primary btn-block">Confirmar</button>
+    <button *ngIf="router.url === '/alumno/perfil'" type="submit" class="btn btn-primary btn-block">Confirmar</button>
 </form>
