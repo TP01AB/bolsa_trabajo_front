@@ -1,118 +1,119 @@
-<div class="container mb-5">
-    <form novalidate (ngSubmit)="onSubmit()" [formGroup]="contactForm">
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <input type="text" class="form-control" placeholder="Nombre" formControlName="name"
-                    [class]="isValidField('name')">
-                <div class="invalid-feedback">
-                    <span *ngIf="contactForm.get('name').errors?.required">
-                        Por favor introduzca su nombre
-                    </span>
-                </div>
-                <div class="invalid-feedback">
-                    <span *ngIf="contactForm.get('name').errors?.pattern">
-                        Por favor introduzca su nombre correctamente
-                    </span>
-                </div>
-            </div>
-            <div class="form-group col-md-6">
-                <input type="text" class="form-control" placeholder="Apellido" formControlName="lastName"
-                    [class]="isValidField('lastName')">
-                <div class="invalid-feedback">
-                    <span *ngIf="contactForm.get('lastName').errors?.required">
-                        Por favor introduzca su apellido
-                    </span>
-                </div>
-                <div class="invalid-feedback">
-                    <span *ngIf="contactForm.get('lastName').errors?.pattern">
-                        Por favor introduzca sus apellidos correctamente
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <input type="text" class="form-control" placeholder="DNI" formControlName="dni"
-                    [class]="isValidField('dni')">
-                <div class="invalid-feedback">
-                    <span *ngIf="contactForm.get('dni').errors?.required">
-                        Por favor introduzca su dni
-                    </span>
-                </div>
-                <div class="invalid-feedback">
-                    <span *ngIf="contactForm.get('dni').errors?.pattern">
-                        Por favor introduzca su DNI correctamente
-                    </span>
-                </div>
-            </div>
-            <div class="form-group col-md-6">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Fecha de nacimiento"
-                        formControlName="birthdate" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"
-                        [class]="isValidField('birthdate')">
-                    <div class="input-group-append ">
-                        <!--Poner icono manual-->
-                        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-                            <svg class="bi text-info" width="23" height="23" fill="currentColor">
-                                <use xlink:href="bootstrap-icons.svg#calendar-date" />
-                            </svg>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="invalid-feedback">
-                    <span *ngIf="contactForm.get('birthdate').errors?.required">
-                        Debe introducir una fecha
-                    </span>
-                </div>
-            </div>            
-        </div>
-        <div class="form-row">
-            <div class="form-group col-md-6"> 
-                <label>Telefono móvil</label>               
-                <input type="text" formControlName="phone" class="form-control" [class]="isValidField('phone')">                    
-                <div class="invalid-feedback">
-                    <span *ngIf="contactForm.get('phone').errors?.required">
-                        Debe introducir un número de móvil
-                    </span>
-                </div>
-                <div class="invalid-feedback">
-                    <span *ngIf="contactForm.get('phone').errors?.pattern">
-                        Debe introducir un número válido
-                    </span>
-                </div>
-            </div>
-            <div class="form-group col-md-6">
-                <label>Rama</label>
-                <select formControlName="area" class="form-control" [class]="isValidField('area')">
-                    <option value="informatica">Informatica</option>
-                    <option value="comercio">Comercio</option>
-                </select>
-                <div class="invalid-feedback">
-                    <span *ngIf="contactForm.get('area').errors?.required">
-                        Debe elegir una opción
-                    </span>
-                </div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Aptitudes</label>
-            <textarea rows="3" class="form-control" formControlName="aptitudes"
-                [class]="isValidField('aptitudes')"></textarea>
+<form novalidate (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Nombre:</label>
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="name"
+                [class]="isValidField('name')" aria-label="Introduzca su nombre">
             <div class="invalid-feedback">
-                <span *ngIf="contactForm.get('aptitudes').errors?.required">
-                    Por favor introduzca sus aptitudes
+                <span *ngIf="contactForm.get('name').errors?.required">
+                    Por favor introduzca su nombre
                 </span>
-                <span *ngIf="contactForm.get('aptitudes').errors?.minlength">
-                    Sus aptitudes deben contener mas de
-                    {{contactForm.get('aptitudes').errors?.minlength?.requiredLength}} carácteres
-                </span>
-                <span *ngIf="contactForm.get('aptitudes').errors?.maxlength">
-                    Sus aptitudes deben contener máximo
-                    {{contactForm.get('aptitudes').errors?.maxlength?.requiredLength}} carácteres
+            </div>
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('name').errors?.pattern">
+                    Por favor introduzca su nombre correctamente
                 </span>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Confirmar</button>
-    </form>
-</div>
+        <div class="form-group col-md-6">
+            <label>Apellidos:</label>
+            <input type="text" class="form-control" placeholder="Apellido" formControlName="lastName"
+                [class]="isValidField('lastName')" aria-label="Introduzca sus apellidos">
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('lastName').errors?.required">
+                    Por favor introduzca su apellido
+                </span>
+            </div>
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('lastName').errors?.pattern">
+                    Por favor introduzca sus apellidos correctamente
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>DNI:</label>
+            <input type="text" class="form-control" placeholder="DNI" formControlName="dni"
+                [class]="isValidField('dni')" aria-label="Introduzca su dni">
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('dni').errors?.required">
+                    Por favor introduzca su dni
+                </span>
+            </div>
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('dni').errors?.pattern">
+                    Por favor introduzca su DNI correctamente
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Fecha de nacimiento:</label>
+            <div class="input-group">                
+                <input type="text" class="form-control" placeholder="Fecha de nacimiento" formControlName="birthdate"
+                    [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')"
+                    aria-label="Introduzca su fecha de nacimiento con el formato año-mes-día">
+                <div class="input-group-append ">
+                    <!--Poner icono manual-->
+                    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+                        <svg class="bi text-info" width="23" height="23" fill="currentColor">
+                            <use xlink:href="bootstrap-icons.svg#calendar-date" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('birthdate').errors?.required">
+                    Debe introducir una fecha
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Telefono móvil:</label>
+            <input type="text" formControlName="phone" class="form-control" [class]="isValidField('phone')"
+                aria-label="Introduzca su teléfono móvil">
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('phone').errors?.required">
+                    Debe introducir un número de móvil
+                </span>
+            </div>
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('phone').errors?.pattern">
+                    Debe introducir un número válido
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Familia:</label>
+            <select formControlName="area" class="form-control" [class]="isValidField('area')" aria-label="Seleccione su modulo">
+                <option *ngFor="let area of parent" value="{{area.id}}">{{area.description}}</option>                
+            </select>
+            <div class="invalid-feedback">
+                <span *ngIf="contactForm.get('area').errors?.required">
+                    Debe elegir una opción
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Aptitudes:</label>
+        <textarea rows="3" class="form-control" formControlName="aptitudes"
+            [class]="isValidField('aptitudes')" aria-label="Introduzca sus aptitudes"></textarea>
+        <div class="invalid-feedback">
+            <span *ngIf="contactForm.get('aptitudes').errors?.required">
+                Por favor introduzca sus aptitudes
+            </span>
+            <span *ngIf="contactForm.get('aptitudes').errors?.minlength">
+                Sus aptitudes deben contener mas de
+                {{contactForm.get('aptitudes').errors?.minlength?.requiredLength}} carácteres
+            </span>
+            <span *ngIf="contactForm.get('aptitudes').errors?.maxlength">
+                Sus aptitudes deben contener máximo
+                {{contactForm.get('aptitudes').errors?.maxlength?.requiredLength}} carácteres
+            </span>
+        </div>
+    </div>
+</form>

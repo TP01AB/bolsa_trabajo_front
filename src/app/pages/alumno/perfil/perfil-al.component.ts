@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { InsertStudentService } from '../services/insert-student.service';
+import { FormsFunctionsService } from 'src/app/shared/services/forms-functions.service';
 
 
 @Component({
@@ -12,6 +13,7 @@ import { InsertStudentService } from '../services/insert-student.service';
 })
 export class PerfilAlComponent implements OnInit {  
 
+  @Input() parent;
   model: NgbDateStruct;
   contactForm: FormGroup;
 
@@ -21,24 +23,24 @@ export class PerfilAlComponent implements OnInit {
   //private isPhone = "^(?:(?:\\+|00)?34)?[67]\\d{8}$$"
   private isPhone = "^[67]\\d{8}$$"
 
-  constructor(private fb: FormBuilder, private http: HttpClient, private insertService: InsertStudentService) { }
+  constructor(private fb: FormBuilder, private insertService: InsertStudentService, private gestorForm: FormsFunctionsService) { }
 
   ngOnInit(): void {
-    this,this.initForm();
+    this.initForm();    
   }
 
   onSubmit() {
     if (this.contactForm.valid) {
-
       this.insertService.insertStudent(this.contactForm);            
-
-    } else {
-      console.log('Not valid')
-      Object.keys(this.contactForm.controls).forEach(field => {
-        const control = this.contactForm.get(field);
-        control.markAsTouched({ onlySelf: true });
-      });
     }
+  }
+
+  validate(): any {
+    return this.gestorForm.validate(this.contactForm);
+  }
+
+  toJason(): any {
+    return this.gestorForm.toJason(this.contactForm);
   }
 
   //Validacion

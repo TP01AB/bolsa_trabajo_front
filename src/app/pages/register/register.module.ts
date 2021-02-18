@@ -3,7 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { RegisterRoutingModule } from './register-routing.module';
 import { RegisterComponent } from './register.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PerfilAlModule } from '../alumno/perfil/perfil-al.module';
+import { CrearPerfilModule } from '../company/crear-perfil/crear-perfil.module';
+import { LoadSpinnerModule } from 'src/app/shared/load-spinner/load-spinner.module';
 
 
 @NgModule({
@@ -11,7 +14,11 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     RegisterRoutingModule,
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    PerfilAlModule,
+    CrearPerfilModule,
+    LoadSpinnerModule
   ],
   exports:[RegisterComponent]
 })

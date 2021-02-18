@@ -13,8 +13,6 @@ import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-das
 import { HttpClientModule } from '@angular/common/http';
 import { ModalStudentComponent } from './pages/company/studens-view/modal-student/modal-student.component';
 import { StudensViewComponent } from './pages/company/studens-view/studens-view.component';
-import { CrearPerfilComponent } from './pages/company/crear-perfil/crear-perfil.component';
-import { PerfilAlComponent } from './pages/alumno/perfil/perfil-al.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './auth/login/login.component';
 import { OfferDeleteComponent } from './pages/company/company-offer/modal/offer-delete/offer-delete.component';
@@ -23,7 +21,7 @@ import { OfferNewComponent } from './pages/company/company-offer/modal/offer-new
 import { CompanyOfferComponent } from './pages/company/company-offer/company-offer.component';
 import { CompanyDashboardComponent } from './pages/company/company-dashboard/company-dashboard.component';
 import { OfferDuplicateComponent } from './pages/company/company-offer/modal/offer-duplicate/offer-duplicate.component';
-import { StudentDashboardComponent } from './pages/alumno/student-dashboard/student-dashboard.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -35,8 +33,7 @@ import { StudentDashboardComponent } from './pages/alumno/student-dashboard/stud
     FooterComponent,
     AdminDashboardComponent,
     StudensViewComponent,
-    ModalStudentComponent,
-    PerfilAlComponent,
+    ModalStudentComponent,    
     CompanyDashboardComponent,
     CompanyOfferComponent,
     OfferNewComponent,
@@ -49,11 +46,11 @@ import { StudentDashboardComponent } from './pages/alumno/student-dashboard/stud
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,
-    CrearPerfilModule,
+    NgbModule,    
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
