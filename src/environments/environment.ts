@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  Laravel: "phpfpm:3021/",
+  Laravel: "http://localhost:3021/api/",
   production: false
 };
 

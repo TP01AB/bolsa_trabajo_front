@@ -48,12 +48,11 @@
             </div>
         </div>
         <div class="form-group col-md-6">
-            <label>Fecha de nacimiento:{{data.birthdate}}</label>
+            <label>Fecha de nacimiento:</label>
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Fecha de nacimiento" formControlName="birthdate"
                     ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')"
-                    aria-label="Introduzca su fecha de nacimiento con el formato año-mes-día"
-                    value="{{data.birthdate}}">
+                    aria-label="Introduzca su fecha de nacimiento con el formato año-mes-día">
                 <div class="input-group-append ">
                     <!--Poner icono manual-->
                     <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
