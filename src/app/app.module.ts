@@ -26,6 +26,7 @@ import { StudentDashboardComponent } from './pages/alumno/student-dashboard/stud
 import { PerfilAlModule } from './pages/alumno/perfil/perfil-al.module';
 import { ViewProfileComponent } from './pages/alumno/view-profile/view-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoadSpinnerModule } from './shared/load-spinner/load-spinner.module';
 
 
 @NgModule({
@@ -55,8 +56,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
     PerfilAlModule,
+    LoadSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

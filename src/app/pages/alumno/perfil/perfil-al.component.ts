@@ -4,6 +4,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { StudentProfileService } from '../services/student-profile.service';
 import { LoginService } from 'src/app/auth/services/login.service';
 import { Router } from '@angular/router';
+import { FormsFunctionsService } from 'src/app/shared/services/forms-functions.service';
 
 
 @Component({
@@ -25,7 +26,8 @@ export class PerfilAlComponent implements OnInit {
   //private isPhone = "^(?:(?:\\+|00)?34)?[67]\\d{8}$$"
   private isPhone = "^[67]\\d{8}$$"
 
-  constructor(private fb: FormBuilder, private ProfileService: StudentProfileService, private loginService: LoginService, public router: Router) { }
+  constructor(private fb: FormBuilder, private ProfileService: StudentProfileService, private loginService: LoginService, 
+    public router: Router, private gestorForm: FormsFunctionsService) { }
 
   ngOnInit(): void {
     if(this.router.url === '/alumno/perfil') {      

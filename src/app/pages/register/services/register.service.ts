@@ -40,13 +40,5 @@ export class RegisterService {
 
     return this.http.get("http://localhost:3021/api/areas",{ headers: headers });
   }
-
-  public getAreas() {
-
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    }); 
-
-    return this.http.get("http://localhost:3021/api/areas",{ headers: headers });
-  }
+  
 }
