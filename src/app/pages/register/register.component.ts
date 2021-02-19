@@ -5,6 +5,7 @@ import { PerfilAlComponent } from '../alumno/perfil/perfil-al.component';
 import { FormsFunctionsService } from 'src/app/shared/services/forms-functions.service';
 import { CrearPerfilComponent } from '../company/crear-perfil/crear-perfil.component';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   animations: [
@@ -41,7 +42,7 @@ export class RegisterComponent implements OnInit {
   @ViewChild(PerfilAlComponent) private perfilAl: PerfilAlComponent;
   @ViewChild(CrearPerfilComponent) private perfilEmp: CrearPerfilComponent;
 
-  constructor(private fb: FormBuilder, private registerUser: RegisterService, private gestorForm: FormsFunctionsService) { }
+  constructor(private fb: FormBuilder, private registerUser: RegisterService, private gestorForm: FormsFunctionsService, public router: Router) { }
   isEmail = /\S+@\S+\.\S+/;
 
   ngOnInit(): void {
@@ -114,6 +115,7 @@ export class RegisterComponent implements OnInit {
             this.registerUser.registerChild(json, tipo).subscribe(
               (response: any) => {
                 console.log("success!", response);
+                this.router.navigate(['/']);
               },
               error => console.error("couldn't post because", error)
             )

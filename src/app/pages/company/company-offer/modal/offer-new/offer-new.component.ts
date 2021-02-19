@@ -40,7 +40,7 @@ export class OfferNewComponent implements OnInit {
     }
     // Creo la oferta con los datos necesarios para ser guardados en la base de datos
     let offer = this.contactForm.value;
-    offer.company_id = parseInt(this.loginService.user.company_id);
+    //offer.company_id = parseInt(this.loginService.user.company_id);
 
     this.companyOfferService.storeOffer(offer).subscribe(
 
