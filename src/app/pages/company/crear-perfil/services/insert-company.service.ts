@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +24,7 @@ export class InsertCompanyService {
       'Content-Type': 'application/json',
     });
 
-    this.http.post("http://localhost:8000/api/student/insert", json, { headers: headers }).subscribe(
+    this.http.post(environment.Laravel + "student/insert", json, { headers: headers }).subscribe(
       data => console.log("success!", data),
       error => console.error("couldn't post because", error)
     )
