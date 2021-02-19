@@ -1,7 +1,6 @@
 import { CrearPerfilModule } from './pages/company/crear-perfil/crear-perfil.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app-component/app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -27,7 +26,7 @@ import { PerfilAlModule } from './pages/alumno/perfil/perfil-al.module';
 import { ViewProfileComponent } from './pages/alumno/view-profile/view-profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadSpinnerModule } from './shared/load-spinner/load-spinner.module';
-
+import { ViewProfileComponent2 } from './pages/company/view-profile/view-profile.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,7 @@ import { LoadSpinnerModule } from './shared/load-spinner/load-spinner.module';
     FooterComponent,
     AdminDashboardComponent,
     StudensViewComponent,
-    ModalStudentComponent,    
+    ModalStudentComponent,
     CompanyDashboardComponent,
     CompanyOfferComponent,
     OfferNewComponent,
@@ -48,17 +47,19 @@ import { LoadSpinnerModule } from './shared/load-spinner/load-spinner.module';
     OfferDuplicateComponent,
     StudentDashboardComponent,
     ViewProfileComponent,
+    ViewProfileComponent2
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule,    
+    NgbModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     PerfilAlModule,
-    LoadSpinnerModule
+    LoadSpinnerModule,
+    CrearPerfilModule
   ],
   providers: [],
   bootstrap: [AppComponent],

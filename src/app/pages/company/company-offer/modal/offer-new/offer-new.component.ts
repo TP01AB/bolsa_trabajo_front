@@ -36,14 +36,16 @@ export class OfferNewComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.contactForm.invalid) {
-        return;
+      return;
     }
     // Creo la oferta con los datos necesarios para ser guardados en la base de datos
     let offer = this.contactForm.value;
-    offer.company_id = parseInt(this.loginService.user.company_id);
+    //offer.company_id = parseInt(this.loginService.user.company_id);
 
     this.companyOfferService.storeOffer(offer).subscribe(
+
       (response: any) => {
+        console.log(response);
         this.storeOk.emit(true);
         this.activeModal.close();
       },
@@ -52,7 +54,7 @@ export class OfferNewComponent implements OnInit {
         this.storeOk.emit(false);
         this.activeModal.close();
       }
-    );    
+    );
 
   }
 
@@ -69,21 +71,21 @@ export class OfferNewComponent implements OnInit {
   }
 
   getAreas() {
-    this.areas= [];
+    this.areas = [];
     this.companyOfferService.getAreas().subscribe(
-        (response: any) => {
-            const areas = response;           
-            areas.forEach((element: { id: any; description: any }) => {
-                let area = {
-                    'id': element.id,
-                    'description': element.description,
-                };
-                this.areas.push(area);
-            });
-        },
-        (error) => {
-            console.log(error);
-        }
+      (response: any) => {
+        const areas = response;
+        areas.forEach((element: { id: any; description: any }) => {
+          let area = {
+            'id': element.id,
+            'description': element.description,
+          };
+          this.areas.push(area);
+        });
+      },
+      (error) => {
+        console.log(error);
+      }
     );
   }
 
@@ -91,7 +93,7 @@ export class OfferNewComponent implements OnInit {
   isValidField(field: string): string {
     const validatedField = this.contactForm.get(field);
     return (!validatedField.valid && validatedField.touched)
-        ? 'is-invalid' : validatedField.touched ? 'is-valid' : '';
-}
+      ? 'is-invalid' : validatedField.touched ? 'is-valid' : '';
+  }
 
 }

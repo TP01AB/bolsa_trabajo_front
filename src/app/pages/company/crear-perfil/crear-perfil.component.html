@@ -2,8 +2,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label>CIF:</label>
-            <input type="text" class="form-control" placeholder="CIF" formControlName="cif"
-                [class]="isValidField('cif')">
+            <input type="text" class="form-control" placeholder="CIF" formControlName="cif" [class]="isValidField('cif')">
             <div class="invalid-feedback">
                 <span *ngIf="companyInfoForm.get('cif').errors?.required">
                     Por favor introduzca su CIF
@@ -18,8 +17,7 @@
         <div class="form-group col-md-6 ">
             <label>Fecha de fundacion:</label>
             <div class="input-group">
-                <input class="form-control" placeholder="yyyy-mm-dd" formControlName="birthdate" [(ngModel)]="model"
-                    ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')">
+                <input class="form-control" placeholder="yyyy-mm-dd" formControlName="birthdate" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')">
                 <div class="input-group-append">
                     <!--Poner icono manual-->
                     <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button">
@@ -39,8 +37,7 @@
     <div class="form-row ">
         <div class="form-group col-md-6">
             <label>Nombre:</label>
-            <input type="text" class="form-control" placeholder="Nombre" formControlName="name"
-                [class]="isValidField('name')">
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="name" [class]="isValidField('name')">
             <div class=" invalid-feedback ">
                 <span *ngIf="companyInfoForm.get( 'name').errors?.required ">
                     Por favor introduzca su nombre
@@ -54,8 +51,7 @@
         </div>
         <div class="form-group col-md-6">
             <label>Sector:</label>
-            <input type="text " class="form-control " placeholder="Sector de trabajo " formControlName="sector"
-                [class]="isValidField('sector')">
+            <input type="text " class="form-control " placeholder="Sector de trabajo " formControlName="sector" [class]="isValidField('sector')">
             <div class="invalid-feedback ">
                 <span *ngIf="companyInfoForm.get('sector').errors?.required">
                     Por favor introduzca su sector de trabajo
@@ -66,9 +62,7 @@
     <div class="form-row">
         <div class="form-group col-md-12 ">
             <label>Descripcion:</label>
-            <textarea style="resize: none;" name="description" cols="15" rows="10" class="form-control "
-                placeholder="Introduce una breve descripcion de la empresa" formControlName="description"
-                [class]="isValidField('description') "></textarea>
+            <textarea style="resize: none;" name="description" cols="15" rows="10" class="form-control " placeholder="Introduce una breve descripcion de la empresa" formControlName="description" [class]="isValidField('description') "></textarea>
             <div class="invalid-feedback ">
                 <span *ngIf="companyInfoForm.get('description').errors?.required ">
                     Debe describir su empresa
@@ -84,4 +78,5 @@
             </div>
         </div>
     </div>
+    <button *ngIf="router.url === '/empresa/perfil'" type="submit" class="btn btn-primary col-md-6">Confirmar</button>
 </form>

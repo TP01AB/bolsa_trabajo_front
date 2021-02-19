@@ -30,7 +30,7 @@ export class RegisterService {
       'Content-Type': 'application/json',
     });
 
-    return this.http.post(environment.Laravel + "/" + tipo + "/insert", jsonChild, { headers: headers });
+    return this.http.post(environment.Laravel + tipo + "/insert", jsonChild, { headers: headers });
   }
 
   public getAreas() {

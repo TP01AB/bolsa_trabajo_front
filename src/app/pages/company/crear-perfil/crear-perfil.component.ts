@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgbDateStruct, NgbCalendar } from '@ng-bootstrap/ng-bootstrap';
 import { FormsFunctionsService } from 'src/app/shared/services/forms-functions.service';
 import { InsertCompanyService } from './services/insert-company.service';
@@ -15,7 +16,7 @@ export class CrearPerfilComponent implements OnInit {
   //Expresiones regulares para validación.
   isCif = /^([ABCDEFGHJKLMNPQRSUVW])(\d{7})([0-9A-J])$/;
 
-  constructor(private fb: FormBuilder, private insertCompanyService: InsertCompanyService, private gestorForm: FormsFunctionsService) { }
+  constructor(private fb: FormBuilder, private insertCompanyService: InsertCompanyService, private gestorForm: FormsFunctionsService, public router: Router) { }
 
   onSave(): void {
     if (this.companyInfoForm.valid) {

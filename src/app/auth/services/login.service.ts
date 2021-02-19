@@ -20,7 +20,8 @@ export class LoginService {
       access_token: "",
       user_id: "",
       rol_id: "",
-      email: ""
+      email: "",
+      company_id: ""
     }
     this.message = "";
     //Si estamos logeados nos vamos a /articles
@@ -32,7 +33,7 @@ export class LoginService {
    * */
   public login = (email: string, password: string) => {
     //const url = "http://localhost:3021/api/login";
-    const url = environment.Laravel+"login";
+    const url = environment.Laravel + "login";
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -52,6 +53,7 @@ export class LoginService {
         this.user.email = response.message.user.email;
         this.user.user_id = response.message.user.id;
         this.user.rol_id = response.message.rol;
+        this.user.company_id = response.message.company_id;
         sessionStorage.setItem(LoginService.SESSION_STORAGE_KEY, JSON.stringify(this.user));
         this.rolRedirect();
       },
@@ -84,24 +86,24 @@ export class LoginService {
   /**
    * Método para redirigir al usuario dependiendo de su rol
    */
-   public rolRedirect(){
+  public rolRedirect() {
     if (this.isUserSignedIn())
-    switch (this.user.rol_id) {
-      case 1:
-        this.router.navigate(['/admin/dashboard']);
-        break;
-      case 2:
-        this.router.navigate(['/admin/dashboard']);
-        break;
-      case 3:
-        this.router.navigate(['/alumno/dashboard']);
-        break;
-      case 4:
-        this.router.navigate(['/empresa/dashboard']);
-        break;
-      default:
-        break;
-    }
-   }
+      switch (this.user.rol_id) {
+        case 1:
+          this.router.navigate(['/admin/dashboard']);
+          break;
+        case 2:
+          this.router.navigate(['/admin/dashboard']);
+          break;
+        case 3:
+          this.router.navigate(['/alumno/dashboard']);
+          break;
+        case 4:
+          this.router.navigate(['/empresa/dashboard']);
+          break;
+        default:
+          break;
+      }
+  }
 
 }

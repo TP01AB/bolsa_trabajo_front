@@ -12,6 +12,7 @@ import { CompanyOfferComponent } from './pages/company/company-offer/company-off
 import { LoginComponent } from './auth/login/login.component';
 import { StudentDashboardComponent } from './pages/alumno/student-dashboard/student-dashboard.component';
 import { ViewProfileComponent } from './pages/alumno/view-profile/view-profile.component';
+import { ViewProfileComponent2 } from './pages/company/view-profile/view-profile.component';
 
 
 const routes: Routes = [
@@ -19,24 +20,25 @@ const routes: Routes = [
   { path: 'inicio', component: HomeComponent },
 
   // Auth
-  {path: 'login', component: LoginComponent},
+  { path: 'login', component: LoginComponent },
 
   // Rutas admin
-  {path: 'admin/dashboard', component: AdminDashboardComponent},
+  { path: 'admin/dashboard', component: AdminDashboardComponent },
 
   // Rutas empresa
-  {path: 'empresa/dashboard', component: CompanyDashboardComponent},
+  { path: 'empresa/dashboard', component: CompanyDashboardComponent },
 
   //Rutas alumno
-  {path: 'alumno/perfil', component: ViewProfileComponent},
-  {path: 'alumno/dashboard', component: StudentDashboardComponent},
-  {path: 'alumno/oferta-view', component: StudentOfferViewComponent},
+  { path: 'alumno/perfil', component: ViewProfileComponent },
+  { path: 'alumno/dashboard', component: StudentDashboardComponent },
+  { path: 'alumno/oferta-view', component: StudentOfferViewComponent },
   { path: 'empresa/Crearperfil', loadChildren: () => import('./pages/company/crear-perfil/crear-perfil.module').then(m => m.CrearPerfilModule) },
   { path: 'registro', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
   { path: 'empresa/verAlumnos', component: StudensViewComponent },
-  {path: 'alumno/empresa-view', component: StudentCompanyViewComponent},
-  {path: 'empresa', component: CompanyDashboardComponent},
-  {path: 'empresa/ofertas', component: CompanyOfferComponent},
+  { path: 'alumno/empresa-view', component: StudentCompanyViewComponent },
+  { path: 'empresa', component: CompanyDashboardComponent },
+  { path: 'empresa/ofertas', component: CompanyOfferComponent },
+  { path: 'empresa/perfil', component: ViewProfileComponent2 }
 ];
 
 @NgModule({

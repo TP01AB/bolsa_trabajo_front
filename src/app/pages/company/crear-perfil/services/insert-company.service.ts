@@ -24,7 +24,7 @@ export class InsertCompanyService {
       'Content-Type': 'application/json',
     });
 
-    this.http.post(environment.Laravel + "student/insert", json, { headers: headers }).subscribe(
+    this.http.post(environment.Laravel + "company/insert", json, { headers: headers }).subscribe(
       data => console.log("success!", data),
       error => console.error("couldn't post because", error)
     )
