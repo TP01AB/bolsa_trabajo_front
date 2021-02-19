@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+<<<<<<< 5f0fd11f83c93491882000858705006b165d235c
   Laravel: "http://localhost:3021/api/",
+=======
+  Laravel: "https://coworkingdaw2.ddns.net:8082/api/",
+>>>>>>> fix
   production: false
 };
 
