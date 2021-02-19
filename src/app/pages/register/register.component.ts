@@ -9,22 +9,22 @@ import { trigger, transition, style, animate } from '@angular/animations';
   selector: 'app-register',
   animations: [
     trigger(
-      'inOutAnimation', 
+      'inOutAnimation',
       [
         transition(
-          ':enter', 
+          ':enter',
           [
             style({ height: 0, opacity: 0 }),
-            animate('1.5s ease', 
-                    style({ height: '*', opacity: 1 }))
+            animate('1.5s ease',
+              style({ height: '*', opacity: 1 }))
           ]
-        ),   ,
+        ), ,
         transition(
-          ':leave', 
+          ':leave',
           [
             style({ height: '*', opacity: 1 }),
-            animate('1.5s ease', 
-                    style({ height: 0, opacity: 0 }))
+            animate('1.5s ease',
+              style({ height: 0, opacity: 0 }))
           ]
         )
       ]
@@ -36,7 +36,7 @@ import { trigger, transition, style, animate } from '@angular/animations';
 export class RegisterComponent implements OnInit {
 
   areas = [];
-  registerForm: FormGroup;  
+  registerForm: FormGroup;
 
   @ViewChild(PerfilAlComponent) private perfilAl: PerfilAlComponent;
   @ViewChild(CrearPerfilComponent) private perfilEmp: CrearPerfilComponent;
@@ -45,10 +45,10 @@ export class RegisterComponent implements OnInit {
   isEmail = /\S+@\S+\.\S+/;
 
   ngOnInit(): void {
-    this.areas=null;
+    this.areas = null;
     this.registerUser.getAreas().subscribe(
       (response: any) => {
-        this.areas = response;        
+        this.areas = response;
         //console.log(this.areas);
         this.initForm();
       },
@@ -70,13 +70,13 @@ export class RegisterComponent implements OnInit {
       ? 'is-invalid' : validatedField.touched ? 'is-valid' : '';
   }
 
-  onSave(): void {    
+  onSave(): void {
     var tipo = this.registerForm.get('condicion').value
     let userId = null;
-    if(tipo == 'student') {        
-      if (this.registerForm.valid && this.perfilAl.validate()==1) {
+    if (tipo == 'student') {
+      if (this.registerForm.valid && this.perfilAl.validate() == 1) {
         this.registerUser.registerUser(this.gestorForm.toJason(this.registerForm)).subscribe(
-          (data: any) =>{ 
+          (data: any) => {
             //Si correcto inserto alumno
             userId = data.message.user.id;
             //console.log("User id: "+userId);
@@ -85,30 +85,45 @@ export class RegisterComponent implements OnInit {
             //console.log(aux);
             aux['id'] = data.message.user.id;
             var json = JSON.stringify(aux);
-            this.registerUser.registerChild(json,tipo).subscribe(
-              (response: any)=> {
+            this.registerUser.registerChild(json, tipo).subscribe(
+              (response: any) => {
                 console.log("success!", response);
               },
               error => console.error("couldn't post because", error)
             )
           },
-          error => console.error("couldn't post because", error)        
+          error => console.error("couldn't post because", error)
         );
       } else {
-        this.perfilAl.validate();                       
+        this.perfilAl.validate();
+        this.gestorForm.validate(this.registerForm);
+      }
+    } else if (tipo == 'company') {
+      if (this.registerForm.valid && this.perfilEmp.validate() == 1) {
+        userId = null;
+        this.registerUser.registerUser(this.gestorForm.toJason(this.registerForm)).subscribe(
+          (data: any) => {
+            //Si correcto inserto alumno
+            userId = data.message.user.id;
+            //console.log("User id: "+userId);
+            //console.log("success!", data);
+            var aux = JSON.parse(this.perfilEmp.toJason());
+            //console.log(aux);
+            aux['id'] = data.message.user.id;
+            var json = JSON.stringify(aux);
+            this.registerUser.registerChild(json, tipo).subscribe(
+              (response: any) => {
+                console.log("success!", response);
+              },
+              error => console.error("couldn't post because", error)
+            )
+          },
+          error => console.error("couldn't post because", error)
+        )
+      } else {
+        this.perfilEmp.validate();
         this.gestorForm.validate(this.registerForm);
       }
     }
-    /*
-    if(tipo == 'company') {        
-      if (this.registerForm.valid && this.perfilEmp.validate()==1) {
-        var userId = null;
-        this.registerUser.registerUser(this.gestorForm.toJason(this.registerForm));
-          
-      } else {
-        this.perfilEmp.validate();                       
-        this.gestorForm.validate(this.registerForm);
-      }
-    }*/
   }
 }

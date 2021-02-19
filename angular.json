@@ -26,15 +26,16 @@
                         "assets": [
                             "src/favicon.ico",
                             "src/assets",
+                            "src/_redirects",
                             {
-                              "glob": "bootstrap-icons.svg",
-                              "input": "./node_modules/bootstrap-icons/",
-                              "output": "/"
+                                "glob": "bootstrap-icons.svg",
+                                "input": "./node_modules/bootstrap-icons/",
+                                "output": "/"
                             }
                         ],
                         "styles": [
                             "node_modules/bootstrap/dist/css/bootstrap.min.css",
-                            "src/styles.scss"                            
+                            "src/styles.scss"
                         ],
                         "scripts": [
                             "node_modules/jquery/dist/jquery.min.js",

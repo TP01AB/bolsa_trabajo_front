@@ -3,88 +3,94 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/auth/services/login.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root'
 })
 export class CompanyOfferService {
-    
-    contactForm: FormGroup;
 
-    constructor(private http: HttpClient, private loginService: LoginService, private router: Router) {
-        // Comprobamos que el usuario este logeado sino lo redireccionamos al login
-        if (!loginService.isUserSignedIn())
-            router.navigate(['/login'])
-    }
+  contactForm: FormGroup;
 
-    public getOffers = (company_id: number) => {
-        const url = "http://localhost:8000/api/offers/";
-        let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
-        return this.http.get(url + company_id, { headers: headers });
-    };
+  constructor(private http: HttpClient, private loginService: LoginService, private router: Router) {
+    // Comprobamos que el usuario este logeado sino lo redireccionamos al login
+    if (!loginService.isUserSignedIn())
+      router.navigate(['/login'])
+  }
 
-    // Guardamos una offer
-    public storeOffer = (offer: any) => {
+  public getOffers = (company_id: number) => {
+    const url = environment.Laravel + "offers/";
+    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+    return this.http.get(url + company_id, { headers: headers });
+  };
+  public getCompanyOffers = (company_id: number) => {
+    const url = environment.Laravel + "offersbyid/";
+    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+    return this.http.get(url + company_id, { headers: headers });
+  };
 
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${this.loginService.user.access_token}`
-        });
+  // Guardamos una offer
+  public storeOffer = (offer: any) => {
 
-        return this.http.post("http://localhost:8000/api/offers", offer, { headers: headers });
-    }
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
 
-    // Modificamos una oferta
-    public updateOffer = (offer:any) => {
+    return this.http.post(environment.Laravel + "offers", offer, { headers: headers });
+  }
 
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${this.loginService.user.access_token}`
-        });
+  // Modificamos una oferta
+  public updateOffer = (offer: any) => {
 
-        return this.http.put("http://localhost:8000/api/offers/" + offer.id, offer, { headers: headers });
-    }
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
 
-    // Método para borrar una oferta
-    public deleteOffer = (id: number) => {
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${this.loginService.user.access_token}`
-        });
+    return this.http.put(environment.Laravel + "offers/" + offer.id, offer, { headers: headers });
+  }
 
-        return this.http.delete("http://localhost:8000/api/offers/" + id, { headers: headers });
-    }
+  // Método para borrar una oferta
+  public deleteOffer = (id: number) => {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
 
-    // Método para coger el id de la compañia
-    public getCompanyId = () => {
-        const url = "http://localhost:8000/api/companyId/" + this.loginService.user.user_id;
-        let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
-        return this.http.get(url, { headers: headers });
-    };
+    return this.http.delete(environment.Laravel + "offers/" + id, { headers: headers });
+  }
 
-    // Método para traer los ciclos formativos
-    public getAreas = () => {
-        const url = "http://localhost:8000/api/areas";
-        let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
-        return this.http.get(url, { headers: headers });
-    };
+  // Método para coger el id de la compañia
+  public getCompanyId = () => {
+    const url = environment.Laravel + "companyId/" + this.loginService.user.user_id;
+    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+    return this.http.get(url, { headers: headers });
+  };
 
-    public aciveOffer = (id: number) => {
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${this.loginService.user.access_token}`
-        });
+  // Método para traer los ciclos formativos
+  public getAreas = () => {
+    const url = environment.Laravel + "areas";
+    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+    return this.http.get(url, { headers: headers });
+  };
 
-        return this.http.put("http://localhost:8000/api/offers/active/" + id, { headers: headers });
-    }
+  public aciveOffer = (id: number) => {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
 
-    public desactiveOffer = (id: number) => {
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${this.loginService.user.access_token}`
-        });
+    return this.http.put(environment.Laravel + "offers/active/" + id, { headers: headers });
+  }
 
-        return this.http.put("http://localhost:8000/api/offers/desactive/" + id, { headers: headers });
-    }
+  public desactiveOffer = (id: number) => {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
+
+    return this.http.put(environment.Laravel + "offers/desactive/" + id, { headers: headers });
+  }
 
 }
