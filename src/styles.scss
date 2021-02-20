@@ -6,3 +6,35 @@
 }
 /* Importing Bootstrap SCSS file. */
 @import '~bootstrap/scss/bootstrap';
+
+$primary: #007a7a;
+$primary-dark: #003f5a;
+$secondary:  #fea02f;
+$secondary-light: #abb5be;
+$secondary-dark: #667584;
+$success: #28a745;
+$info: #de6600;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #ebd9c8;
+$dark: black;
+
+.bg-primary{
+  background-color: $primary !important;
+}
+
+.bg-secondary {
+    background-color: $secondary !important;
+}
+.btn-primary{
+  background-color: $info !important;
+     color: white;
+            font-weight: bold;
+            font-size: 20px;
+}
+.bg-light{
+ background-color: $light !important;
+}
+body{
+  background-color: $light !important;
+}
