@@ -1,0 +1,5 @@
+<div *ngFor="let user of users">
+    <form (ngSubmit)="onSubmit({{user.id}}" [formGroup]="userForm{{user.id}}">
+        <label>Email:</label>
+    </form>
+</div>

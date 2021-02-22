@@ -7,12 +7,21 @@
 
     <!-- Menu -->
     <nav class="list-group">
-        <ul>
+        <ul *ngIf="rol_id==1 || rol_id==2">
             <li>
-                <a routerLink="../perfil" class="dropdown-toggle collapsed">
+                <a routerLink="../dashboard">
                     <svg class="bi text-info" width="20" height="20" fill="currentColor">
-            <use xlink:href="bootstrap-icons.svg#person" />
-          </svg> Perfil
+                        <use xlink:href="bootstrap-icons.svg#person" />
+                    </svg> Usuarios
+                </a>
+            </li>
+        </ul>
+        <ul *ngIf="rol_id==3 || rol_id==4">
+            <li>
+                <a routerLink="../perfil">
+                    <svg class="bi text-info" width="20" height="20" fill="currentColor">
+                        <use xlink:href="bootstrap-icons.svg#person" />
+                    </svg> Perfil
                 </a>
                 <!--
                 <ul class="list-unstyled collapse" id="profile-submenu">
@@ -22,28 +31,28 @@
                         <a *ngIf="rol_id==2" href="#">Ver perfil</a>
                         <a *ngIf="rol_id==3" routerLink="../perfil">Ver perfil</a>
                         <a *ngIf="rol_id==4" href="../perfil">Ver perfil</a>
-            </li>
-            <li>
-                <a href="#">Page 2</a>
-            </li>
-            <li>
-                <a href="#">Page 3</a>
-            </li>
-        </ul>-->
+                    </li>
+                    <li>
+                        <a href="#">Page 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Page 3</a>
+                    </li>
+                </ul>-->
             </li>
 
             <li>
                 <a href="#offer-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <svg class="bi text-info" width="20" height="20" fill="currentColor">
-            <use xlink:href="bootstrap-icons.svg#clipboard-data" />
-          </svg> Ofertas
+                        <use xlink:href="bootstrap-icons.svg#clipboard-data" />
+                    </svg> Ofertas
                 </a>
-                <ul class="collapse list-unstyled" id="offer-submenu">
+                <ul *ngIf="rol_id==3" class="collapse list-unstyled" id="offer-submenu">
                     <li>
-                        <a routerLink="../ofertas">Mis ofertas</a>
+                        <a routerLink="../ofertas">Ofertas</a>
                     </li>
                     <li>
-                        <a href="#">Page 2</a>
+                        <a href="#">Mis ofertas</a>
                     </li>
                     <li>
                         <a href="#">Page 3</a>
@@ -53,8 +62,8 @@
             <li>
                 <a href="#company-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <svg class="bi text-info" width="20" height="20" fill="currentColor">
-            <use xlink:href="bootstrap-icons.svg#briefcase" />
-          </svg> Empresas
+                        <use xlink:href="bootstrap-icons.svg#briefcase" />
+                    </svg> Empresas
                 </a>
                 <ul class="collapse list-unstyled" id="company-submenu">
                     <li>
