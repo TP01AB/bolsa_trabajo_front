@@ -1,7 +1,65 @@
-<div *ngFor="let user of users">
-    <form (ngSubmit)="onSubmit(user.id)" [formGroup]="userForm[user.id]">
-        <label>Email:</label>
-        <input type="text" class="form-control" placeholder="Email" formControlName="email"
-            [class]="isValidField('email')" aria-label="Introduzca su nombre" [value]="user.email">
-    </form>
+<div class="container-fluid">
+    <app-load-spinner *ngIf="loaded==false"></app-load-spinner>
+    <div *ngIf="loaded" class="row">
+        <div class="col">
+            <div class="card w-100 mb-4 shadow">
+                <div class="card-header bg-info">
+                    <div class="d-flex align-items-center">
+                        <h2 class="card-title text-white font-weight-bold my-2 mr-3">Usuarios</h2>                    
+                    </div>
+                </div>
+                <div class="card-body mt-2">
+                    <div class="row">
+                        <div class="col-sm-6" *ngFor="let user of users">
+                            <div class="card m-2 mb-4 border-info shadow">
+                                <div class="card-body">
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <p class="text-info">
+                                                Usuario {{user.id}}
+                                            </p>
+                                            <p class="card-text">
+                                                Email: {{ user.email }}
+                                            </p>
+                                            <p>
+                                                Activo: {{ user.isActive }}
+                                            </p>
+                                        </div>
+                                    </div>                                    
+                                </div>
+                                <div class="card-footer p-0">
+                                    <div class="btn-group w-100">
+                                        <button type="button" class="btn btn-info rounded-0">
+                                            <svg class="bi" width="26" height="26" fill="currentColor"
+                                                (click)=userUpdate(user)>
+                                                <use xlink:href="bootstrap-icons.svg#pencil" />
+                                            </svg>
+                                        </button>                                        
+                                        <button *ngIf="loginService.user.user_id != user.id"  type="button" class="btn btn-info rounded-0">
+                                            <svg class="bi" width="26" height="26" fill="currentColor"
+                                                (click)=userDelete(user.id)>
+                                                <use xlink:href="bootstrap-icons.svg#x" />
+                                            </svg>
+                                        </button>
+                                        <button *ngIf="user.isActive == 1" type="button" class="btn btn-success rounded-0">
+                                            <svg class="bi" width="26" height="26" fill="currentColor"
+                                                (click)=userDesactive(user.id)>
+                                                <use xlink:href="bootstrap-icons.svg#check-square" />
+                                            </svg>
+                                        </button>
+                                        <button *ngIf="user.isActive == 0" type="button" class="btn btn-danger rounded-0">
+                                            <svg class="bi" width="26" height="26" fill="currentColor"
+                                                (click)=userActive(user.id)>
+                                                <use xlink:href="bootstrap-icons.svg#square" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

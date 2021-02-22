@@ -28,6 +28,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadSpinnerModule } from './shared/load-spinner/load-spinner.module';
 import { ViewProfileComponent2 } from './pages/company/view-profile/view-profile.component';
 import { UsersCrudComponent } from './pages/admin/users-crud/users-crud.component';
+import { UserDeleteComponent } from './pages/admin/users-crud/modal/user-delete/user-delete.component';
+import { UserUpdateComponent } from './pages/admin/users-crud/modal/user-update/user-update.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { UsersCrudComponent } from './pages/admin/users-crud/users-crud.componen
     StudentDashboardComponent,
     ViewProfileComponent,
     ViewProfileComponent2,
-    UsersCrudComponent
+    UsersCrudComponent,
+    UserDeleteComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,
