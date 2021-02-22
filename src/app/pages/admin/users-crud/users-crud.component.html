@@ -1,5 +1,7 @@
 <div *ngFor="let user of users">
-    <form (ngSubmit)="onSubmit({{user.id}}" [formGroup]="userForm{{user.id}}">
+    <form (ngSubmit)="onSubmit(user.id)" [formGroup]="userForm[user.id]">
         <label>Email:</label>
+        <input type="text" class="form-control" placeholder="Email" formControlName="email"
+            [class]="isValidField('email')" aria-label="Introduzca su nombre" [value]="user.email">
     </form>
 </div>
