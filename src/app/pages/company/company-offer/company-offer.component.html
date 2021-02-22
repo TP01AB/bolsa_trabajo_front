@@ -8,8 +8,8 @@
         <!-- Botón para cerrar el sidebar -->
         <a class="btn" id="menu-toggle">
             <svg class="bi text-info" width="32" height="32" fill="currentColor">
-        <use xlink:href="bootstrap-icons.svg#grid-3x3-gap" />
-      </svg>
+                <use xlink:href="bootstrap-icons.svg#grid-3x3-gap" />
+            </svg>
         </a>
 
         <div class="container-fluid">
@@ -22,13 +22,14 @@
                                 <h2 class="card-title text-white font-weight-bold my-2 mr-3">Mis ofertas</h2>
                                 <div class="custom-control custom-switch" (change)="activeOffer()">
                                     <input type="checkbox" class="custom-control-input" id="activeOffer" checked>
-                                    <label class="custom-control-label" for="activeOffer" id="labelActiveOffer">Activas</label>
+                                    <label class="custom-control-label" for="activeOffer"
+                                        id="labelActiveOffer">Activas</label>
                                 </div>
                             </div>
                             <a class="rounded-circle position-absolute border border-white bg-info" (click)=offerNew()>
                                 <svg class="bi text-white" width="32" height="32" fill="currentColor">
-                  <use xlink:href="bootstrap-icons.svg#plus" />
-                </svg>
+                                    <use xlink:href="bootstrap-icons.svg#plus" />
+                                </svg>
                             </a>
                         </div>
                         <div class="card-body mt-2">
@@ -39,9 +40,12 @@
                                     <div class="col-sm-6" *ngFor="let offer of actOffers; index as i">
                                         <div class="card m-2 mb-4 border-info shadow">
                                             <div class="card-header bg-info text-white">
-                                                <h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}</h3>
-                                                <span class="badge badge-light text-info mr-2">{{ offer.areaDescription }}</span>
-                                                <span class="text-white font-weight-bolder">Vacantes: {{ offer.vacant }}</span>
+                                                <h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}
+                                                </h3>
+                                                <span class="badge badge-light text-info mr-2">{{ offer.areaDescription
+                                                    }}</span>
+                                                <span class="text-white font-weight-bolder">Vacantes: {{ offer.vacant
+                                                    }}</span>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row mb-4">
@@ -66,25 +70,29 @@
                                             <div class="card-footer p-0">
                                                 <div class="btn-group w-100">
                                                     <button type="button" class="btn btn-info rounded-0">
-                            <svg class="bi" width="26" height="26" fill="currentColor" (click)=offerUpdate(offer)>
-                              <use xlink:href="bootstrap-icons.svg#pencil" />
-                            </svg>
-                          </button>
+                                                        <svg class="bi" width="26" height="26" fill="currentColor"
+                                                            (click)=offerUpdate(offer)>
+                                                            <use xlink:href="bootstrap-icons.svg#pencil" />
+                                                        </svg>
+                                                    </button>
                                                     <button type="button" class="btn btn-info">
-                            <svg class="bi" width="26" height="26" fill="currentColor" (click)=offerDuplicate(offer)>
-                              <use xlink:href="bootstrap-icons.svg#files" />
-                            </svg>
-                          </button>
+                                                        <svg class="bi" width="26" height="26" fill="currentColor"
+                                                            (click)=offerDuplicate(offer)>
+                                                            <use xlink:href="bootstrap-icons.svg#files" />
+                                                        </svg>
+                                                    </button>
                                                     <button type="button" class="btn btn-info rounded-0">
-                            <svg class="bi" width="26" height="26" fill="currentColor" (click)=offerDelete(offer.id)>
-                              <use xlink:href="bootstrap-icons.svg#x" />
-                            </svg>
-                          </button>
+                                                        <svg class="bi" width="26" height="26" fill="currentColor"
+                                                            (click)=offerDelete(offer.id)>
+                                                            <use xlink:href="bootstrap-icons.svg#x" />
+                                                        </svg>
+                                                    </button>
                                                     <button type="button" class="btn btn-success rounded-0">
-                            <svg class="bi" width="26" height="26" fill="currentColor" (click)=offerDesactive(offer.id)>
-                              <use xlink:href="bootstrap-icons.svg#check-square" />
-                            </svg>
-                          </button>
+                                                        <svg class="bi" width="26" height="26" fill="currentColor"
+                                                            (click)=offerDesactive(offer.id)>
+                                                            <use xlink:href="bootstrap-icons.svg#check-square" />
+                                                        </svg>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -95,9 +103,12 @@
                                     <div class="col-sm-6" *ngFor="let offer of desOffers; index as i">
                                         <div class="card m-2 mb-4 border-info shadow">
                                             <div class="card-header bg-info text-white">
-                                                <h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}</h3>
-                                                <span class="badge badge-light text-info mr-2">{{ offer.areaDescription }}</span>
-                                                <span class="text-white font-weight-bolder">Vacantes: {{ offer.vacant }}</span>
+                                                <h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}
+                                                </h3>
+                                                <span class="badge badge-light text-info mr-2">{{ offer.areaDescription
+                                                    }}</span>
+                                                <span class="text-white font-weight-bolder">Vacantes: {{ offer.vacant
+                                                    }}</span>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row mb-4">
@@ -122,25 +133,29 @@
                                             <div class="card-footer p-0">
                                                 <div class="btn-group w-100">
                                                     <button type="button" class="btn btn-info rounded-0">
-                            <svg class="bi" width="26" height="26" fill="currentColor" (click)=offerUpdate(offer)>
-                              <use xlink:href="bootstrap-icons.svg#pencil" />
-                            </svg>
-                          </button>
+                                                        <svg class="bi" width="26" height="26" fill="currentColor"
+                                                            (click)=offerUpdate(offer)>
+                                                            <use xlink:href="bootstrap-icons.svg#pencil" />
+                                                        </svg>
+                                                    </button>
                                                     <button type="button" class="btn btn-info">
-                            <svg class="bi" width="26" height="26" fill="currentColor" (click)=offerDuplicate(offer)>
-                              <use xlink:href="bootstrap-icons.svg#files" />
-                            </svg>
-                          </button>
+                                                        <svg class="bi" width="26" height="26" fill="currentColor"
+                                                            (click)=offerDuplicate(offer)>
+                                                            <use xlink:href="bootstrap-icons.svg#files" />
+                                                        </svg>
+                                                    </button>
                                                     <button type="button" class="btn btn-info rounded-0">
-                            <svg class="bi" width="26" height="26" fill="currentColor" (click)=offerDelete(offer.id)>
-                              <use xlink:href="bootstrap-icons.svg#x" />
-                            </svg>
-                          </button>
+                                                        <svg class="bi" width="26" height="26" fill="currentColor"
+                                                            (click)=offerDelete(offer.id)>
+                                                            <use xlink:href="bootstrap-icons.svg#x" />
+                                                        </svg>
+                                                    </button>
                                                     <button type="button" class="btn btn-danger rounded-0">
-                            <svg class="bi" width="26" height="26" fill="currentColor" (click)=offerActive(offer.id)>
-                              <use xlink:href="bootstrap-icons.svg#square" />
-                            </svg>
-                          </button>
+                                                        <svg class="bi" width="26" height="26" fill="currentColor"
+                                                            (click)=offerActive(offer.id)>
+                                                            <use xlink:href="bootstrap-icons.svg#square" />
+                                                        </svg>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>

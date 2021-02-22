@@ -19,7 +19,7 @@ export class ViewProfileComponent implements OnInit {
     this.ProfileService.getStudent(this.loginService.user.user_id).subscribe(
       (response: any) => {
         this.data = response[0];
-        console.log(this.data);
+        //console.log(this.data);
         this.registerUser.getAreas().subscribe(
           (response: any) => {
             this.areas = response;

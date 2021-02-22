@@ -19,7 +19,7 @@ export class StudentProfileService {
 
     let json = JSON.stringify(jsonForm);
 
-    console.log(json);
+    //console.log(json);
 
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',

@@ -31,16 +31,17 @@ export class PerfilAlComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.router.url === '/alumno/perfil') {      
-      console.log(this.parent2);
+      //console.log(this.parent2);
       this.data = JSON.parse(this.parent2)
       console.log(this.data);
-      console.log(this.data.birthdate);
+      //console.log(this.data.birthdate);
       this.initForm();      
       this.contactForm.patchValue({
         name: this.data.name,
         lastName: this.data.lastnames,                  
         dni: this.data.dni,
         phone: this.data.phone,   
+        area: this.data.area,
         birthdate: this.data.birthdate,     
         aptitudes: this.data.aptitudes
       })      
