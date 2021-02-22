@@ -40,7 +40,14 @@ export class LoginService {
     });
     return this.http.post(url, { 'email': email, 'password': password }, { headers: headers });
   };
+  public verifyToken = (user_id: string, token: string) => {
+    const url = environment.Laravel + "login";
 
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(url, { 'user_id': user_id, 'token': token }, { headers: headers });
+  };
   /**
    * Subscripción a la petición de login, si todo es correcto, la almacena en session storage y
    * vamos a /articles. Si se produce un error lo muestra
@@ -53,7 +60,11 @@ export class LoginService {
         this.user.email = response.message.user.email;
         this.user.user_id = response.message.user.id;
         this.user.rol_id = response.message.rol;
-        this.user.company_id = response.message.company_id;
+        if (this.user.rol_id === 4) {
+
+          this.user.company_id = response.message.company_id;
+
+        }
         sessionStorage.setItem(LoginService.SESSION_STORAGE_KEY, JSON.stringify(this.user));
         this.rolRedirect();
       },

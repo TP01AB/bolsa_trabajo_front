@@ -27,18 +27,24 @@ const routes: Routes = [
 
   // Rutas empresa
   { path: 'empresa/dashboard', component: CompanyDashboardComponent },
+  { path: 'empresa/verAlumnos', component: StudensViewComponent },
+  { path: 'empresa', component: CompanyDashboardComponent },
+  { path: 'empresa/perfil', component: ViewProfileComponent2 },
+  { path: 'empresa/Crearperfil', loadChildren: () => import('./pages/company/crear-perfil/crear-perfil.module').then(m => m.CrearPerfilModule) },
+  //OFERTAS EMPRESA
+  { path: 'empresa/ofertas', component: CompanyOfferComponent },
 
   //Rutas alumno
   { path: 'alumno/perfil', component: ViewProfileComponent },
   { path: 'alumno/dashboard', component: StudentDashboardComponent },
-  { path: 'alumno/oferta-view', component: StudentOfferViewComponent },
-  { path: 'empresa/Crearperfil', loadChildren: () => import('./pages/company/crear-perfil/crear-perfil.module').then(m => m.CrearPerfilModule) },
   { path: 'registro', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
-  { path: 'empresa/verAlumnos', component: StudensViewComponent },
   { path: 'alumno/empresa-view', component: StudentCompanyViewComponent },
-  { path: 'empresa', component: CompanyDashboardComponent },
-  { path: 'empresa/ofertas', component: CompanyOfferComponent },
-  { path: 'empresa/perfil', component: ViewProfileComponent2 }
+  //OFERTAS ALUMNO
+  { path: 'alumno/oferta-view', component: StudentOfferViewComponent }
+
+
+
+
 ];
 
 @NgModule({

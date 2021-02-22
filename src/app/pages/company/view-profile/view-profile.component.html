@@ -6,7 +6,9 @@
                     <h2 class="card-title text-white mb-0">Perfil</h2>
                 </div>
                 <div class="card-body">
-                    <app-crear-perfil></app-crear-perfil>
+
+                    <app-crear-perfil *ngIf="can" [parent]="data">
+                    </app-crear-perfil>
                 </div>
             </div>
         </div>
