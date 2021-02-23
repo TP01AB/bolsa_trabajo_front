@@ -28,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadSpinnerModule } from './shared/load-spinner/load-spinner.module';
 import { ViewProfileComponent2 } from './pages/company/view-profile/view-profile.component';
 import { StudentOfferComponent } from './pages/alumno/student-offer/student-offer.component';
+import { OfferEnrollComponent } from './pages/alumno/student-offer/modal/offer-enroll/offer-enroll.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { StudentOfferComponent } from './pages/alumno/student-offer/student-offe
     StudentDashboardComponent,
     ViewProfileComponent,
     ViewProfileComponent2,
-    StudentOfferComponent
+    StudentOfferComponent,
+    OfferEnrollComponent
   ],
   imports: [
     BrowserModule,

@@ -23,4 +23,20 @@ export class StudentOfferService {
     return this.http.get(url, { headers: headers });
   };
 
+  public enrollOffer(offerId) {
+    const url = environment.Laravel + "studentOffer";
+    var data = { 
+      studentId: this.loginService.user.student_id, 
+      offerId: offerId,
+      sended: 0
+    };
+
+    var json = JSON.stringify(data);
+
+    let headers = new HttpHeaders({ 
+      Authorization: `Bearer ${this.loginService.user.access_token}` 
+    });
+    return this.http.post(url, { headers: headers });
+  }
+
 }

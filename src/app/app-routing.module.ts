@@ -2,7 +2,6 @@ import { StudensViewComponent } from './pages/company/studens-view/studens-view.
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
-import { StudentOfferViewComponent } from './pages/alumno/student-offer-view/student-offer-view.component';
 import { StudentCompanyViewComponent } from './pages/alumno/student-company-view/student-company-view.component';
 import { PerfilAlComponent } from './pages/alumno/perfil/perfil-al.component';
 import { HomeComponent } from './pages/home/home.component';

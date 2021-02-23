@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from 'src/app/auth/services/login.service';
+import { OfferEnrollComponent } from './modal/offer-enroll/offer-enroll.component';
 import { StudentOfferService } from './services/student-offer.service';
 
 @Component({
@@ -16,7 +18,7 @@ export class StudentOfferComponent implements OnInit {
 
   closeResult: String;
 
-  constructor(private studentOfferService: StudentOfferService, private loginService: LoginService, private router: Router) { }
+  constructor(private modalService: NgbModal,private studentOfferService: StudentOfferService, private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
     this.getOffers(); // Obtengo todas las ofertas activas  
@@ -51,6 +53,20 @@ export class StudentOfferComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  // Abre el modal para borrar una oferta
+  offerEnroll(id: number) {
+    const modalRef = this.modalService.open(OfferEnrollComponent);
+    modalRef.componentInstance.id = id;
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+      }
+    });
+    modalRef.componentInstance["enrollOk"].subscribe(event => {
+      this.getOffers();
+    });
   }
 
 }

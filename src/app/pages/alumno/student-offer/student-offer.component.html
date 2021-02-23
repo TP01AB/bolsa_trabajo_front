@@ -35,11 +35,12 @@
                                             <div class="card-header bg-info text-white">
                                                 <h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}
                                                 </h3>
-                                                <span class="badge badge-light text-info mr-3 pull-right ">{{
-                                                    offer.areaDescription
-                                                    }}</span>
-                                                <span class="text-white font-weight-bolder">Vacantes: {{ offer.vacant
-                                                    }}</span>
+                                                <span class="badge badge-light text-info mr-3 pull-right ">
+                                                    {{ offer.areaDescription }}
+                                                </span>
+                                                <span class="text-white font-weight-bolder">
+                                                    Vacantes: {{ offer.vacant }}
+                                                </span>
                                             </div>
                                             <div class="card-body">
                                                 <div class="row mb-4">
@@ -53,12 +54,9 @@
                                             </div>
                                             <div class="card-footer p-0">
                                                 <div class="btn-group w-100">
-                                                    <button type="button" class="btn btn-success rounded-0">
-                                                        <!--<svg class="bi" width="26" height="26" fill="currentColor"
-                                                            (click)=offerDesactive(offer.id)>
-                                                            <use xlink:href="bootstrap-icons.svg#check-square" />
-                                                        </svg>-->
-                                                        Apuntarse
+                                                    <button type="button" class="btn btn-info rounded-0"
+                                                        (click)=offerEnroll(offer.id)>
+                                                        Aceptar
                                                     </button>
                                                 </div>
                                             </div>
