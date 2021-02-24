@@ -20,6 +20,12 @@ export class SidebarComponent implements OnInit {
      $("#menu-toggle").click(function(e) {
       e.preventDefault();
       $("#sidebar-wrapper").toggleClass("toggled");
+      $("#closeBtn").toggleClass("toggled");
+    });
+    $("#closeBtn").click(function(e) {
+      e.preventDefault();
+      $("#sidebar-wrapper").toggleClass("toggled");
+      $("#closeBtn").toggleClass("toggled");
     });
 
   }

@@ -1,4 +1,4 @@
-#sidebar-wrapper {
+#sidebar-wrapper {  
   min-height: 100vh;
   margin-left: -15rem;
   -webkit-transition: margin .25s ease-out;
@@ -48,8 +48,17 @@
 }
 
 #sidebar-wrapper.toggled {
+  display: block; 
   margin-left: 0;
 
+}
+
+#closeBtn {
+  visibility: hidden;
+  position: absolute;
+  width: fit-content;
+  left: 23vh;
+  transition: 0.25s ease-in-out;
 }
 
 @media (min-width: 768px) {
@@ -65,5 +74,22 @@
   #sidebar-wrapper.toggled {
     margin-left: -15rem;
 
+  }
+}
+
+@media (max-width: 768px) {
+  #sidebar-wrapper {
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    transition: 0.25s ease-in-out;
+  }
+  #sidebar-wrapper.toggled{
+    visibility: visible;
+    
+  }
+  #closeBtn.toggled {
+    visibility: visible;
   }
 }
