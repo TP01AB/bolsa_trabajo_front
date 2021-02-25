@@ -5,6 +5,8 @@
   -moz-transition: margin .25s ease-out;
   -o-transition: margin .25s ease-out;
   transition: margin .25s ease-out;
+  z-index: 999;
+  height: 100%;
 
   .sidebar-img {
     padding: 0.875rem 1.25rem;
@@ -53,12 +55,23 @@
 
 }
 
-#closeBtn {
-  visibility: hidden;
+#closeBtn {  
   position: absolute;
   width: fit-content;
-  left: 23vh;
+  left: 19vh;
   transition: 0.25s ease-in-out;
+  z-index: 1000;
+  svg {
+    border: solid;
+    border-radius: 9px;
+    border-width: 2px;
+    background-color: white;
+  }
+}
+
+#closeBtn.toggled {
+  //visibility: visible;
+  left: 0vh;
 }
 
 @media (min-width: 768px) {
@@ -77,7 +90,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   #sidebar-wrapper {
     visibility: hidden;
     position: fixed;
@@ -89,7 +102,9 @@
     visibility: visible;
     
   }
-  #closeBtn.toggled {
-    visibility: visible;
+
+  #closeBtn { 
+    position: fixed; 
+    left: 24vh;
   }
 }

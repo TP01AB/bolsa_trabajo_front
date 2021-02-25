@@ -1,9 +1,18 @@
-<div class="bg-light border-right" id="sidebar-wrapper">
-    <a class="btn col" id="closeBtn">
+<div>
+    <a *ngIf="innerWidth >= 768" class="btn col" id="closeBtn"  (click)="navButton()">
         <svg class="bi" width="32" height="32" fill="currentColor">
-            <use xlink:href="bootstrap-icons.svg#arrow-left" />
+            <use *ngIf="icon=='arrow-right'" xlink:href="bootstrap-icons.svg#arrow-right" />
+            <use *ngIf="icon=='arrow-left'" xlink:href="bootstrap-icons.svg#arrow-left" />
         </svg>
-    </a>
+    </a> 
+    <a *ngIf="innerWidth < 768" class="btn col toggled" id="closeBtn"  (click)="navButton()">
+        <svg class="bi" width="32" height="32" fill="currentColor">
+            <use *ngIf="icon=='arrow-right'" xlink:href="bootstrap-icons.svg#arrow-right" />
+            <use *ngIf="icon=='arrow-left'" xlink:href="bootstrap-icons.svg#arrow-left" />
+        </svg>
+    </a> 
+</div>
+<div class="bg-light border-right" id="sidebar-wrapper">       
     <!-- Profile image -->
     <div class="sidebar-img border-bottom bg-info d-flex flex-column align-items-center">
         <img src="/assets/img_profile.jpeg" alt="imagen_perfill" class="rounded-circle" width="80px">
