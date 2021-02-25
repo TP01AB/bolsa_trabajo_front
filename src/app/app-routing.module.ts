@@ -13,6 +13,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { StudentDashboardComponent } from './pages/alumno/student-dashboard/student-dashboard.component';
 import { ViewProfileComponent } from './pages/alumno/view-profile/view-profile.component';
 import { ViewProfileComponent2 } from './pages/company/view-profile/view-profile.component';
+import { AreasCrudComponent } from './pages/admin/areas-crud/areas-crud.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
 
   // Rutas admin
   { path: 'admin/dashboard', component: AdminDashboardComponent },
+  { path: 'admin/ciclos', component: AreasCrudComponent },
 
   // Rutas empresa
   { path: 'empresa/dashboard', component: CompanyDashboardComponent },

@@ -35,4 +35,12 @@ export class UsersService {
     });
     return this.http.put(environment.Laravel + "user/" + user.id, user, { headers: headers });
   }
+
+  public userActivation(activate, userId) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
+    return this.http.put(environment.Laravel + "user/activate/" + userId, {activate:activate}, { headers: headers });
+  }
 }

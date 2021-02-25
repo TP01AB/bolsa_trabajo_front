@@ -30,6 +30,7 @@ import { ViewProfileComponent2 } from './pages/company/view-profile/view-profile
 import { UsersCrudComponent } from './pages/admin/users-crud/users-crud.component';
 import { UserDeleteComponent } from './pages/admin/users-crud/modal/user-delete/user-delete.component';
 import { UserUpdateComponent } from './pages/admin/users-crud/modal/user-update/user-update.component';
+import { AreasCrudComponent } from './pages/admin/areas-crud/areas-crud.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { UserUpdateComponent } from './pages/admin/users-crud/modal/user-update/
     ViewProfileComponent2,
     UsersCrudComponent,
     UserDeleteComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    AreasCrudComponent
   ],
   imports: [
     BrowserModule,

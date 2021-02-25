@@ -10,24 +10,38 @@ declare var $: any;
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { }
+  constructor(private loginService: LoginService) { 
+    this.aux = false;
+  }
 
+  aux;
   rol_id;
 
-  ngOnInit(): void {
+  ngOnInit() {
+    console.log(this.aux);
     this.rol_id = this.loginService.user.rol_id;
+    this.aux = true;
      //Toggle Click Function
-     $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#sidebar-wrapper").toggleClass("toggled");
-      $("#closeBtn").toggleClass("toggled");
-    });
-    $("#closeBtn").click(function(e) {
-      e.preventDefault();
-      $("#sidebar-wrapper").toggleClass("toggled");
-      $("#closeBtn").toggleClass("toggled");
-    });
+    this.setClick();
+  }
 
+  setClick() {
+    if(this.aux) {
+      console.log("Preparo eventos")
+
+      $("#menu-toggle").click(function(e) {
+        
+        console.log("entro");
+        e.preventDefault();
+        $("#sidebar-wrapper").toggleClass("toggled");
+        $("#closeBtn").toggleClass("toggled");
+      });
+      $("#closeBtn").click(function(e) {
+        e.preventDefault();      
+        $("#sidebar-wrapper").toggleClass("toggled");
+        $("#closeBtn").toggleClass("toggled");
+      });
+    }
   }
 
 }

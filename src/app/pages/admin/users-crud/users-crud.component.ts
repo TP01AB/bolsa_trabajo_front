@@ -32,7 +32,7 @@ export class UsersCrudComponent implements OnInit {
       (response: any) => {
         //console.log(response);
         this.users = JSON.parse(response);
-        console.log(this.users);   
+        //console.log(this.users);   
         this.loaded = true;     
       }
     )
@@ -62,6 +62,18 @@ export class UsersCrudComponent implements OnInit {
         console.log(result);
       }
     });
+  }
+
+  userActive(userId, activate) {
+    this.usersService.userActivation(activate, userId).subscribe(
+      (response: any) => {
+        this.getUsers();
+        console.log(response);
+      }, 
+      error => {
+        console.log(error);
+      }
+    )
   }
 
 }
