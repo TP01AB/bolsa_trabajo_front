@@ -14,7 +14,7 @@ export class ViewProfileComponent2 implements OnInit {
   constructor(private ProfileService: CompanyProfileService, private loginService: LoginService, private registerUser: RegisterService) { }
 
   ngOnInit(): void {
-    this.ProfileService.getStudent(this.loginService.user.user_id).subscribe(
+    this.ProfileService.getCompany(this.loginService.user.user_id).subscribe(
       (response: any) => {
         this.data = response[0];
         console.log(this.data);

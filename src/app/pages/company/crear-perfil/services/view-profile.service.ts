@@ -11,7 +11,7 @@ export class CompanyProfileService {
 
   constructor(private http: HttpClient, private loginService: LoginService) { }
 
-  public getStudent(companyid: number) {
+  public getCompany(companyid: number) {
     const url = environment.Laravel + "company/";
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',

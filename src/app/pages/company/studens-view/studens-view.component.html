@@ -22,17 +22,19 @@
                         <div class="card-body mt-2">
                             <!-- Card with offer -->
                             <div class="row">
-                                <div class="col-sm-6" *ngFor="let Alumno of [0,1,2,3,4,5,6,7]">
+                                <div class="col-sm-6" *ngFor="let student of students; index as i">
                                     <div class="card mb-4 border-info shadow">
                                         <div class="card-header bg-info text-white">
-                                            <h5 class="card-title mb-0">Nombre del Alumno</h5>
+                                            <h5 class="card-title mb-0">{{ student.name }} {{ student.lastnames }} </h5>
                                         </div>
                                         <div class="card-body">
                                             <img src="http://www.hablamosdeeuropa.es/PublishingImages/No%20me%20paro/Formaci%C3%B3n/estudiante.png" class="float-left" width="110" height="110">
                                             <p class="card-text ">Rama</p>
                                             <p class="card-text ">Experiencia</p>
-                                            <p class="card-text ">Estado actual</p>
-                                            <p>Breve resumen de conocimientos y experiencia laboral para una rapida visualizacion y captacion de atencion de la empresa.</p>
+                                            <p *ngIf="student.status==0" class="card-text "> Desempleado</p>
+                                            <p *ngIf="student.status==1" class="card-text "> Trabajando</p>
+                                            <p *ngIf="student.status==2" class="card-text "> Trabajando, escucha ofertas</p>
+                                            <p>{{student.aptitudes}}</p>
                                         </div>
                                         <button type="button" class="btn btn-primary">
                         <svg class="bi text-white" width="26" height="26" fill="currentColor" >
