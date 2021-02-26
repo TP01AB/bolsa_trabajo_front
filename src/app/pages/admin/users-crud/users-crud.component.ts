@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from 'src/app/auth/services/login.service';
-import { UsersService } from '../services/users.service';
+import { UsersAdminService } from '../services/users-admin.service';
 import { UserDeleteComponent } from './modal/user-delete/user-delete.component';
 import { UserUpdateComponent } from './modal/user-update/user-update.component';
 
@@ -16,7 +16,7 @@ export class UsersCrudComponent implements OnInit {
   users: any[];
   public loaded = false;
 
-  constructor(private modalService: NgbModal, private usersService: UsersService, public loginService: LoginService, private router: Router) {
+  constructor(private modalService: NgbModal, private usersService: UsersAdminService, public loginService: LoginService, private router: Router) {
     if (!loginService.isUserSignedIn())
       this.router.navigate(['/login']);
     this.users = [];

@@ -58,20 +58,20 @@
 #closeBtn {  
   position: absolute;
   width: fit-content;
-  left: 19vh;
+  left:180px;
   transition: 0.25s ease-in-out;
   z-index: 1000;
+  padding: 10px;
   svg {
     border: solid;
     border-radius: 9px;
     border-width: 2px;
     background-color: white;
   }
-}
-
-#closeBtn.toggled {
-  //visibility: visible;
-  left: 0vh;
+  &.toggled {
+    //visibility: visible;
+    left: 0;
+  }
 }
 
 @media (min-width: 768px) {
@@ -105,6 +105,6 @@
 
   #closeBtn { 
     position: fixed; 
-    left: 24vh;
+    left: 190px;
   }
 }

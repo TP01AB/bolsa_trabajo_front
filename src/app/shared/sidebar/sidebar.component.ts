@@ -13,26 +13,23 @@ export class SidebarComponent implements OnInit {
   constructor(private loginService: LoginService) { 
     this.innerWidth = window.innerWidth;
   }
-
-  aux;
+  
   rol_id;
   public innerWidth: any;
   public icon;
 
   ngOnInit() {
-    
-    console.log(this.aux);
-    this.rol_id = this.loginService.user.rol_id;
-    this.aux = true;
+      
+    this.rol_id = this.loginService.user.rol_id;    
      //Toggle Click Function
      $("#closeBtn").click(function(e) {
       e.preventDefault();        
     });
     console.log(this.innerWidth);
     if(this.innerWidth >= 768) {
-      this.icon = "arrow-left";
+      this.icon = true;
     } else {
-      this.icon = "arrow-right";
+      this.icon = false;
     }
   }
   
@@ -41,18 +38,11 @@ export class SidebarComponent implements OnInit {
     $("#sidebar-wrapper").toggleClass("toggled");
     $("#closeBtn").toggleClass("toggled");
 
-    if(this.icon == "arrow-left") {
-      this.icon = "arrow-right";
+    if(this.icon) {
+      this.icon = false;
     } else {
-      this.icon = "arrow-left";
+      this.icon = true;
     }
-  }
-
-  setClick() {
-    if(this.aux) {
-      console.log("Preparo eventos")            
-      
-    }
-  }
+  }  
 
 }

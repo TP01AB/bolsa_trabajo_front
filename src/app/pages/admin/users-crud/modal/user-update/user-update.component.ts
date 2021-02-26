@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from 'src/app/auth/services/login.service';
-import { UsersService } from '../../../services/users.service';
+import { UsersAdminService } from '../../../services/users-admin.service';
 
 @Component({
   selector: 'app-user-update',
@@ -12,7 +12,7 @@ import { UsersService } from '../../../services/users.service';
 })
 export class UserUpdateComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal, private router: Router, private fb: FormBuilder, private userService: UsersService, private loginService: LoginService) { }
+  constructor(public activeModal: NgbActiveModal, private router: Router, private fb: FormBuilder, private userService: UsersAdminService, private loginService: LoginService) { }
 
   @Input() public user;
   registerForm: FormGroup;
@@ -27,26 +27,27 @@ export class UserUpdateComponent implements OnInit {
     this.submitted = true;
     if (this.registerForm.invalid) {
         return;
+    } else {      
+      let user = this.registerForm.value;
+      user.id = this.user.id;
+  
+  
+      this.userService.updateUser(user).subscribe(
+        (response: any) => {
+          if(this.loginService.user.user_id == this.user.id) {
+            sessionStorage.removeItem("apiPassport");
+            this.router.navigate([''])
+          }        
+          this.activeModal.close();
+        },
+        (error) => {
+          console.log(error);
+          this.activeModal.close();
+        }
+      );
     }
 
-    // Creo la oferta con los datos necesarios para ser guardados en la base de datos
-    let user = this.registerForm.value;
-    user.id = this.user.id;
-
-
-    this.userService.updateUser(user).subscribe(
-      (response: any) => {
-        if(this.loginService.user.user_id == this.user.id) {
-          sessionStorage.removeItem("apiPassport");
-          this.router.navigate([''])
-        }        
-        this.activeModal.close();
-      },
-      (error) => {
-        console.log(error);
-        this.activeModal.close();
-      }
-    );
+    
   }
 
   initForm() {

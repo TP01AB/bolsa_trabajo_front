@@ -31,6 +31,9 @@ import { UsersCrudComponent } from './pages/admin/users-crud/users-crud.componen
 import { UserDeleteComponent } from './pages/admin/users-crud/modal/user-delete/user-delete.component';
 import { UserUpdateComponent } from './pages/admin/users-crud/modal/user-update/user-update.component';
 import { AreasCrudComponent } from './pages/admin/areas-crud/areas-crud.component';
+import { AreaUpdateComponent } from './pages/admin/areas-crud/modal/area-update/area-update.component';
+import { AreaDeleteComponent } from './pages/admin/areas-crud/modal/area-delete/area-delete.component';
+import { AreaNewComponent } from './pages/admin/areas-crud/modal/area-new/area-new.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +58,10 @@ import { AreasCrudComponent } from './pages/admin/areas-crud/areas-crud.componen
     UsersCrudComponent,
     UserDeleteComponent,
     UserUpdateComponent,
-    AreasCrudComponent
+    AreasCrudComponent,
+    AreaUpdateComponent,
+    AreaDeleteComponent,
+    AreaNewComponent
   ],
   imports: [
     BrowserModule,

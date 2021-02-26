@@ -1,24 +1,23 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { UsersAdminService } from '../../../services/users-admin.service';
+import { AreasAdminService } from '../../../services/areas-admin.service';
 
 @Component({
-  selector: 'app-user-delete',
-  templateUrl: './user-delete.component.html',
-  styleUrls: ['./user-delete.component.scss']
+  selector: 'app-area-delete',
+  templateUrl: './area-delete.component.html',
+  styleUrls: ['./area-delete.component.scss']
 })
-export class UserDeleteComponent implements OnInit {
-
+export class AreaDeleteComponent implements OnInit {
   @Input() public id;
   @Output() deleteOk: EventEmitter<any> = new EventEmitter();
-  constructor(public activeModal: NgbActiveModal, private userService: UsersAdminService) { }
+  constructor(public activeModal: NgbActiveModal, private areasService: AreasAdminService) { }
+
 
   ngOnInit(): void {
   }
-
   confirmDelete() {
     console.log(this.id);
-    this.userService.deleteUser(this.id).subscribe(
+    this.areasService.deleteArea(this.id).subscribe(
         (response: any) => {
             this.deleteOk.emit(true);
             this.activeModal.close();
@@ -30,10 +29,10 @@ export class UserDeleteComponent implements OnInit {
         }
     );
     this.activeModal.close();
-}
+  }
 
-close() {
-    this.activeModal.close();
-}
+  close() {
+      this.activeModal.close();
+  }
 
 }
