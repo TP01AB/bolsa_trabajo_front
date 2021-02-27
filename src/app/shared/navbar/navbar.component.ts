@@ -9,13 +9,15 @@ import { LoginService } from 'src/app/auth/services/login.service';
 })
 export class NavbarComponent implements OnInit {
   themeActual:any;
-  active: any;
   constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
+  
   this.themeActual = localStorage.getItem('theme');
+  if(this.themeActual == null){
+    this.themeActual='light';
+  }
     $("#themeChanger").toggleClass(this.themeActual);
-     this.active = true;
   }
 
 
