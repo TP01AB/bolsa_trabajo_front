@@ -1,12 +1,12 @@
 @import "../../../styles.scss";
 
 .footerBot{
-background-color:$secondary;
+background-color:$light;
   h5{
-    color:blue;
+    color: $primary;
   }
   a{
-    color:yellow;
+    color: $dark;
   }
 
 }

@@ -11,9 +11,12 @@
 
     <!-- Menu -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <div class="custom-control custom-switch">
-            <input type="bu" class="custom-control-input"   checked />
-            <button id="theme-selector" (click)="setTheme()">Luis</button>
+        <div class="custom-control custom-switch">            
+            <button id="theme-selector" class="btn" (click)="setTheme()" title="Cambiar tema">
+                <svg class="ml-1 bi text-secondary" width="25" height="25" fill="currentColor">
+                    <use xlink:href="bootstrap-icons.svg#brush" />
+                </svg>
+            </button>
         </div>
         <ul class="navbar-nav ">
 
