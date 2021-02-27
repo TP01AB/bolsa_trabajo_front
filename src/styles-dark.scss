@@ -1,0 +1,74 @@
+
+$primary-dark: yellow;
+$secondary-dark: brown;
+$success-dark: #28a745;
+$info-dark: darkblue;
+$warning-dark: #ffc107;
+$danger-dark: #dc3545;
+
+app-root #themeChanger.dark {
+
+  .bg-primary {
+    background-color: $primary-dark !important;
+  }
+
+  .bg-secondary {
+    background-color: $secondary-dark !important;
+  }
+
+  .bg-danger {
+    background-color: $danger-dark !important;
+  }
+
+  .bg-success {
+    background-color: $success-dark !important;
+  }
+
+  .btn.btn-danger {
+    background-color: $danger-dark !important;
+  }
+
+  .btn.btn-success {
+    background-color: $success-dark !important;
+  }
+
+  .btn.btn-primary {
+    background-color: $primary-dark !important;
+  }
+
+  .btn.btn-primary,
+  .btn.btn-secondary {
+    //background-color: $primary-dark !important;
+    border: 3px solid #fff;
+  }
+
+  .btn {
+    transition: all linear 0.2s;
+  }
+
+  .btn:hover {
+    transform: scale(1.2);
+    box-shadow: 5px 5px 5px black;
+  }
+
+  // Color del boton activo del menu
+  // Me veo obligado a usar !importante, no accedo a él por la especificidad de bootstrap, le ponen !important y no puedo cambiarlo sin su uso
+  .btn.btn-aside.active {
+    background-color: #1c282b !important;
+  }
+
+  // Modificaciones puntuales para una mayor legilidad
+  #anexos small {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  #anexos i {
+    color: #fff;
+  }
+
+  *:focus {
+    outline: 7px dotted rgb(9, 224, 9) !important;
+  }
+}
