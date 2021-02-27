@@ -21,9 +21,9 @@ export class CompanyViewStudentsService {
     let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
     return this.http.get(url, { headers: headers });
   };
-  public getStudentAreas = ($user_id) => {
+  public getStudentAreas = (user_id) => {
     const url = environment.Laravel + "areas/";
     let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
-    return this.http.get(url + $user_id, { headers: headers });
+    return this.http.get(url + user_id, { headers: headers });
   }
 }
