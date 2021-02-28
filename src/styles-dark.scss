@@ -1,19 +1,16 @@
 $primary-dark: #2c061f;
-$secondary-dark: #383e56;
+$secondary-dark: #13062c;
 $success-dark: #e1d89f;
-$info-dark: #d89216;
+$info-dark: #062c26;
 $warning-dark: red;
 $danger-dark: red;
-$light: #374045;
-$dark: white;
+$light-dark: #374045;
+$dark: #213742;
 $border-radius: 1rem;
 $font-size-base: 1.1rem;
 app-root #themeChanger.dark {
     body {
         background-color: $primary-dark !important;
-    }
-    .footerLink {
-        color: red;
     }
     .text-light {
         color: white;
@@ -29,6 +26,9 @@ app-root #themeChanger.dark {
         box-shadow: 5px 5px 25px $success-dark;
         opacity: 95%; //90%
     }
+    .bg-light-dark {
+        background-color: $light-dark !important;
+    }
     .bg-primary {
         background-color: $primary-dark !important;
     }
@@ -37,6 +37,12 @@ app-root #themeChanger.dark {
     }
     .bg-danger {
         background-color: $danger-dark !important;
+    }
+    .bg-info {
+        background-color: $info-dark !important;
+    }
+    .btn-info {
+        background-color: $info-dark !important;
     }
     .bg-success {
         background-color: $success-dark !important;
@@ -49,6 +55,9 @@ app-root #themeChanger.dark {
     }
     .btn.btn-primary {
         background-color: $primary-dark !important;
+    }
+    .btn-secondary {
+        background-color: $secondary-dark !important;
     }
     .btn.btn-primary,
     .btn.btn-secondary {
