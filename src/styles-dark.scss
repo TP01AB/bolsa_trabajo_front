@@ -1,74 +1,64 @@
-
-$primary-dark: yellow;
-$secondary-dark: brown;
-$success-dark: #28a745;
-$info-dark: darkblue;
-$warning-dark: #ffc107;
-$danger-dark: #dc3545;
-
+$primary-dark: #2c061f;
+$secondary-dark: #383e56;
+$success-dark: #e1d89f;
+$info-dark: #d89216;
+$warning-dark: red;
+$danger-dark: red;
+$light: #374045;
+$dark: white;
+$border-radius: 1rem;
+$font-size-base: 1.1rem;
 app-root #themeChanger.dark {
-
-  .bg-primary {
-    background-color: $primary-dark !important;
-  }
-
-  .bg-secondary {
-    background-color: $secondary-dark !important;
-  }
-
-  .bg-danger {
-    background-color: $danger-dark !important;
-  }
-
-  .bg-success {
-    background-color: $success-dark !important;
-  }
-
-  .btn.btn-danger {
-    background-color: $danger-dark !important;
-  }
-
-  .btn.btn-success {
-    background-color: $success-dark !important;
-  }
-
-  .btn.btn-primary {
-    background-color: $primary-dark !important;
-  }
-
-  .btn.btn-primary,
-  .btn.btn-secondary {
-    //background-color: $primary-dark !important;
-    border: 3px solid #fff;
-  }
-
-  .btn {
-    transition: all linear 0.2s;
-  }
-
-  .btn:hover {
-    transform: scale(1.2);
-    box-shadow: 5px 5px 5px black;
-  }
-
-  // Color del boton activo del menu
-  // Me veo obligado a usar !importante, no accedo a él por la especificidad de bootstrap, le ponen !important y no puedo cambiarlo sin su uso
-  .btn.btn-aside.active {
-    background-color: #1c282b !important;
-  }
-
-  // Modificaciones puntuales para una mayor legilidad
-  #anexos small {
-    color: #fff;
-    font-size: 1rem;
-    font-weight: bold;
-  }
-
-  #anexos i {
-    color: #fff;
-  }
-
-  *:focus {
-    outline: 7px dotted rgb(9, 224, 9) !important;
-  }
+    body {
+        background-color: $primary-dark !important;
+    }
+    .footerLink {
+        color: red;
+    }
+    .text-light {
+        color: white;
+        font-weight: bold;
+    }
+    .footerBot {
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        background-color: $light;
+    }
+    .navbar {
+        box-shadow: 5px 5px 25px $success-dark;
+        opacity: 95%; //90%
+    }
+    .bg-primary {
+        background-color: $primary-dark !important;
+    }
+    .bg-secondary {
+        background-color: $secondary-dark !important;
+    }
+    .bg-danger {
+        background-color: $danger-dark !important;
+    }
+    .bg-success {
+        background-color: $success-dark !important;
+    }
+    .btn.btn-danger {
+        background-color: $danger-dark !important;
+    }
+    .btn.btn-success {
+        background-color: $success-dark !important;
+    }
+    .btn.btn-primary {
+        background-color: $primary-dark !important;
+    }
+    .btn.btn-primary,
+    .btn.btn-secondary {
+        border: 3px solid #fff;
+    }
+    .btn {
+        transition: all linear 0.2s;
+    }
+    .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 5px 5px 5px #d1d1cb;
+    }
 }
