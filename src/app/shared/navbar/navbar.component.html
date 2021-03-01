@@ -5,9 +5,14 @@
         <img src="/assets/logo.png" alt="Logotipo del centro" height="60" class="d-inline-block align-top" alt="">
     </a>
     <!-- Button responsive menu-->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon">
+            <svg class="bi" width="32" height="32" fill="currentColor">
+                <use xlink:href="bootstrap-icons.svg#list" />
+            </svg>
+        </span>
+    </button>
     <!-- Menu -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
@@ -19,10 +24,10 @@
             </li>
             <li *ngIf="isLogin() " class="nav-item ">
                 <a class="nav-link " (click)="onLogout()" role="button">Salir
-          <svg class="bi text-white " width="16 " height="16 " fill="currentColor ">
-            <use xlink:href="bootstrap-icons.svg#box-arrow-right " />
-          </svg>
-        </a>
+                    <svg class="bi text-white " width="16 " height="16 " fill="currentColor ">
+                        <use xlink:href="bootstrap-icons.svg#box-arrow-right " />
+                    </svg>
+                </a>
             </li>
         </ul>
     </div>

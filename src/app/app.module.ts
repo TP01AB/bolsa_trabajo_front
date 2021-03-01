@@ -27,6 +27,13 @@ import { ViewProfileComponent } from './pages/alumno/view-profile/view-profile.c
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoadSpinnerModule } from './shared/load-spinner/load-spinner.module';
 import { ViewProfileComponent2 } from './pages/company/view-profile/view-profile.component';
+import { UsersCrudComponent } from './pages/admin/users-crud/users-crud.component';
+import { UserDeleteComponent } from './pages/admin/users-crud/modal/user-delete/user-delete.component';
+import { UserUpdateComponent } from './pages/admin/users-crud/modal/user-update/user-update.component';
+import { AreasCrudComponent } from './pages/admin/areas-crud/areas-crud.component';
+import { AreaUpdateComponent } from './pages/admin/areas-crud/modal/area-update/area-update.component';
+import { AreaDeleteComponent } from './pages/admin/areas-crud/modal/area-delete/area-delete.component';
+import { AreaNewComponent } from './pages/admin/areas-crud/modal/area-new/area-new.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +54,14 @@ import { ViewProfileComponent2 } from './pages/company/view-profile/view-profile
     OfferDuplicateComponent,
     StudentDashboardComponent,
     ViewProfileComponent,
-    ViewProfileComponent2
+    ViewProfileComponent2,
+    UsersCrudComponent,
+    UserDeleteComponent,
+    UserUpdateComponent,
+    AreasCrudComponent,
+    AreaUpdateComponent,
+    AreaDeleteComponent,
+    AreaNewComponent
   ],
   imports: [
     BrowserModule,
