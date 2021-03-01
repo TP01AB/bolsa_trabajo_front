@@ -1,0 +1,73 @@
+$primary-dark: #2c061f;
+$secondary-dark: #13062c;
+$success-dark: #e1d89f;
+$info-dark: #062c26;
+$warning-dark: red;
+$danger-dark: red;
+$light-dark: #374045;
+$dark: #213742;
+$border-radius: 1rem;
+$font-size-base: 1.1rem;
+app-root #themeChanger.dark {
+    body {
+        background-color: $primary-dark !important;
+    }
+    .text-light {
+        color: white;
+        font-weight: bold;
+    }
+    .footerBot {
+        color: white;
+        font-weight: bold;
+        font-size: 16px;
+        background-color: $light;
+    }
+    .navbar {
+        box-shadow: 5px 5px 25px $success-dark;
+        opacity: 95%; //90%
+    }
+    .bg-light-dark {
+        background-color: $light-dark !important;
+    }
+    .bg-primary {
+        background-color: $primary-dark !important;
+    }
+    .bg-secondary {
+        background-color: $secondary-dark !important;
+    }
+    .bg-danger {
+        background-color: $danger-dark !important;
+    }
+    .bg-info {
+        background-color: $info-dark !important;
+    }
+    .btn-info {
+        background-color: $info-dark !important;
+    }
+    .bg-success {
+        background-color: $success-dark !important;
+    }
+    .btn.btn-danger {
+        background-color: $danger-dark !important;
+    }
+    .btn.btn-success {
+        background-color: $success-dark !important;
+    }
+    .btn.btn-primary {
+        background-color: $primary-dark !important;
+    }
+    .btn-secondary {
+        background-color: $secondary-dark !important;
+    }
+    .btn.btn-primary,
+    .btn.btn-secondary {
+        border: 3px solid #fff;
+    }
+    .btn {
+        transition: all linear 0.2s;
+    }
+    .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 5px 5px 5px #d1d1cb;
+    }
+}

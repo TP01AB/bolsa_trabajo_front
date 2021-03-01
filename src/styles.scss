@@ -1,12 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
 
+
 /* Contenedor del contenido de la parte intentar de la web */
+
 #page-content-wrapper {
     width: 100%;
 }
-/* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
 
-.badge {    
-    white-space: pre-wrap;
+@import "styles-light.scss";
+@import "styles-dark.scss";
+/* Importing Bootstrap SCSS file. */
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+.btn-primary {
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+body {
+    background-color: $light !important;
 }

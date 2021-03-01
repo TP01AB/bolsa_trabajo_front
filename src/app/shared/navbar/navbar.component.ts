@@ -8,11 +8,18 @@ import { LoginService } from 'src/app/auth/services/login.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor(private loginService: LoginService, private router: Router) {  }
+  themeActual:any;
+  constructor(private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
+  
+  this.themeActual = localStorage.getItem('theme');
+  if(this.themeActual == null){
+    this.themeActual='light';
   }
+    $("#themeChanger").toggleClass(this.themeActual);
+  }
+
 
   isLogin(): boolean {
     let isLogin = false;
@@ -24,6 +31,22 @@ export class NavbarComponent implements OnInit {
   onLogout(): void {
     sessionStorage.removeItem("apiPassport");
     this.router.navigate([''])
+  }
+
+  setTheme(): void {
+     this.themeActual = localStorage.getItem('theme');
+    $("#themeChanger").toggleClass(this.themeActual);
+    
+    if (this.themeActual == 'light') {
+      localStorage.setItem('theme', 'dark');
+      this.themeActual = localStorage.getItem('theme');
+       
+    } else {
+      localStorage.setItem('theme', 'light');
+      this.themeActual = localStorage.getItem('theme');
+      
+    }
+    $("#themeChanger").toggleClass(this.themeActual);
   }
 
 }

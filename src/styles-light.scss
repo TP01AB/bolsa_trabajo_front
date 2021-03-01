@@ -1,0 +1,34 @@
+$primary: #003f5a;
+$secondary: #de6600;
+$success: #28a745;
+$info: #fea02f;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #ebd9c8;
+$dark: black;
+
+$link-color: blue;
+
+app-root #themeChanger.light {
+  
+    .btn.btn-primary,
+    .btn.btn-secondary {      
+        border: 3px solid #fff;
+    }
+
+    .btn {
+        border-radius: 10px;
+        transition: all ease 0.2s;
+    }
+
+    .btn:hover {
+        transform: scale(1.1);
+        box-shadow: 2px 2px 2px black;
+    }
+        
+    .btn.btn-aside.active {
+        background-color: $dark;
+    }
+
+}
+  

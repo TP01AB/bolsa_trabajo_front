@@ -1,6 +1,8 @@
-#sidebar-wrapper {  
+@import "../../../styles.scss";
+#sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;
+  background: rgba($color: ($primary), $alpha: 0.5) !important;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
   -o-transition: margin .25s ease-out;
@@ -18,7 +20,7 @@
 
   .list-group {
     width: 15rem;
-
+    
     ul {
       list-style: none;
       padding-left: 0;
@@ -26,12 +28,13 @@
       li a {
         padding: 10px;
         display: block;
-        color: #17a2b8;
-        border-bottom: 1px solid #17a2b8;
+        color: $primary;
+        border-bottom: 1px solid $primary;
         text-decoration: none;
+        transition: ease-in-out 0.3s;
         &:hover {
             color: #fff;
-            background-color: #48909b;
+            background-color: rgba($color: ($primary), $alpha: 0.5);
             > svg {
                 color: #fff !important;
             }

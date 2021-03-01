@@ -1,8 +1,8 @@
-<nav class="navbar navbar-expand-md bg-info container-fluid">
+<nav class="navbar navbar-expand-md bg-primary container-fluid">
     <!-- Logo -->
-    <a alt="pagina de inicio" class="navbar-brand" routerLink="/">
+    <a alt="pagina de inicio" class="navbar-brand" routerLink="/" alt="Logotipo del centro">
         <!--*ngIf="router.url === '/'"-->
-        <img src="/assets/logo.png" alt="Logotipo del centro" height="60" class="d-inline-block align-top" alt="">
+        <img src="/assets/logo.png" alt="Logotipo del centro" height="60" class="d-inline-block align-top">
     </a>
     <!-- Button responsive menu-->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -15,20 +15,29 @@
     </button>
     <!-- Menu -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-            <li *ngIf="!isLogin()" class="nav-item">
-                <a class="nav-link" routerLink="/login">Login</a>
+        <div class="custom-control custom-switch">            
+            <button id="theme-selector" class="btn" (click)="setTheme()" title="Cambiar tema">
+                <svg class="ml-1 bi text-secondary" width="25" height="25" fill="currentColor">
+                    <use xlink:href="bootstrap-icons.svg#brush" />
+                </svg>
+            </button>
+        </div>
+        <ul class="navbar-nav ">
+
+            <li *ngIf="!isLogin() " class="nav-item ">
+                <a class="nav-link " routerLink="/login">Login</a>
             </li>
-            <li *ngIf="!isLogin()" class="nav-item">
-                <a class="nav-link" routerLink="/registro">Registro</a>
+            <li *ngIf="!isLogin() " class="nav-item ">
+                <a class="nav-link " routerLink="/registro">Registro</a>
             </li>
             <li *ngIf="isLogin() " class="nav-item ">
                 <a class="nav-link " (click)="onLogout()" role="button">Salir
-                    <svg class="bi text-white " width="16 " height="16 " fill="currentColor ">
-                        <use xlink:href="bootstrap-icons.svg#box-arrow-right " />
-                    </svg>
-                </a>
+          <svg class="bi text-white " width="16 " height="16 " fill="currentColor ">
+            <use xlink:href="bootstrap-icons.svg#box-arrow-right " />
+          </svg>
+        </a>
             </li>
         </ul>
     </div>
+
 </nav>
