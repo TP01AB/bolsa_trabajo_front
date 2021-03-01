@@ -18,7 +18,7 @@ export class StudentOfferComponent implements OnInit {
 
   closeResult: String;
 
-  constructor(private modalService: NgbModal,private studentOfferService: StudentOfferService, private loginService: LoginService, private router: Router) { }
+  constructor(private modalService: NgbModal, private studentOfferService: StudentOfferService, private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
     this.getOffers();
@@ -26,7 +26,7 @@ export class StudentOfferComponent implements OnInit {
 
   //Función que recupera las ofertas activas a las que no está apuntado el alumno
   getOffers() {
-    this.offers = [];    
+    this.offers = [];
     //Recupero las ofertas activas
     this.studentOfferService.getActiveOffers().subscribe(
       (response: any) => {
@@ -45,14 +45,14 @@ export class StudentOfferComponent implements OnInit {
               var id = element.id;
               //Compruebo si el alumno está apuntado a alguna de las ofertas recogidas
               for (var i = 0, len = interviews.length; i < len; i++) {
-                console.log('compruebo');                
-                if(interviews[i]['offer_id'] == id) {
+                console.log('compruebo');
+                if (interviews[i]['offer_id'] == id) {
                   aux = true;
                   console.log('existe');
                 }
               }
               //Si el alumno no está apuntado a la oferta, guardi la oferta en el array de ofertas
-              if(!aux) {
+              if (!aux) {
                 let offer = {
                   'id': element.id,
                   'name': element.name,
@@ -67,9 +67,9 @@ export class StudentOfferComponent implements OnInit {
                 this.offers.push(offer);
               }
             });
+            this.isLoaded = true;
           }
         )
-        this.isLoaded = true;        
       },
       (error) => {
         console.log(error);

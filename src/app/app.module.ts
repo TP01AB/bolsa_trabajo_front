@@ -58,8 +58,7 @@ import { AreaNewComponent } from './pages/admin/areas-crud/modal/area-new/area-n
     ViewProfileComponent,
     ViewProfileComponent2,
     StudentOfferComponent,
-    OfferEnrollComponent
-    ViewProfileComponent2,
+    OfferEnrollComponent,
     UsersCrudComponent,
     UserDeleteComponent,
     UserUpdateComponent,
