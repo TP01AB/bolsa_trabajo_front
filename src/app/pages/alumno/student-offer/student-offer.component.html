@@ -5,22 +5,17 @@
 
     <!-- Contenido de la pagina -->
     <div id="page-content-wrapper">
-        <!-- Botón para cerrar el sidebar -->
-        <a class="btn" id="menu-toggle">
-            <svg class="bi text-info" width="32" height="32" fill="currentColor">
-                <use xlink:href="bootstrap-icons.svg#grid-3x3-gap" />
-            </svg>
-        </a>
-        <div class="container" *ngIf="isLoaded == false">
+        <!-- Botón para cerrar el sidebar -->       
+        <div class="container my-5" *ngIf="isLoaded == false">
             <app-load-spinner></app-load-spinner>
         </div>
 
-        <div class="container-fluid" *ngIf="isLoaded">
+        <div class="container-fluid my-5" *ngIf="isLoaded">
             <div class="row">
                 <div class="col">
                     <!-- Cuerpo de las ofertas -->
                     <div class="card w-100 mb-4 shadow">
-                        <div class="card-header bg-info">
+                        <div class="card-header bg-secondary">
                             <div class="d-flex align-items-center">
                                 <h2 class="card-title text-white font-weight-bold my-2 mr-3">Ofertas activas</h2>
                             </div>
@@ -31,11 +26,11 @@
                                 <!-- Se muestra para las ofertas -->
                                 <ng-container>
                                     <div class="col-sm-6" *ngFor="let offer of offers; index as i">
-                                        <div class="card m-2 mb-4 border-info shadow" *ngIf="offer.vacant>0 ">
-                                            <div class="card-header bg-info text-white">
+                                        <div class="card m-2 mb-4 border-secondary shadow" *ngIf="offer.vacant>0 ">
+                                            <div class="card-header bg-secondary text-white">
                                                 <h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}
                                                 </h3>
-                                                <span class="badge badge-light text-info mr-3 pull-right ">
+                                                <span class="badge badge-light text-secondary mr-3 pull-right ">
                                                     {{ offer.areaDescription }}
                                                 </span>
                                                 <span class="text-white font-weight-bolder">
@@ -45,7 +40,7 @@
                                             <div class="card-body">
                                                 <div class="row mb-4">
                                                     <div class="col">
-                                                        <p class="text-info">
+                                                        <p class="text-primary">
                                                             Fecha de finalización: {{ offer.endDate }}
                                                         </p>
                                                         <p class="card-text">{{ offer.description }}</p>
@@ -53,8 +48,8 @@
                                                 </div>
                                             </div>
                                             <div class="card-footer p-0">
-                                                <div class="btn-group w-100">
-                                                    <button type="button" class="btn btn-info rounded-0"
+                                                <div class="w-50 mx-auto">
+                                                    <button type="button" class="btn btn-secondary rounded-lg w-100"
                                                         (click)=offerEnroll(offer.id)>
                                                         Aceptar
                                                     </button>

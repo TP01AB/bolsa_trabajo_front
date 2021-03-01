@@ -2,21 +2,15 @@
     <!-- Sidebar -->
     <app-sidebar></app-sidebar>
     <!-- Contenido de la pagina -->
-    <div id="page-content-wrapper">
-        <!-- Botón para cerrar el sidebar -->
-        <a class="btn" id="menu-toggle">
-            <svg class="bi text-info" width="32" height="32" fill="currentColor">
-                <use xlink:href="bootstrap-icons.svg#grid-3x3-gap" />
-            </svg>
-        </a>
-        <div class="container" *ngIf="can == false">
+    <div id="page-content-wrapper">                
+        <div class="container my-5" *ngIf="can == false">
             <app-load-spinner></app-load-spinner>
         </div>
-        <div class="container my-3" *ngIf="can == true">
+        <div class="container my-5" *ngIf="can == true">
             <div class="row justify-content-center">
                 <div class="col-10">
                     <div class="card">
-                        <div class="card-header  bg-info ">
+                        <div class="card-header bg-secondary ">
                             <h2 class="card-title text-white mb-0">Perfil</h2>
                         </div>
                         <div class="card-body">

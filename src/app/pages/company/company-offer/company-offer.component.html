@@ -4,20 +4,14 @@
     <app-sidebar></app-sidebar>
 
     <!-- Contenido de la pagina -->
-    <div id="page-content-wrapper">
-        <!-- Botón para cerrar el sidebar -->
-        <a class="btn" id="menu-toggle">
-            <svg class="bi text-info" width="32" height="32" fill="currentColor">
-                <use xlink:href="bootstrap-icons.svg#grid-3x3-gap" />
-            </svg>
-        </a>
+    <div id="page-content-wrapper">        
 
-        <div class="container-fluid">
+        <div class="container-fluid my-5">
             <div class="row">
                 <div class="col">
                     <!-- Cuerpo de las ofertas -->
                     <div class="card w-100 mb-4 shadow">
-                        <div class="card-header bg-info">
+                        <div class="card-header bg-secondary">
                             <div class="d-flex align-items-center">
                                 <h2 class="card-title text-white font-weight-bold my-2 mr-3">Mis ofertas</h2>
                                 <div class="custom-control custom-switch" (change)="activeOffer()">
@@ -26,7 +20,7 @@
                                         id="labelActiveOffer">Activas</label>
                                 </div>
                             </div>
-                            <a class="rounded-circle position-absolute border border-white bg-info" (click)=offerNew()>
+                            <a class="rounded-circle position-absolute border border-white bg-secondary" (click)=offerNew()>
                                 <svg class="bi text-white" width="32" height="32" fill="currentColor">
                                     <use xlink:href="bootstrap-icons.svg#plus" />
                                 </svg>
@@ -38,11 +32,11 @@
                                 <!-- Se muestra para las ofertas activas -->
                                 <ng-container *ngIf="active">
                                     <div class="col-sm-6" *ngFor="let offer of actOffers; index as i">
-                                        <div class="card m-2 mb-4 border-info shadow">
-                                            <div class="card-header bg-info text-white">
+                                        <div class="card m-2 mb-4 border-secondary shadow">
+                                            <div class="card-header bg-secondary text-white">
                                                 <h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}
                                                 </h3>
-                                                <span class="badge badge-light text-info mr-2">{{ offer.areaDescription
+                                                <span class="badge badge-light text-secondary mr-2">{{ offer.areaDescription
                                                     }}</span>
                                                 <span class="text-white font-weight-bolder">Vacantes: {{ offer.vacant
                                                     }}</span>
@@ -50,7 +44,7 @@
                                             <div class="card-body">
                                                 <div class="row mb-4">
                                                     <div class="col">
-                                                        <p class="text-info">
+                                                        <p class="text-primary">
                                                             Fecha de finalización: {{ offer.endDate }}
                                                         </p>
                                                         <p class="card-text">{{ offer.description }}</p>
@@ -69,19 +63,19 @@
                                             </div>
                                             <div class="card-footer p-0">
                                                 <div class="btn-group w-100">
-                                                    <button type="button" class="btn btn-info rounded-0">
+                                                    <button type="button" class="btn btn-secondary rounded-0">
                                                         <svg class="bi" width="26" height="26" fill="currentColor"
                                                             (click)=offerUpdate(offer)>
                                                             <use xlink:href="bootstrap-icons.svg#pencil" />
                                                         </svg>
                                                     </button>
-                                                    <button type="button" class="btn btn-info">
+                                                    <button type="button" class="btn btn-secondary">
                                                         <svg class="bi" width="26" height="26" fill="currentColor"
                                                             (click)=offerDuplicate(offer)>
                                                             <use xlink:href="bootstrap-icons.svg#files" />
                                                         </svg>
                                                     </button>
-                                                    <button type="button" class="btn btn-info rounded-0">
+                                                    <button type="button" class="btn btn-secondary rounded-0">
                                                         <svg class="bi" width="26" height="26" fill="currentColor"
                                                             (click)=offerDelete(offer.id)>
                                                             <use xlink:href="bootstrap-icons.svg#x" />
@@ -101,11 +95,11 @@
                                 <!-- Se muestra para las offertas -->
                                 <ng-container *ngIf="!active">
                                     <div class="col-sm-6" *ngFor="let offer of desOffers; index as i">
-                                        <div class="card m-2 mb-4 border-info shadow">
-                                            <div class="card-header bg-info text-white">
+                                        <div class="card m-2 mb-4 border-secondary shadow">
+                                            <div class="card-header bg-secondary text-white">
                                                 <h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}
                                                 </h3>
-                                                <span class="badge badge-light text-info mr-2">{{ offer.areaDescription
+                                                <span class="badge badge-light text-secondary mr-2">{{ offer.areaDescription
                                                     }}</span>
                                                 <span class="text-white font-weight-bolder">Vacantes: {{ offer.vacant
                                                     }}</span>
@@ -113,7 +107,7 @@
                                             <div class="card-body">
                                                 <div class="row mb-4">
                                                     <div class="col">
-                                                        <p class="text-info">
+                                                        <p class="text-primary">
                                                             Fecha de finalización: {{ offer.endDate }}
                                                         </p>
                                                         <p class="card-text">{{ offer.description }}</p>
@@ -132,19 +126,19 @@
                                             </div>
                                             <div class="card-footer p-0">
                                                 <div class="btn-group w-100">
-                                                    <button type="button" class="btn btn-info rounded-0">
+                                                    <button type="button" class="btn btn-secondary rounded-0">
                                                         <svg class="bi" width="26" height="26" fill="currentColor"
                                                             (click)=offerUpdate(offer)>
                                                             <use xlink:href="bootstrap-icons.svg#pencil" />
                                                         </svg>
                                                     </button>
-                                                    <button type="button" class="btn btn-info">
+                                                    <button type="button" class="btn btn-secondary">
                                                         <svg class="bi" width="26" height="26" fill="currentColor"
                                                             (click)=offerDuplicate(offer)>
                                                             <use xlink:href="bootstrap-icons.svg#files" />
                                                         </svg>
                                                     </button>
-                                                    <button type="button" class="btn btn-info rounded-0">
+                                                    <button type="button" class="btn btn-secondary rounded-0">
                                                         <svg class="bi" width="26" height="26" fill="currentColor"
                                                             (click)=offerDelete(offer.id)>
                                                             <use xlink:href="bootstrap-icons.svg#x" />
