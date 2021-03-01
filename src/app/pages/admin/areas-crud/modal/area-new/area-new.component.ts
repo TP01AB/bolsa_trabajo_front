@@ -25,7 +25,9 @@ export class AreaNewComponent implements OnInit {
     if (this.areaForm.invalid) {
         return;
     } else {
-      let area = this.areaForm.value;
+      let jsonForm = this.areaForm.getRawValue();  
+      let area = JSON.stringify(jsonForm);      
+      console.log("Entro");
       this.areasService.newArea(area).subscribe(
           (response: any) => {
               this.insertOk.emit(true);
@@ -47,7 +49,13 @@ export class AreaNewComponent implements OnInit {
 
   initForm() {
     this.areaForm = this.fb.group({
-      name: ['', [Validators.required]],      
+      nombre: ['', [Validators.required]],      
     });    
+  }
+
+  isValidField(field: string): string {
+    const validatedField = this.areaForm.get(field);
+    return (!validatedField.valid && validatedField.touched)
+      ? 'is-invalid' : validatedField.touched ? 'is-valid' : '';
   }
 }

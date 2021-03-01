@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoginService } from 'src/app/auth/services/login.service';
 import { AreasAdminService } from '../services/areas-admin.service';
 import { AreaDeleteComponent } from './modal/area-delete/area-delete.component';
 import { AreaNewComponent } from './modal/area-new/area-new.component';
+import { AreaUpdateComponent } from './modal/area-update/area-update.component';
 
 @Component({
   selector: 'app-areas-crud',
@@ -11,9 +14,13 @@ import { AreaNewComponent } from './modal/area-new/area-new.component';
 })
 export class AreasCrudComponent implements OnInit {
 
-  constructor(private areasService: AreasAdminService, private modalService: NgbModal) { }
+  constructor(private areasService: AreasAdminService,public loginService: LoginService, private modalService: NgbModal, private router: Router) {
+    if (!loginService.isUserSignedIn())
+      this.router.navigate(['/login']);    
+   }
 
   public areas = [];
+  public loaded = false;
 
   ngOnInit(): void {    
     this.areas=[];
@@ -24,7 +31,8 @@ export class AreasCrudComponent implements OnInit {
     this.areasService.getAreas().subscribe(
       (response: any) => {
         this.areas = response;
-        console.log(this.areas);        
+        //console.log(this.areas);     
+        this.loaded = true;   
       },
       error => console.log(error)
     )
@@ -51,6 +59,19 @@ export class AreasCrudComponent implements OnInit {
       }
     });
     modalRef.componentInstance["insertOk"].subscribe(event => {
+      this.getAreas();
+    });
+  }
+
+  areaUpdate(area: any) {
+    const modalRef = this.modalService.open(AreaUpdateComponent, { size: 'lg' });
+    modalRef.componentInstance.area = area;
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+      }
+    });
+    modalRef.componentInstance["updateOk"].subscribe(event => {
       this.getAreas();
     });
   }

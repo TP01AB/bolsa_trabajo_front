@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -15,6 +15,7 @@ export class UserUpdateComponent implements OnInit {
   constructor(public activeModal: NgbActiveModal, private router: Router, private fb: FormBuilder, private userService: UsersAdminService, private loginService: LoginService) { }
 
   @Input() public user;
+  @Output() updateOk: EventEmitter<any> = new EventEmitter();
   registerForm: FormGroup;
   submitted = false;
   isEmail = /\S+@\S+\.\S+/;
@@ -38,16 +39,16 @@ export class UserUpdateComponent implements OnInit {
             sessionStorage.removeItem("apiPassport");
             this.router.navigate([''])
           }        
+          this.updateOk.emit(true);   
           this.activeModal.close();
         },
         (error) => {
+          this.updateOk.emit(false);   
           console.log(error);
           this.activeModal.close();
         }
       );
-    }
-
-    
+    }    
   }
 
   initForm() {

@@ -20,20 +20,31 @@ export class AreasAdminService {
   }
 
   public deleteArea(id) {
-
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-    });
-
-    return this.http.delete(environment.Laravel + "areas/"+id, { headers: headers });
-  }
-
-  public newArea(area) {
+    console.log("delete");
+    const url = environment.Laravel + "areas/"+id;
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.loginService.user.access_token}`
     });
-    return this.http.post(environment.Laravel + "area/" + area, { headers: headers });
+
+    return this.http.delete(url, { headers: headers });
+  }
+
+  public newArea(area) {
+    console.log(area);
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
+    return this.http.post(environment.Laravel + "areas/insert", area, { headers: headers });
+  }
+
+  public updateArea(area) {
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
+    return this.http.put(environment.Laravel + "areas/" + area.id, area, { headers: headers });
   }
   
 }

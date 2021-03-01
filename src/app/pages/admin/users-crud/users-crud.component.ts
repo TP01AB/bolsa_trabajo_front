@@ -62,6 +62,9 @@ export class UsersCrudComponent implements OnInit {
         console.log(result);
       }
     });
+    modalRef.componentInstance["updateOk"].subscribe(event => {
+      this.getUsers();
+    });
   }
 
   userActive(userId, activate) {
