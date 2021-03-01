@@ -1,0 +1,74 @@
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    <app-sidebar></app-sidebar>
+
+    <!-- Contenido de la pagina -->
+    <div id="page-content-wrapper">
+        <!-- Botón para cerrar el sidebar -->
+        <a class="btn" id="menu-toggle">
+            <svg class="bi text-info" width="32" height="32" fill="currentColor">
+                <use xlink:href="bootstrap-icons.svg#grid-3x3-gap" />
+            </svg>
+        </a>
+        <div class="container" *ngIf="isLoaded == false">
+            <app-load-spinner></app-load-spinner>
+        </div>
+
+        <div class="container-fluid" *ngIf="isLoaded">
+            <div class="row">
+                <div class="col">
+                    <!-- Cuerpo de las ofertas -->
+                    <div class="card w-100 mb-4 shadow">
+                        <div class="card-header bg-info">
+                            <div class="d-flex align-items-center">
+                                <h2 class="card-title text-white font-weight-bold my-2 mr-3">Ofertas activas</h2>
+                            </div>
+                        </div>
+                        <div class="card-body mt-2">
+                            <!-- Oferta -->
+                            <div class="row">
+                                <!-- Se muestra para las ofertas -->
+                                <ng-container>
+                                    <div class="col-sm-6" *ngFor="let offer of offers; index as i">
+                                        <div class="card m-2 mb-4 border-info shadow" *ngIf="offer.vacant>0 ">
+                                            <div class="card-header bg-info text-white">
+                                                <h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}
+                                                </h3>
+                                                <span class="badge badge-light text-info mr-3 pull-right ">
+                                                    {{ offer.areaDescription }}
+                                                </span>
+                                                <span class="text-white font-weight-bolder">
+                                                    Vacantes: {{ offer.vacant }}
+                                                </span>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="row mb-4">
+                                                    <div class="col">
+                                                        <p class="text-info">
+                                                            Fecha de finalización: {{ offer.endDate }}
+                                                        </p>
+                                                        <p class="card-text">{{ offer.description }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card-footer p-0">
+                                                <div class="btn-group w-100">
+                                                    <button type="button" class="btn btn-info rounded-0"
+                                                        (click)=offerEnroll(offer.id)>
+                                                        Aceptar
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
