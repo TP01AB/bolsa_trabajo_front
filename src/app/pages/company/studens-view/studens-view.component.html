@@ -29,12 +29,15 @@
                                         </div>
                                         <div class="card-body">
                                             <img src="http://www.hablamosdeeuropa.es/PublishingImages/No%20me%20paro/Formaci%C3%B3n/estudiante.png" class="float-left" width="110" height="110">
-                                            <p class="card-text ">Rama</p>
                                             <p class="card-text ">Experiencia</p>
                                             <p *ngIf="student.status==0" class="card-text "> Desempleado</p>
                                             <p *ngIf="student.status==1" class="card-text "> Trabajando</p>
                                             <p *ngIf="student.status==2" class="card-text "> Trabajando, escucha ofertas</p>
+                                            <br>
                                             <p>{{student.aptitudes}}</p>
+                                            <div *ngFor="let area of student.areas;">
+                                                <p class="card-text">{{area}}</p>
+                                            </div>
                                         </div>
                                         <button type="button" class="btn btn-primary">
                         <svg class="bi text-white" width="26" height="26" fill="currentColor" >

@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; // Import necesarios para
 import { LoginService } from 'src/app/auth/services/login.service';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { Key } from 'readline';
 @Component({
   selector: 'app-studens-view',
   templateUrl: './studens-view.component.html',
@@ -42,8 +43,9 @@ export class StudensViewComponent implements OnInit {
           aptitudes: any;
           status: any;
           areas: any[];
+          description: any;
         }) => {
-          if (idAnterior != element.id) {
+          if (idAnterior != element.id) { //CREACION ESTUDIANTE SI ES LA PRIMERA VEZ
             idAnterior = element.id;
             let student = {
               'id': element.id,
@@ -54,15 +56,23 @@ export class StudensViewComponent implements OnInit {
               'phone': element.phone,
               'aptitudes': element.aptitudes,
               'status': element.status,
-              'areas': element.areas
+              'areas': []
             };
+            student.areas.push(element.description);
+            this.students.push(student);
+          } else { //AÑADIR AREA SI YA EXISTE ESTUDIANTE
+            let studentAnterior = this.students[idAnterior - 1];
+            studentAnterior.areas.push(element.description);
+            this.students[idAnterior - 1] = studentAnterior;
           }
-          this.students.push(student);
-        });
+        }
+        );
+        console.log(this.students);
       },
       (error) => {
         console.log(error);
       }
     );
+
   }
 }
