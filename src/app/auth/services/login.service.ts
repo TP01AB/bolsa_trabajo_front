@@ -11,29 +11,20 @@ export class LoginService {
 
   //Almacenará mediante esta key los datos de login en session storage
   public static readonly SESSION_STORAGE_KEY: string = "apiPassport";
-  message: string;
+  message: any;
   user: any;
 
   constructor(private http: HttpClient, private router: Router) {
     // Creo un usuario con los datos necesarios para la sesion
-    this.user = {
-      access_token: "",
-      user_id: "",
-      rol_id: "",
-      email: "",
-      company_id: "",
-      student_id: ""
-    }
-    this.message = "";
-    //Si estamos logeados nos vamos a /articles
-    this.rolRedirect();
+
+
   }
 
   /**
    * Petición de login
    * */
   public login = (email: string, password: string) => {
-    //const url = "http://localhost:3021/api/login";
+
     const url = environment.Laravel + "login";
 
     let headers = new HttpHeaders({
@@ -42,30 +33,7 @@ export class LoginService {
     return this.http.post(url, { 'email': email, 'password': password }, { headers: headers });
   };
 
-  /**
-   * Subscripción a la petición de login, si todo es correcto, la almacena en session storage y
-   * vamos a /articles. Si se produce un error lo muestra
-   * */
-  public loginSuscription(email: string, password: string) {
-    this.login(email, password).subscribe(
-      (response: any) => {
-        this.message = "Login correcto";
-        this.user.access_token = response.message.access_token;
-        this.user.email = response.message.user.email;
-        this.user.user_id = response.message.user.id;
-        this.user.rol_id = response.message.rol;
-        this.user.company_id = response.message.company_id;
-        if (this.user.rol_id === 3) {        
-          this.user.student_id = response.message.student_id;
-        }
-        sessionStorage.setItem(LoginService.SESSION_STORAGE_KEY, JSON.stringify(this.user));
-        this.rolRedirect();
-      },
-      (error) => {
-        this.message = error.error.message;
-      }
-    );
-  }
+
 
 
   /**
@@ -90,24 +58,4 @@ export class LoginService {
   /**
    * Método para redirigir al usuario dependiendo de su rol
    */
-  public rolRedirect() {
-    if (this.isUserSignedIn())
-      switch (this.user.rol_id) {
-        case 1:
-          this.router.navigate(['/admin/dashboard']);
-          break;
-        case 2:
-          this.router.navigate(['/admin/dashboard']);
-          break;
-        case 3:
-          this.router.navigate(['/alumno/dashboard']);
-          break;
-        case 4:
-          this.router.navigate(['/empresa/dashboard']);
-          break;
-        default:
-          break;
-      }
-  }
-
 }

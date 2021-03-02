@@ -1,11 +1,15 @@
 <div class="container my-3">
-    <div class="row justify-content-center">
+    <div *ngIf="animate">
+        <app-load-spinner></app-load-spinner>
+    </div>
+    <div *ngIf="!animate" class="row justify-content-center">
         <div class="col-md-6">
             <div class="card">
-                <div class="card-header bg-secondary ">
+                <div class="card-header  bg-info ">
                     <h2 class="card-title text-white mb-0">Acceso</h2>
                 </div>
                 <div class="card-body">
+
                     <form [formGroup]="newLogin" (ngSubmit)="onSubmit()">
                         <div class="form-group">
                             <label>Email</label>
@@ -26,19 +30,22 @@
                             </div>
                         </div>
 
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-secondary text-white mr-2">
+                        <div>
+
+                            <div class="text-right">
+                                <button type="submit" class="btn btn-info mr-2">
                           Enviar
                           <svg class="bi text-white" width="14" height="14" fill="currentColor">
                             <use xlink:href="bootstrap-icons.svg#save" />
                           </svg>
                         </button>
-                            <button type="reset" (click)="cancel()" class="btn btn-danger">
-                            Cancelar
+                                <button type="reset" (click)="cancel()" class="btn btn-danger">
+                            Volver
                             <svg class="bi text-white" width="14" height="14" fill="currentColor">
                               <use xlink:href="bootstrap-icons.svg#save" />
                             </svg>
                           </button>
+                            </div>
                         </div>
                         <div>{{message}}</div>
                     </form>

@@ -76,10 +76,7 @@ export class CompanyOfferService {
   };
 
   public aciveOffer = (id: number) => {
-    let headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${this.loginService.user.access_token}`
-    });
+    let headers = new HttpHeaders({ 'Content-Type': 'application/json', Authorization: `Bearer ${this.loginService.user.access_token}` });
 
     return this.http.put(environment.Laravel + "offers/active/" + id, { headers: headers });
   }

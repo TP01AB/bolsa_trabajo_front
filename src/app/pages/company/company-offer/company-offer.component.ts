@@ -30,7 +30,6 @@ export class CompanyOfferComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //this.getCompanyId();  // Obtengo el id de los datos de la empresa
     this.getOffers(); // Obtengo las ofertas
     this.active = true;
   }

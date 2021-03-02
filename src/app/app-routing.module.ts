@@ -41,6 +41,7 @@ const routes: Routes = [
   { path: 'alumno/ofertas', component: StudentOfferComponent },
   { path: 'registro', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
   { path: 'alumno/empresa-view', component: StudentCompanyViewComponent },
+  { path: 'alumno/oferta-view', component: StudentOfferViewComponent }
 ];
 
 @NgModule({
