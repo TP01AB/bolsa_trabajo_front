@@ -27,7 +27,8 @@ export class LoginComponent implements OnInit {
       user_id: "",
       rol_id: "",
       email: "",
-      company_id: ""
+      company_id: "",
+      student_id: ""
     }
     this.message = "";
     this.rolRedirect();
@@ -73,14 +74,13 @@ export class LoginComponent implements OnInit {
         this.user.email = response.message.user.email;
         this.user.user_id = response.message.user.id;
         this.user.rol_id = response.message.rol;
+        if (this.user.rol_id === 3) {        
+          this.user.student_id = response.message.student_id;
+        }
         if (this.user.rol_id === 4) {
-
           this.user.company_id = response.message.company_id;
-
         }
         sessionStorage.setItem(LoginService.SESSION_STORAGE_KEY, JSON.stringify(this.user));
-
-
         this.rolRedirect();
       },
       (error) => {
