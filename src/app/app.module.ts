@@ -36,6 +36,7 @@ import { AreasCrudComponent } from './pages/admin/areas-crud/areas-crud.componen
 import { AreaUpdateComponent } from './pages/admin/areas-crud/modal/area-update/area-update.component';
 import { AreaDeleteComponent } from './pages/admin/areas-crud/modal/area-delete/area-delete.component';
 import { AreaNewComponent } from './pages/admin/areas-crud/modal/area-new/area-new.component';
+import { StudentInterviewComponent } from './pages/alumno/student-interview/student-interview.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { AreaNewComponent } from './pages/admin/areas-crud/modal/area-new/area-n
     AreasCrudComponent,
     AreaUpdateComponent,
     AreaDeleteComponent,
-    AreaNewComponent
+    AreaNewComponent,
+    StudentInterviewComponent
   ],
   imports: [
     BrowserModule,
