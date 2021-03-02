@@ -26,14 +26,12 @@
                 <a routerLink="../dashboard">
                     <svg class="bi text-info" width="20" height="20" fill="currentColor">
                         <use xlink:href="bootstrap-icons.svg#person" />
-                    </svg>
-                    Usuarios
+                    </svg> Usuarios
                 </a>
                 <a routerLink="../ciclos">
                     <svg class="bi text-info" width="20" height="20" fill="currentColor">
                         <use xlink:href="bootstrap-icons.svg#briefcase" />
-                    </svg>
-                    Ciclos
+                    </svg> Ciclos
                 </a>
             </li>
         </ul>
@@ -79,7 +77,20 @@
                         <a href="#">3</a>
                     </li>
                 </ul>
+                <ul *ngIf="rol_id==4" class="collapse list-unstyled" id="offer-submenu">
+                    <li>
+                        <a routerLink="../ofertas">Mis ofertas</a>
+                    </li>
+                    <li>
+                        <a href="#">Candidatos</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                </ul>
             </li>
+        </ul>
+        <ul>
             <li>
                 <a href="#company-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <svg class="bi text-info" width="20" height="20" fill="currentColor">
