@@ -13,6 +13,15 @@ $link-color: blue;
     overflow: hidden;
 }
 
+.badge {
+    white-space: initial !important;
+}
+
+.pagination {
+    width: fit-content;
+    margin: auto;
+}
+
 app-root #themeChanger.light {
   
     .btn.btn-primary{      

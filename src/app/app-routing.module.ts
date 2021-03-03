@@ -14,6 +14,7 @@ import { ViewProfileComponent } from './pages/alumno/view-profile/view-profile.c
 import { ViewProfileComponent2 } from './pages/company/view-profile/view-profile.component';
 import { AreasCrudComponent } from './pages/admin/areas-crud/areas-crud.component';
 import { StudentOfferComponent } from './pages/alumno/student-offer/student-offer.component';
+import { StudentInterviewComponent } from './pages/alumno/student-interview/student-interview.component';
 
 
 const routes: Routes = [
@@ -41,6 +42,7 @@ const routes: Routes = [
   { path: 'alumno/ofertas', component: StudentOfferComponent },
   { path: 'registro', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
   { path: 'alumno/empresa-view', component: StudentCompanyViewComponent },
+  { path: 'alumno/interview', component: StudentInterviewComponent },  
 ];
 
 @NgModule({

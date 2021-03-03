@@ -2,13 +2,18 @@
 #sidebar-wrapper {
   min-height: 100vh;
   margin-left: -15rem;
-  background: rgba($color: ($primary), $alpha: 0.5) !important;
+  background: $light;
   -webkit-transition: margin .25s ease-out;
   -moz-transition: margin .25s ease-out;
   -o-transition: margin .25s ease-out;
   transition: margin .25s ease-out;
   z-index: 999;
   height: 100%;
+
+  #menu {
+    background: rgba($color: ($primary), $alpha: 0.5) !important;
+    height: 94%;
+  }
 
   .sidebar-img {
     padding: 0.875rem 1.25rem;
