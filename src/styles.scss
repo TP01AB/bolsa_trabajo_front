@@ -12,6 +12,11 @@
 /* Importing Bootstrap SCSS file. */
 
 @import "../node_modules/bootstrap/scss/bootstrap";
+a {
+    &.badge:hover {
+        cursor: pointer;
+    }
+}
 .btn-primary {
     color: white;
     font-weight: bold;

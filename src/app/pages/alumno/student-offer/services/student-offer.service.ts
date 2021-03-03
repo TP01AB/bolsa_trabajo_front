@@ -55,4 +55,12 @@ export class StudentOfferService {
     return this.http.get(url, { headers: headers });
   };
 
+  public getCompany($id) {
+    const url = environment.Laravel + "companyById/"+$id;
+    let headers = new HttpHeaders({ 
+      Authorization: `Bearer ${this.loginService.user.access_token}` 
+    });    
+    return this.http.get(url, { headers: headers });
+  }
+
 }
