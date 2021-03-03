@@ -9,6 +9,7 @@
 
 @import "styles-light.scss";
 @import "styles-dark.scss";
+
 /* Importing Bootstrap SCSS file. */
 
 @import "../node_modules/bootstrap/scss/bootstrap";
@@ -20,4 +21,17 @@
 
 body {
     background-color: $light !important;
+}
+
+.card-footer {
+    overflow: hidden;
+}
+
+.badge {
+    white-space: initial !important;
+}
+
+.pagination {
+    width: fit-content;
+    margin: auto;
 }

@@ -1,14 +1,32 @@
-$primary-dark: #2c061f;
-$secondary-dark: #13062c;
-$success-dark: #e1d89f;
-$info-dark: #062c26;
+$primary-dark: #1a1a2e;
+$secondary-dark: #e94560;
+$success-dark: #e6e2cd;
+$info-dark: #0f3460;
 $warning-dark: red;
 $danger-dark: red;
-$light-dark: #374045;
+$light-dark: #16213e;
 $dark: #213742;
-$border-radius: 1rem;
-$font-size-base: 1.1rem;
 app-root #themeChanger.dark {
+    //dario
+    .text {
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .btn.btn-primary {
+        border: 3px solid #fff;
+    }
+    .btn {
+        transition: all ease 0.2s;
+    }
+    .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 2px 2px 2px grey;
+    }
+    .btn.btn-aside.active {
+        background-color: $dark;
+    }
+    //yo
     body {
         background-color: $primary-dark !important;
     }
@@ -62,12 +80,5 @@ app-root #themeChanger.dark {
     .btn.btn-primary,
     .btn.btn-secondary {
         border: 3px solid #fff;
-    }
-    .btn {
-        transition: all linear 0.2s;
-    }
-    .btn:hover {
-        transform: scale(1.05);
-        box-shadow: 5px 5px 5px #d1d1cb;
     }
 }
