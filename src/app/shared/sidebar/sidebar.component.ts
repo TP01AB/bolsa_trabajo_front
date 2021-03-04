@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import * as jQuery from 'jquery';
 import { LoginService } from 'src/app/auth/services/login.service';
+import { CompanyProfileService } from 'src/app/pages/company/crear-perfil/services/view-profile.service';
 declare var $: any;
 
 @Component({
@@ -10,39 +11,41 @@ declare var $: any;
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private loginService: LoginService) { 
+  constructor(private loginService: LoginService) {
     this.innerWidth = window.innerWidth;
   }
-  
+  name;
   rol_id;
   public innerWidth: any;
   public icon;
 
   ngOnInit() {
-      
-    this.rol_id = this.loginService.user.rol_id;    
-     //Toggle Click Function
-     $("#closeBtn").click(function(e) {
-      e.preventDefault();        
+
+
+    this.rol_id = this.loginService.user.rol_id;
+    this.name = this.loginService.user.name + " " + this.loginService.user.lastnames;
+    //Toggle Click Function
+    $("#closeBtn").click(function (e) {
+      e.preventDefault();
     });
     console.log(this.innerWidth);
-    if(this.innerWidth >= 768) {
+    if (this.innerWidth >= 768) {
       this.icon = true;
     } else {
       this.icon = false;
     }
   }
-  
+
 
   public navButton() {
     $("#sidebar-wrapper").toggleClass("toggled");
     $("#closeBtn").toggleClass("toggled");
 
-    if(this.icon) {
+    if (this.icon) {
       this.icon = false;
     } else {
       this.icon = true;
     }
-  }  
+  }
 
 }

@@ -1,14 +1,40 @@
-$primary-dark: #2c061f;
-$secondary-dark: #13062c;
-$success-dark: #e1d89f;
-$info-dark: #062c26;
-$warning-dark: red;
+$primary-dark: #1a1a2e;
+$secondary-dark: #84142d;
+$secondary-dark-50: #853446;
+$success-dark: #29c7ac;
+$info-dark: #0f3460;
+$warning-dark: #c02739;
 $danger-dark: red;
-$light-dark: #374045;
+$light-dark: #16213e;
 $dark: #213742;
-$border-radius: 1rem;
-$font-size-base: 1.1rem;
 app-root #themeChanger.dark {
+    //dario
+    .text {
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .text-card {
+        font-size: 16px;
+        color: black;
+    }
+    .btn.btn-primary {
+        border: 3px solid #fff;
+    }
+    .bg-secondary-50 {
+        background-color: $secondary-dark-50;
+    }
+    .btn {
+        transition: all ease 0.2s;
+    }
+    .btn:hover {
+        transform: scale(1.05);
+        box-shadow: 2px 2px 2px grey;
+    }
+    .btn.btn-aside.active {
+        background-color: $dark;
+    }
+    //yo
     body {
         background-color: $primary-dark !important;
     }
@@ -23,8 +49,8 @@ app-root #themeChanger.dark {
         background-color: $light;
     }
     .navbar {
-        box-shadow: 5px 5px 25px $success-dark;
-        opacity: 95%; //90%
+        box-shadow: 4px 4px 10px white;
+        opacity: 90%; //90%
     }
     .bg-light-dark {
         background-color: $light-dark !important;
@@ -62,12 +88,5 @@ app-root #themeChanger.dark {
     .btn.btn-primary,
     .btn.btn-secondary {
         border: 3px solid #fff;
-    }
-    .btn {
-        transition: all linear 0.2s;
-    }
-    .btn:hover {
-        transform: scale(1.05);
-        box-shadow: 5px 5px 5px #d1d1cb;
     }
 }

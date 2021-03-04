@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
       user_id: "",
       rol_id: "",
       email: "",
+      name: "",
+      lastnames: "",
       company_id: "",
       student_id: ""
     }
@@ -65,22 +67,26 @@ export class LoginComponent implements OnInit {
     this.onReset();
     //Nos subscribimos a la petición de login que se implementa en el servicio
 
-    console.log(this.message);
+
     this.animate = true;
     this.loginService.login(email, password).subscribe(
       (response: any) => {
+
         this.message = "Login correcto";
         this.user.access_token = response.message.access_token;
         this.user.email = response.message.user.email;
         this.user.user_id = response.message.user.id;
         this.user.rol_id = response.message.rol;
-        if (this.user.rol_id === 3) {        
+        this.user.name = response.message.name;
+        if (this.user.rol_id === 3) {
           this.user.student_id = response.message.student_id;
+          this.user.lastnames = response.message.lastnames;
         }
         if (this.user.rol_id === 4) {
           this.user.company_id = response.message.company_id;
         }
         sessionStorage.setItem(LoginService.SESSION_STORAGE_KEY, JSON.stringify(this.user));
+        console.log(this.user);
         this.rolRedirect();
       },
       (error) => {

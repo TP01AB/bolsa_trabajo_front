@@ -1,45 +1,33 @@
 $primary: #003f5a;
 $secondary: #007a7a;
+$secondary-50:#02a0a0;
 $success: #28a745;
 $info: #de6600;
 $warning: #ffc107;
 $danger: #dc3545;
 $light: #ebd9c8;
 $dark: black;
-
 $link-color: blue;
-
-.card-footer {
-    overflow: hidden;
-}
-
-.badge {
-    white-space: initial !important;
-}
-
-.pagination {
-    width: fit-content;
-    margin: auto;
-}
-
 app-root #themeChanger.light {
-  
-    .btn.btn-primary{      
+    .text {
+        color: black;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    .bg-secondary-50 {
+        background-color: $secondary-50;
+    }
+    .btn.btn-primary {
         border: 3px solid #fff;
     }
-
-    .btn {        
+    .btn {
         transition: all ease 0.2s;
     }
-
     .btn:hover {
         transform: scale(1.1);
         box-shadow: 2px 2px 2px black;
     }
-        
     .btn.btn-aside.active {
         background-color: $dark;
     }
-
 }
-  
