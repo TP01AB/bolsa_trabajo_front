@@ -9,7 +9,6 @@
         <div class="container my-5" *ngIf="isLoaded == false">
             <app-load-spinner></app-load-spinner>
         </div>
-
         <div class="container-fluid my-5" *ngIf="isLoaded">
             <div class="row">
                 <div class="col">
@@ -23,16 +22,26 @@
                         <div class="card-body mt-2">
                             <!-- Oferta -->
                             <div class="row">
+                                <ngb-pagination class="col-12 mb-3" [(page)]="page" [pageSize]="pageSize"
+                                    [collectionSize]="offers.length" [boundaryLinks]="true">
+                                </ngb-pagination>
                                 <!-- Se muestra para las ofertas -->
                                 <ng-container>
-                                    <div class="col-sm-6" *ngFor="let offer of offers; index as i">
+                                    <div class="col-sm-6"
+                                        *ngFor="let offer of offers | slice: (page-1) * pageSize : page * pageSize">
                                         <div class="card m-2 mb-4 border-info shadow" *ngIf="offer.vacant>0 ">
                                             <div class="card-header bg-info text-white">
                                                 <h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}
                                                 </h3>
-                                                <span class="badge badge-light text-info mr-3 pull-right ">
-                                                    {{ offer.areaDescription }}
-                                                </span>
+                                                <p class="mb-0">
+                                                    <a class="badge badge-light text-info mr-3 mb-2 text-uppercase pull-right "
+                                                        (click)="viewCompany(offer.companyId)">
+                                                        {{ offer.companyName }}
+                                                    </a>
+                                                    <span class="badge badge-light text-info mr-3 pull-right ">
+                                                        {{ offer.areaDescription }}
+                                                    </span>
+                                                </p>
                                                 <span class="text-white font-weight-bolder">
                                                     Vacantes: {{ offer.vacant }}
                                                 </span>
@@ -59,6 +68,11 @@
                                     </div>
                                 </ng-container>
                             </div>
+                        </div>
+                        <div class="card-footer">
+                            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="offers.length"
+                                [boundaryLinks]="true">
+                            </ngb-pagination>
                         </div>
                     </div>
                 </div>

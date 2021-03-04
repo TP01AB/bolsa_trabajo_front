@@ -8,6 +8,20 @@ $danger: #dc3545;
 $light: #ebd9c8;
 $dark: black;
 $link-color: blue;
+
+.card-footer {
+    overflow: hidden;
+}
+
+.badge {
+    white-space: initial !important;
+}
+
+.pagination {
+    width: fit-content;
+    margin: auto;
+}
+
 app-root #themeChanger.light {
     .text {
         color: black;
