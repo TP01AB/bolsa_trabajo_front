@@ -70,7 +70,7 @@ import { AceptOfferModalComponent } from './pages/alumno/student-interview/modal
     AreaUpdateComponent,
     AreaDeleteComponent,
     AreaNewComponent,
-    StudentInterviewComponent
+    StudentInterviewComponent,
     CompanyDataViewComponent,
     UnsubInterModalComponent,
     AceptOfferModalComponent
