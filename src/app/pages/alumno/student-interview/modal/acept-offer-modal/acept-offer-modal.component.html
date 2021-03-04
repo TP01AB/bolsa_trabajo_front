@@ -1,5 +1,5 @@
 <div class="modal-header bg-secondary text-white">
-    <h4 class="modal-title" id="modal-basic-title">Desinscribirse</h4>
+    <h4 class="modal-title" id="modal-basic-title">Aceptar oferta</h4>
     <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Cross click')">
         <svg class="bi text-white" width="32" height="32" fill="currentColor">
             <use xlink:href="bootstrap-icons.svg#x" />
@@ -7,8 +7,8 @@
     </button>
 </div>
 <div class="modal-body">
-    ¿Está usted seguro de que quiere desinscribirse?
-    <button type="button " class="btn btn-danger" (click)="unSub()">
+    ¿Acepta usted esta oferta?
+    <button type="button" class="btn btn-success" (click)="acept()">
         Aceptar
         <svg class="bi text-white" width="14" height="14" fill="currentColor">
             <use xlink:href="bootstrap-icons.svg#save" />

@@ -39,6 +39,7 @@ import { AreaNewComponent } from './pages/admin/areas-crud/modal/area-new/area-n
 import { StudentInterviewComponent } from './pages/alumno/student-interview/student-interview.component';
 import { CompanyDataViewComponent } from './pages/alumno/shared/modal/company-data-view/company-data-view.component';
 import { UnsubInterModalComponent } from './pages/alumno/student-interview/modal/unsub-inter-modal/unsub-inter-modal.component';
+import { AceptOfferModalComponent } from './pages/alumno/student-interview/modal/acept-offer-modal/acept-offer-modal.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { UnsubInterModalComponent } from './pages/alumno/student-interview/modal
     AreaNewComponent,
     StudentInterviewComponent,
     CompanyDataViewComponent,
-    UnsubInterModalComponent
+    UnsubInterModalComponent,
+    AceptOfferModalComponent
   ],
   imports: [
     BrowserModule,

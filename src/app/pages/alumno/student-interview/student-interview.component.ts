@@ -4,6 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from 'src/app/auth/services/login.service';
 import { CompanyDataViewComponent } from '../shared/modal/company-data-view/company-data-view.component';
 import { StudentOfferService } from '../student-offer/services/student-offer.service';
+import { AceptOfferModalComponent } from './modal/acept-offer-modal/acept-offer-modal.component';
 import { UnsubInterModalComponent } from './modal/unsub-inter-modal/unsub-inter-modal.component';
 
 @Component({
@@ -28,6 +29,7 @@ export class StudentInterviewComponent implements OnInit {
   }
 
   getOffers() {
+    this.isLoaded = false;
     this.offers = [];
     //Recupero las ofertas activas
     this.studentOfferService.getOffersInterview().subscribe(
@@ -38,24 +40,28 @@ export class StudentInterviewComponent implements OnInit {
         offers.forEach((element: {
           id: any; name: any; vacant: any; startDate: any; endDate: any;
           description: any; area_id: any, isActive: any; area_description: any,
-          companyId: any, companyName: any, Joined_by: any, interId : any
+          companyId: any, companyName: any, Joined_by: any, interId : any,
+          interActive: any
         }) => {
-            let offer = {
-              'id': element.id,
-              'name': element.name,
-              'vacant': element.vacant,
-              'startDate': element.startDate,
-              'endDate': element.endDate,
-              'description': element.description,
-              'areaId': element.area_id,
-              'isActive': element.isActive,
-              'areaDescription': element.area_description,
-              'companyId': element.companyId,
-              'companyName': element.companyName,
-              'Joined_by': element.Joined_by,
-              'interId': element.interId
-            };
-            this.offers.push(offer);
+          if(element.interActive<2) {
+              let offer = {
+                'id': element.id,
+                'name': element.name,
+                'vacant': element.vacant,
+                'startDate': element.startDate,
+                'endDate': element.endDate,
+                'description': element.description,
+                'areaId': element.area_id,
+                'isActive': element.isActive,
+                'areaDescription': element.area_description,
+                'companyId': element.companyId,
+                'companyName': element.companyName,
+                'Joined_by': element.Joined_by,
+                'interId': element.interId,
+                'interActive': element.interActive
+              };
+              this.offers.push(offer);
+            }
           }     
         )
         this.isLoaded = true;
@@ -76,15 +82,28 @@ export class StudentInterviewComponent implements OnInit {
     });    
   }
 
-  unsubscribe(offer: any) {
+  unsubscribe(id: any) {
     const modalRef = this.modalService.open(UnsubInterModalComponent);
-    modalRef.componentInstance.offer = offer;
+    modalRef.componentInstance.id = id;
     modalRef.result.then((result) => {
       if (result) {
         console.log(result);
       }
     });
     modalRef.componentInstance["unsubOk"].subscribe(event => {
+      this.getOffers();
+    });
+  }
+
+  acept(id: any) {
+    const modalRef = this.modalService.open(AceptOfferModalComponent);
+    modalRef.componentInstance.id = id;
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+      }
+    });
+    modalRef.componentInstance["aceptOk"].subscribe(event => {
       this.getOffers();
     });
   }

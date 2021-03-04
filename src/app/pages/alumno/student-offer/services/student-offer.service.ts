@@ -63,4 +63,20 @@ export class StudentOfferService {
     return this.http.get(url, { headers: headers });
   }
 
+  public unsub($id) {
+    const url = environment.Laravel + "unsubInter/"+$id;
+    let headers = new HttpHeaders({ 
+      Authorization: `Bearer ${this.loginService.user.access_token}` 
+    });    
+    return this.http.put(url, { headers: headers });
+  }
+  
+  public acept($id) {
+    const url = environment.Laravel + "aceptInter/"+$id;
+    let headers = new HttpHeaders({ 
+      Authorization: `Bearer ${this.loginService.user.access_token}` 
+    });    
+    return this.http.put(url, { headers: headers });
+  }
+
 }
