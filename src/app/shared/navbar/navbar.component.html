@@ -5,8 +5,7 @@
         <img src="/assets/logo.png" alt="Logotipo del centro" height="60" class="d-inline-block align-top">
     </a>
     <!-- Button responsive menu-->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
             <svg class="bi" width="32" height="32" fill="currentColor">
                 <use xlink:href="bootstrap-icons.svg#list" />
@@ -15,12 +14,10 @@
     </button>
     <!-- Menu -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <div class="custom-control custom-switch">            
-            <button id="theme-selector" class="btn" (click)="setTheme()" title="Cambiar tema">
-                <svg class="ml-1 bi text-info" width="25" height="25" fill="currentColor">
-                    <use xlink:href="bootstrap-icons.svg#brush" />
-                </svg>
-            </button>
+        <div class="custom-control custom-switch">
+            <label id="labelTheme" class="text pr-2 " for="theme-selector">
+            </label>
+            <input type="checkbox" data-toggle="toggle" data-onstyle="bg-secondary" data-offstyle="bg-secondary" id="theme-selector" class="btn" (click)="setTheme()" title="Cambiar tema">
         </div>
         <ul class="navbar-nav ">
 

@@ -1,5 +1,6 @@
 $primary: #003f5a;
 $secondary: #007a7a;
+$secondary-50:#02a0a0;
 $success: #28a745;
 $info: #de6600;
 $warning: #ffc107;
@@ -12,6 +13,9 @@ app-root #themeChanger.light {
         color: black;
         font-weight: bold;
         font-size: 20px;
+    }
+    .bg-secondary-50 {
+        background-color: $secondary-50;
     }
     .btn.btn-primary {
         border: 3px solid #fff;

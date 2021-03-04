@@ -15,15 +15,19 @@
 <div class="bg-light border-right" id="sidebar-wrapper">
     <!-- Profile image -->
     <div class="sidebar-img border-bottom bg-primary d-flex flex-column align-items-center">
-        <img src="/assets/img_profile.jpeg" alt="imagen_perfill" class="rounded-circle" width="80px">
-        <p class="font-weight-bold text-white pt-1 mb-0">Pepe Pelaez</p>
+        <img src="/assets/img_profile.jpeg" alt="imagen_perfil" class="rounded-circle" width="80px">
+        <p *ngIf="rol_id==1 || rol_id==2" class="font-weight-bold text-white pt-1 mb-0">Pepe Pelaez</p>
+        <p *ngIf="rol_id==4 || rol_id==3" class="font-weight-bold text-white pt-1 mb-0">{{name}}</p>
+        <p *ngIf="rol_id==1 || rol_id==2" class="font-weight-bold text-white pt-1 mb-0">Administrador</p>
+        <p *ngIf="rol_id==3" class="font-weight-bold text-white pt-1 mb-0">Alumno</p>
+        <p *ngIf="rol_id==4" class="font-weight-bold text-white pt-1 mb-0">Empresa</p>
     </div>
 
     <!-- Menu -->
     <div id="menu">
         <nav class="list-group">
             <ul *ngIf="rol_id==1 || rol_id==2">
-                <li>
+                <li class="bg-secondary">
                     <a routerLink="../dashboard">
                         <svg class="bi " width="20" height="20" fill="currentColor">
                             <use xlink:href="bootstrap-icons.svg#person" />
@@ -37,7 +41,7 @@
                 </li>
             </ul>
             <ul *ngIf="rol_id==3">
-                <li>
+                <li class="bg-secondary">
                     <a routerLink="../perfil">
                         <svg class="bi" width="20" height="20" fill="currentColor">
                             <use xlink:href="bootstrap-icons.svg#person" />
@@ -45,60 +49,54 @@
                     </a>
                 </li>
 
-                <li>
+                <li class="bg-secondary">
                     <a href="#offer-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <svg class="bi" width="20" height="20" fill="currentColor">
                             <use xlink:href="bootstrap-icons.svg#clipboard-data" />
                         </svg> Ofertas
                     </a>
                     <ul class="collapse list-unstyled" id="offer-submenu">
-                        <li>
+                        <li class="bg-secondary">
                             <a routerLink="../ofertas">Ofertas</a>
                         </li>
-                        <li>
+                        <li class="bg-secondary">
                             <a routerLink="../interview">Mis ofertas</a>
                         </li>
                     </ul>
                 </li>
             </ul>
             <ul *ngIf="rol_id==4">
-                <li>
+                <li class="bg-secondary">
                     <a routerLink="../perfil">
                         <svg class="bi" width="20" height="20" fill="currentColor">
                             <use xlink:href="bootstrap-icons.svg#person" />
                         </svg> Perfil
                     </a>
                 </li>
-                <li>
+                <li class="bg-secondary">
                     <a href="#offer-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <svg class="bi" width="20" height="20" fill="currentColor">
                             <use xlink:href="bootstrap-icons.svg#clipboard-data" />
                         </svg> Ofertas
                     </a>
                     <ul class="collapse list-unstyled" id="offer-submenu">
-                        <li>
+                        <li class="bg-secondary-50">
                             <a routerLink="../ofertas">Mis ofertas</a>
                         </li>
-                        <li>
+                        <li class="bg-secondary-50">
                             <a href="#">Candidatos</a>
                         </li>
                     </ul>
                 </li>
-                <li>
+                <li class="bg-secondary">
                     <a href="#company-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <svg class="bi" width="20" height="20" fill="currentColor">
                             <use xlink:href="bootstrap-icons.svg#briefcase" />
                         </svg> Empresas
                     </a>
                     <ul class="collapse list-unstyled" id="company-submenu">
-                        <li>
+                        <li class="bg-secondary-50">
                             <a routerLink="../verAlumnos">Ver alumnos</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 2</a>
-                        </li>
-                        <li>
-                            <a href="#">Page 3</a>
                         </li>
                     </ul>
                 </li>
