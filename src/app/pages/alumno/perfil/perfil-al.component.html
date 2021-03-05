@@ -84,23 +84,13 @@
                     Debe introducir un número válido
                 </span>
             </div>
-        </div>
-        <div class="form-group col-md-6">
-            <label>Familia:</label>
-            <!--<select formControlName="area" class="form-control" [class]="isValidField('area')"
-                aria-label="Seleccione su modulo">
-                <option *ngFor="let area of parent" value="{{area.id}}">{{area.description}}</option>
-            </select>
-            <div class="invalid-feedback">
-                <span *ngIf="contactForm.get('area').errors?.required">
-                    Debe elegir una opción
-                </span>
-            </div>-->
-            <button (click)="selectAreas()" type="btn" class="btn btn-primary">Abrir</button>
-
-        </div>
+        </div>        
     </div>
-    <div class="form-group">
+    <div class="form-group col-md-6 pl-0">
+        <label>Ciclos:</label>
+        <button (click)="selectAreas()" class="btn btn-secondary ml-3 mb-1 p-1">Seleccionar</button>                   
+    </div>
+    <div class="form-group mt-2">
         <label>Aptitudes:</label>
         <textarea rows="3" class="form-control" formControlName="aptitudes" [class]="isValidField('aptitudes')"
             aria-label="Introduzca sus aptitudes"></textarea>

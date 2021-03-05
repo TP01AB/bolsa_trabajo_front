@@ -33,6 +33,8 @@ export class PerfilAlComponent implements OnInit {
 
   ngOnInit(): void {
     this.areas = [];
+    sessionStorage.setItem('areas', JSON.stringify(this.areas))
+    console.log(JSON.stringify(this.areas));
     if(this.router.url === '/alumno/perfil') {      
       //console.log(this.parent2);
       this.data = JSON.parse(this.parent2)
@@ -119,12 +121,10 @@ export class PerfilAlComponent implements OnInit {
     });
     modalRef.componentInstance["valueChange"].subscribe(event => {
       this.areas = event;
-      this.displayCounter("Soy registro: "+this.areas);
+      console.log("Soy registro: "+this.areas);
+      sessionStorage.setItem('areas', JSON.stringify(this.areas))
+      console.log("Soy registro: "+sessionStorage.getItem('areas'));      
     });
-  }
-
-  displayCounter(count) {
-    console.log(count);
   }
 
 }

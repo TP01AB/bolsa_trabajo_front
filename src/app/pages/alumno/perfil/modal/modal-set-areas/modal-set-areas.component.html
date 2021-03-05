@@ -7,12 +7,12 @@
     </button>
 </div>
 <div class="modal-body">
-    <form>
-        <div *ngFor="let area of areasGet">
-            <input type="checkbox" [checked]="validateId(area.id)" name="area.id" ngModel
-                (ngModelChange)="updateArea($event,area.id)">
-            {{area.description}}
-        </div>
-    </form>
-    <button (click)="onSubmit()" type="btn" class="btn btn-primary">Abrir</button>
+    <div *ngFor="let area of areasGet">
+        <input type="checkbox" [checked]="areasSaved.includes(area.id)" name="area.id"
+            (change)="updateArea($event,area.id)">
+        {{area.description}}
+    </div> 
+    <div class="text-center mt-3">
+        <button (click)="onSubmit()" type="btn" class="btn btn-secondary">Confirmar</button>
+    </div>      
 </div>

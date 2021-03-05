@@ -4,7 +4,7 @@
     </div>
     <div *ngIf="areas?.length>0" class=" pt-4 pb-3">
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-12">
                 <div class="card ">
                     <!--TITULO FORMULARIO-->
                     <div class="card-header bg-secondary text-center">
@@ -48,7 +48,7 @@
                             <div class="form-row">
                                 <div class="form-group col-10 col-sm-8 mx-auto">
                                     <label>Seleccione el tipo: </label>
-                                    <select name="tipo" formControlName="condicion" aria-label="Selecciona si eres alumno o empresa">
+                                    <select name="tipo" class="form-control-sm ml-3"formControlName="condicion" aria-label="Selecciona si eres alumno o empresa">
                                 <option value="student">Alumno</option>
                                 <option value="company">Empresa</option>
                             </select>

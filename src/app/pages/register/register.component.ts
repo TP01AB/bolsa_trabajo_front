@@ -74,8 +74,9 @@ export class RegisterComponent implements OnInit {
   onSave(): void {
     var tipo = this.registerForm.get('condicion').value
     let userId = null;
-    if (tipo == 'student') {
-      if (this.registerForm.valid && this.perfilAl.validate() == 1) {
+    if (tipo == 'student') {   
+      let areas = JSON.parse(sessionStorage.getItem('areas'));       
+      if (this.registerForm.valid && this.perfilAl.validate() == 1 && areas.length>0) {
         this.registerUser.registerUser(this.gestorForm.toJason(this.registerForm)).subscribe(
           (data: any) => {
             //Si correcto inserto alumno
@@ -85,6 +86,7 @@ export class RegisterComponent implements OnInit {
             var aux = JSON.parse(this.perfilAl.toJason());
             //console.log(aux);
             aux['id'] = data.message.user.id;
+            aux['areas'] = JSON.parse(sessionStorage.getItem('areas'))
             var json = JSON.stringify(aux);
             this.registerUser.registerChild(json, tipo).subscribe(
               (response: any) => {
@@ -98,7 +100,7 @@ export class RegisterComponent implements OnInit {
       } else {
         this.perfilAl.validate();
         this.gestorForm.validate(this.registerForm);
-      }
+      }      
     } else if (tipo == 'company') {
       if (this.registerForm.valid && this.perfilEmp.validate() == 1) {
         userId = null;

@@ -11,9 +11,7 @@ export class ModalSetAreasComponent implements OnInit {
   @Input() public areasGet;
   @Input() public areasSaved;
   @Output() valueChange = new EventEmitter();
-  counter = 0;
-
-  areas = [];
+  counter = 0;  
 
   constructor(public activeModal: NgbActiveModal) { }
 
@@ -25,34 +23,23 @@ export class ModalSetAreasComponent implements OnInit {
   updateArea(eve: any,id) {
     console.log("Ha cambiado area: "+ id)    
     if(eve) {
-      this.areas.push(id);
-      console.log(this.areas) 
+      this.areasSaved.push(id);
+      console.log(this.areasSaved) 
     } else {
       var index;
-      for(var i=0; i<this.areas.length;i++) {
-        if(this.areas[i] == id) {
+      for(var i=0; i<this.areasSaved.length;i++) {
+        if(this.areasSaved[i] == id) {
           index = i;
         }
       }
-      this.areas.splice(index);
-      console.log(this.areas)
+      this.areasSaved.splice(index);
+      console.log(this.areasSaved)
     }
   }
 
   onSubmit() {
-    this.valueChange.emit(this.areas);
+    this.valueChange.emit(this.areasSaved);
     this.activeModal.close();
   }
-
-  public validateId(id) {
-    var saved = false;
-    console.log(this.areasSaved.length);
-    for(var i=0; i<this.areasSaved.length;i++) {
-      if(this.areasSaved[i]===id) {
-        console.log(this.areasSaved[i]);
-        saved = true;
-      }
-    }
-    return saved;
-  }
+  
 }
