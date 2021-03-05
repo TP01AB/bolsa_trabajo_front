@@ -1,22 +1,75 @@
-<div class="d-flex" id="wrapper">
+<div class="d-flex bg-light-dark text" id="wrapper">
 
     <!-- Sidebar -->
     <app-sidebar></app-sidebar>
 
     <!-- Page Content -->
-    <div id="page-content-wrapper">        
+    <div id="page-content-wrapper">
 
         <div class="container-fluid my-5">
-            <h1 class="mt-4">Dashboard Alumno</h1>
-            <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on
-                larger screens. When toggled using the button below, the menu will change.</p>
-            <p>Make sure to keep all page content within the <code>#page-content-wrapper</code>. The top navbar is
-                optional,
-                and just for demonstration. Just create an element with the <code>#menu-toggle</code> ID which will
-                toggle the
-                menu when clicked.</p>
+
+            <div class="row w-100">
+
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                    <div class="card border-info mx-sm-1 p-3 m-2">
+                        <div class="rounded-circle shadow text-info p-3 mx-auto">
+                            <svg class="bi" width="32" height="32">
+                            <use xlink:href="bootstrap-icons.svg#person" />
+                                </svg>
+                        </div>
+                        <div class="text-info text-center mt-3">
+                            <h4>Nuevas Ofertas</h4>
+                        </div>
+                        <div class="text-info text-center mt-2">
+                            <h1>0</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                    <div class="card border-success mx-sm-1 p-3  m-2">
+                        <div class="rounded-circle shadow text-warning p-3 mx-auto">
+                            <svg class="bi" width="32" height="32">
+                            <use xlink:href="bootstrap-icons.svg#person" />
+                                </svg>
+                        </div>
+                        <div class="text-warning text-center mt-3">
+                            <h4>Solicitudes</h4>
+                        </div>
+                        <div class="text-warning text-center mt-2">
+                            <h1>0</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                    <div class="card border-danger mx-sm-1 p-3  m-2">
+                        <div class="rounded-circle shadow text-secondary p-3 mx-auto">
+                            <svg class="bi" width="32" height="32">
+                            <use xlink:href="bootstrap-icons.svg#person" />
+                                </svg>
+                        </div>
+                        <div class="text-secondary text-center mt-3">
+                            <h4>Ofertas Sin respuesta</h4>
+                        </div>
+                        <div class="text-secondary text-center mt-2">
+                            <h1>0</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-3">
+                    <div class="card border-warning mx-sm-1 p-3  m-2">
+                        <div class="rounded-circle shadow text-primary p-3 mx-auto">
+                            <svg class="bi" width="32" height="32">
+                            <use xlink:href="bootstrap-icons.svg#person" />
+                                </svg>
+                        </div>
+                        <div class=" text-primary text-center mt-3">
+                            <h4>Aceptado</h4>
+                        </div>
+                        <div class=" text-primary text-center mt-2">
+                            <h1>0</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
     </div>
-
-</div>
