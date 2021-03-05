@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StudentProfileService } from '../services/student-profile.service';
 import { LoginService } from 'src/app/auth/services/login.service';
 import { Router } from '@angular/router';
 import { FormsFunctionsService } from 'src/app/shared/services/forms-functions.service';
+import { ModalSetAreasComponent } from './modal/modal-set-areas/modal-set-areas.component';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class PerfilAlComponent implements OnInit {
   data;
   model: NgbDateStruct;
   contactForm: FormGroup;
+  areas = [];
 
   //Patrones de validación
   private isName = "^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$"  
@@ -27,9 +29,10 @@ export class PerfilAlComponent implements OnInit {
   private isPhone = "^[67]\\d{8}$$"
 
   constructor(private fb: FormBuilder, private ProfileService: StudentProfileService, private loginService: LoginService, 
-    public router: Router, private gestorForm: FormsFunctionsService) { }
+    public router: Router, private gestorForm: FormsFunctionsService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.areas = [];
     if(this.router.url === '/alumno/perfil') {      
       //console.log(this.parent2);
       this.data = JSON.parse(this.parent2)
@@ -102,6 +105,26 @@ export class PerfilAlComponent implements OnInit {
       aptitudes: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
     })
 
+  }
+
+  selectAreas() {
+    console.log(this.parent);
+    const modalRef = this.modalService.open(ModalSetAreasComponent);
+    modalRef.componentInstance.areasGet = this.parent;
+    modalRef.componentInstance.areasSaved = this.areas;
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+      }
+    });
+    modalRef.componentInstance["valueChange"].subscribe(event => {
+      this.areas = event;
+      this.displayCounter("Soy registro: "+this.areas);
+    });
+  }
+
+  displayCounter(count) {
+    console.log(count);
   }
 
 }
