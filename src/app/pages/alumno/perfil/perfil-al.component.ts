@@ -45,8 +45,7 @@ export class PerfilAlComponent implements OnInit {
         name: this.data.name,
         lastName: this.data.lastnames,                  
         dni: this.data.dni,
-        phone: this.data.phone,   
-        area: this.data.area,
+        phone: this.data.phone,        
         birthdate: this.data.birthdate,     
         aptitudes: this.data.aptitudes
       })      
@@ -102,9 +101,9 @@ export class PerfilAlComponent implements OnInit {
       lastName: ['',[Validators.required, Validators.pattern(this.isName)]],      
       birthdate: ['',Validators.required],      
       dni: ['',[Validators.required, Validators.minLength(9), Validators.maxLength(9),Validators.pattern(this.isDni)]],
-      phone: ['',[Validators.required, Validators.pattern(this.isPhone)]],
-      area:['',Validators.required],
-      aptitudes: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
+      phone: ['',[Validators.required, Validators.pattern(this.isPhone)]],      
+      aptitudes: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(500)]],
+      status: ['',[Validators.required]]
     })
 
   }

@@ -21,10 +21,10 @@ export class ModalSetAreasComponent implements OnInit {
   }
 
   updateArea(eve: any,id) {
-    console.log("Ha cambiado area: "+ id)    
-    if(eve) {
+    //console.log("Ha cambiado area: "+ id)        
+    if(eve.target.checked) {
       this.areasSaved.push(id);
-      console.log(this.areasSaved) 
+      //console.log(this.areasSaved) 
     } else {
       var index;
       for(var i=0; i<this.areasSaved.length;i++) {
@@ -33,7 +33,7 @@ export class ModalSetAreasComponent implements OnInit {
         }
       }
       this.areasSaved.splice(index);
-      console.log(this.areasSaved)
+      //console.log(this.areasSaved)
     }
   }
 

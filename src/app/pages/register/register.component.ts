@@ -75,7 +75,7 @@ export class RegisterComponent implements OnInit {
     var tipo = this.registerForm.get('condicion').value
     let userId = null;
     if (tipo == 'student') {   
-      let areas = JSON.parse(sessionStorage.getItem('areas'));       
+      let areas = sessionStorage.getItem('areas');       
       if (this.registerForm.valid && this.perfilAl.validate() == 1 && areas.length>0) {
         this.registerUser.registerUser(this.gestorForm.toJason(this.registerForm)).subscribe(
           (data: any) => {
@@ -92,7 +92,10 @@ export class RegisterComponent implements OnInit {
               (response: any) => {
                 console.log("success!", response);
               },
-              error => console.error("couldn't post because", error)
+              error => { 
+                this.registerUser.deleteLast(data.message.user.id)
+                console.error("couldn't post because", error)
+              }
             )
           },
           error => console.error("couldn't post because", error)

@@ -42,4 +42,13 @@ export class RegisterService {
     return this.http.get(environment.Laravel + "areas", { headers: headers });
   }
 
+  public deleteLast(id) {
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+
+    return this.http.delete(environment.Laravel+"/deleteLast/"+id, { headers: headers });
+  }
+
 }
