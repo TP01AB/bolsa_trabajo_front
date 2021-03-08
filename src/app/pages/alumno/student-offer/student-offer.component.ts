@@ -17,7 +17,7 @@ export class StudentOfferComponent implements OnInit {
   user: any;
   isLoaded = false;
   page = 1;
-  pageSize =5;
+  pageSize =6;
   closeResult: String;
 
   constructor(private modalService: NgbModal, private studentOfferService: StudentOfferService, private loginService: LoginService, private router: Router) { }
@@ -106,6 +106,6 @@ export class StudentOfferComponent implements OnInit {
       if (result) {
         console.log(result);
       }
-    });    
+    });
   }
 }

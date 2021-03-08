@@ -12,7 +12,9 @@ import { UserUpdateComponent } from './modal/user-update/user-update.component';
   styleUrls: ['./users-crud.component.scss']
 })
 export class UsersCrudComponent implements OnInit {
-
+  page = 1;
+  pageSize = 8;
+  closeResult: String;
   users: any[];
   public loaded = false;
 
@@ -32,8 +34,8 @@ export class UsersCrudComponent implements OnInit {
       (response: any) => {
         //console.log(response);
         this.users = JSON.parse(response);
-        //console.log(this.users);   
-        this.loaded = true;     
+        //console.log(this.users);
+        this.loaded = true;
       }
     )
   }
@@ -72,7 +74,7 @@ export class UsersCrudComponent implements OnInit {
       (response: any) => {
         this.getUsers();
         console.log(response);
-      }, 
+      },
       error => {
         console.log(error);
       }

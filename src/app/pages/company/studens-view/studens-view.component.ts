@@ -14,7 +14,9 @@ import { environment } from 'src/environments/environment';
 export class StudensViewComponent implements OnInit {
   http: any;
   students: any[];
-
+  page = 1;
+  pageSize = 6;
+  closeResult: String;
   constructor(private modalService: NgbModal, private StudentList: CompanyViewStudentsService, private loginService: LoginService, private router: Router) {
     if (!loginService.isUserSignedIn())
       this.router.navigate(['/login']);

@@ -1,9 +1,8 @@
-<form novalidate (ngSubmit)="onSubmit()" [formGroup]="contactForm">
+<form class="container" novalidate (ngSubmit)="onSubmit()" [formGroup]="contactForm">
     <div class="form-row">
         <div class="form-group col-md-6">
             <label>Nombre:</label>
-            <input type="text" class="form-control" placeholder="Nombre" formControlName="name"
-                [class]="isValidField('name')" aria-label="Introduzca su nombre">
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="name" [class]="isValidField('name')" aria-label="Introduzca su nombre">
             <div class="invalid-feedback">
                 <span *ngIf="contactForm.get('name').errors?.required">
                     Por favor introduzca su nombre
@@ -17,8 +16,7 @@
         </div>
         <div class="form-group col-md-6">
             <label>Apellidos:</label>
-            <input type="text" class="form-control" placeholder="Apellido" formControlName="lastName"
-                [class]="isValidField('lastName')" aria-label="Introduzca sus apellidos">
+            <input type="text" class="form-control" placeholder="Apellido" formControlName="lastName" [class]="isValidField('lastName')" aria-label="Introduzca sus apellidos">
             <div class="invalid-feedback">
                 <span *ngIf="contactForm.get('lastName').errors?.required">
                     Por favor introduzca su apellido
@@ -34,8 +32,7 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label>DNI:</label>
-            <input type="text" class="form-control" placeholder="DNI" formControlName="dni"
-                [class]="isValidField('dni')" aria-label="Introduzca su dni">
+            <input type="text" class="form-control" placeholder="DNI" formControlName="dni" [class]="isValidField('dni')" aria-label="Introduzca su dni">
             <div class="invalid-feedback">
                 <span *ngIf="contactForm.get('dni').errors?.required">
                     Por favor introduzca su dni
@@ -50,9 +47,7 @@
         <div class="form-group col-md-6">
             <label>Fecha de nacimiento:</label>
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Fecha de nacimiento" formControlName="birthdate"
-                    ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')"
-                    aria-label="Introduzca su fecha de nacimiento con el formato año-mes-día">
+                <input type="text" class="form-control" placeholder="Fecha de nacimiento" formControlName="birthdate" ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')" aria-label="Introduzca su fecha de nacimiento con el formato año-mes-día">
                 <div class="input-group-append ">
                     <!--Poner icono manual-->
                     <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
@@ -106,8 +101,7 @@
     </div>
     <div class="form-group mt-2">
         <label>Aptitudes:</label>
-        <textarea rows="3" class="form-control" formControlName="aptitudes" [class]="isValidField('aptitudes')"
-            aria-label="Introduzca sus aptitudes"></textarea>
+        <textarea rows="3" class="form-control" formControlName="aptitudes" [class]="isValidField('aptitudes')" aria-label="Introduzca sus aptitudes"></textarea>
         <div class="invalid-feedback">
             <span *ngIf="contactForm.get('aptitudes').errors?.required">
                 Por favor introduzca sus aptitudes

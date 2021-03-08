@@ -26,7 +26,7 @@
     <!-- Menu -->
     <div id="menu">
         <nav class="list-group">
-            <ul *ngIf="rol_id==1 || rol_id==2">
+            <ul *ngIf="rol_id==1 || rol_id==2" class="h-100 text">
                 <li class="bg-secondary">
                     <a routerLink="../dashboard">
                         <svg class="bi " width="20" height="20" fill="currentColor">
@@ -40,7 +40,7 @@
                     </a>
                 </li>
             </ul>
-            <ul *ngIf="rol_id==3">
+            <ul *ngIf="rol_id==3" class="h-100 text">
                 <li class="bg-secondary">
                     <a routerLink="../perfil">
                         <svg class="bi" width="20" height="20" fill="currentColor">
@@ -65,7 +65,7 @@
                     </ul>
                 </li>
             </ul>
-            <ul *ngIf="rol_id==4">
+            <ul *ngIf="rol_id==4" class="h-100 text">
                 <li class="bg-secondary">
                     <a routerLink="../perfil">
                         <svg class="bi" width="20" height="20" fill="currentColor">
@@ -91,8 +91,8 @@
                 <li class="bg-secondary">
                     <a href="#company-submenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <svg class="bi" width="20" height="20" fill="currentColor">
-                            <use xlink:href="bootstrap-icons.svg#briefcase" />
-                        </svg> Empresas
+                            <use xlink:href="bootstrap-icons.svg#person-lines-fill" />
+                        </svg> Alumnos
                     </a>
                     <ul class="collapse list-unstyled" id="company-submenu">
                         <li class="bg-secondary-50">

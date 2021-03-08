@@ -1,17 +1,15 @@
 @import "../../../styles.scss";
 #sidebar-wrapper {
-    max-height: 95%;
+    min-height: 100%;
     margin-left: -15rem;
-    background: $light;
     -webkit-transition: margin .25s ease-out;
     -moz-transition: margin .25s ease-out;
     -o-transition: margin .25s ease-out;
     transition: margin .25s ease-out;
-    z-index: 999;
-    height: 100%;
+    z-index: 99;
+    background: rgba($color: ($primary-50), $alpha: 0.5) !important;
     #menu {
-        background: rgba($color: ($primary), $alpha: 0.5) !important;
-        height: 94%;
+        height: 100%;
     }
     .sidebar-img {
         padding: 0.875rem 1.25rem;

@@ -9,60 +9,67 @@
                     </div>
                 </div>
                 <div class="card-body bg-light-dark">
+
                     <div class="row">
-                        <div class="col-sm-12 col-md-6" *ngFor="let user of users">
-                            <div class="card m-2 mb-4 border-secondary shadow">
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col">
-                                            <p class="text text-secondary">
-                                                Usuario {{user.id}}
-                                            </p>
-                                            <p class="card-text">
-                                                Email: {{ user.email }}
-                                            </p>
-                                            <p *ngIf="user.isActive == 1">
-                                                Activado: Si
-                                            </p>
-                                            <p *ngIf="user.isActive == 0">
-                                                Activado: No
-                                            </p>
+
+                        <ng-container>
+                            <div class="col-sm-12 col-md-6" *ngFor="let user of users  | slice: (page-1) * pageSize : page * pageSize">
+                                <div class="card m-2 mb-4 border-secondary shadow ">
+                                    <div class="card-body ">
+                                        <div class="row ">
+                                            <div class="col ">
+                                                <p class="text text-secondary ">
+                                                    Usuario {{user.id}}
+                                                </p>
+                                                <p class="card-text ">
+                                                    Email: {{ user.email }}
+                                                </p>
+                                                <p *ngIf="user.isActive==1 ">
+                                                    Activado: Si
+                                                </p>
+                                                <p *ngIf="user.isActive==0 ">
+                                                    Activado: No
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer p-0 ">
+                                        <div class="btn-group w-100 ">
+                                            <button type="button " title="Editar usuario " class="btn btn-secondary btn-border rounded-0 ">
+                                            <svg class="bi " width="26 " height="26 " fill="currentColor "
+                                                (click)=userUpdate(user)>
+                                                <use xlink:href="bootstrap-icons.svg#pencil " />
+                                            </svg>
+                                        </button>
+                                            <button [disabled]="loginService.user.user_id==user.id " type="button " title="Eliminar usuario " class="btn btn-border btn-danger rounded-0 ">
+                                            <svg class="bi " width="26 " height="26 " fill="currentColor "
+                                                (click)=userDelete(user.id)>
+                                                <use xlink:href="bootstrap-icons.svg#x " />
+                                            </svg>
+                                        </button>
+                                            <button [disabled]="loginService.user.user_id==user.id " title="Desactivar usuario " *ngIf="user.isActive==1 " type="button " class="btn-border btn btn-success rounded-0 ">
+                                            <svg class="bi " width="26 " height="26 " fill="currentColor "
+                                                (click)=userActive(user.id,0)>
+                                                <use xlink:href="bootstrap-icons.svg#check-square " />
+                                            </svg>
+                                        </button>
+                                            <button *ngIf="user.isActive==0 " type="button " title="Activar usuario " class="btn-border btn btn-danger rounded-0 ">
+                                            <svg class="bi " width="26 " height="26 " fill="currentColor "
+                                                (click)=userActive(user.id,1)>
+                                                <use xlink:href="bootstrap-icons.svg#square " />
+                                            </svg>
+                                        </button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="card-footer p-0">
-                                    <div class="btn-group w-100">
-                                        <button type="button" title="Editar usuario" class="btn btn-secondary btn-border rounded-0">
-                                            <svg class="bi" width="26" height="26" fill="currentColor"
-                                                (click)=userUpdate(user)>
-                                                <use xlink:href="bootstrap-icons.svg#pencil" />
-                                            </svg>
-                                        </button>
-                                        <button [disabled]="loginService.user.user_id == user.id" type="button" title="Eliminar usuario" class="btn btn-border btn-danger rounded-0">
-                                            <svg class="bi" width="26" height="26" fill="currentColor"
-                                                (click)=userDelete(user.id)>
-                                                <use xlink:href="bootstrap-icons.svg#x" />
-                                            </svg>
-                                        </button>
-                                        <button [disabled]="loginService.user.user_id == user.id" title="Desactivar usuario" *ngIf="user.isActive == 1" type="button" class="btn-border btn btn-success rounded-0">
-                                            <svg class="bi" width="26" height="26" fill="currentColor"
-                                                (click)=userActive(user.id,0)>
-                                                <use xlink:href="bootstrap-icons.svg#check-square" />
-                                            </svg>
-                                        </button>
-                                        <button *ngIf="user.isActive == 0" type="button" title="Activar usuario" class="btn-border btn btn-danger rounded-0">
-                                            <svg class="bi" width="26" height="26" fill="currentColor"
-                                                (click)=userActive(user.id,1)>
-                                                <use xlink:href="bootstrap-icons.svg#square" />
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
+                        </ng-container>
                     </div>
+                </div>
+                <div class="card-footer ">
+                    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="users.length " [boundaryLinks]="true ">
+                    </ngb-pagination>
                 </div>
             </div>
         </div>
     </div>
-</div>

@@ -21,7 +21,8 @@ export class CompanyOfferComponent implements OnInit {
   company: any;
   user: any;
   active: any;
-
+  page = 1;
+  pageSize = 6;
   closeResult: String;
   constructor(private modalService: NgbModal, private companyOfferService: CompanyOfferService, private loginService: LoginService, private router: Router) {
     if (!loginService.isUserSignedIn())

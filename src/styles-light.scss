@@ -7,7 +7,6 @@ $warning: #ffc107;
 $danger: #dc3545;
 $light: #ebd9c8;
 $dark: black;
-$link-color: blue;
 .card-footer {
     overflow: hidden;
 }
@@ -26,6 +25,11 @@ app-root #themeChanger.light {
         color: black;
         font-weight: bold;
         font-size: 20px;
+    }
+    .dashboardCard:hover {
+        color: rgba(255, 255, 255, 1) !important;
+        box-shadow: 0 4px 16px black;
+        transition: all 0.2s ease;
     }
     .bg-secondary-50 {
         background-color: $secondary-50;
