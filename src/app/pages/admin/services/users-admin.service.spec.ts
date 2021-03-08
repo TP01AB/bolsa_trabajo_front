@@ -1,12 +1,18 @@
 import { TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 
 import { UsersAdminService } from './users-admin.service';
 
-describe('UsersAdminService', () => {
+xdescribe('UsersAdminService', () => {
   let service: UsersAdminService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule,
+        HttpTestingController
+      ]
+    });
     service = TestBed.inject(UsersAdminService);
   });
 

@@ -48,10 +48,10 @@
                             <div class="form-row">
                                 <div class="form-group col-10 col-sm-8 mx-auto">
                                     <label>Seleccione el tipo: </label>
-                                    <select name="tipo" class="form-control-sm ml-3"formControlName="condicion" aria-label="Selecciona si eres alumno o empresa">
-                                <option value="student">Alumno</option>
-                                <option value="company">Empresa</option>
-                            </select>
+                                    <select name="tipo" class="form-control-sm ml-3 opcion" id="opcion" formControlName="condicion" aria-label="Selecciona si eres alumno o empresa">
+                                        <option value="student">Alumno</option>
+                                        <option value="company">Empresa</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-10 col-sm-8 p-0 mx-auto" *ngIf="registerForm.get('condicion').value === 'student'" [@inOutAnimation]>
