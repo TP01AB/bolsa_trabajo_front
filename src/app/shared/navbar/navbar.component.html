@@ -1,48 +1,34 @@
-<nav class="navbar navbar-expand-md bg-primary container-fluid">
-    <!-- Logo -->
-    <a alt="pagina de inicio" class="navbar-brand" routerLink="/" alt="Logotipo del centro">
-        <!--*ngIf="router.url === '/'"-->
-        <img src="/assets/logo.png" alt="Logotipo del centro" height="60" class="d-inline-block align-top">
-    </a>
-    <!-- Button responsive menu-->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon">
-            <svg class="bi" width="32" height="32" fill="currentColor">
-                <use xlink:href="bootstrap-icons.svg#list" />
-            </svg>
-        </span>
-    </button>
-    <!-- Menu -->
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <div class="custom-control custom-switch">
-            <span style="flex:auto;"></span>
-            <mat-slide-toggle [(ngModel)]="DarkTheme" labelPosition="before" (change)="storeTheme()">
-                <svg class="bi text " width="30 " height="30 ">
+<nav class="navbar bg-primary container-fluid">
+    <div class="rowcol-sm-1">
+        <a alt="pagina de inicio" class="" routerLink="/" alt="Logotipo del centro">
+            <!--*ngIf="router.url === '/'"-->
+            <img src="/assets/logo.png" alt="Logotipo del centro" height="60em" class="d-inline-block align-top">
+        </a>
+    </div>
+    <span style="flex:auto;"></span>
+    <mat-slide-toggle class="pl-0 ml-0 rowcol-sm-1" [(ngModel)]="DarkTheme" labelPosition="before" (change)="storeTheme()">
+        <svg class="bi text " width="26 " height="26 ">
                     <use xlink:href="bootstrap-icons.svg#moon" />
                     </svg>
-            </mat-slide-toggle>
-        </div>
-        <ul class="navbar-nav ">
-            <li *ngIf="isLogin() " class="nav-item ">
-                <button class="btn" (click)="toHome()">
+    </mat-slide-toggle>
+    <div *ngIf="isLogin() " class="rowcol-sm-1 nav-item">
+        <button class="btn" (click)="toHome()">
                     <svg class="bi text-white " width="30 " height="30 " fill="currentColor ">
                     <use xlink:href="bootstrap-icons.svg#house-fill " />
                     </svg>
             </button>
-            </li>
-            <li *ngIf="!isLogin() " class="nav-item ">
-                <a class="nav-link " routerLink="/login">Login</a>
-            </li>
-            <li *ngIf="!isLogin() " class="nav-item ">
-                <a class="nav-link " routerLink="/registro">Registro</a>
-            </li>
-            <li *ngIf="isLogin() " class="nav-item ">
-                <a class="nav-link " (click)="onLogout()" role="button">Salir
-          <svg class="bi text-white " width="16 " height="16 " fill="currentColor ">
+    </div>
+    <div *ngIf="!isLogin() " class=" rowcol-sm-1 nav-item ">
+        <a class="nav-link " routerLink="/login">Login</a>
+    </div>
+    <div *ngIf="!isLogin() " class="rowcol-sm-1 nav-item ">
+        <a class="nav-link " routerLink="/registro">Registro</a>
+    </div>
+    <div *ngIf="isLogin() " class="rowcol-sm-1 nav-item ">
+        <a class="nav-link " (click)="onLogout()" role="button">
+            <svg class="bi text-white " width="16 " height="16 " fill="currentColor ">
             <use xlink:href="bootstrap-icons.svg#box-arrow-right " />
           </svg>
         </a>
-            </li>
-        </ul>
     </div>
 </nav>
