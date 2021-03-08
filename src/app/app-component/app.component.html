@@ -1,4 +1,4 @@
-<div id="themeChanger" class="">
+<div id="themeChanger" [ngClass]="{'dark': themeDark,'light': !themeDark}">
     <app-navbar>
     </app-navbar>
     <router-outlet></router-outlet>

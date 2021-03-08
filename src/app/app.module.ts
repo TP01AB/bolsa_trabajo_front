@@ -40,7 +40,7 @@ import { StudentInterviewComponent } from './pages/alumno/student-interview/stud
 import { CompanyDataViewComponent } from './pages/alumno/shared/modal/company-data-view/company-data-view.component';
 import { UnsubInterModalComponent } from './pages/alumno/student-interview/modal/unsub-inter-modal/unsub-inter-modal.component';
 import { AceptOfferModalComponent } from './pages/alumno/student-interview/modal/acept-offer-modal/acept-offer-modal.component';
-
+import { MatSlideToggleModule} from '@angular/material/slide-toggle'
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,7 +85,8 @@ import { AceptOfferModalComponent } from './pages/alumno/student-interview/modal
     BrowserAnimationsModule,
     PerfilAlModule,
     LoadSpinnerModule,
-    CrearPerfilModule
+    CrearPerfilModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent],
