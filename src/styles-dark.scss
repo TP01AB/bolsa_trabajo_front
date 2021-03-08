@@ -18,6 +18,27 @@ app-root #themeChanger.dark {
         font-size: 16px;
         color: black;
     }
+    .text-primary {
+        color: $primary-dark;
+    }
+    .text-secondary {
+        color: $secondary-dark;
+    }
+    .text-success {
+        color: $success-dark;
+    }
+    .text-info {
+        color: $info-dark;
+    }
+    .text-warning {
+        color: $warning-dark;
+    }
+    .text-light {
+        color: $light-dark;
+    }
+    .text-dark {
+        color: $dark;
+    }
     .btn.btn-primary {
         border: 3px solid #fff;
     }
@@ -41,12 +62,6 @@ app-root #themeChanger.dark {
     .text-light {
         color: white;
         font-weight: bold;
-    }
-    .footerBot {
-        color: white;
-        font-weight: bold;
-        font-size: 16px;
-        background-color: $light;
     }
     .navbar {
         box-shadow: 4px 4px 10px white;

@@ -8,19 +8,34 @@ import { LoginService } from 'src/app/auth/services/login.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-  themeActual: any;
+  DarkTheme: boolean;
+
   constructor(private loginService: LoginService, private router: Router) { }
-
+  themeActual: any;
+  rol_id;
   ngOnInit(): void {
-
-    this.themeActual = localStorage.getItem('theme');
-    if (this.themeActual == null) {
-      this.themeActual = 'light';
-    }
-    $("#themeChanger").toggleClass(this.themeActual);
+    this.DarkTheme = localStorage.getItem('theme') === "dark" ? true : false;
+    $("#themeChanger").addClass(this.DarkTheme ? "dark" : "");
+    $("#themeChanger").removeClass(this.DarkTheme ? "" : "dark");
   }
 
-
+  public toHome(): void {
+    this.rol_id = this.loginService.user.rol_id;
+    switch (this.rol_id) {
+      case 1:
+        this.router.navigate(['/admin/dashboard']);
+        break;
+      case 2:
+        this.router.navigate(['/admin/dashboard']);
+        break;
+      case 3:
+        this.router.navigate(['/alumno/dashboard']);
+        break;
+      case 4:
+        this.router.navigate(['/empresa/dashboard']);
+        break;
+    }
+  }
   isLogin(): boolean {
     let isLogin = false;
     if (this.loginService.isUserSignedIn()) {
@@ -35,21 +50,11 @@ export class NavbarComponent implements OnInit {
 
   setTheme(): void {
     var label = document.getElementById("labelTheme");
-    this.themeActual = localStorage.getItem('theme');
-    $("#themeChanger").toggleClass(this.themeActual);
-
-    if (this.themeActual == 'light') {
-      label.innerHTML = 'Dark';
-      localStorage.setItem('theme', 'dark');
-      this.themeActual = localStorage.getItem('theme');
-
-    } else {
-      localStorage.setItem('theme', 'light');
-      label.innerHTML = 'Light';
-      this.themeActual = localStorage.getItem('theme');
-
-    }
-    $("#themeChanger").toggleClass(this.themeActual);
   }
-
+  storeTheme() {
+    localStorage.setItem('theme', this.DarkTheme ? "dark":"" );
+    this.DarkTheme = localStorage.getItem('theme') === "dark" ? true : false;
+    $("#themeChanger").toggleClass(this.DarkTheme ? "dark":"" );
+    $("#themeChanger").removeClass(this.DarkTheme ? "" : "dark" )
+  }
 }

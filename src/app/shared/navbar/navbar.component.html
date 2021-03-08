@@ -15,12 +15,21 @@
     <!-- Menu -->
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <div class="custom-control custom-switch">
-            <label id="labelTheme" class="text pr-2 " for="theme-selector">
-            </label>
-            <input type="checkbox" data-toggle="toggle" data-onstyle="bg-secondary" data-offstyle="bg-secondary" id="theme-selector" class="btn" (click)="setTheme()" title="Cambiar tema">
+            <span style="flex:auto;"></span>
+            <mat-slide-toggle [(ngModel)]="DarkTheme" labelPosition="before" (change)="storeTheme()">
+                <svg class="bi text " width="30 " height="30 ">
+                    <use xlink:href="bootstrap-icons.svg#moon" />
+                    </svg>
+            </mat-slide-toggle>
         </div>
         <ul class="navbar-nav ">
-
+            <li *ngIf="isLogin() " class="nav-item ">
+                <button class="btn" (click)="toHome()">
+                    <svg class="bi text-white " width="30 " height="30 " fill="currentColor ">
+                    <use xlink:href="bootstrap-icons.svg#house-fill " />
+                    </svg>
+            </button>
+            </li>
             <li *ngIf="!isLogin() " class="nav-item ">
                 <a class="nav-link " routerLink="/login">Login</a>
             </li>
@@ -36,5 +45,4 @@
             </li>
         </ul>
     </div>
-
 </nav>
