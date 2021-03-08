@@ -1,6 +1,6 @@
 @import "../../../styles.scss";
 #sidebar-wrapper {
-    min-height: 100vh;
+    max-height: 95%;
     margin-left: -15rem;
     background: $light;
     -webkit-transition: margin .25s ease-out;

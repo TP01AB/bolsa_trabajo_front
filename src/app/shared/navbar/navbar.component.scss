@@ -1,12 +1,13 @@
 @import "../../../styles.scss";
-ul {
-    li {
-        a {
-            color: white;
-            font-weight: bold;
-            font-size: 22px;
-        }
-    }
+a {
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
 }
 
 .navbar {

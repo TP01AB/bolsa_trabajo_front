@@ -47,10 +47,6 @@ export class NavbarComponent implements OnInit {
     sessionStorage.removeItem("apiPassport");
     this.router.navigate([''])
   }
-
-  setTheme(): void {
-    var label = document.getElementById("labelTheme");
-  }
   storeTheme() {
     localStorage.setItem('theme', this.DarkTheme ? "dark":"" );
     this.DarkTheme = localStorage.getItem('theme') === "dark" ? true : false;
