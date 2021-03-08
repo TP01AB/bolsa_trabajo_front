@@ -1,10 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { StudentProfileService } from '../services/student-profile.service';
 import { LoginService } from 'src/app/auth/services/login.service';
 import { Router } from '@angular/router';
 import { FormsFunctionsService } from 'src/app/shared/services/forms-functions.service';
+import { ModalSetAreasComponent } from './modal/modal-set-areas/modal-set-areas.component';
+import { forEachChild } from 'typescript';
 
 
 @Component({
@@ -16,9 +18,11 @@ export class PerfilAlComponent implements OnInit {
 
   @Input() parent;
   @Input() parent2: any;
+  @Input() studentAreas: any;
   data;
   model: NgbDateStruct;
   contactForm: FormGroup;
+  areas = [];
 
   //Patrones de validación
   private isName = "^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$"  
@@ -27,9 +31,12 @@ export class PerfilAlComponent implements OnInit {
   private isPhone = "^[67]\\d{8}$$"
 
   constructor(private fb: FormBuilder, private ProfileService: StudentProfileService, private loginService: LoginService, 
-    public router: Router, private gestorForm: FormsFunctionsService) { }
+    public router: Router, private gestorForm: FormsFunctionsService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.areas = [];
+    sessionStorage.setItem('areas', JSON.stringify(this.areas))
+    console.log(JSON.stringify(this.areas));
     if(this.router.url === '/alumno/perfil') {      
       //console.log(this.parent2);
       this.data = JSON.parse(this.parent2)
@@ -40,11 +47,16 @@ export class PerfilAlComponent implements OnInit {
         name: this.data.name,
         lastName: this.data.lastnames,                  
         dni: this.data.dni,
-        phone: this.data.phone,   
-        area: this.data.area,
+        phone: this.data.phone,        
         birthdate: this.data.birthdate,     
-        aptitudes: this.data.aptitudes
-      })      
+        aptitudes: this.data.aptitudes,
+        status: this.data.status,
+      })
+      this.studentAreas.forEach(element => {
+        this.areas.push(element.id);
+      })
+      //sessionStorage.setItem('areas', JSON.stringify(this.areas))
+      console.log(this.areas);  
     } else {
       this.initForm();      
     }
@@ -52,8 +64,15 @@ export class PerfilAlComponent implements OnInit {
 
   onSubmit() {
     if (this.contactForm.valid) {
+      let aux = this.contactForm.getRawValue();
 
-      this.ProfileService.updateStudent(this.contactForm).subscribe(
+      aux['areas'] = this.areas;
+
+      var json = JSON.stringify(aux);
+
+      console.log(aux);
+
+      this.ProfileService.updateStudent(json).subscribe(
         (response: any) => {
           console.log(response);  
           this.router.navigate(['/alumno/dashboard']);        
@@ -97,11 +116,29 @@ export class PerfilAlComponent implements OnInit {
       lastName: ['',[Validators.required, Validators.pattern(this.isName)]],      
       birthdate: ['',Validators.required],      
       dni: ['',[Validators.required, Validators.minLength(9), Validators.maxLength(9),Validators.pattern(this.isDni)]],
-      phone: ['',[Validators.required, Validators.pattern(this.isPhone)]],
-      area:['',Validators.required],
-      aptitudes: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(500)]]
+      phone: ['',[Validators.required, Validators.pattern(this.isPhone)]],      
+      aptitudes: ['',[Validators.required, Validators.minLength(10), Validators.maxLength(500)]],
+      status: ['',[Validators.required]]
     })
 
+  }
+
+  selectAreas() {
+    console.log(this.parent);
+    const modalRef = this.modalService.open(ModalSetAreasComponent);
+    modalRef.componentInstance.areasGet = this.parent;
+    modalRef.componentInstance.areasSaved = this.areas;
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+      }
+    });
+    modalRef.componentInstance["valueChange"].subscribe(event => {
+      this.areas = event;
+      console.log("Soy registro: "+this.areas);
+      sessionStorage.setItem('areas', JSON.stringify(this.areas))
+      console.log("Soy registro: "+sessionStorage.getItem('areas'));      
+    });
   }
 
 }

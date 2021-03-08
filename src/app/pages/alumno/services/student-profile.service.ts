@@ -40,17 +40,24 @@ export class StudentProfileService {
     return this.http.get(url + studentId, { headers: headers });
   }
 
-  public updateStudent(contactForm: FormGroup) {
+  public getStudentArea() {
+    const url = environment.Laravel + "studentArea/";
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
+    return this.http.get(url + this.loginService.user.user_id, { headers: headers });
+  }
 
-    let jsonForm = contactForm.getRawValue();
+  public updateStudent(data: string) {
 
-    let json = JSON.stringify(jsonForm);
+    console.log(data);
 
     const url = environment.Laravel + "student/";
     let headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `Bearer ${this.loginService.user.access_token}`
     });
-    return this.http.put(url + this.loginService.user.user_id, json, { headers: headers });
+    return this.http.put(url + this.loginService.user.user_id, data, { headers: headers });
   }
 }
