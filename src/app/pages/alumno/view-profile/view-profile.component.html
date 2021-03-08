@@ -2,7 +2,7 @@
     <!-- Sidebar -->
     <app-sidebar></app-sidebar>
     <!-- Contenido de la pagina -->
-    <div id="page-content-wrapper">                
+    <div id="page-content-wrapper">
         <div class="container my-5" *ngIf="can == false">
             <app-load-spinner></app-load-spinner>
         </div>
@@ -14,7 +14,7 @@
                             <h2 class="card-title text-white mb-0">Perfil</h2>
                         </div>
                         <div class="card-body">
-                            <perfil-al [parent]="areas" [parent2]="data"></perfil-al>
+                            <perfil-al [parent]="areas" [parent2]="data" [studentAreas]="studentAreas"></perfil-al>
                         </div>
                     </div>
                 </div>

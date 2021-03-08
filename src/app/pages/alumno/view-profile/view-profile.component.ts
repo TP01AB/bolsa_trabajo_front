@@ -12,6 +12,7 @@ export class ViewProfileComponent implements OnInit {
 
   data;
   areas;
+  studentAreas;
   can = false;
   constructor(private ProfileService: StudentProfileService, private loginService: LoginService, private registerUser: RegisterService) { }
 
@@ -20,13 +21,25 @@ export class ViewProfileComponent implements OnInit {
       (response: any) => {
         this.data = response[0];
         //console.log(this.data);
-        this.registerUser.getAreas().subscribe(
+        this.ProfileService.getStudentArea().subscribe(
           (response: any) => {
-            this.areas = response;
-            this.can = true;        
+            //console.log(response)
+            this.studentAreas = response;
+            this.registerUser.getAreas().subscribe(
+              (response: any) => {
+                this.areas = response;
+                this.can = true;        
+              },
+              error => console.log(error)
+            )   
           },
-          error => console.log(error)
-        )   
+          (error: any) => {
+            console.log(error);
+          }
+        )
+      },
+      (error: any) => {
+        console.log(error);
       }
     )
   }

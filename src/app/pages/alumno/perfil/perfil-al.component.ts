@@ -6,6 +6,7 @@ import { LoginService } from 'src/app/auth/services/login.service';
 import { Router } from '@angular/router';
 import { FormsFunctionsService } from 'src/app/shared/services/forms-functions.service';
 import { ModalSetAreasComponent } from './modal/modal-set-areas/modal-set-areas.component';
+import { forEachChild } from 'typescript';
 
 
 @Component({
@@ -17,6 +18,7 @@ export class PerfilAlComponent implements OnInit {
 
   @Input() parent;
   @Input() parent2: any;
+  @Input() studentAreas: any;
   data;
   model: NgbDateStruct;
   contactForm: FormGroup;
@@ -47,8 +49,14 @@ export class PerfilAlComponent implements OnInit {
         dni: this.data.dni,
         phone: this.data.phone,        
         birthdate: this.data.birthdate,     
-        aptitudes: this.data.aptitudes
-      })      
+        aptitudes: this.data.aptitudes,
+        status: this.data.status,
+      })
+      this.studentAreas.forEach(element => {
+        this.areas.push(element.id);
+      })
+      //sessionStorage.setItem('areas', JSON.stringify(this.areas))
+      console.log(this.areas);  
     } else {
       this.initForm();      
     }
@@ -56,8 +64,15 @@ export class PerfilAlComponent implements OnInit {
 
   onSubmit() {
     if (this.contactForm.valid) {
+      let aux = this.contactForm.getRawValue();
 
-      this.ProfileService.updateStudent(this.contactForm).subscribe(
+      aux['areas'] = this.areas;
+
+      var json = JSON.stringify(aux);
+
+      console.log(aux);
+
+      this.ProfileService.updateStudent(json).subscribe(
         (response: any) => {
           console.log(response);  
           this.router.navigate(['/alumno/dashboard']);        
