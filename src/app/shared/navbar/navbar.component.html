@@ -6,29 +6,30 @@
         </a>
     </div>
     <span style="flex:auto;"></span>
-    <mat-slide-toggle class="pl-0 ml-0 rowcol-sm-1" [(ngModel)]="DarkTheme" labelPosition="before" (change)="storeTheme()">
+    <mat-slide-toggle class="pl-0 ml-0 rowcol-sm-1" [(ngModel)]="DarkTheme" labelPosition="before"
+        (change)="storeTheme()">
         <svg class="bi text " width="26 " height="26 ">
-                    <use xlink:href="bootstrap-icons.svg#moon" />
-                    </svg>
+            <use xlink:href="bootstrap-icons.svg#moon" />
+        </svg>
     </mat-slide-toggle>
     <div *ngIf="isLogin() " class="rowcol-sm-1 nav-item">
         <button class="btn" (click)="toHome()">
-                    <svg class="bi text-white " width="30 " height="30 " fill="currentColor ">
-                    <use xlink:href="bootstrap-icons.svg#house-fill " />
-                    </svg>
-            </button>
+            <svg class="bi text-white " width="30 " height="30 " fill="currentColor ">
+                <use xlink:href="bootstrap-icons.svg#house-fill " />
+            </svg>
+        </button>
     </div>
     <div *ngIf="!isLogin() " class=" rowcol-sm-1 nav-item ">
-        <a class="nav-link " routerLink="/login">Login</a>
+        <a id="login" class="nav-link " routerLink="/login">Login</a>
     </div>
     <div *ngIf="!isLogin() " class="rowcol-sm-1 nav-item ">
-        <a class="nav-link " routerLink="/registro">Registro</a>
+        <a id="registro" class="nav-link " routerLink="/registro">Registro</a>
     </div>
     <div *ngIf="isLogin() " class="rowcol-sm-1 nav-item ">
-        <a class="nav-link " (click)="onLogout()" role="button">
+        <a id="logout" class="nav-link " (click)="onLogout()" role="button">
             <svg class="bi text-white " width="16 " height="16 " fill="currentColor ">
-            <use xlink:href="bootstrap-icons.svg#box-arrow-right " />
-          </svg>
+                <use xlink:href="bootstrap-icons.svg#box-arrow-right " />
+            </svg>
         </a>
     </div>
 </nav>

@@ -20,6 +20,14 @@ describe('RegisterService', () => {
     httpMock = injector.inject(HttpTestingController);
   });
 
+  beforeEach(function (done) {
+        window.jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+        setTimeout(function () {
+            console.log('inside timeout');
+            done();
+        }, 500);
+    });
+
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
@@ -28,23 +36,28 @@ describe('RegisterService', () => {
     httpMock.verify();
   });
 
-  it('Recuperar las areas para pasarlas a alumno', () => {       
+  it('Recuperar las areas para pasarlas a alumno', (done: DoneFn) => {    
+    console.log("empiezo");
     service.getAreas().subscribe(
       (response: any) => {
         expect(response.length).toBeGreaterThan(1);
+        expect(response.length).toBeLessThan(1);
         expect(response.code).toBe(200);
-        response.flush();
+        console.log("Estoy dentro "+response);
+        done();
       }
-    )
+    )    
     const req = httpMock.expectOne(environment.Laravel + "areas");
     expect(req.request.method).toBe("GET");
   })
 
-  it('Registrar usuario básico', () => {
+
+  it('Registrar usuario básico', (done: DoneFn) => {
     let json = '{email: "ejemploUser@gmail.com",password: "123"}'
     service.registerUser(json).subscribe(
       (response: any) => {        
         expect(response.code).toBe(200);
+        done();
       }
     )
     const req = httpMock.expectOne(environment.Laravel + "register");

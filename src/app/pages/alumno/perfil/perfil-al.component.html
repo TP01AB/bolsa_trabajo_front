@@ -2,7 +2,8 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label>Nombre:</label>
-            <input type="text" class="form-control" placeholder="Nombre" formControlName="name" [class]="isValidField('name')" aria-label="Introduzca su nombre">
+            <input id="nombre" type="text" class="form-control" placeholder="Nombre" formControlName="name"
+                [class]="isValidField('name')" aria-label="Introduzca su nombre">
             <div class="invalid-feedback">
                 <span *ngIf="contactForm.get('name').errors?.required">
                     Por favor introduzca su nombre
@@ -16,7 +17,8 @@
         </div>
         <div class="form-group col-md-6">
             <label>Apellidos:</label>
-            <input type="text" class="form-control" placeholder="Apellido" formControlName="lastName" [class]="isValidField('lastName')" aria-label="Introduzca sus apellidos">
+            <input id="apellidos" type="text" class="form-control" placeholder="Apellido" formControlName="lastName"
+                [class]="isValidField('lastName')" aria-label="Introduzca sus apellidos">
             <div class="invalid-feedback">
                 <span *ngIf="contactForm.get('lastName').errors?.required">
                     Por favor introduzca su apellido
@@ -32,7 +34,8 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label>DNI:</label>
-            <input type="text" class="form-control" placeholder="DNI" formControlName="dni" [class]="isValidField('dni')" aria-label="Introduzca su dni">
+            <input id="dni" type="text" class="form-control" placeholder="DNI" formControlName="dni"
+                [class]="isValidField('dni')" aria-label="Introduzca su dni">
             <div class="invalid-feedback">
                 <span *ngIf="contactForm.get('dni').errors?.required">
                     Por favor introduzca su dni
@@ -47,7 +50,9 @@
         <div class="form-group col-md-6">
             <label>Fecha de nacimiento:</label>
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Fecha de nacimiento" formControlName="birthdate" ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')" aria-label="Introduzca su fecha de nacimiento con el formato año-mes-día">
+                <input id="fechaNac" type="text" class="form-control" placeholder="YYYY-MM-DD"
+                    formControlName="birthdate" ngbDatepicker #d="ngbDatepicker" [class]="isValidField('birthdate')"
+                    aria-label="Introduzca su fecha de nacimiento con el formato año-mes-día">
                 <div class="input-group-append ">
                     <!--Poner icono manual-->
                     <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
@@ -67,8 +72,8 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label>Telefono móvil:</label>
-            <input type="text" formControlName="phone" class="form-control" [class]="isValidField('phone')"
-            aria-label="Introduzca su teléfono móvil">
+            <input id="telef" type="text" formControlName="phone" class="form-control" [class]="isValidField('phone')"
+                aria-label="Introduzca su teléfono móvil">
             <div class="invalid-feedback">
                 <span *ngIf="contactForm.get('phone').errors?.required">
                     Debe introducir un número de móvil
@@ -79,10 +84,10 @@
                     Debe introducir un número válido
                 </span>
             </div>
-        </div>        
+        </div>
         <div class="form-group col-md-6">
             <label>Estatus:</label>
-            <select formControlName="status" class="form-control" aria-label="Seleccione su estado laboral">
+            <select id="status" formControlName="status" class="form-control" aria-label="Seleccione su estado laboral">
                 <option value="0">Parado</option>
                 <option value="1">Trabajando</option>
                 <option value="2">Trabajando, busco ofertas</option>
@@ -96,12 +101,13 @@
     </div>
     <div class="form-group col-md-6 pl-0">
         <label>Ciclos:</label>
-        <button (click)="selectAreas()" class="btn btn-secondary ml-3 mb-1 p-1">Seleccionar</button>
-        <!---->            
+        <button id="btnAreas" (click)="selectAreas()" class="btn btn-secondary ml-3 mb-1 p-1">Seleccionar</button>
+        <!---->
     </div>
     <div class="form-group mt-2">
         <label>Aptitudes:</label>
-        <textarea rows="3" class="form-control" formControlName="aptitudes" [class]="isValidField('aptitudes')" aria-label="Introduzca sus aptitudes"></textarea>
+        <textarea id="aptitudes" rows="3" class="form-control" formControlName="aptitudes"
+            [class]="isValidField('aptitudes')" aria-label="Introduzca sus aptitudes"></textarea>
         <div class="invalid-feedback">
             <span *ngIf="contactForm.get('aptitudes').errors?.required">
                 Por favor introduzca sus aptitudes
