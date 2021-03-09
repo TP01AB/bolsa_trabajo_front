@@ -5,8 +5,13 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
+
+        <div class="container my-3" *ngIf="!isLoaded">
+            <app-load-spinner></app-load-spinner>
+        </div>
+
         <div class="container  mx-auto">
-            <div class="container-fluid my-3">
+            <div class="container-fluid my-3 " *ngIf="isLoaded">
                 <div class="row  justify-content-center">
                     <a routerLink="../ofertas">
                         <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pt-2">

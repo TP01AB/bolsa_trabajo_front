@@ -10,7 +10,7 @@ import { StudentOfferService } from '../student-offer/services/student-offer.ser
   styleUrls: ['./student-dashboard.component.scss']
 })
 export class StudentDashboardComponent implements OnInit {
-
+  isLoaded = false;
   rechazado: any;
   solicitudes: any;
   sinRespuesta: any;
@@ -54,7 +54,7 @@ export class StudentDashboardComponent implements OnInit {
           console.log(this.sinRespuesta);
         }
         )
-
+        this.isLoaded = true;
       },
       (error) => {
         console.log(error);
