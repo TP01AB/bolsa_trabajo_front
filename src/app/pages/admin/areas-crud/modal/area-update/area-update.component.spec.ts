@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AreaUpdateComponent } from './area-update.component';
 
-describe('AreaUpdateComponent', () => {
+xdescribe('AreaUpdateComponent', () => {
   let component: AreaUpdateComponent;
   let fixture: ComponentFixture<AreaUpdateComponent>;
 

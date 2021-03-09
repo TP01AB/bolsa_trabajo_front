@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { FormsFunctionsService } from './forms-functions.service';
 
-describe('FormsFunctionsService', () => {
+xdescribe('FormsFunctionsService', () => {
   let service: FormsFunctionsService;
 
   beforeEach(() => {

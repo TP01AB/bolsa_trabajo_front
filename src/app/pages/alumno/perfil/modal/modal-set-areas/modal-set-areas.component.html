@@ -8,11 +8,11 @@
 </div>
 <div class="modal-body">
     <div *ngFor="let area of areasGet">
-        <input type="checkbox" [checked]="areasSaved.includes(area.id)" name="area.id"
+        <input type="checkbox" [checked]="areasSaved.includes(area.id)" id="{{area.id}}"
             (change)="updateArea($event,area.id)">
         {{area.description}}
-    </div> 
+    </div>
     <div class="text-center mt-3">
-        <button (click)="onSubmit()" type="btn" class="btn btn-secondary">Confirmar</button>
-    </div>      
+        <button id="btnModalAr" (click)="onSubmit()" type="btn" class="btn btn-secondary">Confirmar</button>
+    </div>
 </div>

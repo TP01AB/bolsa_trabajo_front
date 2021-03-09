@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { OfferEnrollComponent } from './offer-enroll.component';
 
-describe('OfferEnrollComponent', () => {
+xdescribe('OfferEnrollComponent', () => {
   let component: OfferEnrollComponent;
   let fixture: ComponentFixture<OfferEnrollComponent>;
 
