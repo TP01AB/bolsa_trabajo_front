@@ -2,6 +2,7 @@ describe('Probando distinto tipos de login', () => {
 
     it('Un usuario se logea como alumno', () => {
         cy.visit('https://bolsatrabajovdg.netlify.app');
+        cy.wait(10000);
         //cy.visit('http://localhost:4200/');
         cy.get('#login').click();
 

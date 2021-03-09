@@ -36,15 +36,14 @@ describe('RegisterService', () => {
     httpMock.verify();
   });
 
-  it('Recuperar las areas para pasarlas a alumno', (done: DoneFn) => {    
+  it('Recuperar las areas para pasarlas a alumno', () => {    
     console.log("empiezo");
     service.getAreas().subscribe(
       (response: any) => {
         expect(response.length).toBeGreaterThan(1);
         expect(response.length).toBeLessThan(1);
         expect(response.code).toBe(200);
-        console.log("Estoy dentro "+response);
-        done();
+        console.log("Estoy dentro "+response);        
       }
     )    
     const req = httpMock.expectOne(environment.Laravel + "areas");
@@ -52,12 +51,11 @@ describe('RegisterService', () => {
   })
 
 
-  it('Registrar usuario básico', (done: DoneFn) => {
+  it('Registrar usuario básico', () => {
     let json = '{email: "ejemploUser@gmail.com",password: "123"}'
     service.registerUser(json).subscribe(
       (response: any) => {        
-        expect(response.code).toBe(200);
-        done();
+        expect(response.code).toBe(200);        
       }
     )
     const req = httpMock.expectOne(environment.Laravel + "register");
