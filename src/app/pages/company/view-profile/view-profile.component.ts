@@ -16,8 +16,8 @@ export class ViewProfileComponent2 implements OnInit {
   ngOnInit(): void {
     this.ProfileService.getCompany(this.loginService.user.user_id).subscribe(
       (response: any) => {
-        this.data = response[0];
-        console.log(this.data);
+        this.data = response;
+        console.log(this.data);        
         this.can = true;
       }
     )

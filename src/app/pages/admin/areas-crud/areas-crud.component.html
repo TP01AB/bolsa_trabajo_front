@@ -16,10 +16,11 @@
                             <div class="d-flex align-items-center">
                                 <h2 class="card-title text-white font-weight-bold  mr-3">Ciclos</h2>
                             </div>
-                            <a class="rounded-circle position-absolute border border-white bg-secondary" (click)=newArea() title="Añadir ciclo">
+                            <a class="rounded-circle position-absolute border border-white bg-secondary"
+                                (click)=newArea() title="Añadir ciclo">
                                 <svg class="bi text-white" width="32" height="32" fill="currentColor">
-                  <use xlink:href="bootstrap-icons.svg#plus" />
-                </svg>
+                                    <use xlink:href="bootstrap-icons.svg#plus" />
+                                </svg>
                             </a>
                         </div>
                         <div class="card-body bg-light-dark">
@@ -31,16 +32,20 @@
                                                 {{area.description}}
                                             </div>
                                             <div class="col-4 btn-group">
-                                                <button type="button" title="Editar ciclo" class="btn btn-secondary rounded-0">
-                          <svg class="bi" width="20" height="20" fill="currentColor" (click)=areaUpdate(area)>
-                            <use xlink:href="bootstrap-icons.svg#pencil" />
-                          </svg>
-                        </button>
-                                                <button type="button" title="Eliminar ciclo" class="btn btn-danger rounded-0">
-                          <svg class="bi" width="20" height="20" fill="currentColor" (click)=areaDelete(area.id)>
-                            <use xlink:href="bootstrap-icons.svg#x" />
-                          </svg>
-                        </button>
+                                                <button type="button" title="Editar ciclo"
+                                                    class="btn btn-secondary rounded-0">
+                                                    <svg class="bi" width="20" height="20" fill="currentColor"
+                                                        (click)=areaUpdate(area)>
+                                                        <use xlink:href="bootstrap-icons.svg#pencil" />
+                                                    </svg>
+                                                </button>
+                                                <button type="button" title="Eliminar ciclo"
+                                                    class="btn btn-danger rounded-0">
+                                                    <svg class="bi" width="20" height="20" fill="currentColor"
+                                                        (click)=areaDelete(area.id)>
+                                                        <use xlink:href="bootstrap-icons.svg#x" />
+                                                    </svg>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>

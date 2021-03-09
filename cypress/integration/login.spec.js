@@ -36,7 +36,8 @@ describe('Probando distinto tipos de login', () => {
     });
 
     it('Un usuario intenta logearse y pone su datos mal', () => {
-        cy.visit('http://localhost:4200/');
+        cy.visit('https://bolsatrabajovdg.netlify.app');
+        //cy.visit('http://localhost:4200/');
 
         cy.get('#login').click();
         cy.url().should('include', '/login')

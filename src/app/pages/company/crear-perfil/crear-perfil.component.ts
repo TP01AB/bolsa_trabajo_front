@@ -44,7 +44,7 @@ export class CrearPerfilComponent implements OnInit {
   ngOnInit(): void {
     if (this.router.url === '/empresa/perfil') {
       console.log(this.parent);
-      this.data = JSON.parse(this.parent);
+      this.data = this.parent;
       console.log(this.data);
       console.log(this.data.birthdate);
       this.initForm();
