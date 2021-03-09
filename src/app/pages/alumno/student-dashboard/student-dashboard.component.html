@@ -6,25 +6,8 @@
     <!-- Page Content -->
     <div id="page-content-wrapper">
         <div class="container  mx-auto">
-            <div class="container-fluid my-5 p-0 m-0 ">
+            <div class="container-fluid my-3">
                 <div class="row  justify-content-center">
-                    <a routerLink="../ofertas">
-                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pt-2 ">
-                            <div class="card border-info dashboardElement mx-sm-1 dashboardCard">
-                                <div class="rounded-circle shadow text-info p-3 mx-auto">
-                                    <svg class="bi" width="32" height="32">
-                            <use xlink:href="bootstrap-icons.svg#newspaper" />
-                                </svg>
-                                </div>
-                                <div class="text-info text-center mt-1">
-                                    <h4>Nuevas Ofertas</h4>
-                                </div>
-                                <div class="text-info text-center mt-1">
-                                    <h1>0</h1>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
                     <a routerLink="../ofertas">
                         <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pt-2">
                             <div class="card border-success dashboardElement mx-sm-1  dashboardCard">
@@ -37,7 +20,7 @@
                                     <h4>Solicitudes</h4>
                                 </div>
                                 <div class="text-success text-center mt-1">
-                                    <h1>0</h1>
+                                    <h1>{{solicitudes}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -54,7 +37,7 @@
                                     <h4>Ofertas Sin respuesta</h4>
                                 </div>
                                 <div class="text-danger text-center mt-1">
-                                    <h1>0</h1>
+                                    <h1>{{sinRespuesta}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -71,7 +54,24 @@
                                     <h4>Aceptado</h4>
                                 </div>
                                 <div class=" text-warning text-center mt-1">
-                                    <h1>0</h1>
+                                    <h1>{{aceptado}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a routerLink="../ofertas">
+                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pt-2 ">
+                            <div class="card border-info dashboardElement mx-sm-1 dashboardCard">
+                                <div class="rounded-circle shadow text-info p-3 mx-auto">
+                                    <svg class="bi" width="32" height="32">
+                            <use xlink:href="bootstrap-icons.svg#newspaper" />
+                                </svg>
+                                </div>
+                                <div class="text-info text-center mt-1">
+                                    <h4>Rechazado</h4>
+                                </div>
+                                <div class="text-info text-center mt-1">
+                                    <h1>{{rechazado}}</h1>
                                 </div>
                             </div>
                         </div>
@@ -79,6 +79,5 @@
                 </div>
             </div>
         </div>
-        <div class=""></div>
     </div>
 </div>

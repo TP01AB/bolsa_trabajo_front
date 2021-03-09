@@ -1,4 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { CompanyDashboardService } from './services/company-dashboard.service';
 
 
 @Component({
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CompanyDashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(Router:Router,companyDash:CompanyDashboardService) { }
 
   ngOnInit(): void {
   }
