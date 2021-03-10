@@ -42,6 +42,7 @@ export class CandidatosAceptadosComponent implements OnInit {
           phone: any;
           aptitudes: any;
           status: any;
+          offer_name: any;
           areas: any[];
           description: any;
         }) => {
@@ -56,6 +57,7 @@ export class CandidatosAceptadosComponent implements OnInit {
               'phone': element.phone,
               'aptitudes': element.aptitudes,
               'status': element.status,
+              'offer_name': element.offer_name,
               'areas': []
             };
             student.areas.push(element.description);
