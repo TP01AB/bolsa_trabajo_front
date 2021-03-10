@@ -28,7 +28,11 @@ export class CompanyOfferService {
     let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
     return this.http.get(url + company_id, { headers: headers });
   };
-
+  public getCompanyDashboard = (company_id:number) => {
+    const url = environment.Laravel + "company/dashboard/";
+    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+    return this.http.get(url + company_id, { headers: headers });
+  };
   // Guardamos una offer
   public storeOffer = (offer: any) => {
 

@@ -5,73 +5,110 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper ">
+        <div class="container my-3" *ngIf="!isLoaded">
+            <app-load-spinner></app-load-spinner>
+        </div>
         <div class="container  mx-auto">
-            <div class="container-fluid my-5">
+            <div class="container-fluid my-3" *ngIf="isLoaded">
                 <div class="row justify-content-center">
                     <a>
-                        <div class="col-sm-6 col-md-6 col-lg-2 ">
-                            <div class="card border-info dashboardElement mx-sm-1 p-3 m-2 dashboardCard ">
+                        <div class="col-sm-6 col-md-6 col-lg-4 ">
+                            <div class="card border-info dashboardElement mx-sm-1 p-3 m-2 dashboardCard justify-content-center">
                                 <div class="rounded-circle shadow text-info p-3 mx-auto ">
                                     <svg class="bi " width="32 " height="32 ">
                             <use xlink:href="bootstrap-icons.svg#person-plus " />
                                 </svg>
                                 </div>
                                 <div class="text-info text-center mt-3 ">
-                                    <h4>Nuevos Alumnos</h4>
+                                    <h4>Ofertas activas</h4>
                                 </div>
                                 <div class="text-info text-center mt-2 ">
-                                    <h1>0</h1>
+                                    <h1>{{ofertaActivas}}</h1>
                                 </div>
                             </div>
                         </div>
                     </a>
                     <a routerLink="../ofertas">
-                        <div class="col-sm-6 col-md-6 col-lg-2 ">
-                            <div class="card border-success dashboardElement mx-sm-1 p-3 m-2 dashboardCard ">
+                        <div class="col-sm-6 col-md-6 col-lg-4 ">
+                            <div class="card border-success dashboardElement mx-sm-1 p-3 m-2 dashboardCard justify-content-center">
                                 <div class="rounded-circle shadow text-info p-3 mx-auto ">
                                     <svg class="bi " width="32 " height="32 ">
                             <use xlink:href="bootstrap-icons.svg#file-earmark-arrow-up " />
                                 </svg>
                                 </div>
                                 <div class="text-success text-center mt-3 ">
-                                    <h4>Ofertas Activas</h4>
+                                    <h4>Solicitudes pendientes</h4>
                                 </div>
                                 <div class="text-success text-center mt-2 ">
-                                    <h1>0</h1>
+                                    <h1>{{solicitudPendiente}}</h1>
                                 </div>
                             </div>
                         </div>
                     </a>
                     <a>
-                        <div class="col-sm-6 col-md-6 col-lg-2 ">
-                            <div class="card border-danger dashboardElement mx-sm-1 p-3 m-2 dashboardCard ">
+                        <div class="col-sm-6 col-md-6 col-lg-4 ">
+                            <div class="card border-danger dashboardElement mx-sm-1 p-3 m-2 dashboardCard justify-content-center">
                                 <div class="rounded-circle shadow text-info p-3 mx-auto ">
                                     <svg class="bi " width="32 " height="32 ">
                             <use xlink:href="bootstrap-icons.svg#file-earmark-person " />
                                 </svg>
                                 </div>
                                 <div class="text-danger text-center mt-3 ">
-                                    <h5>Candidatos nuevos</h5>
+                                    <h5>Solicitudes rechazadas</h5>
                                 </div>
                                 <div class="text-danger text-center mt-2 ">
-                                    <h1>0</h1>
+                                    <h1>{{solicitudRechazada}}</h1>
                                 </div>
                             </div>
                         </div>
                     </a>
                     <a>
                         <div class="col-sm-6 col-md-6 col-lg-2 ">
-                            <div class="card border-warning dashboardElement mx-sm-1 p-3 m-2 dashboardCard ">
+                            <div class="card border-warning dashboardElement mx-sm-1 p-3 m-2 dashboardCard justify-content-center">
                                 <div class="rounded-circle shadow text-info p-3 mx-auto ">
                                     <svg class="bi " width="32 " height="32 ">
                             <use xlink:href="bootstrap-icons.svg#hand-thumbs-up " />
                                 </svg>
                                 </div>
                                 <div class="text-warning text-center mt-3 ">
-                                    <h4>Candidatos Aceptados</h4>
+                                    <h4>Candidatos Pendientes</h4>
                                 </div>
                                 <div class="text-warning text-center mt-2 ">
-                                    <h1>0</h1>
+                                    <h1>{{cadidatoPendiente}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a>
+                        <div class="col-sm-6 col-md-6 col-lg-2 ">
+                            <div class="card border-warning dashboardElement mx-sm-1 p-3 m-2 dashboardCard justify-content-center">
+                                <div class="rounded-circle shadow text-info p-3 mx-auto ">
+                                    <svg class="bi " width="32 " height="32 ">
+                            <use xlink:href="bootstrap-icons.svg#hand-thumbs-up " />
+                                </svg>
+                                </div>
+                                <div class="text-warning text-center mt-3 ">
+                                    <h4>Candidatos aceptados</h4>
+                                </div>
+                                <div class="text-warning text-center mt-2 ">
+                                    <h1>{{candidatos}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a>
+                        <div class="col-sm-6 col-md-6 col-lg-2 ">
+                            <div class="card border-warning dashboardElement mx-sm-1 p-3 m-2 dashboardCard justify-content-center">
+                                <div class="rounded-circle shadow text-info p-3 mx-auto ">
+                                    <svg class="bi " width="32 " height="32 ">
+                            <use xlink:href="bootstrap-icons.svg#hand-thumbs-up " />
+                                </svg>
+                                </div>
+                                <div class="text-warning text-center mt-3 ">
+                                    <h4>Candidatos rechazados</h4>
+                                </div>
+                                <div class="text-warning text-center mt-2 ">
+                                    <h1>{{candidatoRechazado}} </h1>
                                 </div>
                             </div>
                         </div>

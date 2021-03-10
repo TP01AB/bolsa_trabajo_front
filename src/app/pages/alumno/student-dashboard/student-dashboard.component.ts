@@ -39,6 +39,7 @@ export class StudentDashboardComponent implements OnInit {
         }) => {
 
           console.log(element);
+          if(element.isActive==1){
           if (element.Joined_by == 1) {
             console.log("entro en solicitadas por empresa");
             if (element.interActive == 2) { this.rechazado++; console.log("entro en rechazada emp"); }else
@@ -47,6 +48,7 @@ export class StudentDashboardComponent implements OnInit {
 
           } else if (element.Joined_by == 0) {
             if (element.interActive == 0) { this.sinRespuesta++; console.log("entro en sin respuesta");}
+            }
           }
           console.log(this.aceptado);
           console.log(this.rechazado);
