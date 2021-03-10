@@ -1,3 +1,4 @@
+import { StudentOfferService } from './../../../alumno/student-offer/services/student-offer.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from 'src/app/auth/services/login.service';
@@ -12,12 +13,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ModalStudentComponent implements OnInit {
   @Input() public student;
   offers: any[];
+  offersID: any[];
   solicitudForm: FormGroup;
   loaded = false;
   value = null;
   submitted = false;
   studentU: any;
-  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder, private router: Router, private loginService: LoginService, private companyOfferService: CompanyOfferService) {
+  constructor(public activeModal: NgbActiveModal, private fb: FormBuilder, private router: Router, private loginService: LoginService, private companyOfferService: CompanyOfferService,private StudentOfferService: StudentOfferService) {
     const navigation = this.router.getCurrentNavigation();
     this.value = navigation?.extras?.state;
    }
@@ -25,6 +27,7 @@ export class ModalStudentComponent implements OnInit {
   ngOnInit(): void {
     this.initForm();
     this.studentU = { ...this.student };
+    this.getInterviewsStudent(this.studentU.id);
     this.getOffersActive();
   }
   onSubmit() {
@@ -58,8 +61,32 @@ export class ModalStudentComponent implements OnInit {
       ? 'is-invalid' : validatedField.touched ? 'is-valid' : '';
   }
 
+  getInterviewsStudent(student_id:number) {
+    this.offersID = [];
+    this.StudentOfferService.getOffersInterviewCompany(student_id).subscribe(
+      (response: any) => {
+        const offers = response;
+        console.log(response);
+        //Recupero las ofertas a las que está apuntado el alumno
+        offers.forEach((element: {
+          id: any;
+        }) => {
+            let offer = {
+              'id': element.id,
+            };
+          this.offersID.push(offer);
+        }
+        )
+        console.log(this.offersID);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
   getOffersActive() {
     this.offers = [];
+    var existe: Boolean;
     this.companyOfferService.getCompanyOffersActive(this.loginService.user.company_id).subscribe(
       (response: any) => {
         const offers = response;
@@ -69,7 +96,12 @@ export class ModalStudentComponent implements OnInit {
             'id': element.id,
             'name': element.name,
           };
-          this.offers.push(offer);
+          existe = false;
+          this.offersID.forEach((offer: { id:any }) => {
+
+            if (offer.id == element.id) { existe = true;}
+          })
+          if (!existe) { this.offers.push(offer) }
         });
         this.loaded = true;
         console.log(this.offers);
