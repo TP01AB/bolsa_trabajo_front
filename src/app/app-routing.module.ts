@@ -15,6 +15,8 @@ import { ViewProfileComponent2 } from './pages/company/view-profile/view-profile
 import { AreasCrudComponent } from './pages/admin/areas-crud/areas-crud.component';
 import { StudentOfferComponent } from './pages/alumno/student-offer/student-offer.component';
 import { StudentInterviewComponent } from './pages/alumno/student-interview/student-interview.component';
+import { InterviewsComponent } from './pages/company/interviews/interviews.component';
+import { CandidatosAceptadosComponent } from './pages/company/candidatos-aceptados/candidatos-aceptados.component';
 
 
 const routes: Routes = [
@@ -35,6 +37,8 @@ const routes: Routes = [
   { path: 'empresa/ofertas', component: CompanyOfferComponent },
   { path: 'empresa/perfil', component: ViewProfileComponent2 },
   { path: 'empresa/Crearperfil', loadChildren: () => import('./pages/company/crear-perfil/crear-perfil.module').then(m => m.CrearPerfilModule) },
+  { path: 'empresa/candidatosPendientes', component: InterviewsComponent },
+  { path: 'empresa/candidatosAceptados', component: CandidatosAceptadosComponent },
 
   //Rutas alumno
   { path: 'alumno/perfil', component: ViewProfileComponent },
@@ -42,7 +46,7 @@ const routes: Routes = [
   { path: 'alumno/ofertas', component: StudentOfferComponent },
   { path: 'registro', loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterModule) },
   { path: 'alumno/empresa-view', component: StudentCompanyViewComponent },
-  { path: 'alumno/interview', component: StudentInterviewComponent },  
+  { path: 'alumno/interview', component: StudentInterviewComponent },
 ];
 
 @NgModule({

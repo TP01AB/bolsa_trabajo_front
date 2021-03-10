@@ -46,7 +46,13 @@ export class StudentOfferService {
     });
     return this.http.post(url, data, { headers: headers });
   }
-
+  public getOffersInterviewCompany = (student_id:number) => {
+    const url = environment.Laravel + "offersInterview/" +student_id;
+    let headers = new HttpHeaders({
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
+    return this.http.get(url, { headers: headers });
+  };
   public getOffersInterview = () => {
     const url = environment.Laravel + "offersInterview/"+this.loginService.user.student_id;
     let headers = new HttpHeaders({

@@ -74,8 +74,8 @@ export class RegisterComponent implements OnInit {
   onSave(): void {
     var tipo = this.registerForm.get('condicion').value
     let userId = null;
-    if (tipo == 'student') {   
-      let areas = sessionStorage.getItem('areas');       
+    if (tipo == 'student') {
+      let areas = sessionStorage.getItem('areas');
       if (this.registerForm.valid && this.perfilAl.validate() == 1 && areas.length>0) {
         this.registerUser.registerUser(this.gestorForm.toJason(this.registerForm)).subscribe(
           (data: any) => {
@@ -91,8 +91,9 @@ export class RegisterComponent implements OnInit {
             this.registerUser.registerChild(json, tipo).subscribe(
               (response: any) => {
                 console.log("success!", response);
+                this.router.navigate(['/']);
               },
-              error => { 
+              error => {
                 this.registerUser.deleteLast(data.message.user.id)
                 console.error("couldn't post because", error)
               }
@@ -103,7 +104,7 @@ export class RegisterComponent implements OnInit {
       } else {
         this.perfilAl.validate();
         this.gestorForm.validate(this.registerForm);
-      }      
+      }
     } else if (tipo == 'company') {
       if (this.registerForm.valid && this.perfilEmp.validate() == 1) {
         userId = null;

@@ -21,6 +21,17 @@ export class CompanyViewStudentsService {
     let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
     return this.http.get(url, { headers: headers });
   };
+
+  public getStudentsPendientes = () => {
+    const url = environment.Laravel + "student/get-wait";
+    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+    return this.http.get(url + "/" + this.loginService.user.company_id, { headers: headers });
+  };
+  public getStudentsAceptados = () => {
+    const url = environment.Laravel + "student/get-acepted";
+    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+    return this.http.get(url +"/"+this.loginService.user.company_id, { headers: headers });
+  };
   public getStudentAreas = (user_id) => {
     const url = environment.Laravel + "areas/";
     let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
