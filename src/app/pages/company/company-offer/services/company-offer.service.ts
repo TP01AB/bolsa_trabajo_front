@@ -17,6 +17,19 @@ export class CompanyOfferService {
     if (!loginService.isUserSignedIn())
       router.navigate(['/login'])
   }
+  public enrollOffer(offerId,student_id) {
+    const url = environment.Laravel + "studentOffer";
+    var data = {
+      studentId: student_id,
+      offerId: offerId,
+      sended: 1
+    };
+    console.log(data);
+    let headers = new HttpHeaders({
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
+    return this.http.post(url, data, { headers: headers });
+  }
 
   public getOffers = (company_id: number) => {
     const url = environment.Laravel + "offers/";
@@ -28,6 +41,12 @@ export class CompanyOfferService {
     let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
     return this.http.get(url + company_id, { headers: headers });
   };
+  public getCompanyOffersActive = (company_id: number) => {
+    const url = environment.Laravel + "offersbyidActive/";
+    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+    return this.http.get(url + company_id, { headers: headers });
+  };
+
   public getCompanyDashboard = (company_id:number) => {
     const url = environment.Laravel + "company/dashboard/";
     let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });

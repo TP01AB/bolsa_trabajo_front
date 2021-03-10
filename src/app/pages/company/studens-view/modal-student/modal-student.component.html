@@ -1,1 +1,35 @@
-<p>modal-student works!</p>
+<div class="container my-3" *ngIf="!loaded">
+    <app-load-spinner></app-load-spinner>
+</div>
+<div *ngIf="loaded">
+    <div class="modal-header bg-secondary text-white">
+        <h1 class="modal-title" id="modal-basic-title">Enviar Solicitud de oferta</h1>
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.close('Cross click')">
+        <svg class="bi text-white" width="32" height="32" fill="currentColor">
+            <use xlink:href="bootstrap-icons.svg#x" />
+        </svg>
+    </button>
+    </div>
+    <div class="modal-body">
+        <form novalidate (ngSubmit)="onSubmit()" [formGroup]="solicitudForm">
+            <div class="form-group">
+                <label for="areaDescription">Seleccione la oferta</label>
+                <select class="form-control" id="offer" formControlName="offer" [class]="isValidField('offer')">
+        <option value="">Selecciona oferta</option>
+        <option *ngFor="let offer of offers" value="{{ offer.id }}">{{ offer.name }}</option>
+      </select>
+                <div *ngIf="submitted && form.offer.errors">
+                    <div *ngIf="form.offer.errors.required" class="text-danger">Seleccione un ciclo</div>
+                </div>
+            </div>
+            <div class="text-right">
+                <button type="submit" class="btn btn-info">
+        Enviar solicitud
+        <svg class="bi text-white" width="14" height="14" fill="currentColor">
+          <use xlink:href="bootstrap-icons.svg#envelope" />
+        </svg>
+      </button>
+            </div>
+        </form>
+    </div>
+</div>

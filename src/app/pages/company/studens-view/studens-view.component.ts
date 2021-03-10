@@ -5,6 +5,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; // Import necesarios para
 import { LoginService } from 'src/app/auth/services/login.service';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import {  ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { ModalStudentComponent } from './modal-student/modal-student.component';
 
 @Component({
   selector: 'app-studens-view',
@@ -25,7 +27,16 @@ export class StudensViewComponent implements OnInit {
   ngOnInit(): void {
     this.getStudentSubscribe();
     console.log(this.students);
+  }
 
+  open(student:any) {
+    const modalRef = this.modalService.open(ModalStudentComponent, { size: 'lg' });
+    modalRef.componentInstance.student = student;
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+      }
+    })
   }
 
   public getStudentSubscribe() {
@@ -33,7 +44,7 @@ export class StudensViewComponent implements OnInit {
     this.StudentList.getStudents().subscribe(
       (response: any) => {
         var students = JSON.parse(response);
-        console.log(students);
+
         var idAnterior;
         students.forEach((element: {
           id: any;
