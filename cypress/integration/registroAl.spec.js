@@ -61,8 +61,8 @@ describe('Probando registro de un alumno', () => {
     })
 
     it('Probando registro con campos correctos', () => {
-        //cy.visit('https://bolsatrabajovdg.netlify.app');
-        cy.visit('http://localhost:4200/');
+        cy.visit('https://bolsatrabajovdg.netlify.app');
+        //cy.visit('http://localhost:4200/');
         cy.get('#registro').click();
         cy.url().should('include', '/registro')
         cy.get('#email').type('empresa@gmail.com');
@@ -77,8 +77,8 @@ describe('Probando registro de un alumno', () => {
 
         cy.get('#btnRegist').click();
         cy.wait(5000);
-        //cy.visit('https://bolsatrabajovdg.netlify.app');
-        cy.visit('http://localhost:4200/', '{ timeout: 20000 }');
+        cy.visit('https://bolsatrabajovdg.netlify.app');
+        //cy.visit('http://localhost:4200/', '{ timeout: 20000 }');
         cy.get('#login').click();
 
         cy.url().should('include', '/login')
