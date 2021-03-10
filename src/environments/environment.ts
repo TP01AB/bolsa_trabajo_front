@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  Laravel: "https://bolsa-trabajo-back-daw2.herokuapp.com/api/",
-  //Laravel: "http://localhost:8000/api/",
+  //Laravel: "https://bolsa-trabajo-back-daw2.herokuapp.com/api/",
+  Laravel: "http://localhost:8000/api/",
   production: false
 };
 

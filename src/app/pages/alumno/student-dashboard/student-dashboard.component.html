@@ -1,80 +1,155 @@
-<div class="d-flex bg-light-dark  " id="wrapper">
+<div class="d-flex bg-light-dark" id="wrapper">
 
     <!-- Sidebar -->
     <app-sidebar></app-sidebar>
 
     <!-- Page Content -->
-    <div id="page-content-wrapper ">
-        <div class="container-fluid my-5">
-            <div class="row">
-                <a href="">
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="card border-info dashboardElement mx-sm-1 p-2 m-1 dashboardCard">
-                            <div class="rounded-circle shadow text-info p-3 mx-auto">
-                                <svg class="bi" width="32" height="32">
-                            <use xlink:href="bootstrap-icons.svg#newspaper" />
-                                </svg>
-                            </div>
-                            <div class="text-info text-center mt-3">
-                                <h4>Nuevas Ofertas</h4>
-                            </div>
-                            <div class="text-info text-center mt-2">
-                                <h1>0</h1>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="card border-success dashboardElement mx-sm-1 p-2 m-1 dashboardCard">
-                            <div class="rounded-circle shadow text-info p-3 mx-auto">
-                                <svg class="bi" width="32" height="32">
+    <div id="page-content-wrapper">
+
+        <div class="container my-3" *ngIf="!isLoaded">
+            <app-load-spinner></app-load-spinner>
+        </div>
+
+        <div class="container  mx-auto">
+            <div class="container-fluid my-3 " *ngIf="isLoaded">
+                <div class="row  justify-content-center">
+                    <a routerLink="../ofertas">
+                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pt-2">
+                            <div class="card border-success dashboardElement mx-sm-1  dashboardCard justify-content-center">
+                                <div class="rounded-circle shadow text-success p-3 mx-auto">
+                                    <svg class="bi" width="45" height="45">
                             <use xlink:href="bootstrap-icons.svg#inboxes-fill" />
                                 </svg>
-                            </div>
-                            <div class="text-warning text-center mt-3">
-                                <h4>Solicitudes</h4>
-                            </div>
-                            <div class="text-warning text-center mt-2">
-                                <h1>0</h1>
+                                </div>
+                                <div class="text-success text-center mt-1">
+                                    <h4>Ofertas inscrito</h4>
+                                </div>
+                                <div class="text-success text-center mt-1">
+                                    <h1>{{ofertas}}</h1>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="card border-danger dashboardElement mx-sm-1 p-2 m-1 dashboardCard">
-                            <div class="rounded-circle shadow text-info p-3 mx-auto">
-                                <svg class="bi" width="32" height="32">
+                    </a>
+                    <a routerLink="../ofertas">
+                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pt-2">
+                            <div class="card border-warning dashboardElement mx-sm-1   dashboardCard justify-content-center">
+                                <div class="rounded-circle shadow text-warning p-3 mx-auto">
+                                    <svg class="bi" width="45" height="45">
                             <use xlink:href="bootstrap-icons.svg#patch-question" />
                                 </svg>
-                            </div>
-                            <div class="text-secondary text-center mt-3">
-                                <h4>Ofertas Sin respuesta</h4>
-                            </div>
-                            <div class="text-secondary text-center mt-2">
-                                <h1>0</h1>
+                                </div>
+                                <div class="text-warning text-center mt-1">
+                                    <h4>Ofertas pendientes</h4>
+                                </div>
+                                <div class="text-warning text-center mt-1">
+                                    <h1>{{sinRespuesta}}</h1>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-                <a href="">
-                    <div class="col-sm-6 col-md-6 col-lg-3">
-                        <div class="card border-warning dashboardElement mx-sm-1 p-2 m-1 dashboardCard">
-                            <div class="rounded-circle shadow text-info p-3 mx-auto">
-                                <svg class="bi" width="32" height="32">
+                    </a>
+                    <a routerLink="../ofertas">
+                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pt-2">
+                            <div class="card border-info dashboardElement mx-sm-1  dashboardCard justify-content-center">
+                                <div class="rounded-circle shadow text-info p-3 mx-auto">
+                                    <svg class="bi" width="45" height="45">
                             <use xlink:href="bootstrap-icons.svg#journal-check" />
                                 </svg>
-                            </div>
-                            <div class=" text-primary text-center mt-3">
-                                <h4>Aceptado</h4>
-                            </div>
-                            <div class=" text-primary text-center mt-2">
-                                <h1>0</h1>
+                                </div>
+                                <div class=" text-info text-center mt-1">
+                                    <h4>Ofertas aceptado</h4>
+                                </div>
+                                <div class=" text-info text-center mt-1">
+                                    <h1>{{aceptado}}</h1>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                    <a routerLink="../ofertas">
+                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pt-2 ">
+                            <div class="card border-danger dashboardElement mx-sm-1 dashboardCard justify-content-center">
+                                <div class="rounded-circle shadow text-danger p-3 mx-auto">
+                                    <svg class="bi" width="45" height="45">
+                            <use xlink:href="bootstrap-icons.svg#newspaper" />
+                                </svg>
+                                </div>
+                                <div class="text-danger text-center mt-1">
+                                    <h4>Ofertas rechazado</h4>
+                                </div>
+                                <div class="text-danger text-center mt-1">
+                                    <h1>{{rechazado}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a routerLink="../ofertas">
+                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pt-2">
+                            <div class="card border-success dashboardElement mx-sm-1  dashboardCard justify-content-center">
+                                <div class="rounded-circle shadow text-success p-3 mx-auto">
+                                    <svg class="bi" width="45" height="45">
+                            <use xlink:href="bootstrap-icons.svg#inboxes-fill" />
+                                </svg>
+                                </div>
+                                <div class="text-success text-center mt-1">
+                                    <h4>Solicitudes </h4>
+                                </div>
+                                <div class="text-success text-center mt-1">
+                                    <h1>{{solicitudes}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a routerLink="../ofertas">
+                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pt-2">
+                            <div class="card border-warning dashboardElement mx-sm-1   dashboardCard justify-content-center">
+                                <div class="rounded-circle shadow text-warning p-3 mx-auto">
+                                    <svg class="bi" width="45" height="45">
+                            <use xlink:href="bootstrap-icons.svg#patch-question" />
+                                </svg>
+                                </div>
+                                <div class="text-warning text-center mt-1">
+                                    <h4>Solicitudes pendientes</h4>
+                                </div>
+                                <div class="text-warning text-center mt-1">
+                                    <h1>{{solicitudesPendientes}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a routerLink="../ofertas">
+                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pt-2">
+                            <div class="card border-info dashboardElement mx-sm-1  dashboardCard justify-content-center">
+                                <div class="rounded-circle shadow text-info p-3 mx-auto">
+                                    <svg class="bi" width="45" height="45">
+                            <use xlink:href="bootstrap-icons.svg#journal-check" />
+                                </svg>
+                                </div>
+                                <div class=" text-info text-center mt-1">
+                                    <h4>Solicitado</h4>
+                                </div>
+                                <div class=" text-info text-center mt-1">
+                                    <h1>{{candidato}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a routerLink="../ofertas">
+                        <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 pt-2 ">
+                            <div class="card border-danger dashboardElement mx-sm-1 dashboardCard justify-content-center">
+                                <div class="rounded-circle shadow text-danger p-3 mx-auto">
+                                    <svg class="bi" width="45" height="45">
+                            <use xlink:href="bootstrap-icons.svg#newspaper" />
+                                </svg>
+                                </div>
+                                <div class="text-danger text-center mt-1">
+                                    <h4>Solicitudes rechazadas</h4>
+                                </div>
+                                <div class="text-danger text-center mt-1">
+                                    <h1>{{solicitudesRechazado}}</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
