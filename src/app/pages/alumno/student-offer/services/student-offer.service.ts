@@ -39,6 +39,20 @@ export class StudentOfferService {
       sended: 0
     };
     console.log(data);
+    let headers = new HttpHeaders({
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
+    return this.http.post(url, data, { headers: headers });
+  }
+
+  public gestInterview(interview_id, number) {
+    const url = environment.Laravel + "studentOfferCompany";
+    var data = {
+      interview_id: interview_id,
+      sended: 0,
+      isActive: number
+    };
+    console.log(data);
 
 
     let headers = new HttpHeaders({
@@ -46,6 +60,8 @@ export class StudentOfferService {
     });
     return this.http.post(url, data, { headers: headers });
   }
+
+
   public getOffersInterviewCompany = (student_id:number) => {
     const url = environment.Laravel + "offersInterview/" +student_id;
     let headers = new HttpHeaders({

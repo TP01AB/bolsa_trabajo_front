@@ -41,7 +41,18 @@
                                                 <p> Telefono: {{student.phone}}</p>
                                             </div>
                                             <div class="card-footer">
-                                                <h2 class="bg-secondary text">{{student.offer_name}}</h2>
+                                                <div class=" bg-secondary text-center text pb-0 mb-0">
+                                                    <h1 class="mb-0">Nombre de la oferta:</h1>
+                                                    <h2 class="mb-0">{{student.offer_name}}</h2>
+                                                </div>
+                                                <div class="btn-group w-100">
+                                                    <button type="button" title="Aceptar oferta" class="btn btn-success rounded-0" (click)="acept(student.interview_id)">
+                                                        Aceptar
+                                                    </button>
+                                                    <button title="Desactivar usuario" type="button" class="btn btn-danger rounded-0" (click)="decline(student.interview_id)">
+                                                        Rechazar
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

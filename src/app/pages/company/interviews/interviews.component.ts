@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from 'src/app/auth/services/login.service';
+import { StudentOfferService } from '../../alumno/student-offer/services/student-offer.service';
 import { CompanyViewStudentsService } from '../studens-view/services/company-view-students.service';
 
 @Component({
@@ -15,7 +16,7 @@ export class InterviewsComponent implements OnInit {
   page = 1;
   pageSize = 6;
   closeResult: String;
-  constructor(private modalService: NgbModal, private StudentList: CompanyViewStudentsService, private loginService: LoginService, private router: Router) {
+  constructor(private modalService: NgbModal, private studentOfferService: StudentOfferService ,private StudentList: CompanyViewStudentsService, private loginService: LoginService, private router: Router) {
     if (!loginService.isUserSignedIn())
       this.router.navigate(['/login']);
   }
@@ -23,6 +24,27 @@ export class InterviewsComponent implements OnInit {
     this.getStudentSubscribe();
 
     console.log(this.students);
+  }
+  acept(interview_id) {
+    this.studentOfferService.gestInterview(interview_id,1).subscribe(
+      (response: any) => {
+        this.getStudentSubscribe();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  decline(interview_id) {
+    this.studentOfferService.gestInterview(interview_id, 2).subscribe(
+      (response: any) => {
+        this.getStudentSubscribe();
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   public getStudentSubscribe() {
@@ -41,6 +63,7 @@ export class InterviewsComponent implements OnInit {
           phone: any;
           aptitudes: any;
           status: any;
+          interview_id: any;
           offer_name: any;
           areas: any[];
           description: any;
@@ -56,7 +79,8 @@ export class InterviewsComponent implements OnInit {
               'phone': element.phone,
               'aptitudes': element.aptitudes,
               'status': element.status,
-              'offer_name':element.offer_name,
+              'offer_name': element.offer_name,
+              'interview_id':element.interview_id,
               'areas': []
             };
             student.areas.push(element.description);
