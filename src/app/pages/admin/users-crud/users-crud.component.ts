@@ -70,6 +70,7 @@ export class UsersCrudComponent implements OnInit {
   }
 
   userActive(userId, activate) {
+    this.loaded = false;
     this.usersService.userActivation(activate, userId).subscribe(
       (response: any) => {
         this.getUsers();
