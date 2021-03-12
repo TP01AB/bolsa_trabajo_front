@@ -16,10 +16,12 @@
                                 <h2 class="card-title text-white font-weight-bold my-2 mr-3">Mis ofertas</h2>
                                 <div class="custom-control custom-switch" (change)="activeOffer()">
                                     <input type="checkbox" class="custom-control-input" id="activeOffer" checked>
-                                    <label class="custom-control-label" for="activeOffer" id="labelActiveOffer">Activas</label>
+                                    <label class="custom-control-label" for="activeOffer"
+                                        id="labelActiveOffer">Activas</label>
                                 </div>
                             </div>
-                            <a class="rounded-circle position-absolute border border-white bg-secondary" (click)=offerNew()>
+                            <a class="rounded-circle position-absolute border border-white bg-secondary"
+                                (click)=offerNew()>
                                 <svg class="bi text-white" width="32" height="32" fill="currentColor">
                                     <use xlink:href="bootstrap-icons.svg#plus" />
                                 </svg>
@@ -31,12 +33,14 @@
                                 <!-- Se muestra para las ofertas activas -->
                                 <ng-container *ngIf="active">
 
-                                    <div class="col-sm-6" *ngFor="let offer of actOffers | slice: (page-1) * pageSize : page * pageSize">
+                                    <div class="col-12 col-sm-6"
+                                        *ngFor="let offer of actOffers | slice: (page-1) * pageSize : page * pageSize">
                                         <div class="card m-2 mb-4 border-secondary shadow">
                                             <div class="card-header bg-secondary text-white">
                                                 <h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}
                                                 </h3>
-                                                <span class="badge badge-light text-secondary mr-2">{{ offer.areaDescription
+                                                <span class="badge badge-light text-secondary mr-2">{{
+                                                    offer.areaDescription
                                                     }}</span>
                                                 <span class="text-white font-weight-bolder">Vacantes: {{ offer.vacant
                                                     }}</span>
@@ -94,12 +98,14 @@
                                 </ng-container>
                                 <!-- Se muestra para las offertas -->
                                 <ng-container *ngIf="!active">
-                                    <div class="col-sm-6" *ngFor="let offer of desOffers  | slice: (page-1) * pageSize : page * pageSize ">
+                                    <div class="col-sm-6"
+                                        *ngFor="let offer of desOffers  | slice: (page-1) * pageSize : page * pageSize ">
                                         <div class="card m-2 mb-4 border-secondary shadow">
                                             <div class="card-header bg-secondary text-white">
                                                 <h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}
                                                 </h3>
-                                                <span class="badge badge-light text-secondary mr-2">{{ offer.areaDescription
+                                                <span class="badge badge-light text-secondary mr-2">{{
+                                                    offer.areaDescription
                                                     }}</span>
                                                 <span class="text-white font-weight-bolder">Vacantes: {{ offer.vacant
                                                     }}</span>
@@ -160,11 +166,13 @@
 
                         </div>
                         <div *ngIf="!active" class="card-footer ">
-                            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="desOffers.length " [boundaryLinks]="true ">
+                            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="desOffers.length "
+                                [boundaryLinks]="true ">
                             </ngb-pagination>
                         </div>
                         <div *ngIf="active" class="card-footer ">
-                            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="actOffers.length " [boundaryLinks]="true ">
+                            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="actOffers.length "
+                                [boundaryLinks]="true ">
                             </ngb-pagination>
                         </div>
                     </div>
