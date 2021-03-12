@@ -95,6 +95,7 @@ export class StudentOfferComponent implements OnInit {
       }
     });
     modalRef.componentInstance["enrollOk"].subscribe(event => {
+      this.isLoaded = false;
       this.getOffers();
     });
   }
