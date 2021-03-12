@@ -42,6 +42,14 @@
                                             </div>
                                             <div class="card-footer">
                                                 <h2 class="bg-secondary text">{{student.offer_name}}</h2>
+                                                <div class="btn-group w-100">
+                                                    <button type="button" title="Aceptar oferta" class="btn btn-success rounded-0" (click)="acept(offer.interId)">
+                                                        Aceptar
+                                                    </button>
+                                                    <button title="Desactivar usuario" type="button" class="btn btn-danger rounded-0" (click)="unsubscribe(offer.interId)">
+                                                        Rechazar
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

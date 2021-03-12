@@ -37,21 +37,17 @@
                                                     <p class="card-text">{{area}}</p>
                                                 </div>
                                                 <br>
-                                                <p> E-mail : {{student.email}}</p>
-                                                <p> Telefono: {{student.phone}}</p>
-                                                <div class=" bg-secondary text-center text p-0 m-0">
-                                                    <h2 class="">{{student.offer_name}}</h2>
+                                                <div class="text-center bold">
+                                                    <h2>Datos de contacto:</h2>
+                                                    <p> E-mail : {{student.email}} &nbsp; Telefono: {{student.phone}}</p>
+                                                </div>
+                                                <div class=" bg-secondary text-center text pb-0 mb-0">
+                                                    <h1 class="mb-0">Nombre de la oferta:</h1>
+                                                    <h2 class="mb-0">{{student.offer_name}}</h2>
                                                 </div>
                                             </div>
                                             <div class="card-footer p-0">
-                                                <div class="btn-group w-100">
-                                                    <button type="button" title="Aceptar oferta" class="btn btn-success rounded-0" (click)="acept(offer.interId)">
-                                                        Aceptar
-                                                    </button>
-                                                    <button title="Desactivar usuario" type="button" class="btn btn-danger rounded-0" (click)="unsubscribe(offer.interId)">
-                                                        Rechazar
-                                                    </button>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
