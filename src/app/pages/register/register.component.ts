@@ -36,6 +36,7 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
+  message: any;
   areas = [];
   registerForm: FormGroup;
 
@@ -93,8 +94,8 @@ export class RegisterComponent implements OnInit {
                 console.log("success!", response);
                 this.router.navigate(['/']);
               },
-              error => {
-                this.registerUser.deleteLast(data.message.user.id)
+              (error:any) => {                
+                this.message = error.error.message;
                 console.error("couldn't post because", error)
               }
             )
@@ -123,7 +124,10 @@ export class RegisterComponent implements OnInit {
                 console.log("success!", response);
                 this.router.navigate(['/']);
               },
-              error => console.error("couldn't post because", error)
+              (error:any) => {
+                this.message = error.error.message;
+                console.error("couldn't post because", error)
+              }
             )
           },
           error => console.error("couldn't post because", error)
