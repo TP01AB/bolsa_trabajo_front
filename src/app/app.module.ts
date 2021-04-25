@@ -43,6 +43,7 @@ import { AceptOfferModalComponent } from './pages/alumno/student-interview/modal
 import { MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { InterviewsComponent } from './pages/company/interviews/interviews.component';
 import { CandidatosAceptadosComponent } from './pages/company/candidatos-aceptados/candidatos-aceptados.component'
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +78,7 @@ import { CandidatosAceptadosComponent } from './pages/company/candidatos-aceptad
     UnsubInterModalComponent,
     AceptOfferModalComponent,
     InterviewsComponent,
-    CandidatosAceptadosComponent
+    CandidatosAceptadosComponent,        
   ],
   imports: [
     BrowserModule,
@@ -90,7 +91,8 @@ import { CandidatosAceptadosComponent } from './pages/company/candidatos-aceptad
     PerfilAlModule,
     LoadSpinnerModule,
     CrearPerfilModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

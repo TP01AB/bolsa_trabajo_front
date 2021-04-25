@@ -15,6 +15,8 @@ import { CompanyOfferService } from './services/company-offer.service';
 })
 export class CompanyOfferComponent implements OnInit {
 
+  searchText;
+
   offers: any[];
   actOffers: any[];
   desOffers: any[];
@@ -175,4 +177,5 @@ export class CompanyOfferComponent implements OnInit {
       }
     );
   }
+  
 }
