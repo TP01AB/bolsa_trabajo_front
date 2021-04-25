@@ -1,79 +1,119 @@
-<div class="container bg-light-dark ">
-    <div *ngIf="!areas?.length" class="">
-        <app-load-spinner></app-load-spinner>
-    </div>
-    <div *ngIf="areas?.length>0" class=" pt-4 pb-3">
-        <div class="row justify-content-center">
-            <div class="col-lg-8 col-md-10 col-sm-12">
-                <div class="card ">
-                    <!--TITULO FORMULARIO-->
-                    <div class="card-header bg-secondary text-center">
-                        <h1 class="card-title text-white mb-0">Registro</h1>
-                    </div>
-                    <div class="card-body">
-                        <!--TITULO FORMULARIO-->
-                        <form [formGroup]="registerForm" novalidate (ngSubmit)="onSave()" class="pt-2 " method="POST">
-                            <div class="form-row">
-                                <div class="form-group col-10 col-sm-8 mx-auto">
-                                    <label>E-mail:</label>
-                                    <input id="email" type="email" class="form-control" formControlName="email"
-                                        [class]="isValidField('email')" aria-label="Email para registro">
-                                    <div class="invalid-feedback">
-                                        <span *ngIf="registerForm.get('email').errors?.required">
-                                            Por favor introduzca su E-mail
-                                        </span>
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        <span *ngIf="registerForm.get('email').errors?.pattern">
-                                            Por favor introduzca su E-mail correctamente
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-10 col-sm-8 mx-auto">
-                                    <label>Contraseña:</label>
-                                    <input id="password" type="password" class="form-control" formControlName="password"
-                                        [class]="isValidField('password')" aria-label="Contraseña deseada">
-                                    <div class="invalid-feedback">
-                                        <span *ngIf="registerForm.get('password').errors?.required">
-                                            Por favor introduzca su contraseña.
-                                        </span>
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        <span *ngIf="registerForm.get('password').errors?.pattern">
-                                            Use minimo 8 caracteres.
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-10 col-sm-8 mx-auto">
-                                    <label>Seleccione el tipo: </label>
-                                    <select name="tipo" class="form-control-sm ml-3 opcion" id="opcion"
-                                        formControlName="condicion" aria-label="Selecciona si eres alumno o empresa">
-                                        <option value="student">Alumno</option>
-                                        <option value="company">Empresa</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-10 col-sm-8 p-0 mx-auto"
-                                *ngIf="registerForm.get('condicion').value === 'student'" [@inOutAnimation]>
-                                <perfil-al [parent]="areas"></perfil-al>
-                            </div>
-                            <div class="col-10 col-sm-8 p-0 mx-auto"
-                                *ngIf="registerForm.get('condicion').value === 'company'" [@inOutAnimation]>
-                                <app-crear-perfil></app-crear-perfil>
-                            </div>
-                            <div class="col-12 col-sm-8 col-md-4 mx-auto"
-                                *ngIf="registerForm.get('condicion').value !=''" [@inOutAnimation]>
-                                <button id="btnRegist" type="submit"
-                                    class="btn btn-secondary btn-block ">Registrarse</button>
-                            </div>
-                        </form>
-                    </div>
+<div class="container bg-light-dark">
+  <div *ngIf="!areas?.length" class="">
+    <app-load-spinner></app-load-spinner>
+  </div>
+  <div *ngIf="areas?.length > 0" class="pt-4 pb-3">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <div class="card">
+          <!--TITULO FORMULARIO-->
+          <div class="card-header bg-secondary text-center">
+            <h1 class="card-title text-white mb-0">Registro</h1>
+          </div>
+          <div class="card-body">
+            <!--TITULO FORMULARIO-->
+            <form
+              [formGroup]="registerForm"
+              novalidate
+              (ngSubmit)="onSave()"
+              class="pt-2"
+              method="POST"
+            >
+              <div class="form-row">
+                <div class="form-group col-10 col-sm-8 mx-auto">
+                  <label>E-mail:</label>
+                  <input
+                    id="email"
+                    type="email"
+                    class="form-control"
+                    formControlName="email"
+                    [class]="isValidField('email')"
+                    aria-label="Email para registro"
+                  />
+                  <div class="invalid-feedback">
+                    <span *ngIf="registerForm.get('email').errors?.required">
+                      Por favor introduzca su E-mail
+                    </span>
+                  </div>
+                  <div class="invalid-feedback">
+                    <span *ngIf="registerForm.get('email').errors?.pattern">
+                      Por favor introduzca su E-mail correctamente
+                    </span>
+                  </div>
                 </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-10 col-sm-8 mx-auto">
+                  <label>Contraseña:</label>
+                  <input
+                    id="password"
+                    type="password"
+                    class="form-control"
+                    formControlName="password"
+                    [class]="isValidField('password')"
+                    aria-label="Contraseña deseada"
+                  />
+                  <div class="invalid-feedback">
+                    <span *ngIf="registerForm.get('password').errors?.required">
+                      Por favor introduzca su contraseña.
+                    </span>
+                  </div>
+                  <div class="invalid-feedback">
+                    <span *ngIf="registerForm.get('password').errors?.pattern">
+                      Use minimo 8 caracteres.
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-10 col-sm-8 mx-auto">
+                  <label>Seleccione el tipo: </label>
+                  <select
+                    name="tipo"
+                    class="form-control-sm ml-3 opcion"
+                    id="opcion"
+                    formControlName="condicion"
+                    aria-label="Selecciona si eres alumno o empresa"
+                  >
+                    <option value="student">Alumno</option>
+                    <option value="company">Empresa</option>
+                  </select>
+                </div>
+              </div>
+              <div
+                class="col-10 col-sm-8 p-0 mx-auto"
+                *ngIf="registerForm.get('condicion').value === 'student'"
+                [@inOutAnimation]
+              >
+                <perfil-al [parent]="areas"></perfil-al>
+              </div>
+              <div
+                class="col-10 col-sm-8 p-0 mx-auto"
+                *ngIf="registerForm.get('condicion').value === 'company'"
+                [@inOutAnimation]
+              >
+                <app-crear-perfil></app-crear-perfil>
+              </div>
+              <div
+                class="col-12 col-sm-8 col-md-4 mx-auto"
+                *ngIf="registerForm.get('condicion').value != ''"
+                [@inOutAnimation]
+              >
+                <button
+                  id="btnRegist"
+                  type="submit"
+                  class="btn btn-secondary btn-block"
+                >
+                  Registrarse
+                </button>
+              </div>
+            </form>
+            <div class="mt-4 text-danger text-center" id="message">
+              {{ message }}
             </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 </div>
