@@ -126,4 +126,20 @@ export class LoginComponent implements OnInit {
           break;
       }
   }
+
+  forgetPass() {
+    let userData = this.newLogin.value;
+    const email = userData.email;
+    this.loginService.forgetPass(email).subscribe(
+      (response: any) => {
+        this.message = "Se envía correo";
+        console.log(response);
+      },
+      (error) => {
+        this.message = error.error.message;
+        console.log("fallo en login: " + this.message);
+        this.animate = false;
+      }
+    )
+  }
 }
