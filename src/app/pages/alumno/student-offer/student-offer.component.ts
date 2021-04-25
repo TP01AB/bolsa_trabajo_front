@@ -13,6 +13,8 @@ import { StudentOfferService } from './services/student-offer.service';
 })
 export class StudentOfferComponent implements OnInit {
 
+  searchText;
+
   offers: any[];
   user: any;
   isLoaded = false;
