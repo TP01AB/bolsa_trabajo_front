@@ -14,6 +14,8 @@ import { UnsubInterModalComponent } from './modal/unsub-inter-modal/unsub-inter-
 })
 export class StudentInterviewComponent implements OnInit {
   
+  searchText;
+
   offers: any[];
   user: any;
   isLoaded = false;
