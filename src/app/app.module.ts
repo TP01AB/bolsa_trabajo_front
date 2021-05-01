@@ -44,6 +44,7 @@ import { MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { InterviewsComponent } from './pages/company/interviews/interviews.component';
 import { CandidatosAceptadosComponent } from './pages/company/candidatos-aceptados/candidatos-aceptados.component'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { ForgetPassModalComponent } from './auth/login/forget-pass-modal/forget-pass-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,7 +79,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     UnsubInterModalComponent,
     AceptOfferModalComponent,
     InterviewsComponent,
-    CandidatosAceptadosComponent,        
+    CandidatosAceptadosComponent,
+    ForgetPassModalComponent,        
   ],
   imports: [
     BrowserModule,
