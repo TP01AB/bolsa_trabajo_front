@@ -55,7 +55,13 @@ export class LoginService {
     return isSignedIn;
   }
 
-  /**
-   * Método para redirigir al usuario dependiendo de su rol
-   */
+  public forgetPass = (email) => {
+
+    const url = environment.Laravel + "forgetPass";
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    return this.http.post(url, { 'email': email}, { headers: headers });
+  };
 }

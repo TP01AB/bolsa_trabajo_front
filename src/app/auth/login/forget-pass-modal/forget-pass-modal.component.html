@@ -1,0 +1,33 @@
+<div class="modal-body">
+	<p class="text-uppercase m-0 p-2">Si ha olvidado su contraseña, introduzca su correo y le proporcionaremos una nueva</p>
+	<form [formGroup]="forgetPass" (ngSubmit)="onSubmit()">
+		<div class="form-group">
+			<input id="email" type="email" formControlName="email" class="form-control" [class]="isValidField('email')" />
+			<div class="invalid-feedback">
+				<span *ngIf="forgetPass.get('email').errors?.required"> Por favor introduzca su E-mail </span>
+			</div>
+			<div class="invalid-feedback">
+				<span *ngIf="forgetPass.get('email').errors?.pattern"> Por favor introduzca su E-mail correctamente </span>
+			</div>
+		</div>
+		<div>
+			<div class="text-center">
+				<button type="submit" class="btn btn-secondary">
+					Enviar
+					<svg class="bi text-white" width="14" height="14" fill="currentColor">
+						<use xlink:href="bootstrap-icons.svg#save" />
+					</svg>
+				</button>
+			</div>
+		</div>
+		<div class="text-center my-3" id="message">{{ message }}</div>
+	</form>
+	<div class="text-right">
+		<button class="btn btn-danger" (click)="close()">
+			Cerrar
+			<svg class="bi text-white" width="18" height="18" fill="currentColor">
+				<use xlink:href="bootstrap-icons.svg#box-arrow-left" />
+			</svg>
+		</button>
+	</div>
+</div>

@@ -2,7 +2,9 @@ import { animate } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from '../services/login.service';
+import { ForgetPassModalComponent } from './forget-pass-modal/forget-pass-modal.component';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
   message: any;
   isEmail = /\S+@\S+\.\S+/;
   user: any;
-  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router, private modalService: NgbModal) {
     this.newLogin = this.formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(this.isEmail)]],
       password: ['', [Validators.required, Validators.min(8)]]
@@ -125,5 +127,18 @@ export class LoginComponent implements OnInit {
         default:
           break;
       }
+  }
+
+  
+    
+
+  forgetPass(e) {
+    e.preventDefault();
+    const modalRef = this.modalService.open(ForgetPassModalComponent);    
+    modalRef.result.then((result) => {
+      if (result) {
+        console.log(result);
+      }
+    });    
   }
 }
