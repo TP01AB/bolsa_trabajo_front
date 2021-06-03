@@ -16,12 +16,17 @@ export class SidebarComponent implements OnInit {
   }
   name;
   rol_id;
+  avatar;
   public innerWidth: any;
   public icon;
 
   ngOnInit() {
 
-
+    this.avatar = this.loginService.user.avatar;
+    if(this.avatar == null) {
+      this.avatar = "/assets/img_profile.jpeg";
+    }
+    console.log("Avatar " + this.avatar);
     this.rol_id = this.loginService.user.rol_id;
     this.name = this.loginService.user.name + " " + this.loginService.user.lastnames;
     //Toggle Click Function

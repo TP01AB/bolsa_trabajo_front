@@ -1,24 +1,39 @@
 <div class="d-flex" id="wrapper">
-    <!-- Sidebar -->
-    <app-sidebar></app-sidebar>
-    <!-- Contenido de la pagina -->
-    <div id="page-content-wrapper">
-        <div class="container my-5" *ngIf="can == false">
-            <app-load-spinner></app-load-spinner>
-        </div>
-        <div class="container my-5" *ngIf="can == true">
-            <div class="row justify-content-center">
-                <div class="col-10">
-                    <div class="card">
-                        <div class="card-header bg-secondary ">
-                            <h2 class="card-title text-white mb-0">Perfil</h2>
-                        </div>
-                        <div class="card-body">
-                            <perfil-al [parent]="areas" [parent2]="data" [studentAreas]="studentAreas"></perfil-al>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- Sidebar -->
+	<app-sidebar></app-sidebar>
+	<!-- Contenido de la pagina -->
+	<div id="page-content-wrapper">
+		<div class="container my-5" *ngIf="can == false">
+			<app-load-spinner></app-load-spinner>
+		</div>
+		<div class="container my-5" *ngIf="can == true">
+			<div class="row justify-content-center">
+				<div class="col-10">
+					<div class="card">
+						<div class="card-header bg-secondary">
+							<h2 class="card-title text-white mb-0">Perfil</h2>
+						</div>
+						<div class="card-body">
+							<form [formGroup]="uploadForm" (ngSubmit)="upload()" class="mb-5">
+								<label for="file">Foto de perfil</label>
+								<div class="preview text-center" *ngIf="imgFile">
+									<img [src]="imgFile" style="max-width: 100px" />
+								</div>
+								<div class="my-3 text-center">
+									<input type="file" accept="image/*" id="file" formControlName="file" (change)="onImageChange($event)" />
+									<div *ngIf="uf.file.touched && uf.file.invalid" class="alert alert-danger">
+										<div *ngIf="uf.file.errors.required">Image file is required.</div>
+									</div>
+								</div>
+								<div class="col-12 col-sm-8 col-md-4 mx-auto" *ngIf="change">
+									<button id="btnPhoto" type="submit" class="btn btn-secondary btn-block">Actualizar</button>
+								</div>
+							</form>
+							<perfil-al [parent]="areas" [parent2]="data" [studentAreas]="studentAreas"></perfil-al>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
