@@ -45,6 +45,13 @@ import { InterviewsComponent } from './pages/company/interviews/interviews.compo
 import { CandidatosAceptadosComponent } from './pages/company/candidatos-aceptados/candidatos-aceptados.component'
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { ForgetPassModalComponent } from './auth/login/forget-pass-modal/forget-pass-modal.component';
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+import * as pdfFonts from "pdfmake/build/vfs_fonts";
+
+PdfMakeWrapper.setFonts(pdfFonts);
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
