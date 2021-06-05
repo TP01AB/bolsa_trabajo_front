@@ -113,4 +113,10 @@ export class CompanyOfferService {
     return this.http.put(environment.Laravel + "offers/desactive/" + id, { headers: headers });
   }
 
+  public getStudentsFromInterview = (offer_id:number) => {
+    const url = environment.Laravel + "getStudentsFromInterview/";
+    let headers = new HttpHeaders({ Authorization: `Bearer ${this.loginService.user.access_token}` });
+    return this.http.get(url + offer_id, { headers: headers });
+  };
+
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'; // Import necesarios para los
+import { Columns, PdfMakeWrapper, Table, Txt } from 'pdfmake-wrapper';
 import { LoginService } from 'src/app/auth/services/login.service';
 import { OfferDeleteComponent } from './modal/offer-delete/offer-delete.component';
 import { OfferDuplicateComponent } from './modal/offer-duplicate/offer-duplicate.component';
@@ -176,6 +177,68 @@ export class CompanyOfferComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  //Genera el listado de alumnos de una oferta
+  studentsList(offer_id,offerName) {
+    console.log(offerName);
+    this.companyOfferService.getStudentsFromInterview(offer_id).subscribe(
+      (response: any) => {
+        var students = response.data;
+        console.log(students);
+
+        const pdf = new PdfMakeWrapper();
+
+        pdf.pageOrientation('landscape');
+
+        //Nombre oferta
+        pdf.add(
+          new Txt('Listado de alumnos de la oferta ').fontSize(15).decoration('underline').bold().end
+        );
+
+        pdf.add(
+          new Txt(' ').fontSize(10).bold().end
+        );
+
+        pdf.add(
+          new Txt(offerName).fontSize(15).bold().end
+        );
+
+        pdf.add(
+          new Txt(' ').bold().italics().fontSize(15).end,      
+        );
+        
+        //Listado
+        pdf.add(
+          new Columns(
+            [ 'Nombre','Dni','Telefono','Email'],            
+          ).fontSize(10).bold().end
+        )
+
+        pdf.add(
+          new Txt(' ').fontSize(10).bold().end
+        );
+        
+
+        for(var i=0; i<students.length;i++) {
+          pdf.add(
+            new Columns(
+              [ students[i].name + ' ' + students[i].lastnames, students[i].dni,students[i].phone,students[i].email],              
+            ).fontSize(10).end
+          )
+          pdf.add(
+            new Txt(' ').fontSize(10).bold().end
+          );
+        }
+
+        pdf.create().open();
+
+      },
+      (error) => {
+        alert('No hay alumnos apuntados a la oferta '+ offerName);
+        console.log(error);
+      }
+    )
   }
   
 }

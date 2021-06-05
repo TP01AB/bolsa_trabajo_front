@@ -14,6 +14,8 @@ import { ModalStudentComponent } from './modal-student/modal-student.component';
   styleUrls: ['./studens-view.component.scss']
 })
 export class StudensViewComponent implements OnInit {
+  searchText;
+
   http: any;
   students: any[];
   page = 1;

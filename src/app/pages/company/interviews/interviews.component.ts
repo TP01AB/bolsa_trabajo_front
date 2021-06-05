@@ -11,6 +11,9 @@ import { CompanyViewStudentsService } from '../studens-view/services/company-vie
   styleUrls: ['./interviews.component.scss']
 })
 export class InterviewsComponent implements OnInit {
+
+  searchText;
+
   http: any;
   students: any[];
   page = 1;
