@@ -3,6 +3,7 @@ import { LoginService } from 'src/app/auth/services/login.service';
 import { RegisterService } from '../../register/services/register.service';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { StudentProfileService } from '../services/student-profile.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-view-profile',
@@ -15,9 +16,9 @@ export class ViewProfileComponent implements OnInit {
   areas;
   studentAreas;
   can = false;
-  constructor(private ProfileService: StudentProfileService, private loginService: LoginService, private registerUser: RegisterService) { }
+  constructor(private ProfileService: StudentProfileService, private loginService: LoginService, private registerUser: RegisterService, private sanitizer:DomSanitizer) { }
 
-  imgFile: string;
+  avatar;
   change: boolean;
   selectedFile: File = null;
 
@@ -28,10 +29,19 @@ export class ViewProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.change = false;
-    this.imgFile = this.loginService.user.avatar;
-    if(this.imgFile == null) {
-      this.imgFile = "/assets/img_profile.jpeg";
-    }
+    //Cargo foto de perfil
+    this.loginService.getImage(this.loginService.user.user_id).subscribe(
+      (response: any) => {
+        //console.log(response);
+        this.avatar = URL.createObjectURL(response);
+        this.avatar = this.sanitizer.bypassSecurityTrustUrl(this.avatar);
+        //console.log(this.imageToShow);
+      },
+      (error: any) => {
+        console.log(error);
+        this.avatar = "/assets/img_profile.jpeg";
+      }
+    );
     this.ProfileService.getStudent(this.loginService.user.user_id).subscribe(
       (response: any) => {
         this.data = response[0];
@@ -72,7 +82,7 @@ export class ViewProfileComponent implements OnInit {
       reader.readAsDataURL(file);
     
       reader.onload = () => {
-        this.imgFile = reader.result as string;
+        this.avatar = reader.result as string;
         this.uploadForm.patchValue({
           imgSrc: reader.result
         });

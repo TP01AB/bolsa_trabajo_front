@@ -1,4 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import * as jQuery from 'jquery';
 import { LoginService } from 'src/app/auth/services/login.service';
 import { CompanyProfileService } from 'src/app/pages/company/crear-perfil/services/view-profile.service';
@@ -11,7 +12,7 @@ declare var $: any;
 })
 export class SidebarComponent implements OnInit {
 
-  constructor(private loginService: LoginService) {
+  constructor(private loginService: LoginService, private sanitizer:DomSanitizer) {
     this.innerWidth = window.innerWidth;
   }
   name;
@@ -22,11 +23,20 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit() {
 
-    this.avatar = this.loginService.user.avatar;
-    if(this.avatar == null) {
-      this.avatar = "/assets/img_profile.jpeg";
-    }
-    console.log("Avatar " + this.avatar);
+    //Cargo foto de perfil
+    this.loginService.getImage(this.loginService.user.user_id).subscribe(
+      (response: any) => {
+        //console.log(response);
+        this.avatar = URL.createObjectURL(response);
+        this.avatar = this.sanitizer.bypassSecurityTrustUrl(this.avatar);
+        //console.log(this.imageToShow);
+      },
+      (error: any) => {
+        console.log(error);
+        this.avatar = "/assets/img_profile.jpeg";
+      }
+    );
+
     this.rol_id = this.loginService.user.rol_id;
     this.name = this.loginService.user.name + " " + this.loginService.user.lastnames;
     //Toggle Click Function

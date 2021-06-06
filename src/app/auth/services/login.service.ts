@@ -66,8 +66,10 @@ export class LoginService {
     return this.http.post(url, { 'email': email}, { headers: headers });
   };
 
-  getImage(id) {
-    const url = environment.Laravel + "/getAvatar/"+id;
-    return this.http.get(url)      
+  public getImage(id) {
+    const url = environment.Laravel + "getAvatar/"+id;
+    var img = this.http.get(url, { responseType: 'blob' as 'json'});
+    return img;   
   }
+
 }

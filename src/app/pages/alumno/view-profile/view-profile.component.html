@@ -16,8 +16,8 @@
 						<div class="card-body">
 							<form [formGroup]="uploadForm" (ngSubmit)="upload()" class="mb-5">
 								<label for="file">Foto de perfil</label>
-								<div class="preview text-center" *ngIf="imgFile">
-									<img [src]="imgFile" style="max-width: 100px" />
+								<div class="preview text-center" *ngIf="avatar">
+									<img [src]="avatar" style="max-width: 100px" />
 								</div>
 								<div class="my-3 text-center">
 									<input type="file" accept="image/*" id="file" formControlName="file" (change)="onImageChange($event)" />
