@@ -10,6 +10,8 @@ import { CompanyViewStudentsService } from '../studens-view/services/company-vie
   styleUrls: ['./candidatos-aceptados.component.scss']
 })
 export class CandidatosAceptadosComponent implements OnInit {
+  searchText;
+  
   http: any;
   students: any[];
   page = 1;
