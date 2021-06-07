@@ -1,58 +1,54 @@
 <div class="d-flex bg-light-dark" id="wrapper">
+	<!-- Sidebar -->
+	<app-sidebar></app-sidebar>
 
-    <!-- Sidebar -->
-    <app-sidebar></app-sidebar>
-
-    <!-- Page Content -->
-    <div id="page-content-wrapper">
-        <div class="container-fluid my-5">
-            <div class="row">
-                <div class="col">
-                    <!-- Card with offer -->
-                    <div class="card w-100 mb-4 shadow">
-                        <div class="card-header bg-secondary">
-                            <h2 class="card-title text-white font-weight-bold my-2">Alumnos</h2>
-                        </div>
-                        <div class="card-body mt-2">
-                            <!-- Card with offer -->
-                            <div class="row">
-                                <ng-container>
-                                    <div *ngFor="let student of students | slice: (page-1) * pageSize : page * pageSize" class="col-sm-6">
-                                        <div class="card mb-4 border-info shadow">
-                                            <div class="card-header bg-info">
-                                                <h5 class="card-title mb-0 text">{{ student.name }} {{ student.lastnames }}
-                                                </h5>
-                                                <button type="button" class="rigth-align btn btn-primary eyeBtn py-1" (click)="open(student)">
-                                                    <svg class=" text-white" width="20" height="20" fill="currentColor">
-                                                        <use xlink:href="bootstrap-icons.svg#reply" />
-                                                    </svg>
-                                                </button>
-                                            </div>
-                                            <div class="card-body">
-                                                <img src="http://www.hablamosdeeuropa.es/PublishingImages/No%20me%20paro/Formaci%C3%B3n/estudiante.png" class="float-left" width="110" height="110">
-                                                <p class="card-text ">Experiencia</p>
-                                                <p *ngIf="student.status==0" class="card-text "> Desempleado</p>
-                                                <p *ngIf="student.status==1" class="card-text "> Trabajando</p>
-                                                <p *ngIf="student.status==2" class="card-text "> Trabajando, escucha ofertas
-                                                </p>
-                                                <br>
-                                                <p>{{student.aptitudes}}</p>
-                                                <div *ngFor="let area of student.areas;">
-                                                    <p class="card-text">{{area}}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </ng-container>
-                            </div>
-                        </div>
-                        <div class="card-footer ">
-                            <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="students.length " [boundaryLinks]="true ">
-                            </ngb-pagination>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<!-- Page Content -->
+	<div id="page-content-wrapper">
+		<div class="container-fluid my-5">
+			<div class="row">
+				<div class="col">
+					<!-- Card with offer -->
+					<div class="card w-100 mb-4 shadow">
+						<div class="card-header bg-secondary">
+							<h2 class="card-title text-white font-weight-bold my-2">Alumnos</h2>
+						</div>
+						<div class="card-body mt-2">
+							<!-- Card with offer -->
+							<div class="row">
+								<ng-container>
+									<div *ngFor="let student of students | slice: (page - 1) * pageSize:page * pageSize" class="col-sm-6">
+										<div class="card mb-4 border-info shadow">
+											<div class="card-header bg-info">
+												<h5 class="card-title mb-0 text">{{ student.name }} {{ student.lastnames }}</h5>
+												<button type="button" class="rigth-align btn btn-primary eyeBtn py-1" (click)="open(student)">
+													<svg class="text-white" width="20" height="20" fill="currentColor">
+														<use xlink:href="bootstrap-icons.svg#reply" />
+													</svg>
+												</button>
+											</div>
+											<div class="card-body">
+												<img [src]="student.avatar" class="float-left mx-1" width="110" height="110" />
+												<p class="card-text">Experiencia</p>
+												<p *ngIf="student.status == 0" class="card-text">Desempleado</p>
+												<p *ngIf="student.status == 1" class="card-text">Trabajando</p>
+												<p *ngIf="student.status == 2" class="card-text">Trabajando, escucha ofertas</p>
+												<br />
+												<p>{{ student.aptitudes }}</p>
+												<div *ngFor="let area of student.areas">
+													<p class="card-text">{{ area }}</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</ng-container>
+							</div>
+						</div>
+						<div class="card-footer">
+							<ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="students.length" [boundaryLinks]="true"> </ngb-pagination>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

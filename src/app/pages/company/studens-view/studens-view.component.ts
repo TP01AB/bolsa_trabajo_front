@@ -7,6 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import {  ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ModalStudentComponent } from './modal-student/modal-student.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-studens-view',
@@ -19,7 +20,7 @@ export class StudensViewComponent implements OnInit {
   page = 1;
   pageSize = 6;
   closeResult: String;
-  constructor(private modalService: NgbModal, private StudentList: CompanyViewStudentsService, private loginService: LoginService, private router: Router) {
+  constructor(private modalService: NgbModal, private StudentList: CompanyViewStudentsService, private loginService: LoginService, private router: Router,private sanitizer:DomSanitizer) {
     if (!loginService.isUserSignedIn())
       this.router.navigate(['/login']);
   }
@@ -59,21 +60,50 @@ export class StudensViewComponent implements OnInit {
           description: any;
         }) => {
           if (idAnterior != element.id) {
+            var avatar;
             var studentAnterior; //CREACION ESTUDIANTE SI ES LA PRIMERA VEZ
-            idAnterior = element.id;
-            let student = {
-              'id': element.id,
-              'name': element.name,
-              'lastnames': element.lastnames,
-              'dni': element.dni,
-              'birthdate': element.birthdate,
-              'phone': element.phone,
-              'aptitudes': element.aptitudes,
-              'status': element.status,
-              'areas': []
-            };
+            //Cargo foto de perfil
+            this.loginService.getImage(element.id).subscribe(
+              (response: any) => {
+                //console.log(response);
+                avatar = URL.createObjectURL(response);
+                avatar = this.sanitizer.bypassSecurityTrustUrl(avatar);
+                //console.log(this.imageToShow);
+                idAnterior = element.id;
+                let student = {
+                  'id': element.id,
+                  'name': element.name,
+                  'lastnames': element.lastnames,
+                  'dni': element.dni,
+                  'birthdate': element.birthdate,
+                  'phone': element.phone,
+                  'aptitudes': element.aptitudes,
+                  'status': element.status,
+                  'areas': [],
+                  'avatar': avatar
+                };
             student.areas.push(element.description);
             this.students.push(student);
+              },
+              (error: any) => {                
+                avatar = "http://www.hablamosdeeuropa.es/PublishingImages/No%20me%20paro/Formaci%C3%B3n/estudiante.png";
+                idAnterior = element.id;
+                let student = {
+                  'id': element.id,
+                  'name': element.name,
+                  'lastnames': element.lastnames,
+                  'dni': element.dni,
+                  'birthdate': element.birthdate,
+                  'phone': element.phone,
+                  'aptitudes': element.aptitudes,
+                  'status': element.status,
+                  'areas': [],
+                  'avatar': avatar
+                };
+                student.areas.push(element.description);
+                this.students.push(student);
+              }
+            );
           } else { //AÑADIR AREA SI YA EXISTE ESTUDIANTE
             studentAnterior = this.students[idAnterior - 2];
             console.log(studentAnterior);
