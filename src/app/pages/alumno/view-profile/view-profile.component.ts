@@ -94,6 +94,7 @@ export class ViewProfileComponent implements OnInit {
   }
 
   upload () {
+    this.can = false;
     const fd = new FormData();
     var str = this.selectedFile.name;
     str = str.normalize("NFD").replace(/\p{Diacritic}/gu, "");
@@ -107,6 +108,7 @@ export class ViewProfileComponent implements OnInit {
     this.ProfileService.updatePhoto(fd).subscribe(
       (response) => {
         console.log(response);
+        window.location.reload();
       }, 
       (error) => {
         console.log(error);

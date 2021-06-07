@@ -33,4 +33,15 @@ export class CompanyProfileService {
     });
     return this.http.put(url + this.loginService.user.user_id, json, { headers: headers });
   }
+
+  public updatePhoto(fd) {    
+
+    const url = environment.Laravel + "saveAvatar/";
+
+    let headers = new HttpHeaders({
+      'charset': 'utf-8',
+      Authorization: `Bearer ${this.loginService.user.access_token}`
+    });
+    return this.http.post(url + this.loginService.user.user_id, fd, { headers: headers });
+  }
 }
