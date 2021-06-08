@@ -37,7 +37,7 @@ export class StudentDashboardComponent implements OnInit {
     this.StudentOffer.getOffersInterview().subscribe(
       (response: any) => {
         const offers = response;
-        console.log(offers);
+        //console.log(offers);
         offers.forEach((element: {
           id: any; name: any; vacant: any; startDate: any; endDate: any;
           description: any; area_id: any, isActive: any; area_description: any,
@@ -45,27 +45,27 @@ export class StudentDashboardComponent implements OnInit {
           interActive: any
         }) => {
 
-          console.log(element);
+          //console.log(element);
           if (element.isActive == 1) {
 
             if (element.Joined_by == 1) {
               this.solicitudes++;
-            console.log("entro en solicitadas por empresa");
-            if (element.interActive == 2) { this.solicitudesRechazado++; console.log("entro en rechazada emp"); }else
-              if (element.interActive == 1) { this.candidato++; console.log("entro en aceptada emp"); }else
-                if (element.interActive == 0) { this.solicitudesPendientes++; console.log("entro en sin respuesta emp"); }
+            //console.log("entro en solicitadas por empresa");
+            if (element.interActive == 2) { this.solicitudesRechazado++; /*console.log("entro en rechazada emp")*/; }else
+              if (element.interActive == 1) { this.candidato++; /*console.log("entro en aceptada emp")*/; }else
+                if (element.interActive == 0) { this.solicitudesPendientes++; /*console.log("entro en sin respuesta emp")*/; }
 
           } else if (element.Joined_by == 0) {
             this.ofertas++;
-            if (element.interActive == 2) { this.rechazado++; console.log("entro en rechazada emp"); } else
-              if (element.interActive == 1) { this.aceptado++; console.log("entro en aceptada emp"); } else
-            if (element.interActive == 0) { this.sinRespuesta++; console.log("entro en sin respuesta");}
+            if (element.interActive == 2) { this.rechazado++; /*console.log("entro en rechazada emp");*/ } else
+              if (element.interActive == 1) { this.aceptado++; /*console.log("entro en aceptada emp");*/ } else
+            if (element.interActive == 0) { this.sinRespuesta++; /*console.log("entro en sin respuesta");*/}
             }
           }
-          console.log(this.aceptado);
+          /*console.log(this.aceptado);
           console.log(this.rechazado);
           console.log(this.solicitudes);
-          console.log(this.sinRespuesta);
+          console.log(this.sinRespuesta);*/
         }
         )
         this.isLoaded = true;

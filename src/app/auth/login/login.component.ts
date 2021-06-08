@@ -32,7 +32,8 @@ export class LoginComponent implements OnInit {
       name: "",
       lastnames: "",
       company_id: "",
-      student_id: ""
+      student_id: "",
+      avatar: "",
     }
     this.message = "";
     this.rolRedirect();
@@ -80,6 +81,7 @@ export class LoginComponent implements OnInit {
         this.user.user_id = response.message.user.id;
         this.user.rol_id = response.message.rol;
         this.user.name = response.message.name;
+               
         if (this.user.rol_id === 3) {
           this.user.student_id = response.message.student_id;
           this.user.lastnames = response.message.lastnames;
@@ -92,11 +94,13 @@ export class LoginComponent implements OnInit {
         this.rolRedirect();
       },
       (error) => {
+        console.log(error);
         this.message = error.error.message;
         console.log("fallo en login: " + this.message);
         this.animate = false;
       }
     );
+    
 
   }
 

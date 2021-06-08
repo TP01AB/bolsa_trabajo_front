@@ -3,6 +3,7 @@ import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import * as _ from "lodash";
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -64,4 +65,11 @@ export class LoginService {
     });
     return this.http.post(url, { 'email': email}, { headers: headers });
   };
+
+  public getImage(id) {
+    const url = environment.Laravel + "getAvatar/"+id;
+    var img = this.http.get(url, { responseType: 'blob' as 'json'});
+    return img;   
+  }
+
 }

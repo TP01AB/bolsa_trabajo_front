@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { LoginService } from 'src/app/auth/services/login.service';
@@ -11,20 +12,20 @@ import { CompanyViewStudentsService } from '../studens-view/services/company-vie
 })
 export class CandidatosAceptadosComponent implements OnInit {
   searchText;
-  
+  can;
   http: any;
   students: any[];
   page = 1;
   pageSize = 6;
   closeResult: String;
-  constructor(private modalService: NgbModal, private StudentList: CompanyViewStudentsService, private loginService: LoginService, private router: Router) {
+  constructor(private modalService: NgbModal, private StudentList: CompanyViewStudentsService, private loginService: LoginService, private router: Router, private sanitizer:DomSanitizer) {
     if (!loginService.isUserSignedIn())
       this.router.navigate(['/login']);
   }
 
   ngOnInit(): void {
     this.getStudentSubscribe();
-
+    this.can = false; 
     console.log(this.students);
   }
 
@@ -49,21 +50,52 @@ export class CandidatosAceptadosComponent implements OnInit {
           description: any;
         }) => {
           if (idAnterior != element.id) { //CREACION ESTUDIANTE SI ES LA PRIMERA VEZ
-            idAnterior = element.id;
-            let student = {
-              'id': element.id,
-              'user_id': element.user_id,
-              'email':element.email,
-              'name': element.name,
-              'lastnames': element.lastnames,
-              'phone': element.phone,
-              'aptitudes': element.aptitudes,
-              'status': element.status,
-              'offer_name': element.offer_name,
-              'areas': []
-            };
-            student.areas.push(element.description);
-            this.students.push(student);
+            var avatar;
+            idAnterior = element.id;            
+            //Cargo foto de perfil
+            this.loginService.getImage(element.id).subscribe(
+              (response: any) => {
+                //console.log(response);
+                avatar = URL.createObjectURL(response);
+                avatar = this.sanitizer.bypassSecurityTrustUrl(avatar);
+                //console.log(this.imageToShow);
+                idAnterior = element.id;
+                let student = {
+                  'id': element.id,
+                  'user_id': element.user_id,
+                  'email':element.email,
+                  'name': element.name,
+                  'lastnames': element.lastnames,
+                  'phone': element.phone,
+                  'aptitudes': element.aptitudes,
+                  'status': element.status,
+                  'offer_name': element.offer_name,
+                  'areas': [],
+                  'avatar': avatar
+                };
+                student.areas.push(element.description);
+                this.students.push(student);
+              },
+              (error: any) => {                
+                avatar = "http://www.hablamosdeeuropa.es/PublishingImages/No%20me%20paro/Formaci%C3%B3n/estudiante.png";
+                idAnterior = element.id;
+                let student = {
+                  'id': element.id,
+                  'user_id': element.user_id,
+                  'email':element.email,
+                  'name': element.name,
+                  'lastnames': element.lastnames,
+                  'phone': element.phone,
+                  'aptitudes': element.aptitudes,
+                  'status': element.status,
+                  'offer_name': element.offer_name,
+                  'areas': [],
+                  'avatar': avatar
+                };
+                student.areas.push(element.description);
+                this.students.push(student);
+              }
+            );
           } else { //AÑADIR AREA SI YA EXISTE ESTUDIANTE
             let studentAnterior = this.students[idAnterior - 2];
             studentAnterior.areas.push(element.description);
@@ -71,6 +103,7 @@ export class CandidatosAceptadosComponent implements OnInit {
           }
         }
         );
+        this.can = true;
         console.log(this.students);
       },
       (error) => {
