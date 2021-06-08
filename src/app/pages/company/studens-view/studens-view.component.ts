@@ -15,6 +15,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./studens-view.component.scss']
 })
 export class StudensViewComponent implements OnInit {
+  can;
   searchText;
 
   http: any;
@@ -114,6 +115,7 @@ export class StudensViewComponent implements OnInit {
           }
         }
         );
+        this.can = true;
         console.log(this.students);
       },
       (error) => {

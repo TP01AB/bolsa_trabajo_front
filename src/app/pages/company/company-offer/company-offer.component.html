@@ -29,7 +29,7 @@
 							<div class="row">
 								<!-- Se muestra para las ofertas activas -->
 								<ng-container *ngIf="active">
-									<div class="col-12 col-sm-6" *ngFor="let offer of actOffers | slice: (page - 1) * pageSize:page * pageSize | filter: searchText">
+									<div class="col-12 col-sm-12 col-md-12 col-lg-6" *ngFor="let offer of actOffers | slice: (page - 1) * pageSize:page * pageSize | filter: searchText">
 										<div class="card m-2 mb-4 border-secondary shadow">
 											<div class="card-header bg-secondary text-white">
 												<h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}</h3>
@@ -45,12 +45,8 @@
 												</div>
 												<div class="row border-top pt-3">
 													<div class="col text-center">
-														<p class="display-3 font-weight-bolder mb-0 text-danger">5</p>
+														<p class="display-3 font-weight-bolder mb-0 text-danger">{{ offer.students }}</p>
 														<p class="text-secondary">Interesados</p>
-													</div>
-													<div class="col text-center">
-														<p class="display-3 font-weight-bolder mb-0 text-success">15</p>
-														<p class="text-secondary">Seleccionados</p>
 													</div>
 												</div>
 											</div>
@@ -88,7 +84,7 @@
 								</ng-container>
 								<!-- Se muestra para las ofertas -->
 								<ng-container *ngIf="!active">
-									<div class="col-sm-6" *ngFor="let offer of desOffers | slice: (page - 1) * pageSize:page * pageSize | filter: searchText">
+									<div class="col-12 col-sm-12 col-md-12 col-lg-6" *ngFor="let offer of desOffers | slice: (page - 1) * pageSize:page * pageSize | filter: searchText">
 										<div class="card m-2 mb-4 border-secondary shadow">
 											<div class="card-header bg-secondary text-white">
 												<h3 class="card-title font-weight-bolder border-bottom">{{ offer.name }}</h3>
@@ -104,12 +100,8 @@
 												</div>
 												<div class="row border-top pt-3">
 													<div class="col text-center">
-														<p class="display-3 font-weight-bolder mb-0 text-danger">5</p>
+														<p class="display-3 font-weight-bolder mb-0 text-danger">{{ offer.students }}</p>
 														<p class="text-secondary">Interesados</p>
-													</div>
-													<div class="col text-center">
-														<p class="display-3 font-weight-bolder mb-0 text-success">15</p>
-														<p class="text-secondary">Seleccionados</p>
 													</div>
 												</div>
 											</div>

@@ -15,7 +15,10 @@
 								<input class="form-control ml-auto w-25" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Buscar" />
 							</div>
 						</div>
-						<div class="card-body mt-2">
+						<div *ngIf="!can">
+							<app-load-spinner></app-load-spinner>
+						</div>
+						<div class="card-body mt-2" *ngIf="can">
 							<!-- Card with offer -->
 							<div class="row">
 								<ng-container>

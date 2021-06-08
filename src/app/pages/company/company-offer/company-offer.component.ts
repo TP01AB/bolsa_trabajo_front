@@ -49,7 +49,8 @@ export class CompanyOfferComponent implements OnInit {
         console.log(offers);
         offers.forEach((element: {
           id: any; name: any; vacant: any; startDate: any; endDate: any;
-          description: any; area_id: any, isActive: any; area_description: any
+          description: any; area_id: any, isActive: any; area_description: any,
+          students: any
         }) => {
           let offer = {
             'id': element.id,
@@ -60,7 +61,8 @@ export class CompanyOfferComponent implements OnInit {
             'description': element.description,
             'areaId': element.area_id,
             'isActive': element.isActive,
-            'areaDescription': element.area_description
+            'areaDescription': element.area_description,
+            'students': element.students
           };
           this.offers.push(offer);
 
