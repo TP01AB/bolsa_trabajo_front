@@ -12,7 +12,8 @@
 					<div class="card">
 						<div class="card-header bg-secondary">
 							<h2 class="card-title text-white mb-0">Perfil</h2>
-							<a class="rounded-circle position-absolute border border-white bg-secondary" (click)="newPdf()">
+							<a class="rounded-circle position-absolute border border-white bg-secondary"
+								(click)="newPdf()">
 								<svg class="bi text-white" width="32" height="32" fill="currentColor">
 									<use xlink:href="bootstrap-icons.svg#plus" />
 								</svg>
@@ -25,13 +26,15 @@
 									<img [src]="avatar" style="max-width: 100px" />
 								</div>
 								<div class="my-3 text-center">
-									<input type="file" accept="image/*" id="file" formControlName="file" (change)="onImageChange($event)" />
+									<input type="file" accept="image/*" id="file" formControlName="file"
+										(change)="onImageChange($event)" />
 									<div *ngIf="uf.file.touched && uf.file.invalid" class="alert alert-danger">
 										<div *ngIf="uf.file.errors.required">Image file is required.</div>
 									</div>
 								</div>
 								<div class="col-12 col-sm-8 col-md-4 mx-auto" *ngIf="change">
-									<button id="btnPhoto" type="button" class="btn btn-secondary btn-block">Actualizar</button>
+									<button id="btnPhoto" (click)="upload()" type="button"
+										class="btn btn-secondary btn-block">Actualizar</button>
 								</div>
 							</form>
 							<perfil-al [parent]="areas" [parent2]="data" [studentAreas]="studentAreas"></perfil-al>
